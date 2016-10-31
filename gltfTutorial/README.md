@@ -2,7 +2,7 @@
 
 This tutorial gives an introduction to [glTF](https://www.khronos.org/gltf), the GL transmission format. It summarizes the most important features and application cases of glTF, and describes the structure of the files that are related to glTF. It explains how glTF files may be read, processed and used to display 3D graphics efficiently.
 
-Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notation, and about [OpenGL](https://www.khronos.org/opengl/) is required. Where appropriate, the related concepts of OpenGL will be explained quickly, usually with examples in [WebGL](https://www.khronos.org/webgl/).
+Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notation, is assumed. Additionally, a basic undertanding of common graphics APIs, like OpenGL or WebGL, is required. The code examples will be given in [WebGL](https://www.khronos.org/webgl/).
 
 - [Introduction](gltfTutorial_001_Introduction.md)
 - [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)
@@ -16,3 +16,7 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 - Summary: Rendering a glTF asset with WebGL
 
 
+
+**Acknowledgements:**
+
+- Patrick Cozzi, Cesium, [@pjcozzi](https://twitter.com/pjcozzi)
