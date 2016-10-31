@@ -40,7 +40,7 @@ The goal of glTF is to define a standard for the efficient transfer of 3D scenes
 - The scene structure is described with JSON, which is very compact and can easily be parsed
 - The 3D data of the objects is stored in a form that can directly be used by OpenGL, so there is no overhead for decoding or pre-processing the 3D data
 
-Different content creation tools may now provide the 3D content in the glTF format, and an increasing number of client applications is able to consume and render glTF. Some of these applications are shown in [Image 1](#application-png). So glTF may help to bridge the gap between content creation and rendering:  
+Different content creation tools may now provide the 3D content in the glTF format, and an increasing number of client applications is able to consume and render glTF. Some of these applications are shown in [Image 1](#applications-png). So glTF may help to bridge the gap between content creation and rendering:  
 
 ![3D content creation and rendering with glTF](images/contentCreationAndRenderingWithGltf.png)
 
