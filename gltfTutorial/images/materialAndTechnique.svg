@@ -764,7 +764,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="351.26228"
+     inkscape:cx="294.19331"
      inkscape:cy="722.46664"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -1250,14 +1250,14 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="439.56213"
-       y="377.71408"
+       x="473.90732"
+       y="382.76483"
        id="text4603-1"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan4605-5"
-         x="439.56213"
-         y="377.71408"
-         style="font-size:27.5px">OpenGL renderer</tspan></text>
+         x="473.90732"
+         y="382.76483"
+         style="font-size:40px">Renderer</tspan></text>
   </g>
 </svg>

@@ -27,7 +27,10 @@ So the most simple scene description may look as follows:
 
 Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-node) is one element of a hierarchy of nodes, and together they define the structure of the scene as a scene graph.  
 
-![Scene graph](images/sceneGraph.png)
+<p align="center">
+<img src="images/sceneGraph.png" /><br>
+<a name="sceneGraph-png"></a>Image 4a: The scene graph representation stored in the glTF JSON
+</p>
 
 Each of the nodes that are given in the `scene` can be traversed, recursively visiting all its children, to process all elements that are attached to the nodes. The simplified pseudocode for this traversal may look as follows:
 
@@ -47,45 +50,68 @@ In practice there will some additional information be required for the traversal
 
 ### Local and global transforms
 
-Each node can have a transform. Such a transform will usually define a translation, rotation or a scaling. This transform will be applied to all elements that are attached to the node itself and to all its child nodes. The hierarchy of nodes thus allows to structure the translations, rotations and scalings that are applied to the scene elements.
+Each node can have a transform. Such a transform will define a translation, rotation and/or scale. This transform will be applied to all elements that are attached to the node itself and to all its child nodes. The hierarchy of nodes thus allows to structure the translations, rotations and scalings that are applied to the scene elements.
 
 
 #### Local transforms of nodes
 
-There are different possible representations for the local transform of a node. The transform can be given directly by the `matrix` property of the node. This is an array of 16 floating point numbers that describe the matrix in column-major order:
+There are different possible representations for the local transform of a node. The transform can be given directly by the `matrix` property of the node. This is an array of 16 floating point numbers that describe the matrix in column-major order. For example, the following matrix describes a scaling about (2,1,0.5), a rotation about 30 degrees around the x-axis, and a translation about (10,20,30):
 
 ```javascript
 "node0": {
     "matrix": [
-        1.0,    0.0,    0.0,    0.0,
+        2.0,    0.0,    0.0,    0.0,
         0.0,    0.866,  0.5,    0.0,
-        0.0,    0.5,    0.866,  0.0,
-        3.0,    4.0,    5.0,    1.0
+        0.0,   -0.25,   0.433,  0.0,
+       10.0,   20.0,   30.0,    1.0
     ]
 }    
 ```
 
-The matrix defined here is
+So the matrix defined here is
 
-![Matrix](images/matrix.png)
+<p align="center">
+<img src="images/matrix.png" /><br>
+<a name="matrix-png"></a>Image 4b: An example matrix
+</p>
 
-> **Implementation note:**
-
-> The matrix shown above *seems* to be transposed compared to what is written in the JSON. However, matrices in OpenGL are *always* stored in column-major order. All OpenGL functions (and nearly all OpenGL-related matrix utility libraries) are implemented accordingly, and allow creating the appropriate column-major matrix directly from an array.
 
 The transform of a node can also be given using the `transform`, `rotation` and `scale` properties of a node - which is sometimes abbreviated as *TRS*:  
 
 ```javascript
 "node0": {
     "translation": [ 10.0, 20.0, 30.0 ],
-    "rotation": [ 0.7071, 0.0, 0.0, 0.7071 ],
+    "rotation": [ 0.259, 0.0, 0.0, 0.966 ],
     "scale": [ 2.0, 1.0, 0.5 ]
 }
 ```
 
-This representation can be imagined as simply performing the transformations, one after the other. The `translation` just contains the translation in x-, y- and z-direction. The `scale` contains the scaling factors along the x-, y- and z-axis. The trickiest part is the `rotation`, which is given as a [quaternion](https://en.wikipedia.org/wiki/Quaternion). The mathematical background of quaternions is beyond the scope of this tutorial. For now, the most important information is that a quaternion is a compact representation of a rotation about an arbitrary angle and around an arbitrary axis.
+Each of these properties can be used to create a matrix, and the product of these matrices then is the local transform of the node:
 
-Each of these properties can be used to create a matrix, and the product of these matrices then is the local transform of the node. It is important to perform the multiplication of these matrices in the right order. The local transform matrix always has to be computed as `M = T * R * S`, where `T` is the matrix for the `translation` part, `R` is the matrix for the `rotation` part, and `S` is the matrix for the `scale` part. So the the pseudocode for the computation is
+- The `translation` just contains the translation in x-, y- and z-direction. For example, from a translation of `[ 10.0, 20.0, 30.0 ]`, one can create a translation matrix that contains this translation as its last column:
+
+<p align="center">
+<img src="images/translationMatrix.png" /><br>
+<a name="translationMatrix-png"></a>Image 4c: A translation matrix
+</p>
+
+
+- The `rotation` is given as a [quaternion](https://en.wikipedia.org/wiki/Quaternion). The mathematical background of quaternions is beyond the scope of this tutorial. For now, the most important information is that a quaternion is a compact representation of a rotation about an arbitrary angle and around an arbitrary axis. For example, the quaternion `[ 0.259, 0.0, 0.0, 0.966 ]` describes a rotation about 30 degrees, around the x-axis. So this quaternion can be converted into a rotation matrix:
+
+<p align="center">
+<img src="images/rotationMatrix.png" /><br>
+<a name="rotationMatrix-png"></a>Image 4d: A rotation matrix
+</p>
+
+
+- The `scale` contains the scaling factors along the x-, y- and z-axis. The corresponding matrix can be created by using these scaling factors as the entries on the diagonal of the matrix. For example, the scale matrix for the scaling factors `[ 2.0, 1.0, 0.5 ]` is
+
+<p align="center">
+<img src="images/scaleMatrix.png" /><br>
+<a name="scaleMatrix-png"></a>Image 4e: A scale matrix
+</p>
+
+When computing the final, local transform matrix of the node, these matrices are multiplied together. It is important to perform the multiplication of these matrices in the right order. The local transform matrix always has to be computed as `M = T * R * S`, where `T` is the matrix for the `translation` part, `R` is the matrix for the `rotation` part, and `S` is the matrix for the `scale` part. So the pseudocode for the computation is
 
 ```
 translationMatrix = createTranslationMatrix(node.translation);
@@ -94,17 +120,14 @@ scaleMatrix = createScaleMatrix(node.scale);
 localTransform = translationMatrix * rotationMatrix * scaleMatrix;
 ```
 
+For the example matrices given above, the final, local transform matrix of the node will be
 
-> **Implementation note:**
+<p align="center">
+<img src="images/productMatrix.png" /><br>
+<a name="produtMatrix-png"></a>Image 4f: The final local transform matrix computed from the TRS properties
+</p>
 
-> Most matrix libraries contain functions for directly creating matrices from these properties. The translation matrix is created from an identity matrix where the last column in filled with the `translation` elements. Similarly, the scale matrix is created from an identity matrix where the diagonal elements are replaced with the `scale` values. The computation of the matrix for a given `rotation` quaternion is not so trivial, but usually offered via utility functions:
-
-> The JavaScript [glMatrix](http://glmatrix.net/) library has a [`fromQuat`](http://glmatrix.net/docs/mat4.html#.fromQuat) function that allows creating a 4x4 matrix from a quaternion.
-
-> The Java library [JOML](https://github.com/JOML-CI/JOML) contains different methods, for example, [`rotate()`](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html#rotate-org.joml.Quaternionf-), to create a 4x4 matrix from a quaternion.
-
-> The C++ [glm](glm.g-truc.net/) library has a [`mat4_cast`](https://glm.g-truc.net/0.9.7/api/a00177.html#ga14bb2ddf028c91542763eb6f2bba47ef) that converts a quaternion into the corresponding 4x4 matrix.
-
+This matrix will cause the vertices of the meshes to be scaled, then rotated and then translated according to the `scale`, `rotation` and `translation` properties that have been given in the node.
 
 When any of the three properties is not given, then the identity matrix will be used. Similarly, when a node does neither contain a `matrix` property nor TRS-properties, then its local transform will be the identity matrix.
 
@@ -131,19 +154,8 @@ Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification#ref
 
 There are two kinds of cameras: [`orthographic`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera.orthographic) cameras and [`perspective`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera.perspective) cameras. The parameters that are contained in the different cameras can be used to create the *camera matrix*. Explaining the details of cameras, matrices, viewing and projections is beyond the scope of this tutorial. The WebGL API documentation contains a dedicated section called [WebGL model view projection](https://developer.mozilla.org/en/docs/Web/API/WebGL_API/WebGL_model_view_projection) that contains background information and links to further tutorials.     
 
-> **Implementation note:**
 
-> In many environments, there are utility methods for creating the camera matrix based on the parameters that are contained in the perspective or orthographic camera of glTF.  
-
-> The JavaScript [glMatrix](http://glmatrix.net/) library has an [`ortho`](http://glmatrix.net/docs/mat4.html#.ortho) and a [`perspective`](http://glmatrix.net/docs/mat4.html#.perspective) function for filling the camera matrix with the given parameters.
-
-> The Java library [JOML](https://github.com/JOML-CI/JOML) contains similar [`setOrtho()`](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html#setOrtho-float-float-float-float-float-float-) and [`setPerspective()`](https://joml-ci.github.io/JOML/apidocs/org/joml/Matrix4f.html#setPerspective-float-float-float-float-boolean-) methods.
-
-> The [glm](glm.g-truc.net/) library that is commonly used in C++ offers [`ortho`](https://glm.g-truc.net/0.9.7/api/a00174.html#ga65280251de6e38580110a0577a43d8f8) and [`projection`](https://glm.g-truc.net/0.9.7/api/a00174.html#gac3613dcb6c6916465ad5b7ad5a786175) functions as well.
-
-> In the old, fixed-function OpenGL, there have been the [`glOrtho`](https://www.opengl.org/sdk/docs/man2/xhtml/glOrtho.xml) and [`gluPerspective`](https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml) functions that applied the matrices directly on top of the matrix stack.
-
-What may be important to note is that the camera itself in glTF is assumed to be in a "default" orientation. This is the same configuration that the camera has by default in OpenGL: The eye point of the camera is at the origin, and the viewing direction is along the negative z-axis. All transformations of the camera are only determined by the global transform of the `node` that refers to the camera.
+All transformations of the camera are only determined by the global transform of the `node` that refers to the camera. When this global transform is the identity matrix, then the eye point of the camera is at the origin, and the viewing direction is along the negative z-axis.
 
 There may be multiple cameras defined in the JSON part of a glTF. However, there is no "default" camera. Instead, the client application has to keep track of the currently active camera. The client application may, for example, offer a dropdown-menu that allows selecting the active camera, and thus, to quickly switch between predefined view configurations. With a bit more implementation effort, the client application can also define an own camera and interaction patterns for the camera control (e.g. zooming with the mouse wheel). However, the logic for the navigation and interaction has to be implemented solely by the client application in this case.
 
@@ -200,7 +212,12 @@ It can be seen that the animation contains three types of objects: Animation `pa
 
 The dictionary of animation `parameters` summarizes the input data of the animation. It contains one [`accessor`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-accessor) for each parameter. The details of accessors will be explained in a later the section about [Buffers, BufferViews and Accessors](gltfTutorial_007_BuffersBufferViewsAccessors.md). For now, an accessor can be imagined as an abstract source of arbitrary data: An accessor may provide the time stamps of the key frames of the animation, and the values that the animated properties have at these key frames.
 
-  ![AnimationParameters](images/animationParameters.png)
+<p align="center">
+<img src="images/animationParameters.png" /><br>
+<a name="animationParameters-png"></a>Image 4g: Animation parameter accessors
+</p>
+
+
 
 In the given example, there is one accessor for the `TIME` parameter of the animation. It provides the time, in seconds, of the key frames of the animation. The accessor for the translation provides one 3D vector for each key frame, which describes the translation that the node has at the given time. Similarly, the accessor for the rotation provides the four values that are used to create the quaternion describing the rotation of the node at the given time.
 
@@ -209,7 +226,10 @@ In the given example, there is one accessor for the `TIME` parameter of the anim
 
 The `samplers` dictionary contains [`animation.sampler`](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-animation.sampler) objects that define how the values that are provided by the accessors have to be interpolated between the key frames:
 
-![AnimationSamplers](images/animationSamplers.png)
+<p align="center">
+<img src="images/animationSamplers.png" /><br>
+<a name="animationSamplers-png"></a>Image 4h: Animation samplers
+</p>
 
 In order to compute the value of the translation for the current animation time, the following algorithm can be used:
 
@@ -270,4 +290,7 @@ Finally, the animations contain an array of of [`animation.channel`](https://git
 
 In the example above, there are two channels for the animation. Both refer to the same node. The path of the first channel refers to the `translation` of the node, and the path of the second channel refers to the `rotation` of the node. So all objects (meshes) that are attached to the node will be translated and rotated by the animation:
 
-![AnimationChannels](images/animationChannels.png)
+<p align="center">
+<img src="images/animationChannels.png" /><br>
+<a name="animationChannels-png"></a>Image 4i: Animation channels
+</p>

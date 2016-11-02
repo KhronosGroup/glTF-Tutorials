@@ -5,7 +5,7 @@ There is an increasing number of applications and services that are based on 3D 
 
 <p align="center">
 <img src="images/applications.png" /><br>
-<a name="applications-png"></a>Image 1: Screenshots of different websites and applications showing 3D models
+<a name="applications-png"></a>Image 1a: Screenshots of different websites and applications showing 3D models
 </p>
 
 So there is a strong and constantly increasing demand for 3D content in various applications. In many cases, the 3D content has to be transferred over the web, and has to be rendered efficiently on client side. But until now, there is a gap between the 3D content creation and the efficient rendering of the 3D content in the runtime applications.
@@ -23,7 +23,7 @@ In order to render such 3D content, the runtime application has to be able to re
 
 <p align="center">
 <img src="images/contentPipeline.png" /><br>
-<a name="contentPipeline-png"></a>Image 2: The 3D content pipeline today
+<a name="contentPipeline-png"></a>Image 1b: The 3D content pipeline today
 </p>
 
 
@@ -40,7 +40,7 @@ Different content creation tools may now provide the 3D content in the glTF form
 
 <p align="center">
 <img src="images/contentPipelineWithGltf.png" /><br>
-<a name="contentPipelineWithGltf-png"></a>Image 3: The 3D content pipeline with glTF
+<a name="contentPipelineWithGltf-png"></a>Image 1c: The 3D content pipeline with glTF
 </p>
 
-The content creation tools may either provide glTF directly, or use one of the open-source conversion utilities. For example, the [COLLADA](https://www.khronos.org/collada/) specification defines an XML-based data exchange format for 3D authoring tools, and nearly all authoring applications can export their scenes in the COLLADA format. So the [COLLADA2GLTF](https://github.com/KhronosGroup/glTF/tree/master/COLLADA2GLTF) tool can thus be used to convert scenes and models from authoring applications to glTF. `OBJ` files may be converted to glTF using [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf). For other file formats, custom converters can be used to create glTF, and thus, to make the 3D content available for a broad range of runtime applications.
+An increasing number of content creation tools will be able to provide glTF directly. Alternatively, other file formats can be used to create glTF assets, using one of the open-source conversion utilities listed in the [Khronos glTF repository](https://github.com/KhronosGroup/glTF#converters). For example, nearly all authoring applications can export their scenes in the [COLLADA](https://www.khronos.org/collada/) format. So the [COLLADA2GLTF](https://github.com/KhronosGroup/glTF/tree/master/COLLADA2GLTF) tool can be used to convert scenes and models from these authoring applications to glTF. `OBJ` files may be converted to glTF using [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf). For other file formats, custom converters can be used to create glTF assets, and thus, to make the 3D content available for a broad range of runtime applications.

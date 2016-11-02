@@ -241,7 +241,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2978824"
-     inkscape:cx="143.53028"
+     inkscape:cx="169.4577"
      inkscape:cy="555.78413"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -807,20 +807,20 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="275.17889"
+       x="255.17889"
        y="700.73029"
        id="text4295-9-9-2-8"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="275.17889"
+         x="255.17889"
          y="700.73029"
-         id="tspan4766-0-7-5-0">.glsl files</tspan><tspan
+         id="tspan4766-0-7-5-0">.vert/.frag files</tspan><tspan
          sodipodi:role="line"
-         x="275.17889"
+         x="255.17889"
          y="722.60529"
          id="tspan4299-49-6-3-4" /><tspan
          sodipodi:role="line"
-         x="275.17889"
+         x="255.17889"
          y="744.48029"
          id="tspan4301-0-0-9-8" /></text>
     <text

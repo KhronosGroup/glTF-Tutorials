@@ -6,7 +6,7 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 
 - [Introduction](gltfTutorial_001_Introduction.md)
 - [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)
-- [Scene structure](gltfTutorial_003_SceneStructure.md)
+- [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)
 - [Scenes, nodes, cameras and animations](gltfTutorial_004_ScenesNodesCamerasAnimations.md)
 - [Meshes, textures, images and samplers](gltfTutorial_005_MeshesTexturesImagesSamplers.md)
 - [Materials, techniques, programs and shaders](gltfTutorial_006_MaterialsTechniquesProgramsShaders.md)
