@@ -148,7 +148,7 @@ A more detailed description about meshes and mesh primitives can be found in the
 
 As described in the section about [Binary data in buffers](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers), a [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) defines a block of raw, unstructured data with no inherent meaning. It contains a `uri`, which can either point to an external file that contains the data, or it can be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers) that encodes the data directly in the JSON file.
 
-In the example file, the second approach is used: There is a single buffer with the ID `"buffer0"`, containing 48 bytes, and the data of a this buffer is encoded as a data URI:
+In the example file, the second approach is used: There is a single buffer with the ID `"buffer0"`, containing 42 bytes, and the data of a this buffer is encoded as a data URI:
 
 ```javascript
   "buffers" : {
@@ -161,7 +161,7 @@ In the example file, the second approach is used: There is a single buffer with 
 ```
 <p align="center">
 <img src="images/buffer.png" /><br>
-<a name="buffer-png"></a>Image 3b: The buffer, containing 48 bytes
+<a name="buffer-png"></a>Image 3b: The buffer, containing 42 bytes
 </p>
 
 In the given example, this data contains the indices of the triangle, and the vertex positions of the triangle. But in order to actually use this data as the geometry data of a mesh primitive, additional information about the *structure* of this data is required.
