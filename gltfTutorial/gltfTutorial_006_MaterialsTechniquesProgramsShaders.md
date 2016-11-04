@@ -126,6 +126,7 @@ A technique can be considered as a "template" for one [`material`](https://githu
 <a name="materialAndTechnique-png"></a>Image 6b: Materials and techniques, and how they affect the appearance of objects
 </p>
 
+When a material does not refer to a technique, then it will be considered as a *default material*, with a certain default technique, as explained in the [Appendix A of the specification](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#appendix-a-default-material).
 
 The following is an example of one technique that may be found in the glTF JSON:
 

@@ -1,4 +1,11 @@
-## The basic structure of glTF
+<table style="width:100%"><tr>
+<td style="width:33%">Previous: [Introduction](gltfTutorial_001_Introduction.md)</td>
+<td style="width:33%">[Table of Contents](README.md)</td>
+<td style="width:33%">Next: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)</td>
+</tr></table>
+
+
+# The basic structure of glTF
 
 The core of glTF is a JSON file. This file describes the whole contents of the 3D scene. It consists of a description of the scene structure itself, which is given by a hierarchy of nodes that define a scene graph. The 3D objects that appear in the scene are defined using meshes that are attached to the nodes. Materials define the appearance of the objects. Animations describe how the 3D objects are transformed (e.g. rotated to translated) over time, and skins define how the geometry of the objects is deformed based on a skeleton pose. Cameras describe the view configuration for the renderer.
 
@@ -117,3 +124,10 @@ The shader source code is stored as plain text, so that it can directly be compi
 ## Binary data in data URIs
 
 Usually, the URIs that are contained in the `buffer`, `image` and `shader` objects will point to a file that contains the actual data. As an alternative, the data may be *embedded* into the JSON, by using a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs).
+
+
+<table style="width:100%"><tr>
+<td style="width:33%">Previous: [Introduction](gltfTutorial_001_Introduction.md)</td>
+<td style="width:33%">[Table of Contents](README.md)</td>
+<td style="width:33%">Next: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)</td>
+</tr></table>
