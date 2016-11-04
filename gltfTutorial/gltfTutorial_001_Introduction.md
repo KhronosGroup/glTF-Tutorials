@@ -1,9 +1,6 @@
 
-<table style="width:100%"><tr>
-<td style="width:33%"></td>
-<td style="width:33%">[Table of Contents](README.md)</td>
-<td style="width:33%">Next: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)</td>
-</tr></table>
+[Table of Contents](README.md) | Next: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)
+
 
 
 
@@ -55,8 +52,4 @@ Different content creation tools may now provide the 3D content in the glTF form
 An increasing number of content creation tools will be able to provide glTF directly. Alternatively, other file formats can be used to create glTF assets, using one of the open-source conversion utilities listed in the [Khronos glTF repository](https://github.com/KhronosGroup/glTF#converters). For example, nearly all authoring applications can export their scenes in the [COLLADA](https://www.khronos.org/collada/) format. So the [COLLADA2GLTF](https://github.com/KhronosGroup/glTF/tree/master/COLLADA2GLTF) tool can be used to convert scenes and models from these authoring applications to glTF. `OBJ` files may be converted to glTF using [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf). For other file formats, custom converters can be used to create glTF assets, and thus, to make the 3D content available for a broad range of runtime applications.
 
 
-<table style="width:100%"><tr>
-<td style="width:33%"></td>
-<td style="width:33%">[Table of Contents](README.md)</td>
-<td style="width:33%">Next: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)</td>
-</tr></table>
+[Table of Contents](README.md) | Next: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)

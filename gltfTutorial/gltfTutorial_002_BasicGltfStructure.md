@@ -1,8 +1,5 @@
-<table style="width:100%"><tr>
-<td style="width:33%">Previous: [Introduction](gltfTutorial_001_Introduction.md)</td>
-<td style="width:33%">[Table of Contents](README.md)</td>
-<td style="width:33%">Next: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)</td>
-</tr></table>
+
+Previous: [Introduction](gltfTutorial_001_Introduction.md) | [Table of Contents](README.md) | Next: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)
 
 
 # The basic structure of glTF
@@ -126,8 +123,4 @@ The shader source code is stored as plain text, so that it can directly be compi
 Usually, the URIs that are contained in the `buffer`, `image` and `shader` objects will point to a file that contains the actual data. As an alternative, the data may be *embedded* into the JSON, by using a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs).
 
 
-<table style="width:100%"><tr>
-<td style="width:33%">Previous: [Introduction](gltfTutorial_001_Introduction.md)</td>
-<td style="width:33%">[Table of Contents](README.md)</td>
-<td style="width:33%">Next: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)</td>
-</tr></table>
+Previous: [Introduction](gltfTutorial_001_Introduction.md) | [Table of Contents](README.md) | Next: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)

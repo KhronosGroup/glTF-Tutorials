@@ -1,8 +1,4 @@
-<table style="width:100%"><tr>
-<td style="width:33%">Previous: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md.md)</td>
-<td style="width:33%">[Table of Contents](README.md)</td>
-<td style="width:33%">Next: [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)</td>
-</tr></table>
+Previous: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md.md) | [Table of Contents](README.md) | Next: [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)
 
 
 # A minimal glTF file
@@ -213,8 +209,4 @@ The `asset` property may contain additional metadata that is described in the [`
 
 
 
-<table style="width:100%"><tr>
-<td style="width:33%">Previous: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md.md)</td>
-<td style="width:33%">[Table of Contents](README.md)</td>
-<td style="width:33%">Next: [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)</td>
-</tr></table>
+Previous: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md.md) | [Table of Contents](README.md) | Next: [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)
