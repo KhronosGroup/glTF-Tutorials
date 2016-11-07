@@ -1,4 +1,4 @@
-Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Meshes](gltfTutorial_006_Animations.md)
+Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_006_Animations.md)
 
 
 # A simple animation
@@ -268,4 +268,4 @@ A more detailed description and actual examples for the interpolation and the co
 
 
 
-Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Meshes](gltfTutorial_006_Animations.md)
+Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_006_Animations.md)
