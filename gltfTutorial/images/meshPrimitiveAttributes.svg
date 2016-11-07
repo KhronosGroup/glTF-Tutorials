@@ -203,7 +203,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="1.1073297"
-     inkscape:cx="246.53543"
+     inkscape:cx="175.80173"
      inkscape:cy="950.72677"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -260,18 +260,6 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="3.1300311"
-       y="27.343628"
-       id="text5662-0"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5664-7"
-         x="3.1300311"
-         y="27.343628"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">accessorForPositions:</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="3.0912955"
        y="67.909988"
        id="text5662-0-0"
@@ -280,7 +268,7 @@
          id="tspan5664-7-0"
          x="3.0912955"
          y="67.909988"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">accessorForNormals:</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">normalsAccessor:</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -292,7 +280,7 @@
          id="tspan5664-7-0-7"
          x="3.0067053"
          y="108.25522"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">accessorForTexCoords:</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">texCoordsAccessor:</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -1212,5 +1200,17 @@
        height="30"
        x="550"
        y="7.3622065" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="3.1300311"
+       y="27.343628"
+       id="text5662-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5664-7"
+         x="3.1300311"
+         y="27.343628"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">positionsAccessor:</tspan></text>
   </g>
 </svg>

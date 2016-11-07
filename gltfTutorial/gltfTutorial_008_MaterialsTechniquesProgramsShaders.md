@@ -2,7 +2,7 @@
 
 ## Introduction
 
-As described in the section about [materials in mesh primitives](gltfTutorial_005_MeshesTexturesImagesSamplers.md#mesh-primitive-material), each `meshPrimitive` contains a reference to one `material` that defines how the mesh primitive will be rendered.
+As described in the section about [materials in mesh primitives](gltfTutorial_006_MeshesTexturesImagesSamplers.md#mesh-primitive-material), each `meshPrimitive` contains a reference to one `material` that defines how the mesh primitive will be rendered.
 
 There are several well-known parameters that are commonly used to describe a material in rendering applications and graphics APIs:
 
@@ -45,7 +45,7 @@ The shader source code that is referred to by the URI is stored as a plain text,
 
 #### Attributes and uniforms in shaders
 
-The vertex shader may define different *attributes*. These attributes describe all properties of a single vertex. Recall this image, already shown in the section about [Mesh primitive attributes](gltfTutorial_005_MeshesTexturesImagesSamplers.md#mesh-primitive-attributes):
+The vertex shader may define different *attributes*. These attributes describe all properties of a single vertex. Recall this image, already shown in the section about [Mesh primitive attributes](gltfTutorial_006_MeshesTexturesImagesSamplers.md#mesh-primitive-attributes):
 
 <p align="center">
 <img src="images/meshPrimitiveAttributes.png" /><br>
@@ -266,4 +266,4 @@ Therefore, the `technique.parameters` may have a `semantic` property that contai
 
 There are many different possible semantics for `uniform` parameters. These are listed in this [table in the glTF specification](https://github.com/KhronosGroup/glTF/tree/master/specification#semantics). Additional `attribute` semantics are listed in the [glTF specification of meshes](https://github.com/KhronosGroup/glTF/tree/master/specification#meshes).
 
-In the example above, the technique says that the `position` parameter has the semantic `POSITION`. This means that when a `meshPrimitive` is rendered with this technique, then this `meshPrimitive` must contain an attribute with this name, as described in the section about [mesh primitive attributes](gltfTutorial_005_MeshesTexturesImagesSamplers.md#mesh-primitive-attributes).
+In the example above, the technique says that the `position` parameter has the semantic `POSITION`. This means that when a `meshPrimitive` is rendered with this technique, then this `meshPrimitive` must contain an attribute with this name, as described in the section about [mesh primitive attributes](gltfTutorial_006_MeshesTexturesImagesSamplers.md#mesh-primitive-attributes).

@@ -87,7 +87,9 @@ A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#refe
 }
 ```
 
-This binary data has no inherent meaning or structure. It only is a compact representation of data that can efficiently be transferred over the web, and then be interpreted in different ways. For example, it may later be interpreted as geometry-, skinning- and animation data. For the case of geometry data, it can directly be passed to a renderer, without having to decode or pre-process it. Until then, it is just a raw block of memory that is read from the URI of the `buffer`.
+This binary data is just a raw block of memory that is read from the URI of the `buffer`, with no inherent meaning or structure. The section about [Buffers, BufferViews and Accessors](gltfTutorial_007_BuffersBufferViewsAccessors.md) will show how this raw data is extended with information about data types and the data layout. With this information, one part of the data may, for example, be interpreted as animation data, and another part may be interpreted as geometry data. Storing the data in a binary form allows it to be transferred over the web much more efficiently than in the JSON format, and the binary data can be passed directly to the renderer without having to decode or pre-process it. 
+
+
 
 ### Image data in `images`
 
@@ -99,7 +101,7 @@ An [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification#refe
 }
 ```
 
-The reference is given as a URI that usually points to a PNG or JPG file. These formats significantly reduce the size of the files, so that they may efficiently be transferred over the web, and they still can be decoded quickly and easily.
+The reference is given as a URI that usually points to a PNG or JPG file. These formats significantly reduce the size of the files, so that they may efficiently be transferred over the web.
 
 
 
@@ -120,7 +122,7 @@ The shader source code is stored as plain text, so that it can directly be compi
 
 ## Binary data in data URIs
 
-Usually, the URIs that are contained in the `buffer`, `image` and `shader` objects will point to a file that contains the actual data. As an alternative, the data may be *embedded* into the JSON, by using a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs).
+Usually, the URIs that are contained in the `buffer`, `image` and `shader` objects will point to a file that contains the actual data. As an alternative, the data may be *embedded* into the JSON, in binary format, by using a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs).
 
 
 Previous: [Introduction](gltfTutorial_001_Introduction.md) | [Table of Contents](README.md) | Next: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)

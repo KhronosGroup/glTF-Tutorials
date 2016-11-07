@@ -8,9 +8,13 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 - [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)
 - [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)
 - [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)
-- [Meshes](gltfTutorial_005_Meshes.md)
-- [Materials, techniques, programs and shaders](gltfTutorial_006_MaterialsTechniquesProgramsShaders.md)
-- [Buffers, bufferViews and accessors](gltfTutorial_007_BuffersBufferViewsAccessors.md)
+- [A simple animation](gltfTutorial_005_SimpleAnimation.md)
+- [Animations](gltfTutorial_006_Animations.md)
+- [Meshes](gltfTutorial_007_Meshes.md)
+- [Materials, techniques, programs and shaders](gltfTutorial_008_MaterialsTechniquesProgramsShaders.md)
+- [Buffers, bufferViews and accessors](gltfTutorial_009_BuffersBufferViewsAccessors.md)
+- Textures, Images, Samplers
+- Cameras
 - Skins
 - Extensions
 - Summary: Rendering a glTF asset with WebGL
