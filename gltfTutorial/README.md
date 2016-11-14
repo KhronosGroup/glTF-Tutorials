@@ -7,12 +7,16 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 - [Introduction](gltfTutorial_001_Introduction.md)
 - [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md)
 - [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md)
-- [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)
-- [A simple animation](gltfTutorial_005_SimpleAnimation.md)
-- [Animations](gltfTutorial_006_Animations.md)
+- [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md)
+- [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md)
+- [A simple animation](gltfTutorial_006_SimpleAnimation.md)
+- [Animations](gltfTutorial_007_Animations.md)
 - [Meshes](gltfTutorial_007_Meshes.md)
-- [Materials, techniques, programs and shaders](gltfTutorial_008_MaterialsTechniquesProgramsShaders.md)
-- [Buffers, bufferViews and accessors](gltfTutorial_009_BuffersBufferViewsAccessors.md)
+- [Materials](gltfTutorial_009_Materials.md)
+  - [A simple material](gltfTutorial_009a_SimpleMaterial.md)
+  - [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md)
+  - [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
+  - [An advanced material](gltfTutorial_009d_AdvancedMaterial.md)
 - Textures, Images, Samplers
 - Cameras
 - Skins

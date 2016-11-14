@@ -158,7 +158,7 @@ Three elements have been added to the top-level dictionaries of the glTF JSON, t
 
 ### The `buffer` and the `bufferView` for the raw animation data
 
-A new `buffer` has been added, with the ID `"buffer1"`. This buffer also uses a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers) to encode the 100 bytes that the animation data consists of:
+A new `buffer` has been added, with the ID `"buffer1"`. This buffer also uses a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-data-uris) to encode the 100 bytes that the animation data consists of:
 
 ```javascript
 "buffers" : {

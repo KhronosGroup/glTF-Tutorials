@@ -123,19 +123,18 @@ The actual geometry data of the mesh primitive is given by the `attributes` and 
       } ]
     }
   },
-  "materials" : {
-    "material0" : { }
-  },
 ```
 
-A more detailed description about meshes and mesh primitives can be found in the [Meshes](gltfTutorial_006_Meshes.md) section.
+A more detailed description about meshes and mesh primitives can be found in the [Meshes](gltfTutorial_007_Meshes.md) section.
 
 
 ## The `buffer`, `bufferView` and `accessor` concepts
 
+The `buffer`, `bufferView` and `accessor` objects provide information about the geometry data that the mesh primitives consist of. They are introduced here quickly, based on the specific example. A more detailed description of these concepts will be given in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md).
+
 ### Buffers
 
-As described in the section about [Binary data in buffers](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers), a [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) defines a block of raw, unstructured data with no inherent meaning. It contains an `uri`, which can either point to an external file that contains the data, or it can be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers) that encodes the binary data directly in the JSON file.
+A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) defines a block of raw, unstructured data with no inherent meaning. It contains an `uri`, which can either point to an external file that contains the data, or it can be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers) that encodes the binary data directly in the JSON file.
 
 In the example file, the second approach is used: There is a single buffer with the ID `"buffer0"`, containing 42 bytes, and the data of a this buffer is encoded as a data URI:
 
@@ -147,17 +146,12 @@ In the example file, the second approach is used: There is a single buffer with 
     }
   },
 ```
-<p align="center">
-<img src="images/buffer.png" /><br>
-<a name="buffer-png"></a>Image 3b: The buffer, containing 42 bytes
-</p>
 
-In the given example, this data contains the indices of the triangle, and the vertex positions of the triangle. But in order to actually use this data as the geometry data of a mesh primitive, additional information about the *structure* of this data is required.
-
+This data contains the indices of the triangle, and the vertex positions of the triangle. But in order to actually use this data as the geometry data of a mesh primitive, additional information about the *structure* of this data is required. This information about the structure is encoded in the `bufferView` and `accessor` objects.
 
 ### Buffer views
 
-The first step of structuring the data is to define [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView) objects. A `bufferView` basically describes a "chunk" or a "slice" of the whole, raw buffer data. In the given example, there are two buffer views. They both refer to the same buffer, using its ID. The first buffer view refers to the part of the buffer that contains the data of the indices. The second buffer view refers to the part of the buffer that contains the vertex positions.
+A [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView) describes a "chunk" or a "slice" of the whole, raw buffer data. In the given example, there are two buffer views. They both refer to the same buffer, using its ID. The first buffer view is called `"indicesBufferView"`, and refers to the part of the buffer that contains the data of the indices: It has a `byteOffset` of 0 referring to the whole buffer data, and a `byteLength` of 6. The second buffer view is called `"positionsBufferView"`, and refers to the part of the buffer that contains the vertex positions. It starts at a `byteOffset` of 6, and has a `byteLength` of 36, that is, it extends to the end of the whole buffer.
 
 ```javascript
   "bufferViews" : {
@@ -176,21 +170,16 @@ The first step of structuring the data is to define [`bufferView`](https://githu
   },
 ```
 
-<p align="center">
-<img src="images/bufferBufferView.png" /><br>
-<a name="bufferBufferView-png"></a>Image 3c: The buffer views, referring to parts of the buffer
-</p>
-
 
 ### Accessors
 
-The second step of structuring the data is accomplished with  [`accessor`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-accessor) objects. They define how the raw data of a `bufferView` has to be interpreted, by provide information about the data types and the layout.
+The second step of structuring the data is accomplished with  [`accessor`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-accessor) objects. They define how the data of a `bufferView` has to be interpreted, by provide information about the data types and the layout.
 
 In the example, there are two accessor objects.
 
-The first accessor describes the indices of the geometry data. It refers to the `"indicesBufferView"`, which is the part of the `buffer` that contains the raw data for the indices. Additionally, it specifies the `count` and `type` of the elements and their `componentType`. In this case, there are 3 scalar elements, and their component type is given by a constant that stands for the `unsigned short` type.
+The first accessor is called `"indicesAccessor"`, and describes the indices of the geometry data. It refers to the `"indicesBufferView"`, which is the part of the `buffer` that contains the raw data for the indices. Additionally, it specifies the `count` and `type` of the elements and their `componentType`. In this case, there are 3 scalar elements, and their component type is given by a constant that stands for the `unsigned short` type.
 
-The second accessor object describes the vertex positions. It contains a reference to the relevant part of the buffer data, via the `"positionsBufferView"`, and its `count`, `type` and `componentType` properties say that there are 3 elements of 3D vectors, each having `float` components.
+The second accessor is called `"positionsAccessor"` and describes the vertex positions. It contains a reference to the relevant part of the buffer data, via the `"positionsBufferView"`, and its `count`, `type` and `componentType` properties say that there are 3 elements of 3D vectors, each having `float` components.
 
 
 ```javascript
@@ -216,14 +205,22 @@ The second accessor object describes the vertex positions. It contains a referen
   },
 ```
 
-<p align="center">
-<img src="images/bufferBufferViewAccessor.png" /><br>
-<a name="bufferBufferViewAccessor-png"></a>Image 3d: The accessors defining how to interpret the data of the buffer views
-</p>
+As described above, a `mesh.primitive` may now refer to these accessors, using their IDs:
 
-A more detailed description of how the accessor data is obtained and processed by the renderer is given in the section about [Buffers, BufferViews and Accessors](gltfTutorial_009_BuffersBufferViewsAccessors.md) and the section about [Materials, Techniques, Programs and Shaders](gltfTutorial_008_MaterialsTechniquesProgramsShaders.md).
+```javascript
+  "meshes" : {
+    "mesh0" : {
+      "primitives" : [ {
+        "attributes" : {
+          "POSITION" : "positionsAccessor"
+        },
+        "indices" : "indicesAccessor"
+      } ]
+    }
+  },
+```
 
-As described above, a `mesh` may now refer to these accessors, using their IDs. The renderer can resolve the underlying buffer views and buffers, and send the required parts of the buffer to the renderer, together with the information about the data types and layout, so that the geometry data may be rendered.
+When this `mesh.primitive` has to be rendered, the renderer can resolve the underlying buffer views and buffers, and send the required parts of the buffer to the renderer, together with the information about the data types and layout. A more detailed description of how the accessor data is obtained and processed by the renderer is given in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) and the section about [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
 
 
 

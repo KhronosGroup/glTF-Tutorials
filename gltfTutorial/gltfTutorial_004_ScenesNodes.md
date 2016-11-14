@@ -1,4 +1,4 @@
-Previous: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) | [Table of Contents](README.md) | Next: [Simple animation](gltfTutorial_005_SimpleAnimation.md)
+Previous: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) | [Table of Contents](README.md) | Next: [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md)
 
 # Scenes and nodes
 
@@ -143,4 +143,4 @@ It is important to point out that these global transforms can *not* be computed 
 
 
 
-Previous: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md.md) | [Table of Contents](README.md) | Next: [Simple animation](gltfTutorial_005_SimpleAnimation.md)
+Previous: [A minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) | [Table of Contents](README.md) | Next: [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md)

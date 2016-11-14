@@ -46,7 +46,7 @@ The `samplers` dictionary contains [`animation.sampler`](https://github.com/Khro
 
 <p align="center">
 <img src="images/animationSamplers.png" /><br>
-<a name="animationSamplers-png"></a>Image 4h: Animation samplers
+<a name="animationSamplers-png"></a>Image 4a: Animation samplers
 </p>
 
 In order to compute the value of the translation for the current animation time, the following algorithm can be used:
@@ -111,7 +111,7 @@ In the example above, there are two channels for the animation. Both refer to th
 
 <p align="center">
 <img src="images/animationChannels.png" /><br>
-<a name="animationChannels-png"></a>Image 4a: Animation channels
+<a name="animationChannels-png"></a>Image 4b: Animation channels
 </p>
 
 
