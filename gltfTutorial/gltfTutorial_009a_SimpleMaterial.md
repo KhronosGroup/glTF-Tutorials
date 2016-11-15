@@ -180,14 +180,9 @@ When rendering this asset, it will show the triangle with a new material:
 
 ## New elements for the simple material
 
-Several new top-level dictionaries have been added to the glTF JSON to define this material. The `materials`, `techniques`, `programs` and `shaders` dictionaries map IDs to objects of the following types:
+Several new top-level dictionaries have been added to the glTF JSON to define this material. The `materials`, `techniques`, `programs` and `shaders` dictionaries map IDs to objects of different types. The following subsections will show how these objects are represented in the glTF JSON, based on the simple example material.
 
-- A `material` can be assigned to a `mesh.primitive`, so that the primitive is rendered with this material.
-- A `technique` is the core element for the description of the appearance of rendered objects in a glTF asset. It serves as a "template" for `material` objects
-- A `program` is the actual *implementation* of a `technique`. It consists of multiple `shader` objects.
-- A `shader` is a basic building block for the implementation of a renderer
-
-The following subsections will show how these objects are represented in the glTF JSON, based on the simple example material. This description is intended to give a first overview of the structure and interdependencies of these elements. More details will be given in the sections about [programs and shaders](gltfTutorial_009b_ProgramsShaders.md) and [materials and techniques](gltfTutorial_009c_MaterialsTechniques.md), leading to an example of [an advanced material](gltfTutorial_009d_AdvancedMaterial.md).
+This description is intended to give a first overview of the structure and interdependencies of these elements. More details will be given in the sections about [programs and shaders](gltfTutorial_009b_ProgramsShaders.md) and [materials and techniques](gltfTutorial_009c_MaterialsTechniques.md), leading to an example of [an advanced material](gltfTutorial_009d_AdvancedMaterial.md).
 
 
 ## The `shaders`

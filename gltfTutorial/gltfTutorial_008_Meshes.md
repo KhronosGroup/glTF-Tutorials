@@ -108,8 +108,6 @@ When rendering this glTF asset, the result will look shown in this image:
 <a name="simpleMeshes-png"></a>Image 8a: A simple mesh, attached to two nodes
 </p>
 
-Some of the elements in this asset already have been introduced in the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md).
-
 
 ## Meshes attached to nodes
 
@@ -140,7 +138,7 @@ In the given example, there is a single `scene`, and this scene contains two nod
 
 The node `"node1"` has a `translation` property. As shown in the section about [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md), this will be used to compute the local transform matrix of this node. In this case, the matrix will cause a translation of 1.0 along the x-axis. The product of all local transforms of the nodes will yield the *global* transform. And all elements that are attached to the nodes will be rendered with this global transform.
 
-So in this example, the mesh will be rendered twice: Once with the global transform of `"node0"`, which is the identity transform, and once with the global transform of node `"node1"`, which is a translation of 1.0 along the x-axis.
+So in this example, the mesh will be rendered twice, because it is attached to two nodes: Once with the global transform of `"node0"`, which is the identity transform, and once with the global transform of node `"node1"`, which is a translation of 1.0 along the x-axis.
 
 
 ### Mesh primitives
@@ -166,14 +164,14 @@ The example contains a single `mesh.primitive`:
 
 #### Indexed and non-indexed geometry
 
-The geometry data of a `mesh.primitive` may either be *indexed* geometry, or geometry without indices. In the given example, the `mesh.primitive` contains *indexed* geometry. This is indicated by the `indices` property, which refers to the `"indicesAccessor"`. For non-indexed geometry, this property may be omitted.
+The geometry data of a `mesh.primitive` may either be *indexed* geometry, or geometry without indices. In the given example, the `mesh.primitive` contains *indexed* geometry. This is indicated by the `indices` property, which refers to the `"indicesAccessor"`. For non-indexed geometry, this property is omitted.
 
 
 #### Mesh primitive attributes
 
 The `attributes` dictionary of a `mesh.primitive` contains information about the geometry data that an object consists of. Particularly, it contains references to `accessor` objects that contain the data of vertex attributes. The details of the `accessor`s have been explained in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md).
 
-In the given example, there are three entries in the `attributes` dictionary:
+In the given example, there are three entries in the `attributes` dictionary. The entries refer to the `positionsAccessor`, the `normalsAccessor` and the `texCoordsAccessor`:
 
 ```javascript
 "meshes" : {
@@ -190,7 +188,7 @@ In the given example, there are three entries in the `attributes` dictionary:
 },
 ```
 
-These entries refer to the `positionsAccessor`, the `normalsAccessor` and the `texCoordsAccessor`. Together, the elements of these acessors define all attributes that belong to the individual vertices, as shown in this image:
+Together, the elements of these acessors define all attributes that belong to the individual vertices, as shown in this image:
 
 <p align="center">
 <img src="images/meshPrimitiveAttributes.png" /><br>

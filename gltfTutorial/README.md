@@ -11,7 +11,7 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 - [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md)
 - [A simple animation](gltfTutorial_006_SimpleAnimation.md)
 - [Animations](gltfTutorial_007_Animations.md)
-- [Meshes](gltfTutorial_007_Meshes.md)
+- [Meshes](gltfTutorial_008_Meshes.md)
 - [Materials](gltfTutorial_009_Materials.md)
   - [A simple material](gltfTutorial_009a_SimpleMaterial.md)
   - [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md)
@@ -28,3 +28,4 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 **Acknowledgements:**
 
 - Patrick Cozzi, Cesium, [@pjcozzi](https://twitter.com/pjcozzi)
+- Alexey Knyazev, [lexaknyazev](https://github.com/lexaknyazev)

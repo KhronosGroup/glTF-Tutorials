@@ -3,14 +3,10 @@ Previous: [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md) | [Table 
 
 # Materials and Techniques
 
-As a reminder, here is a summary of the elements of a glTF asset that are used for defining the appearance of a rendered object:
+As shown in the [Simple Material](gltfTutorial_009a_SimpleMaterial.md) example, the central element for the definition of the appearance of a rendered object in glTF is the [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique).  Such a technique serves as a template for a [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material). The `material` defines the values for different parameters of the technique that determine the final appearance of the rendered objects.
 
-- A [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material) can be assigned to a `mesh.primitive`, so that the primitive is rendered with this material. A material can be considered as an "instance" of a `technique`
-- A [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique) is the core element for the description of the appearance of rendered objects in a glTF asset. It is an abstract definition of a rendering process, and serves as a "template" for `material` objects
-- A [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-program) is the actual *implementation* of a rendering process for a `technique`. It consists of multiple `shader` objects.
-- A [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-shader) is a basic building block for the implementation of a renderer in WebGL or OpenGL
+This section will explain the connection between techniques, technique parameters and the material, and show how the values of technique parameters are determined.
 
-The previous section explained the basics of [programs and shaders](gltfTutorial_009b_ProgramsShaders.md). This section will focus on the role of the `technique` and `material` objects.
 
 ## Techniques
 
@@ -81,10 +77,15 @@ A `material` is is an instance of a `technique`, and specifies a set of input va
 
 When an object should be rendered with a certain `technique`, then values have to be provided for all input parameters of the corresponding GL program. The following sections will show how these input parameters are defined using the `technique.parameters`, and how the values for these input parameters may be obtained.
 
+There are two methods for determining the value of a technique parameter:
 
-### Technique parameter values in materials
+- The value can be defined in the `technique` or the `material`
+- The value has to be derived from the context in which the rendered object appears
 
-In some cases, the technique parameters can have default values. In other cases, the parameter values can be obtained from the material that refers to the technique. This was already shown in the [simple material](gltfTutorial_009a_SimpleMaterial.md) example.
+
+### Technique parameter values in techniques or materials
+
+In some cases, the technique parameters can have default values. In other cases, the parameter values can be obtained from the material that refers to the technique. This was already shown in the [simple material](gltfTutorial_009a_SimpleMaterial.md) example:
 
 ```javascript
 "techniques": {
@@ -147,22 +148,29 @@ The newly added `"simpleDefaultMaterial"` does not contain a value for the `"emi
 
 ### Technique parameter values from semantics
 
-As described above, each technique parameter either describes a `uniform` or an `attribute` of the shader program. And in the simplest case, the values for these parameters may be obtained directly from the material. But there are cases where the value of a parameter cannot be encoded in the material. This is the case when the value for this parameter has a certain *semantic*, and its value can only be derived from the context of where the technique is used.
+There are cases where the value of a parameter cannot be encoded in the technique or the material. This is the case when the value for this parameter has a certain *semantic*, and its value can only be derived from the context of where the technique is used.
 
-One example of a `uniform` that has such a semantic is the model-view-matrix: The actual value for the model-view-matrix depends on the `node` to which the rendered object is attached. More precisely, the model-view-matrix is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of the node and the view matrix of the currently active camera. Similarly, the technique parameters that describe an `attribute` can have semantics which refer to the `attribute` of a `mesh.primitive` that contains the actual input data for the parameter.  
+One example of a parameter that has such a semantic is the model-view-matrix: The actual value for the model-view-matrix depends on the `node` to which the rendered object is attached. More precisely, the model-view-matrix is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of the node and the view matrix of the currently active camera. Similarly, the technique parameters can have semantics which refer to the `attribute` of a `mesh.primitive` that contains the actual input data for the parameter.  
 
-Therefore, the `technique.parameters` may have a `semantic` property that contains a string describing the semantics of the parameter:
+Therefore, the `technique.parameters` may have a `semantic` property that contains a string describing the semantic of the parameter:
 
 ```javascript
 "exampleTechnique": {
     ...
+    "attributes": {
+      "a_position": "positionParameter"
+    },
+    "uniforms": {
+      "u_modelViewMatrix": "modelViewMatrixParameter",
+      ...
+    },
     "parameters": {
         ...
-        "position": {
+        "positionParameter": {
             "type": 35665,
             "semantic": "POSITION"
         },
-        "modelViewMatrix": {
+        "modelViewMatrixParameter": {
             "type": 35676,
             "semantic": "MODELVIEW"
         },
@@ -173,16 +181,35 @@ Therefore, the `technique.parameters` may have a `semantic` property that contai
 
 There are many different possible semantics for `uniform` parameters. These are listed in this [table in the glTF specification](https://github.com/KhronosGroup/glTF/tree/master/specification#semantics). Additional `attribute` semantics are listed in the [glTF specification of meshes](https://github.com/KhronosGroup/glTF/tree/master/specification#meshes).
 
-In the example above, the technique says that the `position` parameter has the semantic `POSITION`. This means that when a `meshPrimitive` is rendered with this technique, then this `meshPrimitive` must contain an attribute with this name, as described in the section about [mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes).
+#### Semantics for attributes
+
+In the example above, the technique says that the `"positionParameter"` has the type `35665`, which stands for `GL_FLOAT_VEC3`, and the semantic `"POSITION"`. This means that when a `mesh.primitive` is rendered with this technique, then this `mesh.primitive` must contain an attribute with this type and name, as described in the section about [mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes).
+
+When a `mesh.primitive` is rendered with this technique, then the information about the attribute semantics will be processed as follows:
+
+- The entries in the `technique.attributes` dictionary are examined
+- The `a_position` entry is found. This means that the vertex shader of the program of the technique has an `attribute` variable with exactly this name: `a_position`
+- In order to provide a value for this attribute, the information about this parameter is looked up in the `technique.parameters` dictionary
+- The entry for the `"positionParameter"` says that the `type` of this attribute is a 3D floating point vector, and that the `semantic` is `"POSITION"`
+- The actual value for this attribute is determined: The name `"POSITION"` is looked up in the [mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes) dictionary. It is supposed to refer to an `accessor` that provides the 3D floating point vectors that represent the vertex positions.
+- The data of this accessor is provided to the renderer.
+
+The exact mechanism for the last step will depend on the graphics API. For WebGL or OpenGL, this means that the buffer that corresponds to the `bufferView` of the `accessor` is bound, so that its data will be available for the actual rendering call.
 
 
 
+#### Semantics for uniforms
 
+The `"modelViewMatrixParameter"` is defined to have the semantic `"MODELVIEW"`. Its `type` is `35676`, which stands for `GL_FLOAT_MAT4`, and indicates a 4x4 matrix with floating point values.
 
+When a `mesh.primitive` is rendered with this technique, then the process of rendering it is as follows:
 
-
-
-
+- The entries in the `technique.uniforms` dictionary are examined
+- The `u_modelViewMatrix` entry is found. This means that one of the shaders of the program of the technique has a `uniform` variable with exactly this name: `u_modelViewMatrix`
+- In order to assign a value to this variable prior to rendering, the information about this parameter is looked up in the `technique.parameters` dictionary
+- The entry for the `"modelViewMatrixParameter"` says that the `type` of this uniform is a 4x4 floating point matrix, and that the `semantic` is `"MODELVIEW"`
+- The actual value for this uniform is computed. It is a 4x4 matrix that is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of the node that the mesh primitive is attached to, and the view matrix of the currently active camera.
+- The value for this uniform is passed to the renderer.
 
 
 
