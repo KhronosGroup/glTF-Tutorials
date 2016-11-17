@@ -190,28 +190,68 @@ When a `mesh.primitive` is rendered with this technique, then the information ab
 - The entries in the `technique.attributes` dictionary are examined
 - The `a_position` entry is found. This means that the vertex shader of the program of the technique has an `attribute` variable with exactly this name: `a_position`
 - In order to provide a value for this attribute, the information about this parameter is looked up in the `technique.parameters` dictionary
-- The entry for the `"positionParameter"` says that the `type` of this attribute is a 3D floating point vector, and that the `semantic` is `"POSITION"`
-- The actual value for this attribute is determined: The name `"POSITION"` is looked up in the [mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes) dictionary. It is supposed to refer to an `accessor` that provides the 3D floating point vectors that represent the vertex positions.
+- The entry for the `"positionParameter"` says that the `type` of this attribute is a 3D floating point vector, and that the `semantic` is `"POSITION"`.
+- The actual value for this parameter is determined. For `attribute` parameters, this means that the name `"POSITION"` is looked up in the [mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes) dictionary. It is supposed to refer to an `accessor` that provides the 3D floating point vectors that represent the vertex positions.
 - The data of this accessor is provided to the renderer.
 
 The exact mechanism for the last step will depend on the graphics API. For WebGL or OpenGL, this means that the buffer that corresponds to the `bufferView` of the `accessor` is bound, so that its data will be available for the actual rendering call.
 
+<p align="center">
+<img src="images/meshPrimitiveMaterial.png" /><br>
+<a name="meshPrimitiveMaterial-png"></a>Image 9e: Connection between the mesh primitive, the material and the technique
+</p>
 
 
 #### Semantics for uniforms
 
 The `"modelViewMatrixParameter"` is defined to have the semantic `"MODELVIEW"`. Its `type` is `35676`, which stands for `GL_FLOAT_MAT4`, and indicates a 4x4 matrix with floating point values.
 
-When a `mesh.primitive` is rendered with this technique, then the process of rendering it is as follows:
+When a `mesh.primitive` is rendered with this technique, then this uniform parameter will be handled as follows:
 
 - The entries in the `technique.uniforms` dictionary are examined
 - The `u_modelViewMatrix` entry is found. This means that one of the shaders of the program of the technique has a `uniform` variable with exactly this name: `u_modelViewMatrix`
 - In order to assign a value to this variable prior to rendering, the information about this parameter is looked up in the `technique.parameters` dictionary
 - The entry for the `"modelViewMatrixParameter"` says that the `type` of this uniform is a 4x4 floating point matrix, and that the `semantic` is `"MODELVIEW"`
-- The actual value for this uniform is computed. It is a 4x4 matrix that is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of the node that the mesh primitive is attached to, and the view matrix of the currently active camera.
+- The actual value for this uniform is computed. The `semantic` is `"MODELVIEW"`, and referring to the [uniform semantics section of the glTF specification](https://github.com/KhronosGroup/glTF/tree/master/specification#semantics), this means that the value is a 4x4 matrix that is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of the node that the mesh primitive is attached to, and the view matrix of the currently active camera.
 - The value for this uniform is passed to the renderer.
 
 
+
+### Technique states and state functions
+
+As shown above, the `technique.parameters` encode the information about the `attribute` and `uniform` variables that appear in the vertex- and fragment shader. But for common graphics APIs, there are additional, "global" parameters that are not explicitly controlled via the shaders.
+
+For the case of WebGL or OpenGL, these parameters refer to the *state* that is maintained by the WebGL or OpenGL renderer, and the certain *functions* that describe rendering settings. The following is an excerpt from a `technique` that may be found in the JSON part of a glTF asset, which shows an example of these [`technique.states`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states) and the [`technique.states.functions`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states.functions) properties:
+
+```javascript
+"techniques": {
+  "exampleTechnique": {
+    ...
+    "states": {
+      "enable": [ 2929, 3042 ],
+      "functions": {
+        "blendColor": [ 0.0, 0.0, 0.0, 0.0 ],
+        "blendEquationSeparate": [ 32774, 32774 ],
+        "blendFuncSeparate": [ 1, 0, 1, 0 ],
+        "colorMask": [ true, true, true, true ],
+        "cullFace": [ 1029 ],
+        "depthFunc" : [ 513 ],
+        "depthMask": [ true ],
+        "depthRange": [ 0.0, 1.0 ],
+        "frontFace": [ 2305 ],
+        "lineWidth": [ 1.0 ],
+        "polygonOffset": [ 0.0, 0.0 ]
+      }
+    }
+  }
+}
+```
+
+For WebGL- and OpenGL-based renderers, the elements of the `states.enable` array will be passed to `gl.enable` and `glEnable` calls, respectively. The properties of the `technique.states.functions` element correspond to GL calls and their parameters. For example, the `"depthRange" : [ 0.0, 1.0 ]` property indicates that when this technique is used for rendering, then the actual draw call should be preceded by a call to `gl.depthRange(0.0, 1.0)` (for WebGL) or `glDepthRange(0.0, 1.0)` (for OpenGL).
+
+For details about the available set of states and functions, refer to the [`technique.states`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states) and [`technique.states.functions`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states.functions) specification and to the WebGL- and OpenGL specification.
+
+For other graphics APIs, these properties have to be interpreted accordingly, to emulate the behavior that is achieved with the respective GL function calls.
 
 
 Previous: [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_009d_AdvancedMaterial.md)

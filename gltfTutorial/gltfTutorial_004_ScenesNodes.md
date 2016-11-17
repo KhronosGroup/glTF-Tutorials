@@ -33,15 +33,18 @@ Each of the nodes that are given in the `scene` can be traversed, recursively vi
 
 ```
 traverse(node) {
-    processMeshes(node.meshes);
-    processOtherElements(node); // Cameras, Skins, Joints, Skeletons - discussed later
+    // Process the meshes, cameras, etc. that are
+    // attached to this node - discussed later
+    processElements(node);
+
+    // Recursively process all children
     for each (child in node.children) {
         traverse(child);
     }
 }
 ```
 
-In practice there will some additional information be required for the traversal: The processing of some elements that are attached to nodes will require information about *which* node they are attached to. Additionally, the information about the transforms of the nodes have to be accumulated during the traversal. This will be detailed in the following section.
+In practice there will some additional information be required for the traversal: The processing of some elements that are attached to nodes will require information about *which* node they are attached to. Additionally, the information about the transforms of the nodes have to be accumulated during the traversal.
 
 
 ### Local and global transforms

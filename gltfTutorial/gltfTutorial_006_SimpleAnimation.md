@@ -1,4 +1,4 @@
-Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_006_Animations.md)
+Previous: [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_006_Animations.md)
 
 
 # A simple animation

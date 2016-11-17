@@ -134,7 +134,7 @@ The `buffer`, `bufferView` and `accessor` objects provide information about the 
 
 ### Buffers
 
-A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) defines a block of raw, unstructured data with no inherent meaning. It contains an `uri`, which can either point to an external file that contains the data, or it can be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers) that encodes the binary data directly in the JSON file.
+A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) defines a block of raw, unstructured data with no inherent meaning. It contains an `uri`, which can either point to an external file that contains the data, or it can be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-data-uris) that encodes the binary data directly in the JSON file.
 
 In the example file, the second approach is used: There is a single buffer with the ID `"buffer0"`, containing 42 bytes, and the data of a this buffer is encoded as a data URI:
 

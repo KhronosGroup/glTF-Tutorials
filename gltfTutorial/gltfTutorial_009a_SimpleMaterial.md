@@ -143,33 +143,36 @@ Note that this time, the file refers to additional, external resources: The `sha
 
 The file `simple.vert` contains the source code of the vertex shader:
 
-    #ifdef GL_ES
-        precision highp float;
-    #endif
+```glsl
+#ifdef GL_ES
+    precision highp float;
+#endif
 
-    attribute vec3 a_position;
+attribute vec3 a_position;
 
-    uniform mat4 u_modelViewMatrix;
-    uniform mat4 u_projectionMatrix;
+uniform mat4 u_modelViewMatrix;
+uniform mat4 u_projectionMatrix;
 
-    void main(void)
-    {
-        gl_Position = u_projectionMatrix * u_modelViewMatrix * vec4(a_position,1.0);
-    }
+void main(void)
+{
+    gl_Position = u_projectionMatrix * u_modelViewMatrix * vec4(a_position,1.0);
+}
+```
 
 The file `simple.frag` contains the source code of the fragment shader:
 
-    #ifdef GL_ES
-        precision highp float;
-    #endif
+```glsl
+#ifdef GL_ES
+    precision highp float;
+#endif
 
-    uniform vec4 u_emission;
+uniform vec4 u_emission;
 
-    void main(void)
-    {
-        gl_FragColor = u_emission;
-    }
-
+void main(void)
+{
+    gl_FragColor = u_emission;
+}
+```
 When rendering this asset, it will show the triangle with a new material:
 
 <p align="center">
