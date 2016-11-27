@@ -42,7 +42,7 @@ None of the existing file formats was designed for the use case of efficiently t
 - The scene structure is described with JSON, which is very compact and can easily be parsed
 - The 3D data of the objects is stored in a form that can directly be used by the common graphics APIs, so there is no overhead for decoding or pre-processing the 3D data
 
-Different content creation tools may now provide the 3D content in the glTF format. And an increasing number of client applications is able to consume and render glTF. Some of these applications are shown in [Image 1](#applications-png). So glTF may help to bridge the gap between content creation and rendering:  
+Different content creation tools may now provide the 3D content in the glTF format. And an increasing number of client applications is able to consume and render glTF. Some of these applications are shown in [Image 1b](#applications-png). So glTF may help to bridge the gap between content creation and rendering:  
 
 <p align="center">
 <img src="images/contentPipelineWithGltf.png" /><br>

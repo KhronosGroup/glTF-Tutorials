@@ -1,4 +1,4 @@
-Previous: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Cameras](gltfTutorial_010_SimpleCameras.md)
+Previous: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_009e_SimpleTexture.md)
 
 # An advanced material
 
@@ -196,7 +196,7 @@ The vertex shader source code is stored in `advanced.vert`:
 
 ```glsl
 #ifdef GL_ES
-precision highp float;
+    precision highp float;
 #endif
 
 attribute vec3 a_position;
@@ -211,7 +211,7 @@ varying vec3 v_normal;
 
 varying vec3 v_light0Direction;
 
-void main(void)
+void main(void) 
 {
     vec4 pos = u_modelViewMatrix * vec4(a_position, 1.0);
     v_normal = u_normalMatrix * a_normal;
@@ -239,7 +239,7 @@ uniform float u_shininess;
 
 varying vec3 v_light0Direction;
 
-void main(void)
+void main(void) 
 {
     vec3 normal = normalize(v_normal);
     vec4 color = vec4(0.0, 0.0, 0.0, 0.0);
@@ -260,13 +260,14 @@ void main(void)
         specularLight += lightColor * specularIntensity;
         diffuseLight += lightColor * max(dot(normal,l), 0.0) * attenuation;
     }
-    specular.xyz *= specularLight;
-    diffuse.xyz *= diffuseLight;
-    color.xyz += ambient.xyz;
-    color.xyz += diffuse.xyz;
-    color.xyz += specular.xyz;
-    color = vec4(color.rgb * diffuse.a, diffuse.a);
+    specular.rgb *= specularLight;
+    diffuse.rgb *= diffuseLight;
+    color.rgb += ambient.xyz;
+    color.rgb += diffuse.xyz;
+    color.rgb += specular.xyz;
+    color.a = diffuse.a;
     gl_FragColor = color;
+}
 }
 ```
 
@@ -449,4 +450,4 @@ The model-view matrix is the product of the [global transform](gltfTutorial_004_
     mat3 normalMatrix = mat3(transpose(inverse(modelViewMatrix)))
 
 
-Previous: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Cameras](gltfTutorial_010_SimpleCameras.md)
+Previous: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_009e_SimpleTexture.md)

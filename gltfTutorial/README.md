@@ -17,8 +17,10 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
   - [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md)
   - [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
   - [An advanced material](gltfTutorial_009d_AdvancedMaterial.md)
-- Textures, Images, Samplers
-- Cameras
+  - (TBD: "Simple opacity": Explaining the `technique.states.functions` with the SimpleOpacity example)
+  - [A simple texture](gltfTutorial_009e_SimpleTexture.md)
+  - [Textures, Images, Samplers](gltfTutorial_009f_TexturesImagesSamplers.md)
+- [Cameras](gltfTutorial_010_Cameras.md)
 - Skins
 - Extensions
 - Summary: Rendering a glTF asset with WebGL
