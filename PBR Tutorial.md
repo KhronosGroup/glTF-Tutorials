@@ -1,12 +1,12 @@
 # Physically Based Rendering: From Theory to Practice
-___
+
 
 ## What is PBR?
 Physically-based rendering refers to techniques that attempt to simulate light in order to render photorealistic images. As indicated by the name, these techniques focus on our understanding of physics to model how light interacts with surfaces that have different physical properties. Since these interactions happen on a very fine level, PBR techniques often use statistical models to add realism and complexity to renders.
 
 PBR has been around for several years now, but was initially too computationally expensive to be a viable option for real-time applications. However, with the continuous advancement of computing power, it has increasingly become an industry standard in real-time graphics. In fact, much of the real-time software we see today such as Unreal Engine 4, Unity 5, Frostbite, and many others use physically-based rendering techniques to provide their users with the ability to create highly realistic 3D scenes.
 
-![Marmoset -- PBR](http://www.marmoset.co/wp-content/uploads/header01.jpg)
+<img src=http://www.marmoset.co/wp-content/uploads/header01.jpg style="width:600px;height:300px;"></img>
 
 ## How do we model light-object interactions in PBR?
 The most central physics law to PBR is the law of conservation of energy. This law states that the total amount of energy within an isolated system remains constant, but how does this relate to rendering? In PBR, radiance is the energy that is conserved, meaning the amount of incoming light at any point in the scene is equal to the sum of the reflected, transmitted, and absorbed light at that point.
@@ -31,8 +31,7 @@ There are four general surface types with reflection distribution functions (BRD
 * **Perfect specular** – surfaces that scatter light in a single outgoing direction such that the angle of incident light is equal to the outgoing light with respect to the surface normal (ex: mirrors)
 * **Retro-reflective** – surfaces that scatter light primarily back along the incident direction of the light source (ex: velvet)
 
-![Reflectance Models](https://elementalray.files.wordpress.com/2013/01/dgs.png)
-![Retroreflectance](http://www.nextstagepro.com/images/04_retroreflecdiagram.png)
+<img src=https://elementalray.files.wordpress.com/2013/01/dgs.png style="width=600px;height=300px;"></img>
 
 However, it is highly unlikely that a surface in reality will follow only one of these models. Because of this, most materials can be modeled as a complex mix of these.
 
