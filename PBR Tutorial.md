@@ -46,7 +46,7 @@ The types of reflection distributions also apply to transmission, but conversely
 To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
 >$$n_1\theta_1 = n_2\theta_2$$
 
-where $$n$$ is the index of refraction and $$\theta$$ is the angle of the light with respect to the normal. 
+where *n* is the index of refraction and &#0424 is the angle of the light with respect to the normal. 
 
 This is unlike perfect specular reflection where the incident angle will always be equal to the outgoing angle.
 
