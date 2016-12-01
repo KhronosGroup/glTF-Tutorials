@@ -6,7 +6,7 @@ Physically-based rendering refers to techniques that attempt to simulate light i
 
 PBR has been around for several years now, but was initially too computationally expensive to be a viable option for real-time applications. However, with the continuous advancement of computing power, it has increasingly become an industry standard in real-time graphics. In fact, much of the real-time software we see today such as Unreal Engine 4, Unity 5, Frostbite, and many others use physically-based rendering techniques to provide their users with the ability to create highly realistic 3D scenes.
 
-<img src=http://www.marmoset.co/wp-content/uploads/header01.jpg style="width:600px;height:300px;"></img>
+<img src=https://www.marmoset.co/wp-content/uploads/2014/01/layering01.jpg style="width:600px;height:300px;"></img>
 
 ## How do we model light-object interactions in PBR?
 The most central physics law to PBR is the law of conservation of energy. This law states that the total amount of energy within an isolated system remains constant, but how does this relate to rendering? In PBR, radiance is the energy that is conserved, meaning the amount of incoming light at any point in the scene is equal to the sum of the reflected, transmitted, and absorbed light at that point.
