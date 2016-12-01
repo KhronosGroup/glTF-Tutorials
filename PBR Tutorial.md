@@ -54,6 +54,7 @@ This is unlike perfect specular reflection where the incident angle will always 
 It is very useful to be able to show the roughness or smoothness of a surface without having to directly create the geometry or provide a bump map. Instead, surfaces can be modeled as a collection of small **microfacets** where the more rough a surface is, the more microfacets it has. These microfacets can be thought of as small ridges on the surface of an object, varying the surface normal on a very fine level, which adds a lot of realism to rendered images. The distribution of microfacets on a surface can be described using a statistical model, examples of which include the Oren-Nayar model, the Torrance-Sparrow model, and the Blinn Microfacet Distribution model.
 
 With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
+
 1. An adjacent microfacet can block the light reflected from another, causing **masking**.
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
