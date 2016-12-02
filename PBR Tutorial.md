@@ -1,4 +1,4 @@
-# Physically Based Rendering: From Theory to Practice
+# Physically-Based Rendering: From Theory to Practice
 
 
 ## What is PBR?
@@ -62,7 +62,7 @@ With knowledge of these microfacets, we can simulate some interesting geometric 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
 ## How much light is reflected or transmitted?
-It is important for physically based renderers to know how much light is reflected or transmitted on a surface. These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
+It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
 * **Dielectrics**: These are approximated using the following terms...
     >$$r_{\parallel} = \frac{n_tcos\theta_i - n_icos\theta_t}{n_tcos\theta_i + n_icos\theta_t}$$
 
