@@ -45,7 +45,7 @@ The types of reflection distributions also apply to transmission, but conversely
 
 To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
 
-<img src="src_images/Snells_Law.JPG" width="300" height="150"></img>
+<img src="src_images/Snells_Law.JPG" width="150" height="60"></img>
 
 where _n_ is the index of refraction and _θ_ is the angle of the light with respect to the normal. 
 
@@ -60,7 +60,7 @@ With knowledge of these microfacets, we can simulate some interesting geometric 
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
 
-<img src="src_images/Masking.png" width="300" height="225"></img><img src="src_images/Shadowing.png" width="300" height="225"></img><img src="src_images/Interreflection.jpg" width="300" height="225"></img>
+<img src="src_images/Masking.png" width="250" height="187"></img><img src="src_images/Shadowing.png" width="250" height="187"></img><img src="src_images/Interreflection.jpg" width="250" height="187"></img>
 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
@@ -68,7 +68,7 @@ Simulating these three phenomena can help augment the realism of roughness on a 
 It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
 * **Dielectrics**: These are approximated using the following terms...
 
-    <img src="src_images/Fresnel_Dielectric.JPG" width="300" height="150"></img>
+    <img src="src_images/Fresnel_Dielectric.JPG" width="250" height="150"></img>
 
     where _r<sub>||</sub>_ is the Fresnel reflectance for parallel polarized light and _r<sub>⟂</sub>_ is the reflectance for perpendicular polarized light. The subscripts correspond to incident (_i_) and transmitted (_t_) directions.
 For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**. Due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
