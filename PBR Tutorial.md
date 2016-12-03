@@ -45,7 +45,7 @@ The types of reflection distributions also apply to transmission, but conversely
 
 To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
 
-<img src="src_images/Snells_Law.JPG" width="155" height="60"></img>
+<img src="src_images/Snells_Law.JPG" width="165" height="60"></img>
 
 where _n_ is the index of refraction and _θ_ is the angle of the light with respect to the normal. 
 
@@ -60,7 +60,7 @@ With knowledge of these microfacets, we can simulate some interesting geometric 
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
 
-<img src="src_images/Masking.png" width="270" height="202"></img><img src="src_images/Shadowing.png" width="270" height="202"></img><img src="src_images/Interreflection.jpg" width="270" height="202"></img>
+<img src="src_images/Masking.png" width="280" height="210"></img><img src="src_images/Shadowing.png" width="280" height="210"></img><img src="src_images/Interreflection.jpg" width="280" height="210"></img>
 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
