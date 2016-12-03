@@ -15,7 +15,7 @@ The most central physics law to PBR is the law of conservation of energy. This l
 Within any environment, it is easy to see several examples of complicated surfaces that seem to interact with light differently. For example, mirrors reflect perfect images, plastics are shiny, and painted walls are matte. All of these complicated interactions can be modeled by considering general mathematical functions called **Bidirectional Scattering Distribution Functions** (**BSDFs**). These functions describe how light scatters upon contact with a surface based on the properties that surface holds. More specifically, they tell the user how much of the incident light is scattered in a specific outgoing direction.
 
 BSDF sounds like a very complicated term for what it actually means, so let’s break it up and explain its parts...  
-* **Bidirectional** refers to the notion that at any point on a surface, light comes in and light goes out. This means “bidirectional” describes the binary nature of how light interacts with a point.
+* **Bidirectional** refers to the notion that at any point on a surface, light comes in and light goes out.
 * **Scatter** describes that light coming from one direction onto a surface can end up splitting into a range of directions. For example, light can either scatter by being reflected from or transmitted through the surface in certain directions.
 * Finally, the details for how light scatters can be described using **distribution functions**, which entail how light is likely to be distributed in certain directions based on the physical properties of the surface. This can be anything from an equal scatter in all directions to a perfect reflection in a single direction.
 
@@ -45,7 +45,7 @@ The types of reflection distributions also apply to transmission, but conversely
 
 To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
 
-<img src="src_images/Snells_Law.JPG" width="165" height="60"></img>
+<img src="src_images/Snells_Law.JPG" width="180" height="60"></img>
 
 where _n_ is the index of refraction and _θ_ is the angle of the light with respect to the normal. 
 
@@ -60,7 +60,7 @@ With knowledge of these microfacets, we can simulate some interesting geometric 
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
 
-<img src="src_images/Masking.png" width="280" height="210"></img><img src="src_images/Shadowing.png" width="280" height="210"></img><img src="src_images/Interreflection.jpg" width="280" height="210"></img>
+<img src="src_images/Masking.png" width="290" height="217"></img><img src="src_images/Shadowing.png" width="290" height="217"></img><img src="src_images/Interreflection.jpg" width="290" height="217"></img>
 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
