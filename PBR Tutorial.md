@@ -57,11 +57,14 @@ It is very useful to be able to show the roughness or smoothness of a surface wi
 With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
 
 1. An adjacent microfacet can block the light reflected from another, causing **masking**.
-<img src="src_images/Masking.png" width="100" height="75" align="middle"></img>
+
+<img src="src_images/Masking.png" width="400" height="300" align="middle"></img>
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
-<img src="src_images/Shadowing.png" style="width:100px; height:75px;" align="middle"></img>
+
+<img src="src_images/Shadowing.png" width="400" height="300" align="middle"></img>
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
-<img src="src_images/Interreflection.jpg" style="width:100px; height:75px;" align="middle"></img>
+
+<img src="src_images/Interreflection.jpg" width="400" height="300" align="middle"></img>
 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
@@ -69,7 +72,7 @@ Simulating these three phenomena can help augment the realism of roughness on a 
 It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
 * **Dielectrics**: These are approximated using the following terms...
 
-    <img src="src_images/Fresnel_Dielectric.JPG" style="width:100px; height:75px;" align="middle"></img>
+    <img src="src_images/Fresnel_Dielectric.JPG" width="300" height="225" align="middle"></img>
 
     where _r<sub>||</sub>_ is the Fresnel reflectance for parallel polarized light and _r<sub>⟂</sub>_ is the reflectance for perpendicular polarized light. The subscripts correspond to incident (_i_) and transmitted (_t_) directions.
 For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**. Due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
