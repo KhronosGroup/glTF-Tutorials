@@ -32,7 +32,7 @@ There are four general surface types with reflection distribution functions (BRD
 * **Perfect specular** – surfaces that scatter light in a single outgoing direction such that the angle of incident light is equal to the outgoing light with respect to the surface normal (ex: mirrors)
 * **Retro-reflective** – surfaces that scatter light primarily back along the incident direction of the light source (ex: velvet)
 
-<img src=https://elementalray.files.wordpress.com/2013/01/dgs.png style="width=600px;height=300px;"></img>
+<img src="src_images/BRDFs.png"></img>
 
 However, it is highly unlikely that a surface in reality will follow only one of these models. Because of this, most materials can be modeled as a complex mix of these.
 
