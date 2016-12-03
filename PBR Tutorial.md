@@ -6,7 +6,7 @@ Physically-based rendering refers to techniques that attempt to simulate light i
 
 PBR has been around for several years now, but was initially too computationally expensive to be a viable option for real-time applications. However, with the continuous advancement of computing power, it has increasingly become an industry standard in real-time graphics. In fact, much of the real-time software we see today such as Unreal Engine 4, Unity 5, Frostbite, and many others use physically-based rendering techniques to provide their users with the ability to create highly realistic 3D scenes.
 
-<img src=https://www.marmoset.co/wp-content/uploads/2014/01/layering01.jpg width="400" height="200"></img>
+<img src=https://www.marmoset.co/wp-content/uploads/2014/01/layering01.jpg></img>
 From Marmoset Toolbag Tutorials: *Physically-Based Rendering, And You Can Too!*
 
 ## How do we model light-object interactions in PBR?
@@ -45,7 +45,7 @@ The types of reflection distributions also apply to transmission, but conversely
 
 To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
 
-<img src="src_images/Snells_Law.JPG" width="140" height="60"></img>
+<img src="src_images/Snells_Law.JPG" width="145" height="60"></img>
 
 where _n_ is the index of refraction and _θ_ is the angle of the light with respect to the normal. 
 
