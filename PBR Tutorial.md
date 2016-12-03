@@ -44,9 +44,10 @@ For each of these types of reflection, the distributions can be isotropic or ani
 The types of reflection distributions also apply to transmission, but conversely discuss how light travels after passing through a surface. The direction light travels after passing through the material is often dependent on the properties of the material itself.
 
 To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
->$$n_1\theta_1 = n_2\theta_2$$
 
-where *n* is the index of refraction and *θ* is the angle of the light with respect to the normal. 
+<img src="src_images/Snells_Law.JPG" style="width:100; height:75;" align="middle"></img>
+
+where _n_ is the index of refraction and _θ_ is the angle of the light with respect to the normal. 
 
 This is unlike perfect specular reflection where the incident angle will always be equal to the outgoing angle.
 
@@ -68,15 +69,20 @@ It is important for physically-based renderers to know how much light is reflect
     <img src="src_images/Fresnel_Dielectric.JPG" style="width:100; height:75;" align="middle"></img>
 
     where _r<sub>||</sub>_ is the Fresnel reflectance for parallel polarized light and _r<sub>⟂</sub>_ is the reflectance for perpendicular polarized light. The subscripts correspond to incident (_i_) and transmitted (_t_) directions.
-For unpolarized light, Fresnel reflectance can be modeled as $$F_r = \frac{1}{2}(r_{\parallel}^2 + r_{\perp}^2)$$.
-Due to conservation of energy, Fresnel transmittance can be modeled as *_F<sub>t</sub> = 1 - F<sub>r</sub>_*.
+For unpolarized light, Fresnel reflectance can be modeled as... 
+
+<img src="src_images/Fresnel_Reflectance.JPG" style="width:100; height:75;" align="middle"></img>
+
+Due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
 
 * **Conductors**: Unlike dielectrics, conductors don’t transmit light. Instead, they absorb some of the incident light, which gets transferred into heat. The amount of absorbed light is described using an **absorption coefficient**, _k_, for the conductor.
 These are approximated using the following terms...
 	
 	<img src="src_images/Fresnel_Conductor.JPG" style="width:100; height:75;" align="middle"></img>
 
-    and Fresnel reflectance is modeled as $$F_r = \frac{1}{2}(r_{\parallel}^2 + r_{\perp}^2)$$.
+    and Fresnel reflectance is modeled as...
+
+    <img src="src_images/Fresnel_Reflectance.JPG" style="width:100; height:75;" align="middle"></img>
 
 ## What is a material?
 Materials are high-level descriptions used to model surfaces specified by mixtures of BRDFs and BTDFs. These BSDFs are specified as parameters that help frame the visual properties of the material. For example, we can describe a matte material by providing a diffuse reflection value to describe how light interacts with the surface and a scalar roughness value to describe its texture. To move from a matte to a plastic, we could simply add a glossy specular reflection value to the matte material to recreate the specular highlights that can be seen on plastics.
