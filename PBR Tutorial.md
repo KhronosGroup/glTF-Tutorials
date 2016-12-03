@@ -45,7 +45,7 @@ The types of reflection distributions also apply to transmission, but conversely
 
 To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
 
-<img src="src_images/Snells_Law.JPG" style="width:100; height:75;" align="middle"></img>
+<img src="src_images/Snells_Law.JPG" style="width:100px; height:75px;" align="middle"></img>
 
 where _n_ is the index of refraction and _θ_ is the angle of the light with respect to the normal. 
 
@@ -57,8 +57,11 @@ It is very useful to be able to show the roughness or smoothness of a surface wi
 With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
 
 1. An adjacent microfacet can block the light reflected from another, causing **masking**.
+<img src="src_images/Masking.png" style="width:100px; height:75px;" align="middle"></img>
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
+<img src="src_images/Shadowing.png" style="width:100px; height:75px;" align="middle"></img>
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
+<img src="src_images/Interreflection.jpg" style="width:100px; height:75px;" align="middle"></img>
 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
@@ -66,7 +69,7 @@ Simulating these three phenomena can help augment the realism of roughness on a 
 It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
 * **Dielectrics**: These are approximated using the following terms...
 
-    <img src="src_images/Fresnel_Dielectric.JPG" style="width:100; height:75;" align="middle"></img>
+    <img src="src_images/Fresnel_Dielectric.JPG" style="width:100px; height:75px;" align="middle"></img>
 
     where _r<sub>||</sub>_ is the Fresnel reflectance for parallel polarized light and _r<sub>⟂</sub>_ is the reflectance for perpendicular polarized light. The subscripts correspond to incident (_i_) and transmitted (_t_) directions.
 For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**. Due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
@@ -74,7 +77,7 @@ For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 
 * **Conductors**: Unlike dielectrics, conductors don’t transmit light. Instead, they absorb some of the incident light, which gets transferred into heat. The amount of absorbed light is described using an **absorption coefficient**, _k_, for the conductor.
 These are approximated using the following terms...
 	
-	<img src="src_images/Fresnel_Conductor.JPG" style="width:100; height:75;" align="middle"></img>
+	<img src="src_images/Fresnel_Conductor.JPG" style="width:100px; height:75px;" align="middle"></img>
 
     and Fresnel reflectance is modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**.
 
