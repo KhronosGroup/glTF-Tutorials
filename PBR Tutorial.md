@@ -57,7 +57,7 @@ It is very useful to be able to show the roughness or smoothness of a surface wi
 With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
 
 1. An adjacent microfacet can block the light reflected from another, causing **masking**.
-<img src="src_images/Masking.png" style="width:100px; height:75px;" align="middle"></img>
+<img src="src_images/Masking.png" width:"100" height:"75" align="middle"></img>
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
 <img src="src_images/Shadowing.png" style="width:100px; height:75px;" align="middle"></img>
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
