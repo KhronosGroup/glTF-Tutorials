@@ -69,7 +69,7 @@ It is important for physically-based renderers to know how much light is reflect
 
     where $$r_{\parallel}$$ is the Fresnel reflectance for parallel polarized light and $$r_{\perp}$$ is the reflectance for perpendicular polarized light. The subscripts correspond to incident ($$i$$) and transmitted ($$t$$) directions.
 For unpolarized light, Fresnel reflectance can be modeled as $$F_r = \frac{1}{2}(r_{\parallel}^2 + r_{\perp}^2)$$.
-Due to conservation of energy, Fresnel transmittance can be modeled as $$F_t = 1 - F_r$$.
+Due to conservation of energy, Fresnel transmittance can be modeled as _F<sub>t</sub> = 1 - F<sub>r</sub>_.
 
 * **Conductors**: Unlike dielectrics, conductors don’t transmit light. Instead, they absorb some of the incident light, which gets transferred into heat. The amount of absorbed light is described using an **absorption coefficient**, _k_, for the conductor.
 These are approximated using the following terms...
