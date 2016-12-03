@@ -64,9 +64,7 @@ Simulating these three phenomena can help augment the realism of roughness on a 
 ## How much light is reflected or transmitted?
 It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
 * **Dielectrics**: These are approximated using the following terms...
-    >$$r_{\parallel} = \frac{n_tcos\theta_i - n_icos\theta_t}{n_tcos\theta_i + n_icos\theta_t}$$
-
-    >$$r_{\perp} = \frac{n_icos\theta_i - n_tcos\theta_t}{n_icos\theta_i + n_tcos\theta_t}$$
+    <img src="src_images/Fresnel_Dielectric.JPG"></img>
 
     where $$r_{\parallel}$$ is the Fresnel reflectance for parallel polarized light and $$r_{\perp}$$ is the reflectance for perpendicular polarized light. The subscripts correspond to incident ($$i$$) and transmitted ($$t$$) directions.
 For unpolarized light, Fresnel reflectance can be modeled as $$F_r = \frac{1}{2}(r_{\parallel}^2 + r_{\perp}^2)$$.
