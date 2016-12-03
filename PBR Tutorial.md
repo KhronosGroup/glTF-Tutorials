@@ -69,20 +69,14 @@ It is important for physically-based renderers to know how much light is reflect
     <img src="src_images/Fresnel_Dielectric.JPG" style="width:100; height:75;" align="middle"></img>
 
     where _r<sub>||</sub>_ is the Fresnel reflectance for parallel polarized light and _r<sub>⟂</sub>_ is the reflectance for perpendicular polarized light. The subscripts correspond to incident (_i_) and transmitted (_t_) directions.
-For unpolarized light, Fresnel reflectance can be modeled as... 
-
-<img src="src_images/Fresnel_Reflectance.JPG" style="width:100; height:75;" align="middle"></img>
-
-Due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
+For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**. Due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
 
 * **Conductors**: Unlike dielectrics, conductors don’t transmit light. Instead, they absorb some of the incident light, which gets transferred into heat. The amount of absorbed light is described using an **absorption coefficient**, _k_, for the conductor.
 These are approximated using the following terms...
 	
 	<img src="src_images/Fresnel_Conductor.JPG" style="width:100; height:75;" align="middle"></img>
 
-    and Fresnel reflectance is modeled as...
-
-    <img src="src_images/Fresnel_Reflectance.JPG" style="width:100; height:75;" align="middle"></img>
+    and Fresnel reflectance is modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**.
 
 ## What is a material?
 Materials are high-level descriptions used to model surfaces specified by mixtures of BRDFs and BTDFs. These BSDFs are specified as parameters that help frame the visual properties of the material. For example, we can describe a matte material by providing a diffuse reflection value to describe how light interacts with the surface and a scalar roughness value to describe its texture. To move from a matte to a plastic, we could simply add a glossy specular reflection value to the matte material to recreate the specular highlights that can be seen on plastics.
