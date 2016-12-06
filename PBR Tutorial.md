@@ -7,7 +7,7 @@ Physically-based rendering refers to techniques that attempt to simulate light i
 PBR has been around for several years now, but was initially too computationally expensive to be a viable option for real-time applications. However, with the continuous advancement of computing power, it has increasingly become an industry standard in real-time graphics. In fact, much of the real-time software we see today such as Unreal Engine 4, Unity 5, Frostbite, and many others use physically-based rendering techniques to provide their users with the ability to create highly realistic 3D scenes.
 
 <img src=https://www.marmoset.co/wp-content/uploads/2014/01/layering01.jpg></img>
-From Marmoset Toolbag Tutorials: *Physically-Based Rendering, And You Can Too!*
+From Marmoset Toolbag Tutorials: *Physically-Based Rendering, And You Can Too!*, by Joe "Earthquake" Wilson
 
 ## How do we model light-object interactions in PBR?
 The physics law most central to PBR is the law of conservation of energy. This law states that the total amount of energy within an isolated system remains constant, but how does this relate to rendering? In PBR, radiance is the energy that is conserved, meaning the amount of incoming light at any point in the scene is equal to the sum of the reflected, transmitted, and absorbed light at that point.
@@ -102,8 +102,8 @@ With this in mind, glTF can become the meeting point for all of these applicatio
 
 ## References
 * [_Physically-Based Rendering, And You Can Too!_](https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/), by Joe "Earthquake" Wilson
-* _Physically Based Rendering, Second Edition: From Theory To Implementation_, by Matt Pharr and Greg Humphreys
-* http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/03brdf.pdf
+* [_Physically Based Rendering, Second Edition: From Theory To Implementation_](http://www.pbrt.org/), by Matt Pharr and Greg Humphreys
+* [Cornell CS667 Lecture Notes on Scattering](http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/03brdf.pdf), by Steve Marschner
 
 ## Acknowledgements
 * Adam Mally
