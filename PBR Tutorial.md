@@ -51,20 +51,7 @@ where _n_ is the index of refraction of the first and second media and _θ_ is t
 
 This is unlike perfect specular _reflection_ where the incident angle will always be equal to the outgoing angle.
 
-## Are all surfaces the same roughness?
-It is very useful to be able to show the roughness or smoothness of a surface without having to directly create the geometry or provide a bump map. Instead, surfaces can be modeled as a collection of small **microfacets** where the more rough a surface is, the more jagged microfacets it has. These microfacets can be thought of as small ridges on the surface of an object, varying the surface normal on a very fine level, which adds a lot of realism to rendered images. The distribution of microfacets on a surface can be described using a statistical model, examples of which include the Oren-Nayar model, the Torrance-Sparrow model, and the Blinn Microfacet Distribution model.
-
-With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
-
-1. An adjacent microfacet can block the light reflected from another, causing **masking**.
-2. An adjacent microfacet can block incoming light, causing **shadowing**.
-3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
-
-<img src="src_images/Masking.png" width="290" height="217"></img><img src="src_images/Shadowing.png" width="290" height="217"></img><img src="src_images/Interreflection.jpg" width="290" height="217"></img>
-
-Simulating these three phenomena can help augment the realism of roughness on a surface.
-
-## How much light is reflected or transmitted?
+## How much light is reflected and transmitted?
 It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. It is a combination of these effects that describe substances such as honey and dyed glass that both have color and can be seen through. 
 
 These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
@@ -81,6 +68,19 @@ These are approximated using the following terms...
 	<img src="src_images/Fresnel_Conductor.JPG" width="300" height="150"></img>
 
     and Fresnel reflectance is modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**.
+
+## Are all surfaces the same roughness?
+It is very useful to be able to show the roughness or smoothness of a surface without having to directly create the geometry or provide a bump map. Instead, surfaces can be modeled as a collection of small **microfacets** where the more rough a surface is, the more jagged microfacets it has. These microfacets can be thought of as small ridges on the surface of an object, varying the surface normal on a very fine level, which adds a lot of realism to rendered images. The distribution of microfacets on a surface can be described using a statistical model, examples of which include the Oren-Nayar model, the Torrance-Sparrow model, and the Blinn Microfacet Distribution model.
+
+With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
+
+1. An adjacent microfacet can block the light reflected from another, causing **masking**.
+2. An adjacent microfacet can block incoming light, causing **shadowing**.
+3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
+
+<img src="src_images/Masking.png" width="290" height="217"></img><img src="src_images/Shadowing.png" width="290" height="217"></img><img src="src_images/Interreflection.jpg" width="290" height="217"></img>
+
+Simulating these three phenomena can help augment the realism of roughness on a surface.
 
 ## What is a material?
 Materials are high-level descriptions used to model surfaces specified by mixtures of BRDFs and BTDFs. These BSDFs are specified as parameters that help frame the visual properties of the material. For example, we can describe a matte material by providing a diffuse reflection value to describe how light interacts with the surface and a scalar roughness value to describe its texture. To move from a matte to a plastic, we could simply add a glossy specular reflection value to the matte material to recreate the specular highlights that can be seen on plastics.
