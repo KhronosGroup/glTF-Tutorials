@@ -47,7 +47,7 @@ To discuss how this differs from reflection, consider a single light ray that ha
 
 <img src="src_images/BTDFs.png" width="300" height="237"></img>
 
-where _n_ is the index of refraction of the first and second media and _θ_ is the angle of the light with respect to the normal as it hits then passes through the surface. This means that if the indices of refraction of both media are the same, then light continues perfectly straight. However, if the indices are different, light will bend in a different direction once passing on to the next media. A good example of this is how light moving from the air into water gets bent, causing distortions in what we see in the water.
+where _n_ is the index of refraction of the first and second media and _θ_ is the angle of the light with respect to the normal as it hits then passes through the surface. This means that if the indices of refraction of both media are the same, then light continues perfectly straight. However, if the indices are different, light will bend in a different direction once passing on to the next medium. A good example of this is how light moving from the air into water gets bent, causing distortions in what we see in the water.
 
 This is unlike perfect specular _reflection_ where the incident angle will always be equal to the outgoing angle.
 
