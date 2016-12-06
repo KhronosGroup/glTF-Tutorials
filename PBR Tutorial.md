@@ -2,12 +2,12 @@
 
 
 ## What is PBR?
-Physically-based rendering refers to techniques that attempt to simulate light in order to render photorealistic images. As indicated by the name, these techniques focus on our understanding of physics to model how light interacts with surfaces that have different physical properties. Since these interactions happen on a very fine level, PBR techniques often use statistical models to add realism and complexity to renders.
+Physically-Based Rendering (PBR) refers to techniques that attempt to simulate light in order to render photorealistic images. As indicated by the name, these techniques focus on our understanding of physics to model how light interacts with surfaces that have different physical properties. Since these interactions happen on a very fine level, PBR techniques often use statistical models to add realism and complexity to renders.
 
 PBR has been around for several years now, but was initially too computationally expensive to be a viable option for real-time applications. However, with the continuous advancement of computing power, it has increasingly become an industry standard in real-time graphics. In fact, much of the real-time software we see today such as Unreal Engine 4, Unity 5, Frostbite, and many others use physically-based rendering techniques to provide their users with the ability to create highly realistic 3D scenes.
 
 <img src=https://www.marmoset.co/wp-content/uploads/2014/01/layering01.jpg></img>
-From Marmoset Toolbag Tutorials: *Physically-Based Rendering, And You Can Too!*, by Joe "Earthquake" Wilson
+From Marmoset Toolbag Tutorials: [Physically-Based Rendering, And You Can Too!](https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/), by Joe "Earthquake" Wilson
 
 ## How do we model light-object interactions in PBR?
 The physics law most central to PBR is the law of conservation of energy. This law states that the total amount of energy within an isolated system remains constant, but how does this relate to rendering? In PBR, radiance is the energy that is conserved, meaning the amount of incoming light at any point in the scene is equal to the sum of the reflected, transmitted, and absorbed light at that point.
@@ -23,14 +23,14 @@ To help better understand the kinds of BSDFs that occur, we can consider two gen
 * **BRDFs** (Bidirectional Reflectance Distribution Functions) specifically correspond to BSDFs that describe how light is _reflected_ from a surface. This reflected light refers to the colors we see coming directly from a surface. At this point, it is normal to ask something along the lines of the following: If I shine a white light at a banana, why does it appear yellow instead of white? This is because not all light is just reflected from a surface. While surfaces reflect light of certain colors (wavelengths), they absorb or transmit the remaining energy. For bananas, red and green light is reflected while blue light is absorbed.
 * **BTDFs** (Bidirectional Transmittance Distribution Functions) specifically correspond to BSDFs that describe how light is _transmitted_ through a surface. This can be seen in examples such as glass and plastics where we can see light that has traveled through the surface.
 
-There exist other types of density functions that account for effects such as subsurface scattering (the effect in which light enters a material and bounces around before exiting again in some other position and direction). However, these models are outside of the scope of tutorial and will not be discussed.
+There exist other types of density functions that account for effects such as subsurface scattering (the effect in which light enters a material and bounces around before exiting again in some other position and direction).
 
 ## What are the reflection models?
 There are four general surface types with reflection distribution functions (BRDFs) that describe the probability that light scatters in all directions:
-* **Diffuse** – surfaces that scatter light equally in all directions (ex: even color of a chalkboard)
-* **Glossy specular** – surfaces that scatter light preferentially in a set of reflected directions and show blurry reflections (ex: specular highlights on plastic)
-* **Perfect specular** – surfaces that scatter light in a single outgoing direction such that the angle of incident light is equal to the outgoing light with respect to the surface normal (ex: perfect reflection of mirrors)
-* **Retro-reflective** – surfaces that scatter light primarily back along the incident direction of the light source (ex: specular highlights on velvet)
+* **Diffuse** – surfaces that scatter light equally in all directions, e.g., even color of a chalkboard
+* **Glossy specular** – surfaces that scatter light preferentially in a set of reflected directions and show blurry reflections, e.g., specular highlights on plastic
+* **Perfect specular** – surfaces that scatter light in a single outgoing direction such that the angle of incident light is equal to the outgoing light with respect to the surface normal, e.g., perfect reflection of mirrors
+* **Retro-reflective** – surfaces that scatter light primarily back along the incident direction of the light source, e.g., specular highlights on velvet
 
 <img src="src_images/BRDFs.png"></img>
 
@@ -88,10 +88,10 @@ Materials are high-level descriptions used to model surfaces specified by mixtur
 Once a material has been described, we can then use this material on meshes throughout a 3D scene. You could create a single material and assign it to every object within a scene, but that would make for quite a boring application. With physically-based materials, we can create complex materials that bring a scene to life and offer visually compelling experiences to the user.
 
 To get a better idea of what we can create with this abstraction, here is a list of some common materials and what their descriptions might entail...
-* Mirror -- Perfect specular reflection
-* Metal -- Diffuse and specular reflections described by the Fresnel equations for conductors
-* Clear Glass -- A combination of specular reflection and transmission
-* Dyed Glass -- Specular reflection and transmission as in clear glass, but with added diffuse reflection to account for the color
+* **Mirror** - Perfect specular reflection
+* **Metal** - Diffuse and specular reflections described by the Fresnel equations for conductors
+* **Clear Glass** - A combination of specular reflection and transmission
+* **Dyed Glass** - Specular reflection and transmission as in clear glass, but with added diffuse reflection to account for the color
 
 ## Where does glTF come in?
 As you may know, glTF is a 3D file format that is increasingly becoming a standard in the CG community. It has the capability to encode everything in a 3D scene including meshes, cameras, lights, joint hierarchies, samples, and materials. This means that glTF can give many software applications, such as game engines and modeling software, the capability of importing and exporting entire scenes by using a single file type. 
