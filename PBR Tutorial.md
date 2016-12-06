@@ -101,6 +101,7 @@ However, with the rise in demand for PBR materials within these applications, it
 With this in mind, glTF can become the meeting point for all of these applications and unify the language that the CG community uses to discuss physically-based materials, all while giving graphics applications the capability to efficiently transmit high-quality 3D scenes.
 
 ## References
+* [_Physically-Based Rendering, And You Can Too!_](https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/), by Joe "Earthquake" Wilson
 * _Physically Based Rendering, Second Edition: From Theory To Implementation_, by Matt Pharr and Greg Humphreys
 * http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/03brdf.pdf
 
