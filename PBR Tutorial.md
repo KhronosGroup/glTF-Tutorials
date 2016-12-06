@@ -43,11 +43,9 @@ For each of these types of reflection, the distributions can be isotropic or ani
 ## What about BTDFs?
 The types of reflection distributions also apply to transmission (excluding retro-reflection), but conversely discuss how light travels after passing through a surface. The direction light travels after passing through the material is often dependent on the properties of the material itself.
 
-To discuss how this differs from reflection, consider a single light ray that has passed through a surface, as in the case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
+To discuss how this differs from reflection, consider a single light ray that has passed through a surface, as in the case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**, which is described using the equation **_n<sub>1</sub>θ<sub>1</sub> = n<sub>2</sub>θ<sub>2</sub>_**.
 
-<img src="src_images/Snells_Law.JPG" width="200" height="60"></img>
-
-<img src="src_images/BTDFs.png"></img>
+<img src="src_images/BTDFs.png" width="300" height="237"></img>
 
 where _n_ is the index of refraction of the first and second media and _θ_ is the angle of the light with respect to the normal as it hits then passes through the surface. This means that if the indices of refraction of both media are the same, then light continues perfectly straight. However, if the indices are different, light will bend in a different direction once passing on to the next media. A good example of this is how light moving from the air into water gets bent, causing distortions in what we see in the water.
 
