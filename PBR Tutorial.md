@@ -1,4 +1,4 @@
-# Physically-Based Rendering: From Theory to Practice
+# Physically-Based Rendering: From Theory to glTF
 
 
 ## What is PBR?
@@ -10,9 +10,9 @@ PBR has been around for several years now, but was initially too computationally
 From Marmoset Toolbag Tutorials: *Physically-Based Rendering, And You Can Too!*
 
 ## How do we model light-object interactions in PBR?
-The most central physics law to PBR is the law of conservation of energy. This law states that the total amount of energy within an isolated system remains constant, but how does this relate to rendering? In PBR, radiance is the energy that is conserved, meaning the amount of incoming light at any point in the scene is equal to the sum of the reflected, transmitted, and absorbed light at that point.
+The physics law most central to PBR is the law of conservation of energy. This law states that the total amount of energy within an isolated system remains constant, but how does this relate to rendering? In PBR, radiance is the energy that is conserved, meaning the amount of incoming light at any point in the scene is equal to the sum of the reflected, transmitted, and absorbed light at that point.
 
-Within any environment, it is easy to see several examples of complicated surfaces that seem to interact with light differently. For example, mirrors reflect perfect images, plastics are shiny, and painted walls are matte. All of these complicated interactions can be modeled by considering general mathematical functions called **Bidirectional Scattering Distribution Functions** (**BSDFs**). These functions describe how light scatters upon contact with a surface based on the properties that surface holds. More specifically, they tell the user how much of the incident light is scattered in a specific outgoing direction.
+Within any environment, it is easy to see several examples of complicated surfaces that seem to interact with light differently. For example, mirrors reflect perfect images, plastics are shiny, and chalkboards are matte. All of these unique properties can be modeled by considering general mathematical functions called **Bidirectional Scattering Distribution Functions** (**BSDFs**). These functions describe how light scatters upon contact with a surface based on the properties that surface holds. More specifically, they follow a statistical model to tell the user how likely the incident light is scattered in a specific outgoing direction.
 
 BSDF sounds like a very complicated term for what it actually means, so let’s break it up and explain its parts...  
 * **Bidirectional** refers to the notion that at any point on a surface, light comes in and light goes out.
@@ -27,32 +27,34 @@ There exist other types of density functions that account for effects such as su
 
 ## What are the reflection models?
 There are four general surface types with reflection distribution functions (BRDFs) that describe the probability that light scatters in all directions:
-* **Diffuse** – surfaces that scatter light equally in all directions (ex: matte paint)
-* **Glossy specular** – surfaces that scatter light preferentially in a set of reflected directions and show blurry reflections (ex: plastic)
-* **Perfect specular** – surfaces that scatter light in a single outgoing direction such that the angle of incident light is equal to the outgoing light with respect to the surface normal (ex: mirrors)
-* **Retro-reflective** – surfaces that scatter light primarily back along the incident direction of the light source (ex: velvet)
+* **Diffuse** – surfaces that scatter light equally in all directions (ex: even color of a chalkboard)
+* **Glossy specular** – surfaces that scatter light preferentially in a set of reflected directions and show blurry reflections (ex: specular highlights on plastic)
+* **Perfect specular** – surfaces that scatter light in a single outgoing direction such that the angle of incident light is equal to the outgoing light with respect to the surface normal (ex: perfect reflection of mirrors)
+* **Retro-reflective** – surfaces that scatter light primarily back along the incident direction of the light source (ex: specular highlights on velvet)
 
 <img src="src_images/BRDFs.png"></img>
 
 However, it is highly unlikely that a surface in reality will follow only one of these models. Because of this, most materials can be modeled as a complex mix of these.
 
 For each of these types of reflection, the distributions can be isotropic or anisotropic.
-* **Isotropic** – The amount of light reflected doesn’t change at a point when rotating the object about its normal (ex: most surfaces).
-* **Anisotropic** – The amount of light varies at a point as the object is rotated about its normal. This occurs because the small bumps and grooves on the surface are mostly oriented in the same direction instead of randomly, which results in elongated and blurry reflections (ex: brushed metal).
+* **Isotropic** – The amount of light reflected doesn’t change at a point when rotating the object about its normal. This is true for most surfaces we see in daily life.
+* **Anisotropic** – The amount of light varies at a point as the object is rotated about its normal. This occurs because the small bumps and grooves on the surface are mostly oriented in the same direction instead of randomly, which results in elongated and blurry reflections. This can be seen in certain materials such as in brushed metal and velvet.
 
 ## What about BTDFs?
-The types of reflection distributions also apply to transmission, but conversely discuss how light travels after passing through a surface. The direction light travels after passing through the material is often dependent on the properties of the material itself.
+The types of reflection distributions also apply to transmission (excluding retro-reflection), but conversely discuss how light travels after passing through a surface. The direction light travels after passing through the material is often dependent on the properties of the material itself.
 
-To discuss how this differs from reflection, consider the specific case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
+To discuss how this differs from reflection, consider a single light ray that has passed through a surface, as in the case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**…
 
 <img src="src_images/Snells_Law.JPG" width="200" height="60"></img>
 
-where _n_ is the index of refraction and _θ_ is the angle of the light with respect to the normal. 
+<img src="src_images/BTDFs.png"></img>
 
-This is unlike perfect specular reflection where the incident angle will always be equal to the outgoing angle.
+where _n_ is the index of refraction of the first and second media and _θ_ is the angle of the light with respect to the normal as it hits then passes through the surface. This means that if the indices of refraction of both media are the same, then light continues perfectly straight. However, if the indices are different, light will bend in a different direction once passing on to the next media. A good example of this is how light moving from the air into water gets bent, causing distortions in what we see in the water.
+
+This is unlike perfect specular _reflection_ where the incident angle will always be equal to the outgoing angle.
 
 ## Are all surfaces the same roughness?
-It is very useful to be able to show the roughness or smoothness of a surface without having to directly create the geometry or provide a bump map. Instead, surfaces can be modeled as a collection of small **microfacets** where the more rough a surface is, the more microfacets it has. These microfacets can be thought of as small ridges on the surface of an object, varying the surface normal on a very fine level, which adds a lot of realism to rendered images. The distribution of microfacets on a surface can be described using a statistical model, examples of which include the Oren-Nayar model, the Torrance-Sparrow model, and the Blinn Microfacet Distribution model.
+It is very useful to be able to show the roughness or smoothness of a surface without having to directly create the geometry or provide a bump map. Instead, surfaces can be modeled as a collection of small **microfacets** where the more rough a surface is, the more jagged microfacets it has. These microfacets can be thought of as small ridges on the surface of an object, varying the surface normal on a very fine level, which adds a lot of realism to rendered images. The distribution of microfacets on a surface can be described using a statistical model, examples of which include the Oren-Nayar model, the Torrance-Sparrow model, and the Blinn Microfacet Distribution model.
 
 With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
 
@@ -65,15 +67,17 @@ With knowledge of these microfacets, we can simulate some interesting geometric 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
 ## How much light is reflected or transmitted?
-It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
-* **Dielectrics**: These are approximated using the following terms...
+It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. It is a combination of these effects that describe substances such as honey and dyed glass that both have color and can be seen through. 
+
+These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
+* **Dielectrics**: These are media such as glass, plastic, and ceramics, that transmit electricity without conducting (i.e. insulators). We can approximate the amount of energy that is reflected and transmitted by these surfaces using the following equations...
 
     <img src="src_images/Fresnel_Dielectric.JPG" width="240" height="150"></img>
 
     where _r<sub>||</sub>_ is the Fresnel reflectance for parallel polarized light and _r<sub>⟂</sub>_ is the reflectance for perpendicular polarized light. The subscripts correspond to incident (_i_) and transmitted (_t_) directions.
-For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**. Due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
+For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**. Then, due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
 
-* **Conductors**: Unlike dielectrics, conductors don’t transmit light. Instead, they absorb some of the incident light, which gets transferred into heat. The amount of absorbed light is described using an **absorption coefficient**, _k_, for the conductor.
+* **Conductors**: These are media such that transmit heat and electricity with a certain capacity. Some examples include most (but not all) metals such as copper, silver, and gold. Unlike dielectrics, conductors don’t transmit light. Instead, they absorb some of the incident light, which gets transferred into heat. The amount of absorbed light is described using an **absorption coefficient**, _k_, for the conductor.
 These are approximated using the following terms...
 	
 	<img src="src_images/Fresnel_Conductor.JPG" width="300" height="150"></img>
@@ -83,15 +87,26 @@ These are approximated using the following terms...
 ## What is a material?
 Materials are high-level descriptions used to model surfaces specified by mixtures of BRDFs and BTDFs. These BSDFs are specified as parameters that help frame the visual properties of the material. For example, we can describe a matte material by providing a diffuse reflection value to describe how light interacts with the surface and a scalar roughness value to describe its texture. To move from a matte to a plastic, we could simply add a glossy specular reflection value to the matte material to recreate the specular highlights that can be seen on plastics.
 
-Here is a list of some common materials and what their descriptions might entail...
-* Glass -- Specular reflection and transmission
+Once a material has been described, we can then use this material on meshes throughout a 3D scene. You could create a single material and assign it to every object within a scene, but that would make for quite a boring application. With physically-based materials, we can create complex materials that bring a scene to life and offer visually compelling experiences to the user.
+
+To get a better idea of what we can create with this abstraction, here is a list of some common materials and what their descriptions might entail...
 * Mirror -- Perfect specular reflection
-* Metal -- Fresnel equations for conductors
-* Translucent -- Diffuse reflection, glossy specular reflection, and transmission
+* Metal -- Diffuse and specular reflections described by the Fresnel equations for conductors
+* Clear Glass -- A combination of specular reflection and transmission
+* Dyed Glass -- Specular reflection and transmission as in clear glass, but with added diffuse reflection to account for the color
 
 ## Where does glTF come in?
-As you may know, glTF is a 3D file format that is increasingly becoming a standard in the CG community. It has the capability to encode everything in a 3D scene including meshes, cameras, lights, joint hierarchies, samples, and materials. This means that glTF can give many software applications, such as game engines and modeling software, the capability of importing and exporting entire scenes by using a single file type. However, with the rise in demand for PBR materials within these applications, it has become clear that there is no consistency in the language used to describe these materials. For example, the parameters used in Unreal Engine are base color, roughness, metallic, and specular while Marmoset uses albedo, microsurface, and reflectivity. This creates a language barrier between artists and developers who use different applications and makes it difficult for them to switch frequently between them. With this in mind, glTF can become the meeting point for all of these applications and unify the language in which the CG community uses to discuss physically-based materials. 
+As you may know, glTF is a 3D file format that is increasingly becoming a standard in the CG community. It has the capability to encode everything in a 3D scene including meshes, cameras, lights, joint hierarchies, samples, and materials. This means that glTF can give many software applications, such as game engines and modeling software, the capability of importing and exporting entire scenes by using a single file type. 
+
+However, with the rise in demand for PBR materials within these applications, it has become clear that there is no consistency in the language used to describe these materials. For example, the parameters for physically-based materials used in Unreal Engine 4 are base color, roughness, metallic, and specular while Marmoset uses albedo, microsurface, and reflectivity. This creates a language barrier between artists and developers who use different applications and makes it difficult for users to switch easily between them. 
+
+With this in mind, glTF can become the meeting point for all of these applications and unify the language that the CG community uses to discuss physically-based materials, all while giving graphics applications the capability to efficiently transmit high-quality 3D scenes.
 
 ## References
-* PBRT
+* _Physically Based Rendering, Second Edition: From Theory To Implementation_, by Matt Pharr and Greg Humphreys
 * http://www.cs.cornell.edu/courses/cs6630/2012sp/notes/03brdf.pdf
+
+## Acknowledgements
+* Adam Mally
+* Akshay Shah
+* Patrick Cozzi
