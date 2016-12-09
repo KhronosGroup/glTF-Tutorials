@@ -88,7 +88,7 @@ The vertex- and the fragment shader are combined into a single [`program`](https
 
 For the purpose of this tutorial, the main points are that the glTF JSON contains `program` objects that refer to `shader` objects, each `shader` refers to its source code, and this information is all that is required to create the corresponding GL program in the renderer.
 
-In order to actually use this program to render an object, further information is required. Particularly, there must be information about the `attribute` and `uniform` variables that are contained in the shaders. This information is encoded in the `technique` that refers to a `program`, as shown in the next section about [materials and techniques](gltfTutorial_009c_MaterialsTechniques.md).
+In order to actually use this program to render an object, further information is required. Particularly, there must be information about the `attribute` and `uniform` variables that are contained in the shaders. This information is encoded in the `technique` that refers to a `program`, as shown in the next section about [materials and techniques](gltfTutorial_012_MaterialsTechniques.md).
 
 
 

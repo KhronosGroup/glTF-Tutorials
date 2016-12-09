@@ -3,7 +3,7 @@ Previous: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md) | [Table o
 
 # Materials and Techniques
 
-As shown in the [Simple Material](gltfTutorial_009a_SimpleMaterial.md) example, the central element for the definition of the appearance of a rendered object in glTF is the [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique).  Such a technique serves as a template for a [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material). The `material` defines the values for different parameters of the technique that determine the final appearance of the rendered objects.
+As shown in the [Simple Material](gltfTutorial_010_SimpleMaterial.md) example, the central element for the definition of the appearance of a rendered object in glTF is the [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique).  Such a technique serves as a template for a [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material). The `material` defines the values for different parameters of the technique that determine the final appearance of the rendered objects.
 
 This section will explain the connection between techniques, technique parameters and the material, and show how the values of technique parameters are determined.
 
@@ -14,12 +14,15 @@ A `technique` is a description of a rendering process. It summarizes a set of pa
 
 The technique therefore contains `attributes` and `uniforms` dictionaries. The keys of these dictionaries are the variable names of the attributes and uniforms of the shaders. The values of these dictionaries refer to the [`parameters`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.parameters) dictionary of the technique. These `technique.parameters` define the types of the parameters, and how the values of the parameters are obtained. So for each `attribute` and `uniform` of the shader program, there is a `technique.parameters` entry that defines the type that the variable in the shader program has:
 
+
+# TODO This may have to be updated, see https://github.com/KhronosGroup/glTF/issues/789
+
 <p align="center">
 <img src="images/technique.png" /><br>
 <a name="technique-png"></a>Image 12a: The connection between shader source code and technique parameters
 </p>
 
-To recall the example from the [simple material](gltfTutorial_009a_SimpleMaterial.md), here is an excerpt of the  JSON part that encodes this information:
+To recall the example from the [simple material](gltfTutorial_010_SimpleMaterial.md), here is an excerpt of the  JSON part that encodes this information:
 
 ```javascript
 "techniques": {
@@ -85,7 +88,7 @@ There are two methods for determining the value of a technique parameter:
 
 ### Technique parameter values in techniques or materials
 
-In some cases, the technique parameters can have default values. In other cases, the parameter values can be obtained from the material that refers to the technique. This was already shown in the [simple material](gltfTutorial_009a_SimpleMaterial.md) example:
+In some cases, the technique parameters can have default values. In other cases, the parameter values can be obtained from the material that refers to the technique. This was already shown in the [simple material](gltfTutorial_010_SimpleMaterial.md) example:
 
 ```javascript
 "techniques": {

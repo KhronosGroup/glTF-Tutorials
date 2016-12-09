@@ -2,7 +2,7 @@ Previous: [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md) | 
 
 # An advanced material
 
-This section will show how the concepts from the [Meshes](gltfTutorial_008_Meshes.md)  section and the elements that have been explained in the section about [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)  can be brought together to define a non-trivial material. The material in this example will show multiple parameters and include a *light*, so that the effect of the vertex normals of the mesh become visible.
+This section will show how the concepts from the [Meshes](gltfTutorial_008_Meshes.md)  section and the elements that have been explained in the section about [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md)  can be brought together to define a non-trivial material. The material in this example will show multiple parameters and include a *light*, so that the effect of the vertex normals of the mesh become visible.
 
 The following is the JSON part of a simple glTF asset that contains an advanced material:
 
@@ -298,7 +298,7 @@ uniform vec4 u_specular;
 uniform float u_shininess;
 ```
 
-These parameters are the basis for a simple implementation of the [`Phong reflection model`](https://en.wikipedia.org/wiki/Phong_reflection_model). In the JSON part of the glTF, these uniforms are listed in the `uniforms` dictionary of the `technique`, and further defined in the `technique.parameters` (similar to the `u_emission` uniform of the [simple material](gltfTutorial_009a_SimpleMaterial.md)) :
+These parameters are the basis for a simple implementation of the [`Phong reflection model`](https://en.wikipedia.org/wiki/Phong_reflection_model). In the JSON part of the glTF, these uniforms are listed in the `uniforms` dictionary of the `technique`, and further defined in the `technique.parameters` (similar to the `u_emission` uniform of the [simple material](gltfTutorial_010_SimpleMaterial.md)) :
 
 ```javascript
 "techniques": {
@@ -334,7 +334,7 @@ These parameters are the basis for a simple implementation of the [`Phong reflec
 },
 ```
 
-The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue and alpha components of the colors. They all have default values that are directly passed to the renderer, as show in the [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
+The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue and alpha components of the colors. They all have default values that are directly passed to the renderer, as show in the [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
 
 
 ## The `normals` attribute
