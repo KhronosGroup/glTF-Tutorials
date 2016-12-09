@@ -1,4 +1,4 @@
-Previous: [Materials](gltfTutorial_009_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md)
+Previous: [Materials](gltfTutorial_009_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md)
 
 # A simple material
 
@@ -119,8 +119,8 @@ The following is a minimal glTF asset with such a simple material:
       "componentType" : 5123,
       "count" : 3,
       "type" : "SCALAR",
-      "max" : [ 2.0 ],
-      "min" : [ 0.0 ]
+      "max" : [ 2 ],
+      "min" : [ 0 ]
     },
     "positionsAccessor" : {
       "bufferView" : "positionsBufferView",
@@ -325,4 +325,4 @@ The example in this section only referred to a very simple technique. The only t
 
 
 
-Previous: [Materials](gltfTutorial_009_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md)
+Previous: [Materials](gltfTutorial_009_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md)

@@ -2,7 +2,7 @@ Previous: [Advanced Material](gltfTutorial_009f_TexturesImagesSamplers.md) | [Ta
 
 # Cameras
 
-The previous sections showed how a basic scene structure with geometric objects is represented in a glTF asset, and how different materials can be applied to these objects. This did not yet include information about the view configuration that should be used for rendering the scene. This view configuration is usually described as a virtual *camera* that is contained in the scene, at a certain position, and pointing in a certain direction. 
+The previous sections showed how a basic scene structure with geometric objects is represented in a glTF asset, and how different materials can be applied to these objects. This did not yet include information about the view configuration that should be used for rendering the scene. This view configuration is usually described as a virtual *camera* that is contained in the scene, at a certain position, and pointing in a certain direction.
 
 This section will show how to define such [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera) objects in a glTF asset. The following is a simple, complete glTF asset. It is similar to the assets that have already been shown: It defines a simple `scene`, containing `node` objects, and a single geometric object that is given as a `mesh`, attached to one of the nodes. But this asset additional contains several `camera` objects, which will be explained in more detail below:
 
@@ -28,7 +28,7 @@ This section will show how to define such [`camera`](https://github.com/KhronosG
       "camera" : "exampleCameraOrthographic"
     }
   },
-  
+
   "cameras" : {
     "exampleCameraPerspective": {
       "type": "perspective",
@@ -49,7 +49,7 @@ This section will show how to define such [`camera`](https://github.com/KhronosG
       }
     }
   },
-  
+
   "meshes" : {
     "mesh0" : {
       "primitives" : [ {
@@ -90,8 +90,8 @@ This section will show how to define such [`camera`](https://github.com/KhronosG
       "componentType" : 5123,
       "count" : 6,
       "type" : "SCALAR",
-      "max" : [ 2.0 ],
-      "min" : [ 0.0 ]
+      "max" : [ 3 ],
+      "min" : [ 0 ]
     },
     "positionsAccessor" : {
       "bufferView" : "attributesBufferView",
@@ -131,7 +131,7 @@ The geometry in this asset is a simple unit square. It is rotated by -45 degrees
 
 <p align="center">
 <img src="images/cameras.png" /><br>
-<a name="cameras-png"></a>Image 10a: The effect of rendering the scene with different cameras
+<a name="cameras-png"></a>Image 16a: The effect of rendering the scene with different cameras
 </p>
 
 
@@ -164,22 +164,22 @@ The new top-level element of this glTF asset is the `cameras` dictionary, which 
 
 There are two kinds of cameras: *Perspective* cameras, where the viewing volume is a truncated pyramid (often referred to as "viewing frustum"), and *orthographic*  cameras, where the viewing volumne is a rectangular box. The main difference is that rendering with a *perspective* camera causes a proper perspective distortion, whereas rendering with an *orthographic* camera causes a preservation of lengths and angles.
 
-The example contains one camera of each type, with the IDs `"exampleCameraPerspective"` and `"exampleCameraOrthographic"`, respectively. The `type` of the camera is given as a string, which can be `"perspective"` or  `"orthographic"`. Depending on this type, the `camera` object contains a [`camera.perspective`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera.perspective) object or a [`camera.orthographic`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera.orthographic) object. These objects contain additional parameters that define the actual viewing volume. 
+The example contains one camera of each type, with the IDs `"exampleCameraPerspective"` and `"exampleCameraOrthographic"`, respectively. The `type` of the camera is given as a string, which can be `"perspective"` or  `"orthographic"`. Depending on this type, the `camera` object contains a [`camera.perspective`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera.perspective) object or a [`camera.orthographic`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera.orthographic) object. These objects contain additional parameters that define the actual viewing volume.
 
-The `camera.perspective` object contains an `aspectRatio` property that defines the aspect ratio of the viewport. Additionally, it contains a property called `yfov`, which stands for *Field Of View in Y-direction*. It defines the "opening angle" of the camera, and is given in radians. 
+The `camera.perspective` object contains an `aspectRatio` property that defines the aspect ratio of the viewport. Additionally, it contains a property called `yfov`, which stands for *Field Of View in Y-direction*. It defines the "opening angle" of the camera, and is given in radians.
 
 The `camera.orthographic` object contains `xmag` and `ymag` properties. These the magnification of the camera in x- and y-direction, and basically describe the width and height of the viewing volume.
 
 Both camera types additionally contain `znear` and `zfar` properties, which are the coordinates of the near and far clipping plane.
 
-Explaining the details of cameras, viewing and projections is beyond the scope of this tutorial. The important point is that most graphics APIs offer methods for defining the viewing configuration that are directly based on these parameters. In general, these parameters can be used to compute a *camera matrix*. The camera matrix can be inverted to obtain the *view matrix*, which will later be post-multiplied with the *model matrix* in order to obtain the *model-view matrix*, which is required by the renderer. 
+Explaining the details of cameras, viewing and projections is beyond the scope of this tutorial. The important point is that most graphics APIs offer methods for defining the viewing configuration that are directly based on these parameters. In general, these parameters can be used to compute a *camera matrix*. The camera matrix can be inverted to obtain the *view matrix*, which will later be post-multiplied with the *model matrix* in order to obtain the *model-view matrix*, which is required by the renderer.
 
 
 # Camera orientation
 
 A `camera` can be transformed to have a certain orientation and viewing direction in the scene. This accomplished by attaching the camera to a `node`: Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-node) may contain the ID of a [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera) that is attached to it.
 
-In the example, there are two nodes for the cameras. The first node refers to the `"exampleCameraPerspective"`, and the second one refers to the `"exampleCameraOrthographic"`: 
+In the example, there are two nodes for the cameras. The first node refers to the `"exampleCameraPerspective"`, and the second one refers to the `"exampleCameraOrthographic"`:
 
 ```javascript
 "nodes" : {
@@ -195,9 +195,9 @@ In the example, there are two nodes for the cameras. The first node refers to th
 },
 ```
 
-As shown in the section about [scenes and nodes](gltfTutorial_004_ScenesNodes.md), these nodes may have properties that define the transform matrix of the node. The [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of a node then defines the actual orientation of the camera in the scene.
+As shown in the section about [scenes and nodes](gltfTutorial_004_ScenesNodes.md), these nodes may have properties that define the transform matrix of the node. The [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of a node then defines the actual orientation of the camera in the scene. With the option to apply arbitrary [Animations](gltfTutorial_006_Animations.md) to the nodes, it is even possible to define camera flights. 
 
-When the global transform of the camera node is the identity matrix, then the eye point of the camera is at the origin, and the viewing direction is along the negative z-axis. In the given example, the nodes both have a `translation` about `(0.5, 0.5, 3.0)`, which causes the camera to be transformed accordingly: It is translated about 0.5 in x- and y- direction, to look at the center of the unit square, and about 3.0 along the z-axis, to move it a bit away from the object. 
+When the global transform of the camera node is the identity matrix, then the eye point of the camera is at the origin, and the viewing direction is along the negative z-axis. In the given example, the nodes both have a `translation` about `(0.5, 0.5, 3.0)`, which causes the camera to be transformed accordingly: It is translated about 0.5 in x- and y- direction, to look at the center of the unit square, and about 3.0 along the z-axis, to move it a bit away from the object.
 
 
 # Camera management

@@ -13,14 +13,14 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 - [Animations](gltfTutorial_007_Animations.md)
 - [Meshes](gltfTutorial_008_Meshes.md)
 - [Materials](gltfTutorial_009_Materials.md)
-  - [A simple material](gltfTutorial_009a_SimpleMaterial.md)
-  - [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md)
-  - [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
-  - [An advanced material](gltfTutorial_009d_AdvancedMaterial.md)
-  - (TBD: "Simple opacity": Explaining the `technique.states.functions` with the SimpleOpacity example)
-  - [A simple texture](gltfTutorial_009e_SimpleTexture.md)
-  - [Textures, Images, Samplers](gltfTutorial_009f_TexturesImagesSamplers.md)
-- [Cameras](gltfTutorial_010_Cameras.md)
+- [A simple material](gltfTutorial_010_SimpleMaterial.md)
+- [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md)
+- [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md)
+- [An advanced material](gltfTutorial_013_AdvancedMaterial.md)
+- (TBD: "Simple opacity": Explaining the `technique.states.functions` with the SimpleOpacity example)
+- [A simple texture](gltfTutorial_014_SimpleTexture.md)
+- [Textures, Images, Samplers](gltfTutorial_015_TexturesImagesSamplers.md)
+- [Cameras](gltfTutorial_016_Cameras.md)
 - Skins
 - Extensions
 - Summary: Rendering a glTF asset with WebGL

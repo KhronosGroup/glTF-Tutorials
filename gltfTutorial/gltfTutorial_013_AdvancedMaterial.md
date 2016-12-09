@@ -1,4 +1,4 @@
-Previous: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_009e_SimpleTexture.md)
+Previous: [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_014_SimpleTexture.md)
 
 # An advanced material
 
@@ -153,8 +153,8 @@ The following is the JSON part of a simple glTF asset that contains an advanced 
       "componentType" : 5123,
       "count" : 3,
       "type" : "SCALAR",
-      "max" : [ 2.0 ],
-      "min" : [ 0.0 ]
+      "max" : [ 2 ],
+      "min" : [ 0 ]
     },
     "positionsAccessor" : {
       "bufferView" : "attributesBufferView",
@@ -275,14 +275,14 @@ When rendering this glTF asset, the result will look like the following image:
 
 <p align="center">
 <img src="images/advancedMaterial.png" /><br>
-<a name="advancedMaterial-png"></a>Image 9f: An example for an advanced material, including specular highlights
+<a name="advancedMaterial-png"></a>Image 13a: An example for an advanced material, including specular highlights
 </p>
 
 The right triangle is slightly rotated, to emphasize the effect of the light computation: One can see the specular highlight on this triangle, which is caused by the light being reflected on the triangle surface to point directly at the eye position. This reflection is computed based on the normal of the triangle:
 
 <p align="center">
 <img src="images/advancedMaterialExample.gif" /><br>
-<a name="advancedMaterialExample-gif"></a>Image 9g: The effect of light, normals and additional properties in the advanced material
+<a name="advancedMaterialExample-gif"></a>Image 13b: The effect of light, normals and additional properties in the advanced material
 </p>
 
 The details of the light computations is beyond the scope of this tutorial. This section will only show how the advanced material is encoded as a part of the glTF asset.
@@ -408,7 +408,7 @@ Summarizing from the previous sections:
 
 - The `mesh` contains [Mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes). One of them is the new `NORMAL` attribute. It refers to the [accessor](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors) that provides the data of the vertex normals.
 - The `program` contains a list of all `attribute` variables that are contained in its vertex shader, including the `a_normal` attribute
-- The `technique` contains the `attributes` dictionary whose entry for the `a_normal` attribute points to the `technique.parameters` dictionary, which defines the properties of this attribute, as shown in the section about [technique parameter values](gltfTutorial_009c_MaterialsTechniques.md#technique-parameter-values)
+- The `technique` contains the `attributes` dictionary whose entry for the `a_normal` attribute points to the `technique.parameters` dictionary, which defines the properties of this attribute, as shown in the section about [technique parameter values](gltfTutorial_012_MaterialsTechniques.md#technique-parameter-values)
 
 
 
@@ -450,4 +450,4 @@ The model-view matrix is the product of the [global transform](gltfTutorial_004_
     mat3 normalMatrix = mat3(transpose(inverse(modelViewMatrix)))
 
 
-Previous: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_009e_SimpleTexture.md)
+Previous: [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_014_SimpleTexture.md)

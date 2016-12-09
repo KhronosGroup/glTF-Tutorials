@@ -1,4 +1,4 @@
-Previous: [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_009d_AdvancedMaterial.md)
+Previous: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_013_AdvancedMaterial.md)
 
 
 # Materials and Techniques
@@ -16,7 +16,7 @@ The technique therefore contains `attributes` and `uniforms` dictionaries. The k
 
 <p align="center">
 <img src="images/technique.png" /><br>
-<a name="technique-png"></a>Image 9c: The connection between shader source code and technique parameters
+<a name="technique-png"></a>Image 12a: The connection between shader source code and technique parameters
 </p>
 
 To recall the example from the [simple material](gltfTutorial_009a_SimpleMaterial.md), here is an excerpt of the  JSON part that encodes this information:
@@ -68,7 +68,7 @@ A `material` is is an instance of a `technique`, and specifies a set of input va
 
 <p align="center">
 <img src="images/materialAndTechnique.png" /><br>
-<a name="materialAndTechnique-png"></a>Image 9d: Materials and techniques, and how they affect the appearance of objects
+<a name="materialAndTechnique-png"></a>Image 12b: Materials and techniques, and how they affect the appearance of objects
 </p>
 
 
@@ -198,7 +198,7 @@ The exact mechanism for the last step will depend on the graphics API. For WebGL
 
 <p align="center">
 <img src="images/meshPrimitiveMaterial.png" /><br>
-<a name="meshPrimitiveMaterial-png"></a>Image 9e: Connection between the mesh primitive, the material and the technique
+<a name="meshPrimitiveMaterial-png"></a>Image 12c: Connection between the mesh primitive, the material and the technique
 </p>
 
 
@@ -254,4 +254,4 @@ For details about the available set of states and functions, refer to the [`tech
 For other graphics APIs, these properties have to be interpreted accordingly, to emulate the behavior that is achieved with the respective GL function calls.
 
 
-Previous: [Programs and Shaders](gltfTutorial_009b_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_009d_AdvancedMaterial.md)
+Previous: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_013_AdvancedMaterial.md)

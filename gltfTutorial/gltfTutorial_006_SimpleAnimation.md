@@ -89,8 +89,8 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
       "componentType" : 5123,
       "count" : 3,
       "type" : "SCALAR",
-      "max" : [ 2.0 ],
-      "min" : [ 0.0 ]
+      "max" : [ 2 ],
+      "min" : [ 0 ]
     },
     "positionsAccessor" : {
       "bufferView" : "positionsBufferView",

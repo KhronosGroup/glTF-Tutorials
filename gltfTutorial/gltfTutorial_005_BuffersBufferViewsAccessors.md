@@ -80,8 +80,8 @@ Different combinations of these properties may be used to describe arbitrary dat
     "componentType" : 5123,
     "count" : 3,
     "type" : "SCALAR",
-    "max" : [ 2.0 ],
-    "min" : [ 0.0 ]
+    "max" : [ 2 ],
+    "min" : [ 0 ]
   },
   "positionsAccessor" : {
     "bufferView" : "positionsBufferView",

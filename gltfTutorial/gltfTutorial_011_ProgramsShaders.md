@@ -1,4 +1,4 @@
-Previous: [Simple Material](gltfTutorial_009a_SimpleMaterial.md) | [Table of Contents](README.md) | Next: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
+Previous: [Simple Material](gltfTutorial_010_SimpleMaterial.md) | [Table of Contents](README.md) | Next: [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md)
 
 
 # Programs and Shaders
@@ -92,4 +92,4 @@ In order to actually use this program to render an object, further information i
 
 
 
-Previous: [Simple Material](gltfTutorial_009a_SimpleMaterial.md) | [Table of Contents](README.md) | Next: [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
+Previous: [Simple Material](gltfTutorial_010_SimpleMaterial.md) | [Table of Contents](README.md) | Next: [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md)
