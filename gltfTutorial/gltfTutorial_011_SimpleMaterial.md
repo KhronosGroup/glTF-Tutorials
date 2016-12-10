@@ -1,4 +1,4 @@
-Previous: [Materials](gltfTutorial_009_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md)
+Previous: [Materials](gltfTutorial_010_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md)
 
 # A simple material
 
@@ -325,4 +325,4 @@ The example in this section only referred to a very simple technique. The only t
 
 
 
-Previous: [Materials](gltfTutorial_009_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md)
+Previous: [Materials](gltfTutorial_010_Materials.md) | [Table of Contents](README.md) | Next: [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md)

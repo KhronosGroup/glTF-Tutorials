@@ -108,7 +108,7 @@ More details about scenes and nodes and their properties will be given in sectio
 
 A [`mesh`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-mesh) represents an actual geometric object that appears in the scene. The mesh itself usually does not have any properties, but only contains an array of [`mesh.primitive`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-mesh.primitive) objects, which serve as building blocks for larger models. Each mesh primitive contains a description of the geometry data that the mesh consists of.   
 
-The example consists of a single mesh, which has the ID `"mesh0"`, and has a single `mesh.primitive` object. The mesh primitive has an array of `attributes`. These are the attributes of the vertices of the mesh geometry, and in this case, this is only the `POSITION` attribute, describing the positions of the vertices. The mesh primitive describes an *indexed* geometry, which is indicated by the reference to the `indices`. By default, it is assumed to describe a set of triangles, so that three consecutive indices are the indices of the vertices of one triangle.
+The example consists of a single mesh, which has the ID `"mesh0"`, and has a single `mesh.primitive` object. The mesh primitive has an array of `attributes`. These are the attributes of the vertices of the mesh geometry, and in this case, this is only the `POSITION` attribute, describing the positions of the vertices. The mesh primitive describes an *indexed* geometry, which is indicated by the `indices` property. By default, it is assumed to describe a set of triangles, so that three consecutive indices are the indices of the vertices of one triangle.
 
 The actual geometry data of the mesh primitive is given by the `attributes` and the `indices`. These both refer to `accessor` objects, which will be explained below.
 
@@ -125,7 +125,7 @@ The actual geometry data of the mesh primitive is given by the `attributes` and 
   },
 ```
 
-A more detailed description about meshes and mesh primitives can be found in the [Meshes](gltfTutorial_007_Meshes.md) section.
+A more detailed description about meshes and mesh primitives can be found in the [Meshes](gltfTutorial_008_Meshes.md) section.
 
 
 ## The `buffer`, `bufferView` and `accessor` concepts
@@ -220,7 +220,7 @@ As described above, a `mesh.primitive` may now refer to these accessors, using t
   },
 ```
 
-When this `mesh.primitive` has to be rendered, the renderer can resolve the underlying buffer views and buffers, and send the required parts of the buffer to the renderer, together with the information about the data types and layout. A more detailed description of how the accessor data is obtained and processed by the renderer is given in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) and the section about [Materials and Techniques](gltfTutorial_009c_MaterialsTechniques.md)
+When this `mesh.primitive` has to be rendered, the renderer can resolve the underlying buffer views and buffers, and send the required parts of the buffer to the renderer, together with the information about the data types and layout. A more detailed description of how the accessor data is obtained and processed by the renderer is given in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) and the section about [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md)
 
 
 

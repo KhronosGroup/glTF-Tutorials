@@ -1,8 +1,8 @@
-Previous: [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_014_SimpleTexture.md)
+Previous: [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_015_SimpleTexture.md)
 
 # An advanced material
 
-This section will show how the concepts from the [Meshes](gltfTutorial_008_Meshes.md)  section and the elements that have been explained in the section about [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md)  can be brought together to define a non-trivial material. The material in this example will show multiple parameters and include a *light*, so that the effect of the vertex normals of the mesh become visible.
+This section will show how the concepts from the [Meshes](gltfTutorial_008_Meshes.md)  section and the elements that have been explained in the section about [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md)  can be brought together to define a non-trivial material. The material in this example will show multiple parameters and include a *light*, so that the effect of the vertex normals of the mesh become visible.
 
 The following is the JSON part of a simple glTF asset that contains an advanced material:
 
@@ -268,7 +268,6 @@ void main(void)
     color.a = diffuse.a;
     gl_FragColor = color;
 }
-}
 ```
 
 When rendering this glTF asset, the result will look like the following image:
@@ -298,7 +297,7 @@ uniform vec4 u_specular;
 uniform float u_shininess;
 ```
 
-These parameters are the basis for a simple implementation of the [`Phong reflection model`](https://en.wikipedia.org/wiki/Phong_reflection_model). In the JSON part of the glTF, these uniforms are listed in the `uniforms` dictionary of the `technique`, and further defined in the `technique.parameters` (similar to the `u_emission` uniform of the [simple material](gltfTutorial_010_SimpleMaterial.md)) :
+These parameters are the basis for a simple implementation of the [`Phong reflection model`](https://en.wikipedia.org/wiki/Phong_reflection_model). In the JSON part of the glTF, these uniforms are listed in the `uniforms` dictionary of the `technique`, and further defined in the `technique.parameters` (similar to the `u_emission` uniform of the [simple material](gltfTutorial_011_SimpleMaterial.md)) :
 
 ```javascript
 "techniques": {
@@ -334,7 +333,7 @@ These parameters are the basis for a simple implementation of the [`Phong reflec
 },
 ```
 
-The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue and alpha components of the colors. They all have default values that are directly passed to the renderer, as show in the [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
+The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue and alpha components of the colors. They all have default values that are directly passed to the renderer, as show in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
 
 
 ## The `normals` attribute
@@ -408,7 +407,7 @@ Summarizing from the previous sections:
 
 - The `mesh` contains [Mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes). One of them is the new `NORMAL` attribute. It refers to the [accessor](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors) that provides the data of the vertex normals.
 - The `program` contains a list of all `attribute` variables that are contained in its vertex shader, including the `a_normal` attribute
-- The `technique` contains the `attributes` dictionary whose entry for the `a_normal` attribute points to the `technique.parameters` dictionary, which defines the properties of this attribute, as shown in the section about [technique parameter values](gltfTutorial_012_MaterialsTechniques.md#technique-parameter-values)
+- The `technique` contains the `attributes` dictionary whose entry for the `a_normal` attribute points to the `technique.parameters` dictionary, which defines the properties of this attribute, as shown in the section about [technique parameter values](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values)
 
 
 
@@ -450,4 +449,4 @@ The model-view matrix is the product of the [global transform](gltfTutorial_004_
     mat3 normalMatrix = mat3(transpose(inverse(modelViewMatrix)))
 
 
-Previous: [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_014_SimpleTexture.md)
+Previous: [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_015_SimpleTexture.md)

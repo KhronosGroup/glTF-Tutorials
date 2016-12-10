@@ -1,9 +1,9 @@
-Previous: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_013_AdvancedMaterial.md)
+Previous: [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
 
 
 # Materials and Techniques
 
-As shown in the [Simple Material](gltfTutorial_010_SimpleMaterial.md) example, the central element for the definition of the appearance of a rendered object in glTF is the [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique).  Such a technique serves as a template for a [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material). The `material` defines the values for different parameters of the technique that determine the final appearance of the rendered objects.
+As shown in the [Simple Material](gltfTutorial_011_SimpleMaterial.md) example, the central element for the definition of the appearance of a rendered object in glTF is the [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique).  Such a technique serves as a template for a [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material). The `material` defines the values for different parameters of the technique that determine the final appearance of the rendered objects.
 
 This section will explain the connection between techniques, technique parameters and the material, and show how the values of technique parameters are determined.
 
@@ -22,7 +22,7 @@ The technique therefore contains `attributes` and `uniforms` dictionaries. The k
 <a name="technique-png"></a>Image 12a: The connection between shader source code and technique parameters
 </p>
 
-To recall the example from the [simple material](gltfTutorial_010_SimpleMaterial.md), here is an excerpt of the  JSON part that encodes this information:
+To recall the example from the [simple material](gltfTutorial_011_SimpleMaterial.md), here is an excerpt of the  JSON part that encodes this information:
 
 ```javascript
 "techniques": {
@@ -88,7 +88,7 @@ There are two methods for determining the value of a technique parameter:
 
 ### Technique parameter values in techniques or materials
 
-In some cases, the technique parameters can have default values. In other cases, the parameter values can be obtained from the material that refers to the technique. This was already shown in the [simple material](gltfTutorial_010_SimpleMaterial.md) example:
+In some cases, the technique parameters can have default values. In other cases, the parameter values can be obtained from the material that refers to the technique. This was already shown in the [simple material](gltfTutorial_011_SimpleMaterial.md) example:
 
 ```javascript
 "techniques": {
@@ -257,4 +257,4 @@ For details about the available set of states and functions, refer to the [`tech
 For other graphics APIs, these properties have to be interpreted accordingly, to emulate the behavior that is achieved with the respective GL function calls.
 
 
-Previous: [Programs and Shaders](gltfTutorial_011_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_013_AdvancedMaterial.md)
+Previous: [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md)

@@ -1,4 +1,4 @@
-Previous: [Advanced Material](gltfTutorial_013_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, Samplers](gltfTutorial_015_TexturesImagesSamplers.md)
+Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
 
 # A simple texture
 
@@ -315,7 +315,7 @@ Bringing this all together in a renderer will result in the following rendered s
 
 ## Texture, image and sampler objects
 
-There are three new top-level dictionaries in the glTF JSON: The `textures`, `images` and `samplers` dictionaries. The details of these new object types will be explained in the following section about [Textures, Images, Samplers](gltfTutorial_015_TexturesImagesSamplers.md). This section will focus on the elements of the `technique` and the shaders that are used to apply the texture to the rendered objects, and point out the differences to the [Advanced Material](gltfTutorial_013_AdvancedMaterial.md) that was shown in the previous section.
+There are three new top-level dictionaries in the glTF JSON: The `textures`, `images` and `samplers` dictionaries. The details of these new object types will be explained in the following section about [Textures, Images, Samplers](gltfTutorial_016_TexturesImagesSamplers.md). This section will focus on the elements of the `technique` and the shaders that are used to apply the texture to the rendered objects, and point out the differences to the [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) that was shown in the previous section.
 
 ## The texture coordinates
 
@@ -386,7 +386,7 @@ Summarizing from the previous sections:
 
 - The `mesh.primitive` contains an additional attribute, as shown in [Meshes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes). The attribute is called `"TEXCOORD_0"`, and refers to the `accessor` with the ID `"texCoordsAccessor"` that provides the texture coordinates
 - The `"texCoordsAccessor"` provides access to the texture coordinate data. The properties of this accessor are explained in [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors), and here, they indicate that the texture coordinates are 2D vectors consisting of floating point values.
-- The `technique` defines a new attribute called `a_texcoord0`, and the `technique.parameters` contains information about the type and semantic of this attribute. This concept has been explained in [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md). Here, the new attribute has the type `GL_FLOAT_VEC2` and defines the semantic to be `"TEXCOORD_0"`. So the data of this attribute will be obtained from the `"TEXCOORD_0"` attribute of the rendered `mesh.primitive`. 
+- The `technique` defines a new attribute called `a_texcoord0`, and the `technique.parameters` contains information about the type and semantic of this attribute. This concept has been explained in [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md). Here, the new attribute has the type `GL_FLOAT_VEC2` and defines the semantic to be `"TEXCOORD_0"`. So the data of this attribute will be obtained from the `"TEXCOORD_0"` attribute of the rendered `mesh.primitive`. 
 - Finally, the `program` lists this new `"a_texcoord0"` attribute, which is a new attribute in its vertex shader.
 
 
@@ -427,7 +427,7 @@ The actual texture data has to be passed to the shader as well. This is accompli
 }
 ```
 
-The `technique` defines a new uniform variable, which is called `u_diffuse`. As shown in [Materials and Techniques](gltfTutorial_012_MaterialsTechniques.md), the type and value of this uniform is defined in the `technique.parameters`. Here, the type is `GL_SAMPLER2D`, and the value of the uniform is the ID of the respective texture - in this case, the `"exampleTexture"` that was added in the `textures` dictionary.
+The `technique` defines a new uniform variable, which is called `u_diffuse`. As shown in [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md), the type and value of this uniform is defined in the `technique.parameters`. Here, the type is `GL_SAMPLER2D`, and the value of the uniform is the ID of the respective texture - in this case, the `"exampleTexture"` that was added in the `textures` dictionary.
 
 
 
@@ -475,4 +475,4 @@ void main(void)
 
 
 
-Previous: [Advanced Material](gltfTutorial_013_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, Samplers](gltfTutorial_015_TexturesImagesSamplers.md)
+Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, Samplers](gltfTutorial_016_TexturesImagesSamplers.md)

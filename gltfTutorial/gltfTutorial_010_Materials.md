@@ -1,4 +1,4 @@
-Previous: [Meshes](gltfTutorial_008_Meshes.md) | [Table of Contents](README.md) | Next: [Simple Material](gltfTutorial_010_SimpleMaterial.md)
+Previous: [Meshes](gltfTutorial_008_Meshes.md) | [Table of Contents](README.md) | Next: [Simple Material](gltfTutorial_011_SimpleMaterial.md)
 
 # Materials
 
@@ -27,13 +27,13 @@ This flexibility comes at a certain cost. Several elements in the glTF asset hav
 
 The following sections will show how these elements are combined and interpreted to finally render a glTF asset. This will start with a simple material, giving a first example of the elements that a material definition consists of, and how these elements are represented in the glTF JSON. Afterwards, these elements will be explained in more detail, showing how they serve as a basis for building advanced materials.
 
-- [A simple material](gltfTutorial_010_SimpleMaterial.md)
-- [Programs and shaders](gltfTutorial_011_ProgramsShaders.md)
-- [Materials and techniques](gltfTutorial_012_MaterialsTechniques.md)
-- [An advanced material](gltfTutorial_013_AdvancedMaterial.md)
-- [A simple texture](gltfTutorial_014_SimpleTexture.md)
-- [Textures, Images and Samplers](gltfTutorial_015_TexturesImagesSamplers.md)
+- [A simple material](gltfTutorial_011_SimpleMaterial.md)
+- [Programs and shaders](gltfTutorial_012_ProgramsShaders.md)
+- [Materials and techniques](gltfTutorial_013_MaterialsTechniques.md)
+- [An advanced material](gltfTutorial_014_AdvancedMaterial.md)
+- [A simple texture](gltfTutorial_015_SimpleTexture.md)
+- [Textures, Images and Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
 
 
 
-Previous: [Meshes](gltfTutorial_008_Meshes.md) | [Table of Contents](README.md) | Next: [Simple Material](gltfTutorial_010_SimpleMaterial.md)
+Previous: [Meshes](gltfTutorial_008_Meshes.md) | [Table of Contents](README.md) | Next: [Simple Material](gltfTutorial_011_SimpleMaterial.md)
