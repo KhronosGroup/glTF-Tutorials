@@ -274,14 +274,14 @@ When rendering this glTF asset, the result will look like the following image:
 
 <p align="center">
 <img src="images/advancedMaterial.png" /><br>
-<a name="advancedMaterial-png"></a>Image 13a: An example for an advanced material, including specular highlights
+<a name="advancedMaterial-png"></a>Image 14a: An example for an advanced material, including specular highlights
 </p>
 
 The right triangle is slightly rotated, to emphasize the effect of the light computation: One can see the specular highlight on this triangle, which is caused by the light being reflected on the triangle surface to point directly at the eye position. This reflection is computed based on the normal of the triangle:
 
 <p align="center">
 <img src="images/advancedMaterialExample.gif" /><br>
-<a name="advancedMaterialExample-gif"></a>Image 13b: The effect of light, normals and additional properties in the advanced material
+<a name="advancedMaterialExample-gif"></a>Image 14b: The effect of light, normals and additional properties in the advanced material
 </p>
 
 The details of the light computations is beyond the scope of this tutorial. This section will only show how the advanced material is encoded as a part of the glTF asset.

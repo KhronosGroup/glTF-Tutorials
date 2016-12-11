@@ -19,7 +19,7 @@ The technique therefore contains `attributes` and `uniforms` dictionaries. The k
 
 <p align="center">
 <img src="images/technique.png" /><br>
-<a name="technique-png"></a>Image 12a: The connection between shader source code and technique parameters
+<a name="technique-png"></a>Image 13a: The connection between shader source code and technique parameters
 </p>
 
 To recall the example from the [simple material](gltfTutorial_011_SimpleMaterial.md), here is an excerpt of the  JSON part that encodes this information:
@@ -71,7 +71,7 @@ A `material` is is an instance of a `technique`, and specifies a set of input va
 
 <p align="center">
 <img src="images/materialAndTechnique.png" /><br>
-<a name="materialAndTechnique-png"></a>Image 12b: Materials and techniques, and how they affect the appearance of objects
+<a name="materialAndTechnique-png"></a>Image 13b: Materials and techniques, and how they affect the appearance of objects
 </p>
 
 
@@ -201,7 +201,7 @@ The exact mechanism for the last step will depend on the graphics API. For WebGL
 
 <p align="center">
 <img src="images/meshPrimitiveMaterial.png" /><br>
-<a name="meshPrimitiveMaterial-png"></a>Image 12c: Connection between the mesh primitive, the material and the technique
+<a name="meshPrimitiveMaterial-png"></a>Image 13c: Connection between the mesh primitive, the material and the technique
 </p>
 
 

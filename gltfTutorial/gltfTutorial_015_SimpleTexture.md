@@ -303,14 +303,14 @@ The actual image that the texture consists of is stored as a PNG file called `"t
 
 <p align="center">
 <img src="images/testTexture.png" /><br>
-<a name="testTexture-png"></a>Image 14a: The image for the simple texture example
+<a name="testTexture-png"></a>Image 15a: The image for the simple texture example
 </p>
 
 Bringing this all together in a renderer will result in the following rendered scene:
 
 <p align="center">
 <img src="images/simpleTexture.png" /><br>
-<a name="simpleTexture-png"></a>Image 14b: A simple texture on a unit square
+<a name="simpleTexture-png"></a>Image 16b: A simple texture on a unit square
 </p>
 
 ## Texture, image and sampler objects

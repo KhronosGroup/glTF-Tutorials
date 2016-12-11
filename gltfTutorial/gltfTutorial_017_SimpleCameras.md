@@ -131,7 +131,7 @@ The geometry in this asset is a simple unit square. It is rotated by -45 degrees
 
 <p align="center">
 <img src="images/cameras.png" /><br>
-<a name="cameras-png"></a>Image 16a: The effect of rendering the scene with different cameras
+<a name="cameras-png"></a>Image 17a: The effect of rendering the scene with different cameras
 </p>
 
 

@@ -177,7 +177,7 @@ When rendering this asset, it will show the triangle with a new material:
 
 <p align="center">
 <img src="images/triangleWithSimpleMaterial.png" /><br>
-<a name="triangle-png"></a>Image 9a: A triangle with a simple material
+<a name="triangle-png"></a>Image 11a: A triangle with a simple material
 </p>
 
 

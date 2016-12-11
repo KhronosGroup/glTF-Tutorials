@@ -35,7 +35,7 @@ Together, the elements of these acessors define all attributes that belong to th
 
 <p align="center">
 <img src="images/meshPrimitiveAttributes.png" /><br>
-<a name="meshPrimitiveAttributes-png"></a>Image 8b: Mesh primitive accessors containing the data of vertices
+<a name="meshPrimitiveAttributes-png"></a>Image 9a: Mesh primitive accessors containing the data of vertices
 </p>
 
 

@@ -1,9 +1,9 @@
-Previous: [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_006_Animations.md)
+Previous: [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_007_Animations.md)
 
 
 # A simple animation
 
-As shown in the previous section about [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md), each node can have a local transform. This transform can either be given by the `matrix` property of the node, or using the `translation`, `rotation` and `scale` (TRS) properties.
+As shown in the section about [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md), each node can have a local transform. This transform can either be given by the `matrix` property of the node, or using the `translation`, `rotation` and `scale` (TRS) properties.
 
 When the transform is given by the TRS properties, an [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation) can be used to describe how the `translation`, `rotation` or `scale` of a node changes over time.
 
@@ -130,7 +130,7 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
 
 <p align="center">
 <img src="images/animatedTriangle.gif" /><br>
-<a name="animatedTriangle-gif"></a>Image 5a: A single, animated triangle
+<a name="animatedTriangle-gif"></a>Image 6a: A single, animated triangle
 </p>
 
 
@@ -268,4 +268,4 @@ A more detailed description and actual examples for the interpolation and the co
 
 
 
-Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_006_Animations.md)
+Previous: [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) | [Table of Contents](README.md) | Next: [Animations](gltfTutorial_007_Animations.md)
