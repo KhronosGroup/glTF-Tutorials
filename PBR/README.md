@@ -1,10 +1,12 @@
 # Physically-Based Rendering: From Theory to glTF
-### Mohamad Moneimne, University of Pennsylvania
+Mohamad Moneimne, University of Pennsylvania
 
 ## What is PBR?
 Physically-Based Rendering (PBR) refers to techniques that attempt to simulate light in order to render photorealistic images. As indicated by the name, these techniques focus on our understanding of physics to model how light interacts with surfaces that have different physical properties. Since these interactions happen on a very fine level, PBR techniques often use statistical models to add realism and complexity to renders.
 
 PBR has been around for several years now, but was initially too computationally expensive to be a viable option for real-time applications. However, with the continuous advancement of computing power, it has increasingly become an industry standard in real-time graphics. In fact, much of the real-time software we see today such as Unreal Engine 4, Unity 5, Frostbite, and many others use physically-based rendering techniques to provide their users with the ability to create highly realistic 3D scenes.
+
+The goal of this article is to provide some intuition behind PBR theory and cover a bit of the mathematical foundation before discussing the relationship between PBR and glTF.
 
 <img src=https://www.marmoset.co/wp-content/uploads/2014/01/layering01.jpg></img>
 From Marmoset Toolbag Tutorials: [Physically-Based Rendering, And You Can Too!](https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/), by Joe "Earthquake" Wilson
@@ -70,7 +72,7 @@ These are approximated using the following terms...
     and Fresnel reflectance is modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**.
 
 ## Are all surfaces the same roughness?
-It is very useful to be able to show the roughness or smoothness of a surface without having to directly create the geometry or provide a bump map. Instead, surfaces can be modeled as a collection of small **microfacets** where the more rough a surface is, the more jagged microfacets it has. These microfacets can be thought of as small ridges on the surface of an object, varying the surface normal on a very fine level, which adds a lot of realism to rendered images. The distribution of microfacets on a surface can be described using a statistical model, examples of which include the Oren-Nayar model, the Torrance-Sparrow model, and the Blinn Microfacet Distribution model.
+It is very useful to be able to show the roughness or smoothness of a surface without having to directly create the geometry or provide a bump map. Instead, surfaces can be modeled as a collection of small **microfacets** where the more rough a surface is, the more jagged microfacets it has. These microfacets can be thought of as small ridges on the surface of an object, varying the surface normal on a very fine level, which adds a lot of realism to rendered images. The distribution of microfacets on a surface can be described using a statistical model, examples of which include the [Oren-Nayar model](http://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf), the [Torrance-Sparrow model](http://www.graphics.cornell.edu/~westin/pubs/TorranceSparrowJOSA1967.pdf), and the [Blinn Microfacet Distribution model](http://dl.acm.org/citation.cfm?id=563858.563893).
 
 With knowledge of these microfacets, we can simulate some interesting geometric interactions between light and adjacent ridges. Consider the following three scenarios:
 
@@ -94,11 +96,11 @@ To get a better idea of what we can create with this abstraction, here is a list
 * **Dyed Glass** - Specular reflection and transmission as in clear glass, but with added diffuse reflection to account for the color
 
 ## Where does glTF come in?
-As you may know, glTF is a 3D file format that is increasingly becoming a standard in the CG community. It has the capability to encode everything in a 3D scene including meshes, cameras, lights, joint hierarchies, samples, and materials. This means that glTF can give many software applications, such as game engines and modeling software, the capability of importing and exporting entire scenes by using a single file type. 
+As you may know, [glTF](https://www.khronos.org/gltf) is a 3D file format that allows efficient transmission and loading of 3D scenes, including materials.
 
-However, with the rise in demand for PBR materials within these applications, it has become clear that there is no consistency in the language used to describe these materials. For example, the parameters for physically-based materials used in Unreal Engine 4 are base color, roughness, metallic, and specular while Marmoset uses albedo, microsurface, and reflectivity. This creates a language barrier between artists and developers who use different applications and makes it difficult for users to switch easily between them. 
+With the rise in demand for PBR materials within realtime applications, it has become clear that there is little consistency in the language used to describe these materials. For example, the parameters for physically-based materials used in Unreal Engine 4 are base color, roughness, metallic, and specular while Marmoset uses albedo, microsurface, and reflectivity. This creates a language barrier between artists and developers who use different applications and makes it difficult for users to import and export files easily between them.
 
-With this in mind, glTF can become the meeting point for all of these applications and unify the language that the CG community uses to discuss physically-based materials, all while giving graphics applications the capability to efficiently transmit high-quality 3D scenes.
+With this in mind, glTF aims to bring PBR to runtime engines in a consistent way that is simple to implement and sufficient for most use cases. This allows developers to reuse exporters and pipeline tools instead of creating application-specific ones. 
 
 ## References
 * [_Physically-Based Rendering, And You Can Too!_](https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/), by Joe "Earthquake" Wilson
