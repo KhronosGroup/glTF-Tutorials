@@ -1,5 +1,5 @@
 # Physically-Based Rendering: From Theory to glTF
-
+### Mohamad Moneimne, University of Pennsylvania
 
 ## What is PBR?
 Physically-Based Rendering (PBR) refers to techniques that attempt to simulate light in order to render photorealistic images. As indicated by the name, these techniques focus on our understanding of physics to model how light interacts with surfaces that have different physical properties. Since these interactions happen on a very fine level, PBR techniques often use statistical models to add realism and complexity to renders.
