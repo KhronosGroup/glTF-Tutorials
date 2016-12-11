@@ -32,7 +32,7 @@ There are four general surface types with reflection distribution functions (BRD
 * **Perfect specular** – surfaces that scatter light in a single outgoing direction such that the angle of incident light is equal to the outgoing light with respect to the surface normal (ex: perfect reflection of mirrors)
 * **Retro-reflective** – surfaces that scatter light primarily back along the incident direction of the light source (ex: specular highlights on velvet)
 
-<img src="src_images/BRDFs.png"></img>
+<img src="figures/BRDFs.png"></img>
 
 However, it is highly unlikely that a surface in reality will follow only one of these models. Because of this, most materials can be modeled as a complex mix of these.
 
@@ -45,7 +45,7 @@ The types of reflection distributions also apply to transmission (excluding retr
 
 To discuss how this differs from reflection, consider a single light ray that has passed through a surface, as in the case of perfect specular transmission. For perfect specular transmission, the angle at which the light continues to propagate depends on the **index of refraction** of the medium. This follows **Snell’s Law**, which is described using the equation **_n<sub>1</sub>θ<sub>1</sub> = n<sub>2</sub>θ<sub>2</sub>_**.
 
-<img src="src_images/BTDFs.png" width="300" height="237"></img>
+<img src="figures/BTDFs.png" width="300" height="237"></img>
 
 where _n_ is the index of refraction of the first and second media and _θ_ is the angle of the light with respect to the normal as it hits then passes through the surface. This means that if the indices of refraction of both media are the same, then light continues perfectly straight. However, if the indices are different, light will bend in a different direction once passing on to the next medium. A good example of this is how light moving from the air into water gets bent, causing distortions in what we see in the water.
 
@@ -57,7 +57,7 @@ It is important for physically-based renderers to know how much light is reflect
 These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
 * **Dielectrics**: These are media such as glass, plastic, and ceramics, that transmit electricity without conducting (i.e. insulators). We can approximate the amount of energy that is reflected and transmitted by these surfaces using the following equations...
 
-    <img src="src_images/Fresnel_Dielectric.JPG" width="240" height="150"></img>
+    <img src="figures/Fresnel_Dielectric.JPG" width="240" height="150"></img>
 
     where _r<sub>||</sub>_ is the Fresnel reflectance for parallel polarized light and _r<sub>⟂</sub>_ is the reflectance for perpendicular polarized light. The subscripts correspond to incident (_i_) and transmitted (_t_) directions.
 For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**. Then, due to conservation of energy, Fresnel transmittance can be modeled as **_F<sub>t</sub> = 1 - F<sub>r</sub>_**.
@@ -65,7 +65,7 @@ For unpolarized light, Fresnel reflectance can be modeled as **_F<sub>r</sub> = 
 * **Conductors**: These are media such that transmit heat and electricity with a certain capacity. Some examples include most (but not all) metals such as copper, silver, and gold. Unlike dielectrics, conductors don’t transmit light. Instead, they absorb some of the incident light, which gets transferred into heat. The amount of absorbed light is described using an **absorption coefficient**, _k_, for the conductor.
 These are approximated using the following terms...
 	
-	<img src="src_images/Fresnel_Conductor.JPG" width="300" height="150"></img>
+	<img src="figures/Fresnel_Conductor.JPG" width="300" height="150"></img>
 
     and Fresnel reflectance is modeled as **_F<sub>r</sub> = 0.5(r<sub>||</sub><sup>2</sup> + r<sub>⟂</sub><sup>2</sup>)_**.
 
@@ -78,7 +78,7 @@ With knowledge of these microfacets, we can simulate some interesting geometric 
 2. An adjacent microfacet can block incoming light, causing **shadowing**.
 3. An adjacent microfacet can reflect light coming from the reflection of another, causing **interreflection**.
 
-<img src="src_images/Masking.png" width="290" height="217"></img><img src="src_images/Shadowing.png" width="290" height="217"></img><img src="src_images/Interreflection.jpg" width="290" height="217"></img>
+<img src="figures/Masking.png" width="290" height="217"></img><img src="figures/Shadowing.png" width="290" height="217"></img><img src="figures/Interreflection.jpg" width="290" height="217"></img>
 
 Simulating these three phenomena can help augment the realism of roughness on a surface.
 
