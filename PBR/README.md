@@ -22,7 +22,7 @@ BSDF sounds like a very complicated term for what it actually means, so let’s 
 * Finally, the details for how light scatters can be described using **distribution functions**, which entail how light is likely to be distributed in certain directions based on the physical properties of the surface. This can be anything from an equal scatter in all directions to a perfect reflection in a single direction.
 
 To help better understand the kinds of BSDFs that occur, we can consider two general types...
-* **BRDFs** (Bidirectional Reflectance Distribution Functions) specifically correspond to BSDFs that describe how light is _reflected_ from a surface. This reflected light refers to the colors we see coming directly from a surface. At this point, it is normal to ask something along the lines of the following: If I shine a white light at a banana, why does it appear yellow instead of white? This is because not all light is just reflected from a surface. While surfaces reflect light of certain colors (wavelengths), they absorb or transmit the remaining energy. For bananas, red and green light is reflected while blue light is absorbed.
+* **BRDFs** (Bidirectional Reflectance Distribution Functions) specifically correspond to BSDFs that describe how light is _reflected_ from a surface. This reflected light refers to the colors we see coming directly from a surface. At this point, it is normal to ask something along the lines of the following: If I shine a white light at a banana, why does it appear yellow instead of white? This is because not all light is just reflected from a surface. While surfaces reflect light of certain colors (wavelengths), they absorb or transmit the remaining energy. For bananas, wavelengths in the yellow spectrum are mainly reflected while other wavelengths are absorbed.
 * **BTDFs** (Bidirectional Transmittance Distribution Functions) specifically correspond to BSDFs that describe how light is _transmitted_ through a surface. This can be seen in examples such as glass and plastics where we can see light that has traveled through the surface.
 
 There exist other types of density functions that account for effects such as subsurface scattering (the effect in which light enters a material and bounces around before exiting again in some other position and direction).
@@ -54,7 +54,7 @@ where _n_ is the index of refraction of the first and second media and _θ_ is t
 This is unlike perfect specular _reflection_ where the incident angle will always be equal to the outgoing angle.
 
 ## How much light is reflected and transmitted?
-It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. It is a combination of these effects that describe substances such as honey and dyed glass that both have color and can be seen through. 
+It is important for physically-based renderers to know how much light is reflected or transmitted on a surface. It is a combination of these effects that describe substances such as honey and stained glass that both have color and can be seen through. 
 
 These amounts are directly related to each other and described by the **Fresnel equations**. The equations are described for two types of media, _dielectrics_ and _conductors_. 
 * **Dielectrics**: These are media such as glass, plastic, and ceramics, that transmit electricity without conducting (i.e. insulators). We can approximate the amount of energy that is reflected and transmitted by these surfaces using the following equations...
@@ -93,7 +93,7 @@ To get a better idea of what we can create with this abstraction, here is a list
 * **Mirror** - Perfect specular reflection
 * **Metal** - Diffuse and specular reflections described by the Fresnel equations for conductors
 * **Clear Glass** - A combination of specular reflection and transmission
-* **Dyed Glass** - Specular reflection and transmission as in clear glass, but with added diffuse reflection to account for the color
+* **Stained Glass** - Specular reflection and transmission as in clear glass, but with added diffuse reflection to account for the color
 
 ## Where does glTF come in?
 As you may know, [glTF](https://www.khronos.org/gltf) is a 3D file format that allows efficient transmission and loading of 3D scenes, including materials.
