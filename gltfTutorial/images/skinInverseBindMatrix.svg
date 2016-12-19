@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="skinInverseBindMatrix01.svg">
+   sodipodi:docname="skinInverseBindMatrix.svg">
   <defs
      id="defs4">
     <marker
@@ -100,9 +100,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="352.68477"
-     inkscape:cy="750.23038"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="453.7981"
+     inkscape:cy="684.93924"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -111,9 +111,9 @@
      inkscape:snap-intersection-paths="true"
      inkscape:object-paths="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1031"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
+     inkscape:window-height="1147"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -353,20 +353,32 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       x="474.40109"
+       x="428.40109"
        y="131.69913"
        id="text5932"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan5934"
-         x="474.40109"
+         x="428.40109"
          y="131.69913"
-         style="font-size:15px">Geometry in the space </tspan><tspan
+         style="font-size:15px">Geometry transformed with the</tspan><tspan
          sodipodi:role="line"
-         x="474.40109"
+         x="428.40109"
          y="150.44913"
          style="font-size:15px"
-         id="tspan6134">of joint node 1:</tspan></text>
+         id="tspan4273"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
+   id="tspan4285">inverseBindMatrix</tspan> of joint 1, </tspan><tspan
+         sodipodi:role="line"
+         x="428.40109"
+         y="170.37073"
+         style="font-size:15px"
+         id="tspan4265">prepared for transforming it </tspan><tspan
+         sodipodi:role="line"
+         x="428.40109"
+         y="189.12073"
+         style="font-size:15px"
+         id="tspan4271">into the space of joint node 1</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"

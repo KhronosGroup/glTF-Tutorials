@@ -95,7 +95,11 @@ Different combinations of these properties may be used to describe arbitrary dat
 },
 ```
 
-The first accessor refers to the `"indicesBufferView"`, its `type` is `"SCALAR"`, and its `componentType` is `5123` (`GL_UNSIGNED_SHORT`). This means that the indices are stored as scalar `unsigned short` values. The second accessor refers to the `"positionsBufferView"`. Its `type` is `"VEC3"`, and its `componentType` is  `5126` (`GL_FLOAT`). So this accessor describes 3D vectors with floating point components. The following image illustrates how the raw data of a `buffer` is structured using `bufferView` objects, and augmented with data type information using `accessor` objects:
+The first accessor refers to the `"indicesBufferView"`, its `type` is `"SCALAR"`, and its `componentType` is `5123` (`GL_UNSIGNED_SHORT`). This means that the indices are stored as scalar `unsigned short` values.
+
+The second accessor refers to the `"positionsBufferView"`. Its `type` is `"VEC3"`, and its `componentType` is  `5126` (`GL_FLOAT`). So this accessor describes 3D vectors with floating point components.
+
+The following image illustrates how the raw data of a `buffer` is structured using `bufferView` objects, and augmented with data type information using `accessor` objects:
 
 <p align="center">
 <img src="images/bufferBufferViewAccessor.png" /><br>
@@ -116,7 +120,7 @@ Each accessor may also define `byteOffset` and `byteStride` properties. These pr
 
 ### Data contents
 
-An `accessor` also contains `min` and `max` properties that summarize the contents of their data. They are the component-wise minimun and maximum values of all data elements that are contained in the accessor. For the case of vertex positions, the `min` and `max` properties thus define the *bounding box* of an object. This can be useful for prioritizing downloads, or for visibility detection. In general, this information is also useful for storing and processing *quantized* data that is dequantized at runtime, by the renderer, but details of this quantization are beyond the scope of this tutorial.
+An `accessor` also contains `min` and `max` properties that summarize the contents of their data. They are the component-wise minimum and maximum values of all data elements that are contained in the accessor. For the case of vertex positions, the `min` and `max` properties thus define the *bounding box* of an object. This can be useful for prioritizing downloads, or for visibility detection. In general, this information is also useful for storing and processing *quantized* data that is dequantized at runtime, by the renderer, but details of this quantization are beyond the scope of this tutorial.
 
 
 Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Simple Animation](gltfTutorial_006_SimpleAnimation.md)

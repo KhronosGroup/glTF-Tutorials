@@ -4,7 +4,7 @@ Previous: [Advanced Material](gltfTutorial_016_TexturesImagesSamplers.md) | [Tab
 
 The previous sections showed how a basic scene structure with geometric objects is represented in a glTF asset, and how different materials can be applied to these objects. This did not yet include information about the view configuration that should be used for rendering the scene. This view configuration is usually described as a virtual *camera* that is contained in the scene, at a certain position, and pointing in a certain direction.
 
-The following is a simple, complete glTF asset. It is similar to the assets that have already been shown: It defines a simple `scene`, containing `node` objects, and a single geometric object that is given as a `mesh`, attached to one of the nodes. But this asset additional contains two [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera) objects:
+The following is a simple, complete glTF asset. It is similar to the assets that have already been shown: It defines a simple `scene`, containing `node` objects, and a single geometric object that is given as a `mesh`, attached to one of the nodes. But this asset additionally contains two [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera) objects:
 
 
 ```javascript
@@ -178,7 +178,7 @@ When a camera object has been defined, it may be attached to a `node`. This is a
 },
 ```
 
-The differences between perspective and orthographic cameras and their properties, the effect of attaching the cameras to the nodes, and the management of multiple cameras will be explained in detail in the following [Cameras](gltfTutorial_018_Cameras.md) section. 
+The differences between perspective and orthographic cameras and their properties, the effect of attaching the cameras to the nodes, and the management of multiple cameras will be explained in detail in the following [Cameras](gltfTutorial_018_Cameras.md) section.
 
 
 

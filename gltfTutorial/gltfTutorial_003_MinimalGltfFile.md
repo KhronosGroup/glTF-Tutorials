@@ -70,7 +70,7 @@ The following is a minimal but complete glTF asset, containing a single triangle
     }
   },
   "asset" : {
-    "version" : "1.0"
+    "version" : "1.1"
   }
 }
 ```

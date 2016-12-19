@@ -64,7 +64,7 @@ In order to compute the value of the translation for the current animation time,
 
     `nextTranslation` = The element from the `translationAccessor` that corresponds to the `nextTime`
 
-* Compute the interpolation value. This is a value betwenn 0.0 and 1.0, that describes the *relative* position of the `currentTime`, between the `previousTime` and the `nextTime`:
+* Compute the interpolation value. This is a value between 0.0 and 1.0, that describes the *relative* position of the `currentTime`, between the `previousTime` and the `nextTime`:
 
     `interpolationValue = (currentTime - previousTime) / (nextTime - previousTime)`
 
@@ -94,7 +94,7 @@ The interpolation value can be computed:
 
 From the interpolation value, the current translation can be computed:
 
-    currentTranslation = previousTranslation + interpolationValue * (nextTranslation - previousTranslation)`
+    currentTranslation = previousTranslation + interpolationValue * (nextTranslation - previousTranslation)
                        = (14.0, 3.0, -2.0) + 0.5 * ( (18.0, 1.0,  1.0) - (14.0, 3.0, -2.0) )
                        = (14.0, 3.0, -2.0) + 0.5 * (4.0, -2.0, 3.0)
                        = (16.0, 2.0, -0.5)

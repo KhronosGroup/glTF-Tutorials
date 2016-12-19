@@ -3,8 +3,8 @@ Previous: [Simple Material](gltfTutorial_011_SimpleMaterial.md) | [Table of Cont
 
 # Programs and Shaders
 
-The rendering process in OpenGL or WebGL is described with so-called shader programs. These are small programs that are written in [GLSL, the OpenGL shading language](https://www.opengl.org/documentation/glsl/). This section will give a short summary of the concept of shader programs in the context of glTF. For a general introduction or further details, dedicated tutorials should be consulted - for example, at [webglfundamentals.org](http://webglfundamentals.org/webgl/lessons/webgl-shaders-and-glsl.html) or [open.gl](https://open.gl/drawing#Shaders). 
-  
+The rendering process in OpenGL or WebGL is described with so-called shader programs. These are small programs that are written in [GLSL, the OpenGL shading language](https://www.opengl.org/documentation/glsl/). This section will give a short summary of the concept of shader programs in the context of glTF. For a general introduction or further details, dedicated tutorials should be consulted - for example, at [webglfundamentals.org](http://webglfundamentals.org/webgl/lessons/webgl-shaders-and-glsl.html) or [open.gl](https://open.gl/drawing#Shaders).
+
 
 ### Shaders
 
@@ -65,7 +65,7 @@ void main(void)
 }
 ```
 
-The attributes and the uniforms of the vertex- and the fragment shader together define the whole set of input parameters for the rendering process. Later, it will be shown how the actual values for these input parameters are derived from the asset description in the glTF JSON.
+The attributes and the uniforms of the vertex- and the fragment shader together define the main input parameters for the rendering process. Later, it will be shown how the actual values for these input parameters are derived from the asset description in the glTF JSON, and how additional rendering settings may be stored in a `technique`.
 
 
 

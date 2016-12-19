@@ -2,12 +2,11 @@ Previous: [Materials](gltfTutorial_010_Materials.md) | [Table of Contents](READM
 
 # A simple material
 
-The examples of glTF assets that have been given in the previous sections contained a basic scene structure and
-simple geometric objects. But they did not contain information about the appearance of the objects. When no such information is given, viewers are encouraged to render the objects with a "default" material. And as shown in the screenshot of the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md), this default material causes the object to be rendered with a uniformly gray color. (The technical details of this default material are described in the [Appendix A: Default Material](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#appendix-a-default-material) of the specification).
+The examples of glTF assets that have been given in the previous sections contained a basic scene structure and simple geometric objects. But they did not contain information about the appearance of the objects. When no such information is given, viewers are encouraged to render the objects with a "default" material. And as shown in the screenshot of the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md), this default material causes the object to be rendered with a uniformly gray color. (The technical details of this default material are described in the [Appendix A: Default Material](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#appendix-a-default-material) of the specification).
 
-This section will start with an example of a very simple material. It is similar to the default material, and only allows changing the color of a rendered object. The basic concepts of materials will be summarized here, and explained in more detail in the remaining sections.
+This section will start with an example of a very simple material. It is similar to the default material, and only allows changing the color of a rendered object. The basic concepts of materials will be summarized here, and explained in more detail in the following sections.
 
-The following is a minimal glTF asset with such a simple material:
+This is a minimal glTF asset with such a simple material:
 
 ```javascript
 {
@@ -139,7 +138,7 @@ The following is a minimal glTF asset with such a simple material:
 }
 ```      
 
-Note that this time, the file refers to additional, external resources: The `shader` objects contain URIs that refer to the following files, which will also be exlained later, but are shown here for completeness:
+Note that this time, the file refers to additional, external resources: The `shader` objects contain URIs that refer to the following files, which will also be explained later, but are shown here for completeness:
 
 The file `simple.vert` contains the source code of the vertex shader:
 

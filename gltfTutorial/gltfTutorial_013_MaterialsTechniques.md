@@ -15,7 +15,7 @@ A `technique` is a description of a rendering process. It summarizes a set of pa
 The technique therefore contains `attributes` and `uniforms` dictionaries. The keys of these dictionaries are the variable names of the attributes and uniforms of the shaders. The values of these dictionaries refer to the [`parameters`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.parameters) dictionary of the technique. These `technique.parameters` define the types of the parameters, and how the values of the parameters are obtained. So for each `attribute` and `uniform` of the shader program, there is a `technique.parameters` entry that defines the type that the variable in the shader program has:
 
 
-# TODO This may have to be updated, see https://github.com/KhronosGroup/glTF/issues/789
+**TODO: This may have to be updated, see https://github.com/KhronosGroup/glTF/issues/789**
 
 <p align="center">
 <img src="images/technique.png" /><br>
@@ -67,7 +67,7 @@ The entry in the `uniforms` dictionary of the `technique` says that one of the s
 
 ## Materials
 
-A `material` is is an instance of a `technique`, and specifies a set of input values for the `technique.parameters`. Several materials may be created by instantiating `material` objects with the same `technique`, but different parameter values.  
+A `material` is an instance of a `technique`, and specifies a set of input values for the `technique.parameters`. Several materials may be created by instantiating `material` objects with the same `technique`, but different parameter values.  
 
 <p align="center">
 <img src="images/materialAndTechnique.png" /><br>
@@ -189,6 +189,9 @@ There are many different possible semantics for `uniform` parameters. These are 
 In the example above, the technique says that the `"positionParameter"` has the type `35665`, which stands for `GL_FLOAT_VEC3`, and the semantic `"POSITION"`. This means that when a `mesh.primitive` is rendered with this technique, then this `mesh.primitive` must contain an attribute with this type and name, as described in the section about [mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes).
 
 When a `mesh.primitive` is rendered with this technique, then the information about the attribute semantics will be processed as follows:
+
+**TODO: This may have to be updated, see https://github.com/KhronosGroup/glTF/issues/789**
+
 
 - The entries in the `technique.attributes` dictionary are examined
 - The `a_position` entry is found. This means that the vertex shader of the program of the technique has an `attribute` variable with exactly this name: `a_position`

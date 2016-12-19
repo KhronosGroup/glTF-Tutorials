@@ -310,7 +310,7 @@ Bringing this all together in a renderer will result in the following rendered s
 
 <p align="center">
 <img src="images/simpleTexture.png" /><br>
-<a name="simpleTexture-png"></a>Image 16b: A simple texture on a unit square
+<a name="simpleTexture-png"></a>Image 15b: A simple texture on a unit square
 </p>
 
 ## Texture, image and sampler objects
@@ -386,7 +386,7 @@ Summarizing from the previous sections:
 
 - The `mesh.primitive` contains an additional attribute, as shown in [Meshes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes). The attribute is called `"TEXCOORD_0"`, and refers to the `accessor` with the ID `"texCoordsAccessor"` that provides the texture coordinates
 - The `"texCoordsAccessor"` provides access to the texture coordinate data. The properties of this accessor are explained in [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors), and here, they indicate that the texture coordinates are 2D vectors consisting of floating point values.
-- The `technique` defines a new attribute called `a_texcoord0`, and the `technique.parameters` contains information about the type and semantic of this attribute. This concept has been explained in [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md). Here, the new attribute has the type `GL_FLOAT_VEC2` and defines the semantic to be `"TEXCOORD_0"`. So the data of this attribute will be obtained from the `"TEXCOORD_0"` attribute of the rendered `mesh.primitive`. 
+- The `technique` defines a new attribute called `a_texcoord0`, and the `technique.parameters` contains information about the type and semantic of this attribute. This concept has been explained in [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md). Here, the new attribute has the type `GL_FLOAT_VEC2` and defines the semantic to be `"TEXCOORD_0"`. So the data of this attribute will be obtained from the `"TEXCOORD_0"` attribute of the rendered `mesh.primitive`.
 - Finally, the `program` lists this new `"a_texcoord0"` attribute, which is a new attribute in its vertex shader.
 
 

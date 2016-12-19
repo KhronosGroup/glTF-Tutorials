@@ -87,7 +87,7 @@ A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#refe
 }
 ```
 
-This binary data is just a raw block of memory that is read from the URI of the `buffer`, with no inherent meaning or structure. The section about [Buffers, BufferViews and Accessors](gltfTutorial_007_BuffersBufferViewsAccessors.md) will show how this raw data is extended with information about data types and the data layout. With this information, one part of the data may, for example, be interpreted as animation data, and another part may be interpreted as geometry data. Storing the data in a binary form allows it to be transferred over the web much more efficiently than in the JSON format, and the binary data can be passed directly to the renderer without having to decode or pre-process it. 
+This binary data is just a raw block of memory that is read from the URI of the `buffer`, with no inherent meaning or structure. The section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) will show how this raw data is extended with information about data types and the data layout. With this information, one part of the data may, for example, be interpreted as animation data, and another part may be interpreted as geometry data. Storing the data in a binary form allows it to be transferred over the web much more efficiently than in the JSON format, and the binary data can be passed directly to the renderer without having to decode or pre-process it. 
 
 
 

@@ -5,14 +5,14 @@ Previous: [Simple Meshes](gltfTutorial_008_SimpleMeshes.md) | [Table of Contents
 The [Simple Meshes](gltfTutorial_008_SimpleMeshes.md) example from the previous section showed a basic example of a [`mesh`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-mesh) with a [`mesh.primitive`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-mesh.primitive) object that contained several attributes. This section will explain the meaning and usage of mesh primitives, how meshes may be attached to nodes of the scene graph, and how they can be rendered with different materials.
 
 
-## Mesh primitives 
+## Mesh primitives
 
 Each `mesh` contains an array of `mesh.primitive` objects. These mesh primitive objects are smaller parts or building blocks of a larger object. Such a mesh primitive summarizes all information about how the respective part of the object will be rendered.
 
 
 ### Mesh primitive attributes
 
-A mesh primitive defines the geometry data of the object, using its `attributes` dictionary. This geometry data is given by references to `accessor` objects that contain the data of vertex attributes. The details of the `accessor`s have been explained in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md).
+A mesh primitive defines the geometry data of the object, using its `attributes` dictionary. This geometry data is given by references to `accessor` objects that contain the data of vertex attributes. The details of the `accessor` concept have been explained in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md).
 
 In the given example, there are three entries in the `attributes` dictionary. The entries refer to the `positionsAccessor`, the `normalsAccessor` and the `texCoordsAccessor`:
 
@@ -31,7 +31,7 @@ In the given example, there are three entries in the `attributes` dictionary. Th
 },
 ```
 
-Together, the elements of these acessors define all attributes that belong to the individual vertices, as shown in this image:
+Together, the elements of these accessors define all attributes that belong to the individual vertices, as shown in this image:
 
 <p align="center">
 <img src="images/meshPrimitiveAttributes.png" /><br>
@@ -48,7 +48,7 @@ The geometry data of a `mesh.primitive` may either be *indexed* geometry, or geo
 
 By default, the geometry data is assumed to describe a triangle mesh. For the case of *indexed* geometry, this means that three consecutive elements of the `indices` accessor are assumed to contain the indices of a single triangle. For non-indexed geometry, three elements of the vertex attribute accessors are assumed to contain the attributes of the three vertices of a triangle.
 
-Different other rendering modes are possible: The geometry data may also describe individual points, lines or triangle strips. This is indicated by the `mode` that may be stored in the mesh primitive: Its value is a constant that indicates how the geometry data has to be interpreted. The mode may, for example, be `0` when the geometry consists of points, or `4` when it consists of triangles. See [the `primitive.mode` specification](https://github.com/KhronosGroup/glTF/tree/master/specification#primitivemode) for a list of available modes.
+Different other rendering modes are possible: The geometry data may also describe individual points, lines or triangle strips. This is indicated by the `mode` that may be stored in the mesh primitive: Its value is a constant that indicates how the geometry data has to be interpreted. The mode may, for example, be `0` when the geometry consists of points, or `4` when it consists of triangles. These constants correspond to the GL constants `GL_POINTS` or `GL_TRIANGLES`, respectively. See [the `primitive.mode` specification](https://github.com/KhronosGroup/glTF/tree/master/specification#primitivemode) for a list of available modes.
 
 ### Mesh primitive material
 
@@ -57,7 +57,7 @@ The mesh primitive may also refer to the `material` that should be used for rend
 
 ## Meshes attached to nodes
 
-In the example from the [Simple Meshes](gltfTutorial_008_SimpleMeshes.md) section, there is a single `scene`, and this scene contains two node, and they both nodes refer to the same `mesh` instance, which is called `"mesh0"`:
+In the example from the [Simple Meshes](gltfTutorial_008_SimpleMeshes.md) section, there is a single `scene`, and this scene contains two nodes, and they both nodes refer to the same `mesh` instance, which is called `"mesh0"`:
 
 ```javascript
   "scenes" : {

@@ -211,7 +211,7 @@ varying vec3 v_normal;
 
 varying vec3 v_light0Direction;
 
-void main(void) 
+void main(void)
 {
     vec4 pos = u_modelViewMatrix * vec4(a_position, 1.0);
     v_normal = u_normalMatrix * a_normal;
@@ -239,7 +239,7 @@ uniform float u_shininess;
 
 varying vec3 v_light0Direction;
 
-void main(void) 
+void main(void)
 {
     vec3 normal = normalize(v_normal);
     vec4 color = vec4(0.0, 0.0, 0.0, 0.0);
@@ -333,7 +333,7 @@ These parameters are the basis for a simple implementation of the [`Phong reflec
 },
 ```
 
-The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue and alpha components of the colors. They all have default values that are directly passed to the renderer, as show in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
+The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue and alpha components of the colors. They all have default values that are directly passed to the renderer, as shown in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
 
 
 ## The `normals` attribute

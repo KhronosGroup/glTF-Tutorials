@@ -136,7 +136,7 @@ When any of the three properties is not given, then the identity matrix will be 
 
 Regardless of the representation in the JSON file, the local transform of a node can be stored as a 4x4 matrix. The *global* transform of a node is given by the product of all local transforms on the path from the root to the respective node:
 
-                         local transform      global transform
+    Structure:           local transform      global transform
     root                 R                    R
      +- nodeA            A                    R*A
          +- nodeB        B                    R*A*B
