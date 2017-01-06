@@ -1,8 +1,8 @@
-Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
+Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
 
-# A simple texture
+# A Simple Texture
 
-The materials that have been shown in the previous sections contained different parameters for defining the color of the materials or the overall appearance of the material under the influence of light. One important part for a more realistic appearance of models has been missing so far: Textures.
+The materials shown in the previous sections contained different parameters for defining the color of the materials or the overall appearance of the material under the influence of light. One important aspect for a more realistic appearance has been missing so far: textures.
 
 The following is a glTF asset that defines a material with a simple, single texture:
 
@@ -299,27 +299,27 @@ void main(void)
 }
 ```
 
-The actual image that the texture consists of is stored as a PNG file called `"testTexture.png"`:
+The actual image that the texture consists of is stored as a PNG file called `"testTexture.png"` (see Image 15a).
 
 <p align="center">
 <img src="images/testTexture.png" /><br>
-<a name="testTexture-png"></a>Image 15a: The image for the simple texture example
+<a name="testTexture-png"></a>Image 15a: The image for the simple texture example.
 </p>
 
-Bringing this all together in a renderer will result in the following rendered scene:
+Bringing this all together in a renderer will result in the scene rendered in Image 15b.
 
 <p align="center">
 <img src="images/simpleTexture.png" /><br>
-<a name="simpleTexture-png"></a>Image 15b: A simple texture on a unit square
+<a name="simpleTexture-png"></a>Image 15b: A simple texture on a unit square.
 </p>
 
-## Texture, image and sampler objects
+## Texture, image, and sampler objects
 
-There are three new top-level dictionaries in the glTF JSON: The `textures`, `images` and `samplers` dictionaries. The details of these new object types will be explained in the following section about [Textures, Images, Samplers](gltfTutorial_016_TexturesImagesSamplers.md). This section will focus on the elements of the `technique` and the shaders that are used to apply the texture to the rendered objects, and point out the differences to the [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) that was shown in the previous section.
+There are three new top-level dictionaries in the glTF JSON: the `textures`, `images`, and `samplers` dictionaries. The details of these new object types will be explained in the [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) section. This section will focus on the elements of the `technique` and the shaders used to apply the texture to the rendered objects and will point out the differences from the [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) shown in the previous section.
 
 ## The texture coordinates
 
-In order to apply a texture to a mesh primitive, there must be information about the texture coordinates that should be used for each vertex. The texture coordinates are only another attribute for the vertices which is defined in the `technique` and later used in the shader programs. The following is an excerpt from the example, pointing out where information about this new attribute has been added:
+In order to apply a texture to a mesh primitive, there must be information about the texture coordinates that should be used for each vertex. The texture coordinates are only another attribute for the vertices defined in the `technique` and later used in the shader programs. The following is an excerpt from the example, pointing out where information about this new attribute has been added:
 
 
 ```javascript
@@ -384,9 +384,9 @@ In order to apply a texture to a mesh primitive, there must be information about
 
 Summarizing from the previous sections:
 
-- The `mesh.primitive` contains an additional attribute, as shown in [Meshes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes). The attribute is called `"TEXCOORD_0"`, and refers to the `accessor` with the ID `"texCoordsAccessor"` that provides the texture coordinates
-- The `"texCoordsAccessor"` provides access to the texture coordinate data. The properties of this accessor are explained in [Buffers, BufferViews, Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors), and here, they indicate that the texture coordinates are 2D vectors consisting of floating point values.
-- The `technique` defines a new attribute called `a_texcoord0`, and the `technique.parameters` contains information about the type and semantic of this attribute. This concept has been explained in [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md). Here, the new attribute has the type `GL_FLOAT_VEC2` and defines the semantic to be `"TEXCOORD_0"`. So the data of this attribute will be obtained from the `"TEXCOORD_0"` attribute of the rendered `mesh.primitive`.
+- The `mesh.primitive` contains an additional attribute, as shown in the [Meshes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes) section. The attribute is called `"TEXCOORD_0"`, and refers to the `accessor` with the ID `"texCoordsAccessor"` that provides the texture coordinates.
+- The `"texCoordsAccessor"` provides access to the texture coordinate data. The properties of this accessor are explained in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors) section. Here they indicate that the texture coordinates are 2D vectors consisting of floating point values.
+- The `technique` defines a new attribute called `a_texcoord0`, and the `technique.parameters` contains information about the type and semantic of this attribute. This concept has been explained in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) section. Here, the new attribute has the type `GL_FLOAT_VEC2` and defines the semantic to be `"TEXCOORD_0"`. So the data of this attribute will be obtained from the `"TEXCOORD_0"` attribute of the rendered `mesh.primitive`.
 - Finally, the `program` lists this new `"a_texcoord0"` attribute, which is a new attribute in its vertex shader.
 
 
@@ -427,7 +427,7 @@ The actual texture data has to be passed to the shader as well. This is accompli
 }
 ```
 
-The `technique` defines a new uniform variable, which is called `u_diffuse`. As shown in [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md), the type and value of this uniform is defined in the `technique.parameters`. Here, the type is `GL_SAMPLER2D`, and the value of the uniform is the ID of the respective texture - in this case, the `"exampleTexture"` that was added in the `textures` dictionary.
+The `technique` defines a new uniform variable, which is called `u_diffuse`. As shown in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) section, the type and value of this uniform is defined in the `technique.parameters`. Here, the type is `GL_SAMPLER2D`, and the value of the uniform is the ID of the respective texture&mdash;in this case, the `"exampleTexture"` that was added in the `textures` dictionary.
 
 
 
@@ -452,7 +452,7 @@ void main(void)
 ```
 
 
-In the fragment shader, the texture coordinates arrive in the `"v_texcoord0"` variable. Additionally, the fragment shader contains the uniform variable `"u_diffuse"` which defines the sampler for the actual texture data. The texture data is looked up at the given coordinates, using the `texture2D` function, to obtain the diffuse base color for the fragment:
+In the fragment shader, the texture coordinates arrive in the `"v_texcoord0"` variable. Additionally, the fragment shader contains the uniform variable `"u_diffuse"`, which defines the sampler for the actual texture data. The texture data is looked up at the given coordinates, using the `texture2D` function, to obtain the diffuse base color for the fragment:
 
 ```glsl
 ...
@@ -475,4 +475,4 @@ void main(void)
 
 
 
-Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
+Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md)

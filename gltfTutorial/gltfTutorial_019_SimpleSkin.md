@@ -3,7 +3,7 @@ Previous: [Cameras](gltfTutorial_018_Cameras.md) | [Table of Contents](README.md
 **NOTE: Parts of the skinning may undergo minor changes for glTF 1.1. See https://github.com/KhronosGroup/glTF/issues/723 and https://github.com/KhronosGroup/glTF/issues/624**
 
 
-# A simple skin
+# A Simple Skin
 
 
 glTF supports *vertex skinning*, which allows the geometry (vertices) of a mesh to be deformed based on the pose of a skeleton. This is essential in order to give animated geometry, for example of virtual characters, a realistic appearance. The core for the definition of vertex skinning in a glTF asset is the [`skin`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-skin), but vertex skinning in general implies several interdependencies between the elements of a glTF asset that have been presented so far. 
@@ -282,7 +282,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
 
 ```
 
-The vertex shader for this example has special uniform variables that are required for vertex skinning, because the deformed positions of the vertices will actually be computed by the vertex shader. These uniforms will also be explained later. For now, here is the source code of the vertex shader, which is stored in `simpleSkin.vert`:
+The vertex shader for this example has special uniform variables that are required for vertex skinning because the deformed positions of the vertices will actually be computed by the vertex shader. These uniforms will also be explained later. For now, here is the source code of the vertex shader, which is stored in `simpleSkin.vert`:
 
 ```glsl
 #ifdef GL_ES
@@ -312,7 +312,7 @@ void main(void)
 ```
 
 
-The fragment shader for this example is trivial, and only assigns a constant color to all fragments. Its source code is stored in `simpleSkin.frag`:
+The fragment shader for this example is trivial and only assigns a constant color to all fragments. Its source code is stored in `simpleSkin.frag`:
 
 ```glsl
 #ifdef GL_ES
@@ -327,26 +327,26 @@ void main(void)
 ```
 
 
-The result of rendering this asset is shown in the following screenshot:
+The result of rendering this asset is shown in Image 19a.
 
 <p align="center">
 <img src="images/simpleSkin.gif" /><br>
-<a name="simpleSkin-gif"></a>Image 19a: A scene with simple vertex skinning
+<a name="simpleSkin-gif"></a>Image 19a: A scene with simple vertex skinning.
 </p>
 
 
 ## Elements of the simple skin example
 
-The elements of the given example are summarized here quickly:
+The elements of the given example are briefly summarized here:
 
-- The `scenes` and `nodes` elements have been explained in the [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) section. For the vertex skinning, new nodes have been added: The `"jointNode0"` and `"jointNode1`" define a new node hierarchy for the *skeleton*. These nodes can be considered as the joints between the "bones" that will eventually cause the deformation of the mesh
+- The `scenes` and `nodes` elements have been explained in the [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) section. For the vertex skinning, new nodes have been added: the `"jointNode0"` and `"jointNode1`" define a new node hierarchy for the *skeleton*. These nodes can be considered the joints between the "bones" that will eventually cause the deformation of the mesh.
 - The new top-level dictionary `skins` contains a single skin in the given example. The properties of this skin object will be explained later.
-- The concepts of `animations` has been explained in the [Animations](gltfTutorial_007_Animations.md) section. In the given example, the animation refers to the *skeleton* nodes, so that the effect of the vertex skinning is actually visible during the animation.
-- The section about [Meshes](gltfTutorial_009_Meshes.md) already explained the contents of the `meshes` and `mesh.primitive` objects. In this example, new mesh primitive attributes have been added, which are required for vertex skinning, namely the `"JOINTS"` and `"WEIGHTS"` attributes
-- Details about the `materials`, `techniques` `programs` and `shaders` can be found in the sections about [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) and [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md), respectively. In the given example, there is a single program that refers to the shaders shown above, and a single technique that defines the new technique parameters that are required for vertex skinning.
-- There are several new `buffers`, `bufferViews` and `accessors`. Their basic properties have been described in the [Buffers, BufferViews, Accessors](gltfTutorial_005_BufferBufferViewsAccessors.md) section. In the given example, they contain the additional data that is required for vertex skinning. 
+- The concepts of `animations` has been explained in the [Animations](gltfTutorial_007_Animations.md) section. In the given example, the animation refers to the *skeleton* nodes so that the effect of the vertex skinning is actually visible during the animation.
+- The [Meshes](gltfTutorial_009_Meshes.md) section already explained the contents of the `meshes` and `mesh.primitive` objects. In this example, new mesh primitive attributes have been added, which are required for vertex skinning, namely the `"JOINTS"` and `"WEIGHTS"` attributes.
+- Details about the `materials`, `techniques`, `programs`, and `shaders` can be found in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) and [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md) sections, respectively. In the given example, there is a single program that refers to the shaders shown above and a single technique that defines the new technique parameters required for vertex skinning.
+- There are several new `buffers`, `bufferViews`, and `accessors`. Their basic properties have been described in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BufferBufferViewsAccessors.md) section. In the given example, they contain the additional data required for vertex skinning. 
 
-The details about how these elements are interconnected to achive the vertex skinning will be explained in the following section about [Skins](gltfTutorial_020_Skins.md).
+Details about how these elements are interconnected to achieve the vertex skinning will be explained in the [Skins](gltfTutorial_020_Skins.md) section.
 
 
 Previous: [Cameras](gltfTutorial_018_Cameras.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_020_Skins.md)

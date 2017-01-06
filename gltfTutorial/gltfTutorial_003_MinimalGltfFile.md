@@ -1,7 +1,7 @@
-Previous: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md) | [Table of Contents](README.md) | Next: [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)
+Previous: [Basic glTF Structure](gltfTutorial_002_BasicGltfStructure.md) | [Table of Contents](README.md) | Next: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md)
 
 
-# A minimal glTF file
+# A Minimal glTF File
 
 The following is a minimal but complete glTF asset, containing a single triangle. You can copy and paste it into a `gltf` file, and every glTF-based application should be able to load and render it. This section will explain the basic concepts of glTF based on this example.
 
@@ -77,7 +77,7 @@ The following is a minimal but complete glTF asset, containing a single triangle
 
 <p align="center">
 <img src="images/triangle.png" /><br>
-<a name="triangle-png"></a>Image 3a: A single triangle
+<a name="triangle-png"></a>Image 3a: A single triangle.
 </p>
 
 
@@ -101,7 +101,7 @@ The example here consists of a single scene, called `"scene0"`. It refers to the
   },
 ```
 
-More details about scenes and nodes and their properties will be given in section about [Scenes and nodes](gltfTutorial_004_ScenesNodes.md).
+More details about scenes and nodes and their properties will be given in the [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) section.
 
 
 ## The `meshes`
@@ -125,12 +125,12 @@ The actual geometry data of the mesh primitive is given by the `attributes` and 
   },
 ```
 
-A more detailed description about meshes and mesh primitives can be found in the [Meshes](gltfTutorial_008_Meshes.md) section.
+A more detailed description of meshes and mesh primitives can be found in the [meshes](gltfTutorial_008_Meshes.md) section.
 
 
-## The `buffer`, `bufferView` and `accessor` concepts
+## The `buffer`, `bufferView`, and `accessor` concepts
 
-The `buffer`, `bufferView` and `accessor` objects provide information about the geometry data that the mesh primitives consist of. They are introduced here quickly, based on the specific example. A more detailed description of these concepts will be given in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md).
+The `buffer`, `bufferView`, and `accessor` objects provide information about the geometry data that the mesh primitives consist of. They are introduced here quickly, based on the specific example. A more detailed description of these concepts will be given in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) section.
 
 ### Buffers
 
@@ -151,7 +151,7 @@ This data contains the indices of the triangle, and the vertex positions of the 
 
 ### Buffer views
 
-A [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView) describes a "chunk" or a "slice" of the whole, raw buffer data. In the given example, there are two buffer views. They both refer to the same buffer, using its ID. The first buffer view is called `"indicesBufferView"`, and refers to the part of the buffer that contains the data of the indices: It has a `byteOffset` of 0 referring to the whole buffer data, and a `byteLength` of 6. The second buffer view is called `"positionsBufferView"`, and refers to the part of the buffer that contains the vertex positions. It starts at a `byteOffset` of 6, and has a `byteLength` of 36, that is, it extends to the end of the whole buffer.
+A [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView) describes a "chunk" or a "slice" of the whole, raw buffer data. In the given example, there are two buffer views. They both refer to the same buffer, using its ID. The first buffer view is called `"indicesBufferView"`, and refers to the part of the buffer that contains the data of the indices: it has a `byteOffset` of 0 referring to the whole buffer data, and a `byteLength` of 6. The second buffer view is called `"positionsBufferView"`, and refers to the part of the buffer that contains the vertex positions. It starts at a `byteOffset` of 6, and has a `byteLength` of 36; that is, it extends to the end of the whole buffer.
 
 ```javascript
   "bufferViews" : {
@@ -173,13 +173,13 @@ A [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#
 
 ### Accessors
 
-The second step of structuring the data is accomplished with  [`accessor`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-accessor) objects. They define how the data of a `bufferView` has to be interpreted, by provide information about the data types and the layout.
+The second step of structuring the data is accomplished with  [`accessor`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-accessor) objects. They define how the data of a `bufferView` has to be interpreted by providing information about the data types and the layout.
 
 In the example, there are two accessor objects.
 
-The first accessor is called `"indicesAccessor"`, and describes the indices of the geometry data. It refers to the `"indicesBufferView"`, which is the part of the `buffer` that contains the raw data for the indices. Additionally, it specifies the `count` and `type` of the elements and their `componentType`. In this case, there are 3 scalar elements, and their component type is given by a constant that stands for the `unsigned short` type.
+The first accessor is called `"indicesAccessor"` and describes the indices of the geometry data. It refers to the `"indicesBufferView"`, which is the part of the `buffer` that contains the raw data for the indices. Additionally, it specifies the `count` and `type` of the elements and their `componentType`. In this case, there are 3 scalar elements, and their component type is given by a constant that stands for the `unsigned short` type.
 
-The second accessor is called `"positionsAccessor"` and describes the vertex positions. It contains a reference to the relevant part of the buffer data, via the `"positionsBufferView"`, and its `count`, `type` and `componentType` properties say that there are 3 elements of 3D vectors, each having `float` components.
+The second accessor is called `"positionsAccessor"` and describes the vertex positions. It contains a reference to the relevant part of the buffer data, via the `"positionsBufferView"`, and its `count`, `type`, and `componentType` properties say that there are three elements of 3D vectors, each having `float` components.
 
 
 ```javascript
@@ -220,7 +220,7 @@ As described above, a `mesh.primitive` may now refer to these accessors, using t
   },
 ```
 
-When this `mesh.primitive` has to be rendered, the renderer can resolve the underlying buffer views and buffers, and send the required parts of the buffer to the renderer, together with the information about the data types and layout. A more detailed description of how the accessor data is obtained and processed by the renderer is given in the section about [Buffers, BufferViews and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) and the section about [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md)
+When this `mesh.primitive` has to be rendered, the renderer can resolve the underlying buffer views and buffers and will send the required parts of the buffer to the renderer, together with the information about the data types and layout. A more detailed description of how the accessor data is obtained and processed by the renderer is given in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) section and the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) section.
 
 
 
@@ -240,4 +240,4 @@ The `asset` property may contain additional metadata that is described in the [`
 
 
 
-Previous: [Basic glTF structure](gltfTutorial_002_BasicGltfStructure.md.md) | [Table of Contents](README.md) | Next: [Scenes and nodes](gltfTutorial_004_ScenesNodes.md)
+Previous: [Basic glTF Structure](gltfTutorial_002_BasicGltfStructure.md) | [Table of Contents](README.md) | Next: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md)

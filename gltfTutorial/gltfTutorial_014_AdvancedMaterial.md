@@ -1,8 +1,8 @@
 Previous: [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_015_SimpleTexture.md)
 
-# An advanced material
+# An Advanced Material
 
-This section will show how the concepts from the [Meshes](gltfTutorial_008_Meshes.md)  section and the elements that have been explained in the section about [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md)  can be brought together to define a non-trivial material. The material in this example will show multiple parameters and include a *light*, so that the effect of the vertex normals of the mesh become visible.
+This section will show how the concepts from the [Meshes](gltfTutorial_008_Meshes.md)  section and the elements that have been explained in the section about [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md)  can be brought together to define a non-trivial material. The material in this example will show multiple parameters and include a *light* so that the effect of the mesh's vertex normals become visible.
 
 The following is the JSON part of a simple glTF asset that contains an advanced material:
 
@@ -190,7 +190,7 @@ The following is the JSON part of a simple glTF asset that contains an advanced 
 }
 ```
 
-As shown in the previous sections, the `material` is an instance of a `technique`, and the `technique` refers to a `program` which is the actual implementation of the rendering technique. The `program` consists of a vertex- and a fragment `shader`. These shaders are stored in external files, which are referred to by the `"advancedVertexShader"` and `"advancedFragmentShader"` objects via their `uri`. The source code of these shaders is shown here for completeness.
+As shown in the previous sections, the `material` is an instance of a `technique`, and the `technique` refers to a `program`, which is the actual implementation of the rendering technique. The `program` consists of a vertex shader and a fragment `shader`. These shaders are stored in external files, which are referred to by the `"advancedVertexShader"` and `"advancedFragmentShader"` objects via their `uri`. The source code of these shaders is shown here for completeness.
 
 The vertex shader source code is stored in `advanced.vert`:
 
@@ -270,25 +270,23 @@ void main(void)
 }
 ```
 
-When rendering this glTF asset, the result will look like the following image:
-
 <p align="center">
 <img src="images/advancedMaterial.png" /><br>
-<a name="advancedMaterial-png"></a>Image 14a: An example for an advanced material, including specular highlights
+<a name="advancedMaterial-png"></a>Image 14a: An example for an advanced material, including specular highlights.
 </p>
 
-The right triangle is slightly rotated, to emphasize the effect of the light computation: One can see the specular highlight on this triangle, which is caused by the light being reflected on the triangle surface to point directly at the eye position. This reflection is computed based on the normal of the triangle:
+The rendering of this glTF asset is shown in Image 14a. The right triangle is slightly rotated, to emphasize the effect of the light computation. One can see the specular highlight on this triangle, which is caused by the light being reflected on the triangle surface to point directly at the eye position. This reflection is computed based on the normal of the triangle, as shown in Image 14b.
 
 <p align="center">
 <img src="images/advancedMaterialExample.gif" /><br>
-<a name="advancedMaterialExample-gif"></a>Image 14b: The effect of light, normals and additional properties in the advanced material
+<a name="advancedMaterialExample-gif"></a>Image 14b: The effect of light, normals, and additional properties in the advanced material.
 </p>
 
-The details of the light computations is beyond the scope of this tutorial. This section will only show how the advanced material is encoded as a part of the glTF asset.
+The details of the light computations are beyond the scope of this tutorial. This section will only show how the advanced material is encoded as a part of the glTF asset.
 
 ## The new `uniform` parameters for the material properties
 
-The fragment shader contains several uniforms that are used for the computation of the material effect under the influence of light:
+The fragment shader contains several uniforms that are used to compute the material effect under the influence of light:
 
 ```glsl
 uniform vec4 u_ambient;
@@ -297,7 +295,7 @@ uniform vec4 u_specular;
 uniform float u_shininess;
 ```
 
-These parameters are the basis for a simple implementation of the [`Phong reflection model`](https://en.wikipedia.org/wiki/Phong_reflection_model). In the JSON part of the glTF, these uniforms are listed in the `uniforms` dictionary of the `technique`, and further defined in the `technique.parameters` (similar to the `u_emission` uniform of the [simple material](gltfTutorial_011_SimpleMaterial.md)) :
+These parameters are the basis for a simple implementation of the [`Phong reflection model`](https://en.wikipedia.org/wiki/Phong_reflection_model). In the JSON part of the glTF, these uniforms are listed in the `uniforms` dictionary of the `technique` and are further defined in the `technique.parameters` (similar to the `u_emission` uniform of the [simple material](gltfTutorial_011_SimpleMaterial.md)) :
 
 ```javascript
 "techniques": {
@@ -333,7 +331,7 @@ These parameters are the basis for a simple implementation of the [`Phong reflec
 },
 ```
 
-The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue and alpha components of the colors. They all have default values that are directly passed to the renderer, as shown in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
+The `shininess` parameter is a single floating point value, and the remaining parameters are 4D floating point vectors containing the red, green, blue, and alpha components of the colors. They all have default values that are directly passed to the renderer, as shown in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values in techniques-or-materials) section.
 
 
 ## The `normals` attribute
@@ -405,9 +403,9 @@ The following shows the parts of the glTF JSON that are related to this new attr
 
 Summarizing from the previous sections:
 
-- The `mesh` contains [Mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes). One of them is the new `NORMAL` attribute. It refers to the [accessor](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors) that provides the data of the vertex normals.
-- The `program` contains a list of all `attribute` variables that are contained in its vertex shader, including the `a_normal` attribute
-- The `technique` contains the `attributes` dictionary whose entry for the `a_normal` attribute points to the `technique.parameters` dictionary, which defines the properties of this attribute, as shown in the section about [technique parameter values](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values)
+- The `mesh` contains [mesh primitive attributes](gltfTutorial_008_Meshes.md#mesh-primitive-attributes). One of them is the new `NORMAL` attribute. It refers to the [accessor](gltfTutorial_005_BuffersBufferViewsAccessors.md#accessors), which provides the data of the vertex normals.
+- The `program` contains a list of all `attribute` variables that are contained in its vertex shader, including the `a_normal` attribute.
+- The `technique` contains the `attributes` dictionary whose entry for the `a_normal` attribute points to the `technique.parameters` dictionary, which defines the properties of this attribute, as shown in the section about [technique parameter values](gltfTutorial_013_MaterialsTechniques.md#technique-parameter-values).
 
 
 
@@ -420,7 +418,7 @@ uniform mat3 u_normalMatrix;
 ...
 ```
 
-Like the other uniforms, this uniform is listed in the `uniforms` dictionary of the `technique`, and further defined in the `technique.parameters`:
+Like the other uniforms, this uniform is listed in the `uniforms` dictionary of the `technique` and is further defined in the `technique.parameters`:
 
 ```javascript
 "techniques": {
@@ -442,11 +440,11 @@ Like the other uniforms, this uniform is listed in the `uniforms` dictionary of 
 },
 ```
 
-In contrast to the other uniforms that have been added to the advanced material, this uniform has a `semantic` property, with the value `"MODELVIEWINVERSETRANSPOSE"`. Also note that its `type ` is `35675`, which stands for `GL_FLOAT_MAT3`, and thus indicates a 3x3 matrix (and not a 4x4 matrix). Particularly, this matrix consists of the upper left 3x3 entries of the transposed of the inverse of the model-view-matrix.
+In contrast to the other uniforms that have been added to the advanced material, this uniform has a `semantic` property, with the value `"MODELVIEWINVERSETRANSPOSE"`. Also note that its `type ` is `35675`, which stands for `GL_FLOAT_MAT3`, and thus indicates a 3&times;3 matrix (and not a 4&times;4 matrix). Particularly, this matrix consists of the upper left 3&times;3 entries of the model-view-matrix, transposed and inverted.
 
-The model-view matrix is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes)  of the `node` that contains to the `mesh` that is rendered with this material, and the view matrix of the camera that is used for rendering. When this model-view-matrix has been computed, then the normal matrix is just given as
+The model-view matrix is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes)  of the `node`, which contains the `mesh` that is rendered with this material, and the view matrix of the camera, which is used for rendering. When this model-view-matrix has been computed, the normal matrix is just given as
 
-    mat3 normalMatrix = mat3(transpose(inverse(modelViewMatrix)))
+    mat3 normalMatrix = mat3(transpose(inverse(modelViewMatrix))).
 
 
 Previous: [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) | [Table of Contents](README.md) | Next: [Simple Texture](gltfTutorial_015_SimpleTexture.md)
