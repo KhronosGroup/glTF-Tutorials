@@ -31,7 +31,7 @@ These IDs are also used to define the *relationships* between the objects. The e
 }
 ```
 
-The following image (adapted from the [glTF concepts section](https://github.com/KhronosGroup/glTF/tree/master/specification#concepts)) gives an overview of the top-level elements of a glTF:
+The following image (adapted from the [glTF concepts section](https://github.com/KhronosGroup/glTF/tree/master/specification#concepts)) gives an overview of the top-level elements of the JSON part of a glTF asset:
 
 <p align="center">
 <img src="images/gltfJsonStructure.png" /><br>
