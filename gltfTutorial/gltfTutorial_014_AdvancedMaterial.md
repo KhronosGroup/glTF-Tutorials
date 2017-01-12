@@ -440,7 +440,7 @@ Like the other uniforms, this uniform is listed in the `uniforms` dictionary of 
 },
 ```
 
-In contrast to the other uniforms that have been added to the advanced material, this uniform has a `semantic` property, with the value `"MODELVIEWINVERSETRANSPOSE"`. Also note that its `type ` is `35675`, which stands for `GL_FLOAT_MAT3`, and thus indicates a 3&times;3 matrix (and not a 4&times;4 matrix). Particularly, this matrix consists of the upper left 3&times;3 entries of the model-view-matrix, transposed and inverted.
+In contrast to the other uniforms that have been added to the advanced material, this uniform has a `semantic` property, with the value `"MODELVIEWINVERSETRANSPOSE"`. Also note that its `type ` is `35675`, which stands for `GL_FLOAT_MAT3`, and thus indicates a 3&times;3 matrix (and not a 4&times;4 matrix). Particularly, this matrix consists of the upper left 3&times;3 entries of the transposed and inverted model-view-matrix.
 
 The model-view matrix is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes)  of the `node`, which contains the `mesh` that is rendered with this material, and the view matrix of the camera, which is used for rendering. When this model-view-matrix has been computed, the normal matrix is just given as
 

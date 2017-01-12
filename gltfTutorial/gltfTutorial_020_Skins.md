@@ -108,7 +108,7 @@ One property of the skin is the `bindShapeMatrix`. This is a 4&times;4 matrix, i
 <a name="skinBindShapeMatrix-png"></a>Image 20c: The translation that is applied to the mesh with the `bindShapeMatrix`.
 </p>
 
-**TODO: This will change in 1.1:**
+**TODO: This will change in 1.1 **. See https://github.com/KhronosGroup/glTF/issues/624#issuecomment-232805219 
 
 The skin also contains an array called `jointNames`, which lists the names of the joints that belong to this skin. These are the `jointName` properties of the joint nodes. In the given example, these are `"joint0"` and `"joint1"`, belonging to the `"jointNode0"` and `"jointNode1"`, respectively.
 
