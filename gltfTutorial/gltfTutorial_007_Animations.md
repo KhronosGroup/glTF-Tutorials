@@ -26,12 +26,12 @@ The following is another example of an `animation`. This time, the animation con
   ],
   "samplers": {
     "translationSampler": {
-      "input": "timeAccessor",
+      "input": "TIMEAccessor",
       "interpolation": "LINEAR",
       "output": "translationAccessor"
     },
     "rotationSampler": {
-      "input": "timeAccessor",
+      "input": "TIMEAccessor",
       "interpolation": "LINEAR",
       "output": "rotationAccessor"
     }
@@ -52,11 +52,11 @@ The `samplers` dictionary contains [`animation.sampler`](https://github.com/Khro
 In order to compute the value of the translation for the current animation time, the following algorithm can be used:
 
 * Let the current animation time be given as `currentTime`.
-* Compute the next smaller and the next larger element of the `timeAccessor`:
+* Compute the next smaller and the next larger element of the `TIMEAccessor`:
 
-    `previousTime` = The largest element from the `timeAccessor` that is smaller than the `currentTime`
+    `previousTime` = The largest element from the `TIMEAccessor` that is smaller than the `currentTime`
 
-    `nextTime`  = The smallest element from the `timeAccessor` that is larger than the `currentTime`
+    `nextTime`  = The smallest element from the `TIMEAccessor` that is larger than the `currentTime`
 
 * Obtain the elements from the `translationAccessor` that correspond to these times:
 
@@ -75,7 +75,7 @@ In order to compute the value of the translation for the current animation time,
 
 ### Example:
 
-Imagine the `currentTime` is **1.2**. The next smaller element from the `timeAccessor` is **0.8**. The next larger element is **1.6**. So
+Imagine the `currentTime` is **1.2**. The next smaller element from the `TIMEAccessor` is **0.8**. The next larger element is **1.6**. So
 
     previousTime = 0.8
     nextTime     = 1.6

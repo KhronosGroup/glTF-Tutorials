@@ -28,7 +28,7 @@ The following is a simple, complete glTF asset. It is similar to the assets that
       "camera" : "exampleCameraOrthographic"
     }
   },
-
+  
   "cameras" : {
     "exampleCameraPerspective": {
       "type": "perspective",
@@ -49,14 +49,12 @@ The following is a simple, complete glTF asset. It is similar to the assets that
       }
     }
   },
-
+  
   "meshes" : {
     "mesh0" : {
       "primitives" : [ {
         "attributes" : {
-          "POSITION" : "positionsAccessor",
-          "NORMAL" : "normalsAccessor",
-          "TEXCOORD_0" : "texCoordsAccessor"
+          "POSITION" : "positionsAccessor"
         },
         "indices" : "indicesAccessor"
       } ]
@@ -64,22 +62,22 @@ The following is a simple, complete glTF asset. It is similar to the assets that
   },
 
   "buffers" : {
-    "buffer0" : {
-      "uri" : "data:application/octet-stream;base64,AAABAAIAAQADAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8=",
-      "byteLength" : 140
+    "geometryBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAQADAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAA",
+      "byteLength" : 60
     }
   },
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 12,
       "target" : 34963
     },
     "attributesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 12,
-      "byteLength" : 128,
+      "byteLength" : 48,
       "target" : 34962
     }
   },
@@ -101,24 +99,6 @@ The following is a simple, complete glTF asset. It is similar to the assets that
       "type" : "VEC3",
       "max" : [ 1.0, 1.0, 0.0 ],
       "min" : [ 0.0, 0.0, 0.0 ]
-    },
-    "normalsAccessor" : {
-      "bufferView" : "attributesBufferView",
-      "byteOffset" : 36,
-      "componentType" : 5126,
-      "count" : 4,
-      "type" : "VEC3",
-      "max" : [ 0.0, 0.0, 1.0 ],
-      "min" : [ 0.0, 0.0, 1.0 ]
-    },
-    "texCoordsAccessor" : {
-      "bufferView" : "attributesBufferView",
-      "byteOffset" : 72,
-      "componentType" : 5126,
-      "count" : 4,
-      "type" : "VEC2",
-      "max" : [ 1.0, 1.0 ],
-      "min" : [ 0.0, 0.0 ]
     }
   },
   "asset" : {

@@ -28,8 +28,7 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
       "primitives" : [ {
         "attributes" : {
           "POSITION" : "positionsAccessor",
-          "NORMAL" : "normalsAccessor",
-          "TEXCOORD_0" : "texCoordsAccessor"
+          "NORMAL" : "normalsAccessor"
         },
         "indices" : "indicesAccessor"
       } ]
@@ -37,22 +36,22 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
   },
 
   "buffers" : {
-    "buffer0" : {
-      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/",
-      "byteLength" : 108
+    "geometryBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8=",
+      "byteLength" : 80
     }
   },
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 6,
       "target" : 34963
     },
     "attributesBufferView" : {
-      "buffer" : "buffer0",
-      "byteOffset" : 6,
-      "byteLength" : 96,
+      "buffer" : "geometryBuffer",
+      "byteOffset" : 8,
+      "byteLength" : 72,
       "target" : 34962
     }
   },
@@ -83,18 +82,9 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
       "type" : "VEC3",
       "max" : [ 0.0, 0.0, 1.0 ],
       "min" : [ 0.0, 0.0, 1.0 ]
-    },
-    "texCoordsAccessor" : {
-      "bufferView" : "attributesBufferView",
-      "byteOffset" : 72,
-      "componentType" : 5126,
-      "count" : 3,
-      "type" : "VEC2",
-      "max" : [ 1.0, 1.0 ],
-      "min" : [ 0.0, 0.0 ]
     }
   },
-
+  
   "asset" : {
     "version" : "1.1"
   }
@@ -111,7 +101,7 @@ Image 8a shows the rendered glTF asset.
 
 ## The mesh definition
 
-The given example still contains a single mesh, with the ID `"mesh0"`. The mesh has a single mesh primitive. But this mesh primitive contains additional attributes:
+The given example still contains a single mesh, with the ID `"mesh0"`. The mesh has a single mesh primitive. But this mesh primitive contains multiple attributes:
 
 ```javascript
 "meshes" : {
@@ -119,8 +109,7 @@ The given example still contains a single mesh, with the ID `"mesh0"`. The mesh 
     "primitives" : [ {
       "attributes" : {
         "POSITION" : "positionsAccessor",
-        "NORMAL" : "normalsAccessor",
-        "TEXCOORD_0" : "texCoordsAccessor"
+        "NORMAL" : "normalsAccessor"
       },
       "indices" : "indicesAccessor"
     } ]
@@ -128,7 +117,7 @@ The given example still contains a single mesh, with the ID `"mesh0"`. The mesh 
 },
 ```
 
-In addition to the `"POSITION"` attribute, it has a `"NORMAL"` and a `"TEXCOORD_0"` attributes. These refer to the `accessor` objects that provide the vertex normals and texture coordinates, respectively, as described in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) section.
+In addition to the `"POSITION"` attribute, it has a `"NORMAL"` attribute. This refers to the `accessor` object that provides the vertex normals, as described in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) section.
 
 
 ## The rendered mesh instances

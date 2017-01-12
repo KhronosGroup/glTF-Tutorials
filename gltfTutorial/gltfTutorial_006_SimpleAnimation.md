@@ -38,7 +38,7 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
     "animation0" : {
       "samplers" : {
         "rotationSampler" : {
-          "input" : "timeAccessor",
+          "input" : "TIMEAccessor",
           "interpolation" : "LINEAR",
           "output" : "rotationAccessor"
         }
@@ -54,30 +54,30 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
   },
 
   "buffers" : {
-    "buffer0" : {
-      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAA",
-      "byteLength" : 42
+    "geometryBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAA=",
+      "byteLength" : 44
     },
-    "buffer1" : {
+    "animationBuffer" : {
       "uri" : "data:application/octet-stream;base64,AAAAAAAAgD4AAAA/AABAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAD0/TQ/9P00PwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAPT9ND/0/TS/AAAAAAAAAAAAAAAAAACAPw==",
       "byteLength" : 100
     }
   },
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 6,
       "target" : 34963
     },
-    "positionsBufferView" : {
-      "buffer" : "buffer0",
-      "byteOffset" : 6,
+    "attributesBufferView" : {
+      "buffer" : "geometryBuffer",
+      "byteOffset" : 8,
       "byteLength" : 36,
       "target" : 34962
     },
-    "animationsBufferView" : {
-      "buffer" : "buffer1",
+    "animationBufferView" : {
+      "buffer" : "animationBuffer",
       "byteOffset" : 0,
       "byteLength" : 100
     }
@@ -93,7 +93,7 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
       "min" : [ 0 ]
     },
     "positionsAccessor" : {
-      "bufferView" : "positionsBufferView",
+      "bufferView" : "attributesBufferView",
       "byteOffset" : 0,
       "componentType" : 5126,
       "count" : 3,
@@ -101,8 +101,8 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
       "max" : [ 1.0, 1.0, 0.0 ],
       "min" : [ 0.0, 0.0, 0.0 ]
     },
-    "timeAccessor" : {
-      "bufferView" : "animationsBufferView",
+    "TIMEAccessor" : {
+      "bufferView" : "animationBufferView",
       "byteOffset" : 0,
       "componentType" : 5126,
       "count" : 5,
@@ -111,7 +111,7 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
       "min" : [ 0.0 ]
     },
     "rotationAccessor" : {
-      "bufferView" : "animationsBufferView",
+      "bufferView" : "animationBufferView",
       "byteOffset" : 20,
       "componentType" : 5126,
       "count" : 5,
@@ -120,13 +120,12 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
       "min" : [ 0.0, 0.0, 0.0, -0.707 ]
     }
   },
-
+  
   "asset" : {
     "version" : "1.1"
   }
-
-}
-```
+  
+}```
 
 <p align="center">
 <img src="images/animatedTriangle.gif" /><br>
@@ -158,12 +157,12 @@ Three elements have been added to the top-level dictionaries of the glTF JSON to
 
 ### The `buffer` and the `bufferView` for the raw animation data
 
-A new `buffer` has been added, with the ID `"buffer1"`. This buffer also uses a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-data-uris) to encode the 100 bytes that the animation data consists of:
+A new `buffer` has been added, with the ID `"animationBuffer"`. This buffer also uses a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-data-uris) to encode the 100 bytes that the animation data consists of:
 
 ```javascript
 "buffers" : {
   ...
-  "buffer1" : {
+  "animationBuffer" : {
     "uri" : "data:application/octet-stream;base64,AAAAAAAAgD4AAAA/AABAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAD0/TQ/9P00PwAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAPT9ND/0/TS/AAAAAAAAAAAAAAAAAACAPw==",
     "byteLength" : 100
   }
@@ -171,7 +170,7 @@ A new `buffer` has been added, with the ID `"buffer1"`. This buffer also uses a 
 "bufferViews" : {
   ...
   "animationsBufferView" : {
-    "buffer" : "buffer1",
+    "buffer" : "animationBuffer",
     "byteOffset" : 0,
     "byteLength" : 100
   }
@@ -180,19 +179,19 @@ A new `buffer` has been added, with the ID `"buffer1"`. This buffer also uses a 
 
 There is also a new `bufferView`, with the ID `"animationsBufferView"`. This buffer view here simply refers to the whole animation buffer data. Further structural information is added with the `accessor` objects described below.
 
-Note that one could also have appended the animation data to the existing `"buffer0"` that already contained the geometry data of the triangle. In this case, the `"animationsBufferView"` would have referred to `"buffer0"` and used an appropriate `byteOffset` to refer to the part of the buffer that then contained the animation data.
+Note that one could also have appended the animation data to the existing `"geometryBuffer"` that already contained the geometry data of the triangle. In this case, the `"animationsBufferView"` would have referred to `"geometryBuffer"` and used an appropriate `byteOffset` to refer to the part of the buffer that then contained the animation data.
 
 In the example that is shown here, the animation data is added as a new buffer to keep the geometry data and the animation data separated.
 
 
 ### The `accessor` objects for the animation data
 
-Two new `accessor` objects have been added, which describe how to interpret the animation data. The first accessor has the ID `"timeAccessor"` and describes the times of the animation key frames. There are five elements, and each one is a scalar `float` value (which is 20 bytes in total). The second accessor has the ID `"rotationAccessor"`. It says that after the first 20 bytes, there are five elements, each being a 4D vector with `float` components. These are the rotation quaternions that correspond to the five key frames of the animation.
+Two new `accessor` objects have been added, which describe how to interpret the animation data. The first accessor has the ID `"TIMEAccessor"` and describes the times of the animation key frames. There are five elements, and each one is a scalar `float` value (which is 20 bytes in total). The second accessor has the ID `"rotationAccessor"`. It says that after the first 20 bytes, there are five elements, each being a 4D vector with `float` components. These are the rotation quaternions that correspond to the five key frames of the animation.
 
 ```javascript
 "accessors" : {
   ...
-  "timeAccessor" : {
+  "TIMEAccessor" : {
     "bufferView" : "animationsBufferView",
     "byteOffset" : 0,
     "componentType" : 5126,
@@ -213,9 +212,9 @@ Two new `accessor` objects have been added, which describe how to interpret the 
 },
 ```
 
-The actual data that is provided by the `timeAccessor` and the `rotationAccessor`, using the data from the buffer in the example, is shown in this table:
+The actual data that is provided by the `TIMEAccessor` and the `rotationAccessor`, using the data from the buffer in the example, is shown in this table:
 
-|timeAccessor|rotationAccessor|Meaning|
+|TIMEAccessor|rotationAccessor|Meaning|
 |---|---|---|
 |0.0| (0.0, 0.0, 0.0, 1.0 )| At 0.0 seconds, the triangle has a rotation of 0 degrees |
 |0.25| (0.0, 0.0, 0.707, 0.707)| At 0.25 seconds, it has a rotation of 90 degrees around the z-axis
@@ -233,7 +232,7 @@ Finally, this is the part where the actual animation is added. The top-level `an
 - The `samplers`, which describe the sources of animation data;
 - The `channels`, which can be imagined as connecting a "source" of the animation data to a "target."
 
-In the given example, there is one sampler, namely the `"rotationSampler"`. Each sampler defines an `input` and an `output` property. They both refer to accessor objects, namely the `"timeAccessor"` and the `"rotationAccessor"` that have been described above. Additionally, the sampler defines an `interpolation` type, which is `"LINEAR"` in this example.
+In the given example, there is one sampler, namely the `"rotationSampler"`. Each sampler defines an `input` and an `output` property. They both refer to accessor objects, namely the `"TIMEAccessor"` and the `"rotationAccessor"` that have been described above. Additionally, the sampler defines an `interpolation` type, which is `"LINEAR"` in this example.
 
 There is also one `channel` in the example. This channel refers to the `"rotationSampler"` as the source of the animation data. The target of the animation is encoded in the `channel.target` object: it contains an `id` that refers to the node whose property should be animated. The actual node property is named in the `path`. So the channel target in the given example says that the `"rotation"` property of the node `"node0"` should be animated.
 
@@ -243,7 +242,7 @@ There is also one `channel` in the example. This channel refers to the `"rotatio
   "animation0" : {
     "samplers" : {
       "rotationSampler" : {
-        "input" : "timeAccessor",
+        "input" : "TIMEAccessor",
         "interpolation" : "LINEAR",
         "output" : "rotationAccessor"
       }
@@ -261,7 +260,7 @@ There is also one `channel` in the example. This channel refers to the `"rotatio
 
 Combining all this information, the given animation object says the following:
 
-> During the animation, the animated values are obtained from the `rotationAccessor`. They are interpolated linearly, based on the current simulation time and the key frame times that are provided by the `timeAccessor`. The interpolated values are then written into the `"rotation"` property of the node with ID `"node0"`.
+> During the animation, the animated values are obtained from the `rotationAccessor`. They are interpolated linearly, based on the current simulation time and the key frame times that are provided by the `TIMEAccessor`. The interpolated values are then written into the `"rotation"` property of the node with ID `"node0"`.
 
 A more detailed description and actual examples for the interpolation and the computations that are involved here can be found in the [Animations](gltfTutorial_006_Animations.md) section.
 

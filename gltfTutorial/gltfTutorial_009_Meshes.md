@@ -14,7 +14,7 @@ Each `mesh` contains an array of `mesh.primitive` objects. These mesh primitive 
 
 A mesh primitive defines the geometry data of the object using its `attributes` dictionary. This geometry data is given by references to `accessor` objects that contain the data of vertex attributes. The details of the `accessor` concept are explained in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) section.
 
-In the given example, there are three entries in the `attributes` dictionary. The entries refer to the `positionsAccessor`, the `normalsAccessor`, and the `texCoordsAccessor`:
+In the given example, there are two entries in the `attributes` dictionary. The entries refer to the `positionsAccessor` and the `normalsAccessor`:
 
 ```javascript
 "meshes" : {
@@ -22,8 +22,7 @@ In the given example, there are three entries in the `attributes` dictionary. Th
     "primitives" : [ {
       "attributes" : {
         "POSITION" : "positionsAccessor",
-        "NORMAL" : "normalsAccessor",
-        "TEXCOORD_0" : "texCoordsAccessor"
+        "NORMAL" : "normalsAccessor"
       },
       "indices" : "indicesAccessor"
     } ]
@@ -31,7 +30,7 @@ In the given example, there are three entries in the `attributes` dictionary. Th
 },
 ```
 
-Together, the elements of these accessors define all attributes that belong to the individual vertices, as shown in Image 9a.
+Together, the elements of these accessors define the attributes that belong to the individual vertices, as shown in Image 9a.
 
 <p align="center">
 <img src="images/meshPrimitiveAttributes.png" /><br>

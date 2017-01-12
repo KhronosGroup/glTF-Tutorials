@@ -54,7 +54,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
     "animation0": {
       "samplers" : {
         "rotationSampler" : {
-          "input" : "timeAccessor",
+          "input" : "TIMEAccessor",
           "interpolation" : "LINEAR",
           "output" : "rotationAccessor"
         }
@@ -166,12 +166,12 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "uri" : "data:application/octet-stream;base64,AAABAAMAAAADAAIAAgADAAUAAgAFAAQABAAFAAcABAAHAAYABgAHAAkABgAJAAgAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAD8AAAAAAACAPwAAAD8AAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAwD8AAAAAAACAPwAAwD8AAAAAAAAAAAAAAEAAAAAAAACAPwAAAEAAAAAA",
       "byteLength" : 168
     },
-    "skinDataBuffer" : {
-      "uri" : "data:application/octet-stream;base64,AACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAABAPwAAgD4AAAAAAAAAAAAAQD8AAIA+AAAAAAAAAAAAAAA/AAAAPwAAAAAAAAAAAAAAPwAAAD8AAAAAAAAAAAAAgD4AAEA/AAAAAAAAAAAAAIA+AABAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAA=",
+    "skinningBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAABAPwAAgD4AAAAAAAAAAAAAQD8AAIA+AAAAAAAAAAAAAAA/AAAAPwAAAAAAAAAAAAAAPwAAAD8AAAAAAAAAAAAAgD4AAEA/AAAAAAAAAAAAAIA+AABAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAA=",
       "byteLength" : 320
     },
     "inverseBindMatricesBuffer" : {
-      "uri" : "data:application/octet-stream;base64,AACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAMAAAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIC/AAAAAAAAgD8=",
+      "uri" : "data:application/octet-stream;base64,AACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgL8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIC/AAAAAAAAgD8=",
       "byteLength" : 128
     },
     "animationBuffer" : {
@@ -193,8 +193,8 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "byteLength" : 120,
       "target" : 34962
     },
-    "skinDataBufferView" : {
-      "buffer" : "skinDataBuffer",
+    "skinningBufferView" : {
+      "buffer" : "skinningBuffer",
       "byteOffset" : 0,
       "byteLength" : 320,
       "target" : 34962
@@ -230,7 +230,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "min" : [ 0.0, 0.0, 0.0 ]
     },
     "jointsAccessor" : {
-      "bufferView" : "skinDataBufferView",
+      "bufferView" : "skinningBufferView",
       "byteOffset" : 0,
       "componentType" : 5126,
       "count" : 10,
@@ -239,7 +239,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "min" : [ 0.0, 0.0, 0.0, 0.0 ]
     },
     "weightsAccessor" : {
-      "bufferView" : "skinDataBufferView",
+      "bufferView" : "skinningBufferView",
       "byteOffset" : 160,
       "componentType" : 5126,
       "count" : 10,
@@ -256,7 +256,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "max" : [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, -1.0, 0.0, 1.0],
       "min" : [1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, -2.0, 0.0, 1.0]
     },
-    "timeAccessor" : {
+    "TIMEAccessor" : {
       "bufferView" : "animationBufferView",
       "byteOffset" : 0,
       "componentType" : 5126,
@@ -279,7 +279,6 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
     "version" : "1.1"
   }
 }
-
 ```
 
 The vertex shader for this example has special uniform variables that are required for vertex skinning because the deformed positions of the vertices will actually be computed by the vertex shader. These uniforms will also be explained later. For now, here is the source code of the vertex shader, which is stored in `simpleSkin.vert`:

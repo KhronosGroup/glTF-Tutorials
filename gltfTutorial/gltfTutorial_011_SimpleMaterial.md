@@ -31,7 +31,7 @@ This is a minimal glTF asset with a simple material:
       } ]
     }
   },
-
+  
   "materials" : {
     "simpleMaterial" : {
       "technique" : "simpleTechnique",
@@ -52,10 +52,6 @@ This is a minimal glTF asset with a simple material:
         "u_emission": "emissionParameter"
       },
       "parameters": {
-        "positionParameter" : {
-          "type": 35665,
-          "semantic": "POSITION"
-        },
         "modelViewMatrixParameter": {
           "type": 35676,
           "semantic": "MODELVIEW"
@@ -65,48 +61,52 @@ This is a minimal glTF asset with a simple material:
           "semantic": "PROJECTION"
         },
         "emissionParameter": {
-          "value": [ 0.5, 0.5, 0.5, 1.0 ],
-          "type": 35666
+          "type": 35666,
+          "value": [ 0.5, 0.5, 0.5, 1.0 ]
+        },
+        "positionParameter" : {
+          "type": 35665,
+          "semantic": "POSITION"
         }
       }
     }
   },
   "programs": {
     "simpleProgram": {
+      "vertexShader": "simpleVertexShader",
+      "fragmentShader": "simpleFragmentShader",
       "attributes": [
         "a_position"
-      ],
-      "vertexShader": "simpleVertexShader",
-      "fragmentShader": "simpleFragmentShader"
+      ]
     }
   },
   "shaders": {
     "simpleVertexShader": {
-      "uri": "simple.vert",
-      "type": 35633
+      "type": 35633,
+      "uri": "simple.vert"
     },
     "simpleFragmentShader": {
-      "uri": "simple.frag",
-      "type": 35632
+      "type": 35632,
+      "uri": "simple.frag"
     }
   },
-
+  
   "buffers" : {
-    "buffer0" : {
-      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAA",
-      "byteLength" : 42
+    "geometryBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAA=",
+      "byteLength" : 44
     }
   },
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 6,
       "target" : 34963
     },
     "positionsBufferView" : {
-      "buffer" : "buffer0",
-      "byteOffset" : 6,
+      "buffer" : "geometryBuffer",
+      "byteOffset" : 8,
       "byteLength" : 36,
       "target" : 34962
     }
@@ -131,7 +131,7 @@ This is a minimal glTF asset with a simple material:
       "min" : [ 0.0, 0.0, 0.0 ]
     }
   },
-
+  
   "asset" : {
     "version" : "1.1"
   }

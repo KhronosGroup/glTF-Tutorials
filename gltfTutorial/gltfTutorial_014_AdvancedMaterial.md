@@ -23,14 +23,13 @@ The following is the JSON part of a simple glTF asset that contains an advanced 
       "meshes" : [ "mesh0" ]
     }
   },
-
+  
   "meshes" : {
     "mesh0" : {
       "primitives" : [ {
         "attributes" : {
           "POSITION" : "positionsAccessor",
-          "NORMAL" : "normalsAccessor",
-          "TEXCOORD_0" : "texCoordsAccessor"
+          "NORMAL" : "normalsAccessor"
         },
         "indices" : "indicesAccessor",
         "material" : "advancedMaterial"
@@ -96,13 +95,13 @@ The following is the JSON part of a simple glTF asset that contains an advanced 
           "type": 5126,
           "value": [ 40.0 ]
         }
+      },
+      "states": {
+        "enable": [
+          2929,
+          2884
+        ]
       }
-    },
-    "states": {
-      "enable": [
-        2929,
-        2884
-      ]
     }
   },
   "programs": {
@@ -127,22 +126,22 @@ The following is the JSON part of a simple glTF asset that contains an advanced 
   },
 
   "buffers" : {
-    "buffer0" : {
-      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/",
-      "byteLength" : 108
+    "geometryBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8=",
+      "byteLength" : 80
     }
   },
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 6,
       "target" : 34963
     },
     "attributesBufferView" : {
-      "buffer" : "buffer0",
-      "byteOffset" : 6,
-      "byteLength" : 96,
+      "buffer" : "geometryBuffer",
+      "byteOffset" : 8,
+      "byteLength" : 72,
       "target" : 34962
     }
   },
@@ -173,15 +172,6 @@ The following is the JSON part of a simple glTF asset that contains an advanced 
       "type" : "VEC3",
       "max" : [ 0.0, 0.0, 1.0 ],
       "min" : [ 0.0, 0.0, 1.0 ]
-    },
-    "texCoordsAccessor" : {
-      "bufferView" : "attributesBufferView",
-      "byteOffset" : 72,
-      "componentType" : 5126,
-      "count" : 3,
-      "type" : "VEC2",
-      "max" : [ 1.0, 1.0 ],
-      "min" : [ 0.0, 0.0 ]
     }
   },
   "asset" : {
@@ -351,8 +341,7 @@ The following shows the parts of the glTF JSON that are related to this new attr
     "primitives" : [ {
       "attributes" : {
         "POSITION" : "positionsAccessor",
-        "NORMAL" : "normalsAccessor",
-        ...
+        "NORMAL" : "normalsAccessor"
       },
       ...
     } ]

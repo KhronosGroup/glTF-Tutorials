@@ -18,7 +18,7 @@ The following is a glTF asset that defines a material with a simple, single text
       "meshes" : [ "mesh0" ]
     }
   },
-
+  
   "meshes" : {
     "mesh0" : {
       "primitives" : [ {
@@ -86,7 +86,7 @@ The following is a glTF asset that defines a material with a simple, single text
         },
         "diffuseParameter": {
           "type": 35678,
-          "value": "exampleTexture"
+          "value": [ "exampleTexture" ]
         },
         "specularParameter": {
           "type": 35666,
@@ -125,8 +125,8 @@ The following is a glTF asset that defines a material with a simple, single text
       "uri": "texture.frag"
     }
   },
-
-
+  
+  
   "textures": {
     "exampleTexture": {
       "target": 3553,
@@ -150,23 +150,23 @@ The following is a glTF asset that defines a material with a simple, single text
        "wrapT": 33648
      }
   },
-
+  
 
   "buffers" : {
-    "buffer0" : {
+    "geometryBuffer" : {
       "uri" : "data:application/octet-stream;base64,AAABAAIAAQADAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAIA/AACAPwAAgD8=",
       "byteLength" : 140
     }
   },
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 12,
       "target" : 34963
     },
     "attributesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 12,
       "byteLength" : 128,
       "target" : 34962
@@ -210,7 +210,7 @@ The following is a glTF asset that defines a material with a simple, single text
       "min" : [ 0.0, 0.0 ]
     }
   },
-
+  
   "asset" : {
     "version" : "1.1"
   }

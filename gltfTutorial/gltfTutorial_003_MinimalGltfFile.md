@@ -3,11 +3,10 @@ Previous: [Basic glTF Structure](gltfTutorial_002_BasicGltfStructure.md) | [Tabl
 
 # A Minimal glTF File
 
-The following is a minimal but complete glTF asset, containing a single triangle. You can copy and paste it into a `gltf` file, and every glTF-based application should be able to load and render it. This section will explain the basic concepts of glTF based on this example.
+The following is a minimal but complete glTF asset, containing a single, indexed triangle. You can copy and paste it into a `gltf` file, and every glTF-based application should be able to load and render it. This section will explain the basic concepts of glTF based on this example.
 
 ```javascript
 {
-  "scene" : "scene0",
   "scenes" : {
     "scene0" : {
       "nodes" : [ "node0" ]
@@ -18,6 +17,7 @@ The following is a minimal but complete glTF asset, containing a single triangle
       "meshes" : [ "mesh0" ]
     }
   },
+  
   "meshes" : {
     "mesh0" : {
       "primitives" : [ {
@@ -30,21 +30,21 @@ The following is a minimal but complete glTF asset, containing a single triangle
   },
 
   "buffers" : {
-    "buffer0" : {
-      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAA",
-      "byteLength" : 42,
+    "geometryBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAA=",
+      "byteLength" : 44
     }
   },
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 6,
       "target" : 34963
     },
-    "positionsBufferView" : {
-      "buffer" : "buffer0",
-      "byteOffset" : 6,
+    "attributesBufferView" : {
+      "buffer" : "geometryBuffer",
+      "byteOffset" : 8,
       "byteLength" : 36,
       "target" : 34962
     }
@@ -60,7 +60,7 @@ The following is a minimal but complete glTF asset, containing a single triangle
       "min" : [ 0 ]
     },
     "positionsAccessor" : {
-      "bufferView" : "positionsBufferView",
+      "bufferView" : "attributesBufferView",
       "byteOffset" : 0,
       "componentType" : 5126,
       "count" : 3,
@@ -136,13 +136,13 @@ The `buffer`, `bufferView`, and `accessor` objects provide information about the
 
 A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) defines a block of raw, unstructured data with no inherent meaning. It contains an `uri`, which can either point to an external file that contains the data, or it can be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-data-uris) that encodes the binary data directly in the JSON file.
 
-In the example file, the second approach is used: There is a single buffer with the ID `"buffer0"`, containing 42 bytes, and the data of a this buffer is encoded as a data URI:
+In the example file, the second approach is used: There is a single buffer with the ID `"geometryBuffer"`, containing 44 bytes, and the data of a this buffer is encoded as a data URI:
 
 ```javascript
   "buffers" : {
-    "buffer0" : {
-      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAA",
-      "byteLength" : 42
+    "geometryBuffer" : {
+      "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAA=",
+      "byteLength" : 44
     }
   },
 ```
@@ -151,19 +151,19 @@ This data contains the indices of the triangle, and the vertex positions of the 
 
 ### Buffer views
 
-A [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView) describes a "chunk" or a "slice" of the whole, raw buffer data. In the given example, there are two buffer views. They both refer to the same buffer, using its ID. The first buffer view is called `"indicesBufferView"`, and refers to the part of the buffer that contains the data of the indices: it has a `byteOffset` of 0 referring to the whole buffer data, and a `byteLength` of 6. The second buffer view is called `"positionsBufferView"`, and refers to the part of the buffer that contains the vertex positions. It starts at a `byteOffset` of 6, and has a `byteLength` of 36; that is, it extends to the end of the whole buffer.
+A [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView) describes a "chunk" or a "slice" of the whole, raw buffer data. In the given example, there are two buffer views. They both refer to the same buffer, using its ID. The first buffer view is called `"indicesBufferView"`, and refers to the part of the buffer that contains the data of the indices: it has a `byteOffset` of 0 referring to the whole buffer data, and a `byteLength` of 6. The second buffer view is called `"attributesBufferView"`, and refers to the part of the buffer that contains the vertex positions. It starts at a `byteOffset` of 6, and has a `byteLength` of 36; that is, it extends to the end of the whole buffer.
 
 ```javascript
   "bufferViews" : {
     "indicesBufferView" : {
-      "buffer" : "buffer0",
+      "buffer" : "geometryBuffer",
       "byteOffset" : 0,
       "byteLength" : 6,
       "target" : 34963
     },
-    "positionsBufferView" : {
-      "buffer" : "buffer0",
-      "byteOffset" : 6,
+    "attributesBufferView" : {
+      "buffer" : "geometryBuffer",
+      "byteOffset" : 8,
       "byteLength" : 36,
       "target" : 34962
     }
@@ -179,7 +179,7 @@ In the example, there are two accessor objects.
 
 The first accessor is called `"indicesAccessor"` and describes the indices of the geometry data. It refers to the `"indicesBufferView"`, which is the part of the `buffer` that contains the raw data for the indices. Additionally, it specifies the `count` and `type` of the elements and their `componentType`. In this case, there are 3 scalar elements, and their component type is given by a constant that stands for the `unsigned short` type.
 
-The second accessor is called `"positionsAccessor"` and describes the vertex positions. It contains a reference to the relevant part of the buffer data, via the `"positionsBufferView"`, and its `count`, `type`, and `componentType` properties say that there are three elements of 3D vectors, each having `float` components.
+The second accessor is called `"positionsAccessor"` and describes the vertex positions. It contains a reference to the relevant part of the buffer data, via the `"attributesBufferView"`, and its `count`, `type`, and `componentType` properties say that there are three elements of 3D vectors, each having `float` components.
 
 
 ```javascript
@@ -194,7 +194,7 @@ The second accessor is called `"positionsAccessor"` and describes the vertex pos
       "min" : [ 0 ]
     },
     "positionsAccessor" : {
-      "bufferView" : "positionsBufferView",
+      "bufferView" : "attributesBufferView",
       "byteOffset" : 0,
       "componentType" : 5126,
       "count" : 3,

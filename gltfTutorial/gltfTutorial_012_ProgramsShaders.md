@@ -12,14 +12,14 @@ A shader program consists of at least two shaders, namely, the vertex shader and
 
 ```javascript
 "shaders": {
-    "exampleVertexShader": {
-        "uri": "exampleShader.vert",
-        "type": 35633
-    },
-    "exampleFragmentShader": {
-        "uri": "exampleShader.frag",
-        "type": 35632
-    }
+  "exampleVertexShader": {
+    "uri": "exampleShader.vert",
+    "type": 35633
+  },
+  "exampleFragmentShader": {
+    "uri": "exampleShader.frag",
+    "type": 35632
+  }
 }
 ```
 
@@ -75,13 +75,13 @@ The vertex shader and the fragment shader are combined into a single [`program`]
 
 ```javascript
 "exampleProgram": {
-    "vertexShader": "exampleVertexShader",
-    "fragmentShader": "exampleFragmentShader",
-    "attributes": [
-        "a_position",
-        "a_normal",
-        "a_texcoord0"
-    ]
+  "vertexShader": "exampleVertexShader",
+  "fragmentShader": "exampleFragmentShader",
+  "attributes": [
+    "a_position",
+    "a_normal",
+    "a_texcoord0"
+  ]
 }
 ```
 
