@@ -17,17 +17,17 @@ A mesh primitive defines the geometry data of the object using its `attributes` 
 In the given example, there are two entries in the `attributes` dictionary. The entries refer to the `positionsAccessor` and the `normalsAccessor`:
 
 ```javascript
-"meshes" : {
-  "mesh0" : {
-    "primitives" : [ {
-      "attributes" : {
-        "POSITION" : "positionsAccessor",
-        "NORMAL" : "normalsAccessor"
-      },
-      "indices" : "indicesAccessor"
-    } ]
-  }
-},
+  "meshes" : [
+    {
+      "primitives" : [ {
+        "attributes" : {
+          "POSITION" : 1,
+          "NORMAL" : 2
+        },
+        "indices" : 0
+      } ]
+    }
+  ],
 ```
 
 Together, the elements of these accessors define the attributes that belong to the individual vertices, as shown in Image 9a.
@@ -40,7 +40,7 @@ Together, the elements of these accessors define the attributes that belong to t
 
 ### Indexed and non-indexed geometry
 
-The geometry data of a `mesh.primitive` may be either *indexed* geometry or geometry without indices. In the given example, the `mesh.primitive` contains *indexed* geometry. This is indicated by the `indices` property, which refers to the `"indicesAccessor"`. For non-indexed geometry, this property is omitted.
+The geometry data of a `mesh.primitive` may be either *indexed* geometry or geometry without indices. In the given example, the `mesh.primitive` contains *indexed* geometry. This is indicated by the `indices` property, which refers to the accessor with index 0, defining the data for the indices. For non-indexed geometry, this property is omitted.
 
 
 ### Mesh primitive mode  
@@ -51,39 +51,37 @@ Other rendering modes are possible: the geometry data may also describe individu
 
 ### Mesh primitive material
 
-The mesh primitive may also refer to the `material` that should be used for rendering, using the ID of this material. In the given example, no `material` is defined, causing the objects to be rendered with a default material that just defines the objects to have a uniform 50% gray color. A detailed explanation of materials and the related concepts will be given in the [Materials](gltfTutorial_010_Materials.md) section.
+The mesh primitive may also refer to the `material` that should be used for rendering, using the index of this material. In the given example, no `material` is defined, causing the objects to be rendered with a default material that just defines the objects to have a uniform 50% gray color. A detailed explanation of materials and the related concepts will be given in the [Materials](gltfTutorial_010_Materials.md) section.
 
 
 ## Meshes attached to nodes
 
-In the example from the [Simple Meshes](gltfTutorial_008_SimpleMeshes.md) section, there is a single `scene`, which contains two nodes, and both nodes refer to the same `mesh` instance, which is called `"mesh0"`:
+In the example from the [Simple Meshes](gltfTutorial_008_SimpleMeshes.md) section, there is a single `scene`, which contains two nodes, and both nodes refer to the same `mesh` instance, which has the index 0:
 
 ```javascript
-  "scenes" : {
-    "scene0" : {
-      "nodes" : [ "node0", "node1" ]
+  "scenes" : [
+    {
+      "nodes" : [ 0, 1]
     }
-  },
-  "nodes" : {
-    "node0" : {
-      "meshes" : [ "mesh0" ]
+  ],
+  "nodes" : [
+    {
+      "mesh" : 0
     },
-    "node1" : {
-      "meshes" : [ "mesh0" ],
+    {
+      "mesh" : 0,
       "translation" : [ 1.0, 0.0, 0.0 ]
     }
-  },
-
-  "meshes" : {
-    "mesh0" : {
-      ...
-    }
-  },
+  ],
+  
+  "meshes" : [
+    { ... } 
+  ],
 ```
 
-The node `"node1"` has a `translation` property. As shown in the [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) section, this will be used to compute the local transform matrix of this node. In this case, the matrix will cause a translation of 1.0 along the x-axis. The product of all local transforms of the nodes will yield the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes). And all elements that are attached to the nodes will be rendered with this global transform.
+The second node has a `translation` property. As shown in the [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) section, this will be used to compute the local transform matrix of this node. In this case, the matrix will cause a translation of 1.0 along the x-axis. The product of all local transforms of the nodes will yield the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes). And all elements that are attached to the nodes will be rendered with this global transform.
 
-So in this example, the mesh will be rendered twice because it is attached to two nodes: once with the global transform of `"node0"`, which is the identity transform, and once with the global transform of node `"node1"`, which is a translation of 1.0 along the x-axis.
+So in this example, the mesh will be rendered twice because it is attached to two nodes: once with the global transform of the first node, which is the identity transform, and once with the global transform of the second node, which is a translation of 1.0 along the x-axis.
 
 
 

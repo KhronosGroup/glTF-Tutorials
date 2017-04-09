@@ -8,56 +8,56 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
 
 ```javascript
 {
-  "scenes" : {
-    "scene0" : {
-      "nodes" : [ "node0", "node1" ]
+  "scenes" : [
+    {
+      "nodes" : [ 0, 1]
     }
-  },
-  "nodes" : {
-    "node0" : {
-      "meshes" : [ "mesh0" ]
+  ],
+  "nodes" : [
+    {
+      "mesh" : 0
     },
-    "node1" : {
-      "meshes" : [ "mesh0" ],
+    {
+      "mesh" : 0,
       "translation" : [ 1.0, 0.0, 0.0 ]
     }
-  },
-
-  "meshes" : {
-    "mesh0" : {
+  ],
+  
+  "meshes" : [
+    {
       "primitives" : [ {
         "attributes" : {
-          "POSITION" : "positionsAccessor",
-          "NORMAL" : "normalsAccessor"
+          "POSITION" : 1,
+          "NORMAL" : 2
         },
-        "indices" : "indicesAccessor"
+        "indices" : 0
       } ]
     }
-  },
+  ],
 
-  "buffers" : {
-    "geometryBuffer" : {
+  "buffers" : [
+    {
       "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8AAAAAAAAAAAAAgD8=",
       "byteLength" : 80
     }
-  },
-  "bufferViews" : {
-    "indicesBufferView" : {
-      "buffer" : "geometryBuffer",
+  ],
+  "bufferViews" : [
+    {
+      "buffer" : 0,
       "byteOffset" : 0,
       "byteLength" : 6,
       "target" : 34963
     },
-    "attributesBufferView" : {
-      "buffer" : "geometryBuffer",
+    {
+      "buffer" : 0,
       "byteOffset" : 8,
       "byteLength" : 72,
       "target" : 34962
     }
-  },
-  "accessors" : {
-    "indicesAccessor" : {
-      "bufferView" : "indicesBufferView",
+  ],
+  "accessors" : [
+    {
+      "bufferView" : 0,
       "byteOffset" : 0,
       "componentType" : 5123,
       "count" : 3,
@@ -65,8 +65,8 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
       "max" : [ 2 ],
       "min" : [ 0 ]
     },
-    "positionsAccessor" : {
-      "bufferView" : "attributesBufferView",
+    {
+      "bufferView" : 1,
       "byteOffset" : 0,
       "componentType" : 5126,
       "count" : 3,
@@ -74,8 +74,8 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
       "max" : [ 1.0, 1.0, 0.0 ],
       "min" : [ 0.0, 0.0, 0.0 ]
     },
-    "normalsAccessor" : {
-      "bufferView" : "attributesBufferView",
+    {
+      "bufferView" : 1,
       "byteOffset" : 36,
       "componentType" : 5126,
       "count" : 3,
@@ -83,10 +83,10 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
       "max" : [ 0.0, 0.0, 1.0 ],
       "min" : [ 0.0, 0.0, 1.0 ]
     }
-  },
+  ],
   
   "asset" : {
-    "version" : "1.1"
+    "version" : "2.0"
   }
 }
 ```
@@ -101,20 +101,20 @@ Image 8a shows the rendered glTF asset.
 
 ## The mesh definition
 
-The given example still contains a single mesh, with the ID `"mesh0"`. The mesh has a single mesh primitive. But this mesh primitive contains multiple attributes:
+The given example still contains a single mesh that has a single mesh primitive. But this mesh primitive contains multiple attributes:
 
 ```javascript
-"meshes" : {
-  "mesh0" : {
-    "primitives" : [ {
-      "attributes" : {
-        "POSITION" : "positionsAccessor",
-        "NORMAL" : "normalsAccessor"
-      },
-      "indices" : "indicesAccessor"
-    } ]
-  }
-},
+  "meshes" : [
+    {
+      "primitives" : [ {
+        "attributes" : {
+          "POSITION" : 1,
+          "NORMAL" : 2
+        },
+        "indices" : 0
+      } ]
+    }
+  ],
 ```
 
 In addition to the `"POSITION"` attribute, it has a `"NORMAL"` attribute. This refers to the `accessor` object that provides the vertex normals, as described in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BuffersBufferViewsAccessors.md) section.
@@ -125,18 +125,18 @@ In addition to the `"POSITION"` attribute, it has a `"NORMAL"` attribute. This r
 As can be seen in Image 8a, the mesh is rendered *twice*. This is accomplished by attaching the mesh to two different nodes:
 
 ```javascript
-"nodes" : {
-  "node0" : {
-    "meshes" : [ "mesh0" ]
-  },
-  "node1" : {
-    "meshes" : [ "mesh0" ],
-    "translation" : [ 1.0, 0.0, 0.0 ]
-  }
-},
+  "nodes" : [
+    {
+      "mesh" : 0
+    },
+    {
+      "mesh" : 0,
+      "translation" : [ 1.0, 0.0, 0.0 ]
+    }
+  ],
 ```
 
-The `meshes` property of each node is an array containing the ID of the mesh. One of the nodes has a `translation` that causes the attached mesh to be rendered at a different position. 
+The `mesh` property of each node refers to the mesh that is attached to the node, using the index of the mesh. One of the nodes has a `translation` that causes the attached mesh to be rendered at a different position. 
 
 The [next section](gltfTutorial_009_Meshes.md) will explain meshes and mesh primitives in more detail.
 
