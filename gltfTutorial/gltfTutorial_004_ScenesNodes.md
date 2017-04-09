@@ -4,25 +4,26 @@ Previous: [A Minimal glTF File](gltfTutorial_003_MinimalGltfFile.md) | [Table of
 
 ## Scenes
 
-There may be multiple scenes stored in one glTF file, but in many cases, there will be only a single scene, which then also is the default scene. Each scene contains an array of `nodes`, which are the IDs of the root nodes of the scene graphs. Again, there may be multiple root nodes, forming different hierarchies, but in many cases, the scene will have a single root node. The most simple possible scene description has already been shown in the previous section, consisting of a single scene with a single node:
+There may be multiple scenes stored in one glTF file, but in many cases, there will be only a single scene, which then also is the default scene. Each scene contains an array of `nodes`, which are the indices of the root nodes of the scene graphs. Again, there may be multiple root nodes, forming different hierarchies, but in many cases, the scene will have a single root node. The most simple possible scene description has already been shown in the previous section, consisting of a single scene with a single node:
 
 ```javascript
-  "scenes" : {
-    "scene0" : {
-      "nodes" : [ "node0" ]
+  "scenes" : [
+    {
+      "nodes" : [ 0 ]
     }
-  },
-  "nodes" : {
-    "node0" : {
-      "meshes" : [ "mesh0" ]
+  ],
+  
+  "nodes" : [
+    {
+      "mesh" : 0
     }
-  },
+  ],
 ```
 
 
 ## Nodes forming the scene graph
 
-Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-node) can contain an array called `children` that contains the IDs of its child nodes. So each node is one element of a hierarchy of nodes, and together they define the structure of the scene as a scene graph.  
+Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-node) can contain an array called `children` that contains the indices of its child nodes. So each node is one element of a hierarchy of nodes, and together they define the structure of the scene as a scene graph.  
 
 <p align="center">
 <img src="images/sceneGraph.png" /><br>

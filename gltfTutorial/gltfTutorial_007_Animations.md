@@ -7,42 +7,44 @@ As shown in the [Simple Animation](gltfTutorial_005_SimpleAnimation.md) example,
 The following is another example of an `animation`. This time, the animation contains two channels. One animates the translation, and the other animates the rotation of a node:
 
 ```javascript
-"animation0": {
-  "channels": [
+  "animations": [
     {
-      "sampler": "translationSampler",
-       "target": {
-        "id": "node0",
-        "path": "translation"
-      }
-    },
-    {
-      "sampler": "rotationSampler",
-      "target": {
-        "id": "node0",
-        "path": "rotation"
-      }
+      "samplers" : [
+        {
+          "input" : 2,
+          "interpolation" : "LINEAR",
+          "output" : 3
+        },
+        {
+          "input" : 2,
+          "interpolation" : "LINEAR",
+          "output" : 4
+        }
+      ],
+      "channels" : [ 
+        {
+          "sampler" : 0,
+          "target" : {
+            "id" : 0,
+            "path" : "rotation"
+          }
+        },
+        {
+          "sampler" : 1,
+          "target" : {
+            "id" : 0,
+            "path" : "translation"
+          }
+        } 
+      ]
     }
   ],
-  "samplers": {
-    "translationSampler": {
-      "input": "TIMEAccessor",
-      "interpolation": "LINEAR",
-      "output": "translationAccessor"
-    },
-    "rotationSampler": {
-      "input": "TIMEAccessor",
-      "interpolation": "LINEAR",
-      "output": "rotationAccessor"
-    }
-  }
-}
 ```
 
 
 ## Animation samplers
 
-The `samplers` dictionary contains [`animation.sampler`](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-animation.sampler) objects that define how the values that are provided by the accessors have to be interpolated between the key frames, as shown in Image 7a.
+The `samplers` array contains [`animation.sampler`](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-animation.sampler) objects that define how the values that are provided by the accessors have to be interpolated between the key frames, as shown in Image 7a.
 
 <p align="center">
 <img src="images/animationSamplers.png" /><br>
@@ -52,17 +54,17 @@ The `samplers` dictionary contains [`animation.sampler`](https://github.com/Khro
 In order to compute the value of the translation for the current animation time, the following algorithm can be used:
 
 * Let the current animation time be given as `currentTime`.
-* Compute the next smaller and the next larger element of the `TIMEAccessor`:
+* Compute the next smaller and the next larger element of the *times* accessor:
 
-    `previousTime` = The largest element from the `TIMEAccessor` that is smaller than the `currentTime`
+    `previousTime` = The largest element from the *times* accessor that is smaller than the `currentTime`
 
-    `nextTime`  = The smallest element from the `TIMEAccessor` that is larger than the `currentTime`
+    `nextTime`  = The smallest element from the *times* accessor that is larger than the `currentTime`
 
-* Obtain the elements from the `translationAccessor` that correspond to these times:
+* Obtain the elements from the *translations* accessor that correspond to these times:
 
-    `previousTranslation` = The element from the `translationAccessor` that corresponds to the `previousTime`
+    `previousTranslation` = The element from the *translations* accessor that corresponds to the `previousTime`
 
-    `nextTranslation` = The element from the `translationAccessor` that corresponds to the `nextTime`
+    `nextTranslation` = The element from the *translations* accessor that corresponds to the `nextTime`
 
 * Compute the interpolation value. This is a value between 0.0 and 1.0 that describes the *relative* position of the `currentTime`, between the `previousTime` and the `nextTime`:
 
@@ -75,12 +77,12 @@ In order to compute the value of the translation for the current animation time,
 
 ### Example:
 
-Imagine the `currentTime` is **1.2**. The next smaller element from the `TIMEAccessor` is **0.8**. The next larger element is **1.6**. So
+Imagine the `currentTime` is **1.2**. The next smaller element from the *times* accessor is **0.8**. The next larger element is **1.6**. So
 
     previousTime = 0.8
     nextTime     = 1.6
 
-The corresponding values from the `translationAccessor` can be looked up:
+The corresponding values from the *translations* accessor can be looked up:
 
     previousTranslation = (14.0, 3.0, -2.0)
     nextTranslation     = (18.0, 1.0,  1.0)
@@ -105,7 +107,7 @@ So when the current time is **1.2**, then the `translation` of the node is **(16
 
 ## Animation channels
 
-The animations contain an array of [`animation.channel`](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-animation.channel) objects. The channels establish the connection between the input, which is the value that is computed from the sampler, and the output, which is the animated node property. Therefore, each channel refers to one sampler, using the ID of the sampler, and contains an [`animation.channel.target`](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-animation.channel.target). The `target` refers to a node, using the ID of the node, and contains a `path` that defines the property of the node that should be animated. The value from the sampler will be written into this property.
+The animations contain an array of [`animation.channel`](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-animation.channel) objects. The channels establish the connection between the input, which is the value that is computed from the sampler, and the output, which is the animated node property. Therefore, each channel refers to one sampler, using the index of the sampler, and contains an [`animation.channel.target`](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-animation.channel.target). The `target` refers to a node, using the index of the node, and contains a `path` that defines the property of the node that should be animated. The value from the sampler will be written into this property.
 
 In the example above, there are two channels for the animation. Both refer to the same node. The path of the first channel refers to the `translation` of the node, and the path of the second channel refers to the `rotation` of the node. So all objects (meshes) that are attached to the node will be translated and rotated by the animation, as shown in Image 7b.
 

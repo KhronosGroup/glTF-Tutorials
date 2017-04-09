@@ -7,26 +7,24 @@ The core of glTF is a JSON file. This file describes the whole contents of the 3
 
 ## The JSON structure
 
-The scene objects are stored in dictionaries in the JSON file. They can be accessed using an ID, which is the key of the dictionary:
+The scene objects are stored in arrays in the JSON file. They can be accessed using the index of the respective object in the array:
 
 ```javascript
-"meshes": {
-    "FirstExampleMeshId": { ... },
-    "SecondExampleMeshId": { ... },
-    "ThirdExampleMeshId": { ... }
-}
+"meshes" : 
+[
+    { ... }
+    { ... }
+    ...
+],
 ```
 
-
-These IDs are also used to define the *relationships* between the objects. The example above defines multiple meshes, and a node may refer to one of these meshes, using the mesh ID, to indicate that the mesh should be attached to this node:
+These indices are also used to define the *relationships* between the objects. The example above defines multiple meshes, and a node may refer to one of these meshes, using the mesh index, to indicate that the mesh should be attached to this node:
 
 ```javascript
-"nodes:" {
-    "FirstExampleNodeId": {
-        "meshes": [
-            "FirstExampleMeshId"
-        ]
-    },
+"nodes:" 
+[
+    { "mesh": 0, ... },
+    { "mesh": 5, ... },
     ...
 }
 ```
@@ -48,7 +46,7 @@ These elements are summarized here quickly, to give an overview, with links to t
 - The [`skin`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-skin) defines parameters that are required for vertex skinning, which allows the deformation of a mesh based on the pose of a virtual character. The values of these parameters are obtained from an `accessor`.
 - An [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation) describes how transformations of certain nodes (e.g., rotation or translation) change over time.
 - The [`accessor`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-accessor) is used as an abstract source of arbitrary data. It is used by the `mesh`, `skin`, and `animation`, and provides the geometry data, the skinning parameters and the time-dependent animation values. It refers to a [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView), which is a part of a [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) that contains the actual raw binary data.
-- The [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material) contains the parameters that define the appearance of an object. It can refer to a `texture` that will be applied to the object, and it refers to the `technique` for rendering an object with the given material. The [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique) refers to a [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-program) that contains the GLSL vertex and fragment [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-shader)s that are used for rendering the object.  
+- The [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material) contains the parameters that define the appearance of an object. It usually refers to `texture` objects that will be applied to the rendered geometry.
 - The [`texture`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-texture) is defined by a [`sampler`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-sampler) and an [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-image). The `sampler` defines how the texture `image` should be placed on the object.   
 
 
@@ -63,15 +61,13 @@ The binary data, like geometry and textures of the 3D objects, are usually not c
 <a name="gltfStructure-png"></a>Image 2b: The glTF structure
 </p>
 
-As shown in the image above, there are three types of objects that may contain such links to external resources, namely `buffers`, `images`, and `shaders`. These objects will later be explained in more detail.
+As shown in the image above, there are two types of objects that may contain such links to external resources, namely `buffers` and `images`. These objects will later be explained in more detail.
 
 
 
 ## Reading and managing external data
 
-Reading and processing a glTF asset starts with parsing the JSON structure. After the structure has been parsed, the `buffers`, `images`, and `shaders` are available as dictionaries. The keys of these dictionaries are IDs, and the values are the [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer), [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-image), and [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-shader) objects, respectively.    
-
-Each of these objects contains links, in the form of URIs. For further processing, the data that is referred to by these URIs has to be read into memory. Usually it will be stored in a dictionary (or map) data structure, so that it may be looked up using the ID of the object that it belongs to.
+Reading and processing a glTF asset starts with parsing the JSON structure. After the structure has been parsed, the [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) and [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-image) objects are available in the top-level `buffers` and `images` arrays, respectively. Each of these objects may refer blocks of binary data. For further processing, this data is read into memory. Usually, the data will be be stored in an array, so that they may be looked up using the same index that is used for referring to the `buffer` or `image` object that they belong to. 
 
 
 ## Binary data in `buffers`
@@ -92,7 +88,7 @@ This binary data is just a raw block of memory that is read from the URI of the 
 
 ## Image data in `images`
 
-An [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-image) refers to an external image file that can be used as the texture of a rendered object:
+An [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-image) may refer to an external image file that can be used as the texture of a rendered object:
 
 ```javascript
 "image01": {
@@ -100,28 +96,14 @@ An [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification#refe
 }
 ```
 
-The reference is given as a URI that usually points to a PNG or JPG file. These formats significantly reduce the size of the files, so that they may efficiently be transferred over the web.
+The reference is given as a URI that usually points to a PNG or JPG file. These formats significantly reduce the size of the files, so that they may efficiently be transferred over the web.In some cases, the `image` objects may not refer to an external file, but to data that is stored in a `buffer`. The details of this indirection will be explained in the [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) section. 
 
 
-
-
-## GLSL shader data in `shaders`
-
-A GLSL vertex or fragment [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-shader) that should be used for rendering the 3D objects contains a URI that points to a file containing the shader source code:
-
-```javascript
-"fragmentShader01": {
-    "type": 35632,
-    "uri": "fragmentShader01.glsl"
-}
-```
-
-The shader source code is stored as plain text so that it can be directly compiled with WebGL, OpenGL, or any other graphics API that is capable of interpreting GLSL shaders.
 
 
 ## Binary data in data URIs
 
-Usually, the URIs that are contained in the `buffer`, `image`, and `shader` objects will point to a file that contains the actual data. As an alternative, the data may be *embedded* into the JSON, in binary format, by using a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs).
+Usually, the URIs that are contained in the `buffer` and `image` objects will point to a file that contains the actual data. As an alternative, the data may be *embedded* into the JSON, in binary format, by using a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs).
 
 
 Previous: [Introduction](gltfTutorial_001_Introduction.md) | [Table of Contents](README.md) | Next: [A Minimal glTF File](gltfTutorial_003_MinimalGltfFile.md)

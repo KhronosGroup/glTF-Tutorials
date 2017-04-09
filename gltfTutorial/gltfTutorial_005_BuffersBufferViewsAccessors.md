@@ -10,12 +10,12 @@ An example of `buffer`, `bufferView`, and `accessor` objects was already given i
 A [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-buffer) represents a block of raw binary data, without an inherent structure or meaning. This data is referred to by a buffer using its `uri`. This URI may either point to an external file, or be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers) that encodes the binary data directly in the JSON file. The [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) contained an example of a `buffer`, with 44 bytes of data, encoded in a data URI:
 
 ```javascript
-  "buffers" : {
-    "geometryBuffer" : {
+  "buffers" : [
+    {
       "uri" : "data:application/octet-stream;base64,AAABAAIAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAA=",
       "byteLength" : 44
     }
-  },
+  ],
 ```
 
 
@@ -32,20 +32,20 @@ Parts of the data of a `buffer` may have to be passed to the renderer as vertex 
 The first step of structuring the data from a `buffer` is with [`bufferView`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-bufferView) objects. A `bufferView` represents a "slice" of the data of one buffer. This slice is defined using an offset and a length, in bytes. The [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) defined two `bufferView` objects:
 
 ```javascript
-"bufferViews" : {
-  "indicesBufferView" : {
-    "buffer" : "geometryBuffer",
-    "byteOffset" : 0,
-    "byteLength" : 6,
-    "target" : 34963
-  },
-  "attributesBufferView" : {
-    "buffer" : "geometryBuffer",
-    "byteOffset" : 8,
-    "byteLength" : 36,
-    "target" : 34962
-  }
-},
+  "bufferViews" : [
+    {
+      "buffer" : 0,
+      "byteOffset" : 0,
+      "byteLength" : 6,
+      "target" : 34963
+    },
+    {
+      "buffer" : 0,
+      "byteOffset" : 8,
+      "byteLength" : 36,
+      "target" : 34962
+    }
+  ],
 ```
 
 The first `bufferView` refers to the first 6 bytes of the buffer data. The second one refers to 36 bytes of the buffer, with an offset of 8 bytes, as shown in this image:
@@ -75,31 +75,31 @@ The `componentType` specifies the type of the components of these data elements.
 Different combinations of these properties may be used to describe arbitrary data types. For example, the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) contained two accessors:
 
 ```javascript
-"accessors" : {
-  "indicesAccessor" : {
-    "bufferView" : "indicesBufferView",
-    "byteOffset" : 0,
-    "componentType" : 5123,
-    "count" : 3,
-    "type" : "SCALAR",
-    "max" : [ 2 ],
-    "min" : [ 0 ]
-  },
-  "positionsAccessor" : {
-    "bufferView" : "attributesBufferView",
-    "byteOffset" : 0,
-    "componentType" : 5126,
-    "count" : 3,
-    "type" : "VEC3",
-    "max" : [ 1.0, 1.0, 0.0 ],
-    "min" : [ 0.0, 0.0, 0.0 ]
-  }
-},
+  "accessors" : [
+    {
+      "bufferView" : 0,
+      "byteOffset" : 0,
+      "componentType" : 5123,
+      "count" : 3,
+      "type" : "SCALAR",
+      "max" : [ 2 ],
+      "min" : [ 0 ]
+    },
+    {
+      "bufferView" : 1,
+      "byteOffset" : 0,
+      "componentType" : 5126,
+      "count" : 3,
+      "type" : "VEC3",
+      "max" : [ 1.0, 1.0, 0.0 ],
+      "min" : [ 0.0, 0.0, 0.0 ]
+    }
+  ],
 ```
 
-The first accessor refers to the `"indicesBufferView"`. Its `type` is `"SCALAR"`, and its `componentType` is `5123` (`GL_UNSIGNED_SHORT`). This means that the indices are stored as scalar `unsigned short` values.
+The first accessor refers to the `bufferView` with index 0, which defines the part of the `buffer` data that contains the indices. Its `type` is `"SCALAR"`, and its `componentType` is `5123` (`GL_UNSIGNED_SHORT`). This means that the indices are stored as scalar `unsigned short` values.
 
-The second accessor refers to the `"attributesBufferView"`. Its `type` is `"VEC3"`, and its `componentType` is  `5126` (`GL_FLOAT`). So this accessor describes 3D vectors with floating point components.
+The second accessor refers to the `bufferView` with index 1, which defines the part of the `buffer` data that contains the vertex attributes - particularly, the vertex positions. Its `type` is `"VEC3"`, and its `componentType` is  `5126` (`GL_FLOAT`). So this accessor describes 3D vectors with floating point components.
 
 
 ### Data layout
@@ -114,7 +114,7 @@ The data that is referred to by an `accessor` may be sent to the graphics card f
 - The `byteOffset` of an `accessor` must be divisble by the size of its `componentType`. 
 - The sum of the `byteOffset` of an accessor and the `byteOffset` of the `bufferView` that it refers to must be divisble by the size of its `componentType`.
 
-In the example above, the `byteOffset` of the `"attributesBufferView"` was chosen to be `8`, in order to align the data of the `"positionsAccessor"` to 4-byte boundaries. The bytes `6` and `7` of the `buffer` are thus *padding* bytes that do not carry relevant data. 
+In the example above, the `byteOffset` of the `bufferView` with index 1 (which refers to the vertex attributes) was chosen to be `8`, in order to align the data of the accessor for the vertex positions to 4-byte boundaries. The bytes `6` and `7` of the `buffer` are thus *padding* bytes that do not carry relevant data. 
 
 Image 5c illustrates how the raw data of a `buffer` is structured using `bufferView` objects and is augmented with data type information using `accessor` objects.
 
