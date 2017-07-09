@@ -111,8 +111,8 @@ Additional properties of an `accessor` further specify the layout of the data. T
 
 The data that is referred to by an `accessor` may be sent to the graphics card for rendering, or be used at the host side as animation or skinning data. Therefore, the data of an `accessor` has to be aligned based on the *type* of the data. For example, when the `componentType` of an `accessor` is `5126` (`GL_FLOAT`), then the data must be aligned at 4-byte boundaries, because a single `float` value consists of four bytes. This alignment requirement of an `accessor` refers to its `bufferView` and the underlying `buffer`. Particularly, the alignment requirements are as follows:
 
-- The `byteOffset` of an `accessor` must be divisble by the size of its `componentType`. 
-- The sum of the `byteOffset` of an accessor and the `byteOffset` of the `bufferView` that it refers to must be divisble by the size of its `componentType`.
+- The `byteOffset` of an `accessor` must be divisible by the size of its `componentType`. 
+- The sum of the `byteOffset` of an accessor and the `byteOffset` of the `bufferView` that it refers to must be divisible by the size of its `componentType`.
 
 In the example above, the `byteOffset` of the `bufferView` with index 1 (which refers to the vertex attributes) was chosen to be `8`, in order to align the data of the accessor for the vertex positions to 4-byte boundaries. The bytes `6` and `7` of the `buffer` are thus *padding* bytes that do not carry relevant data. 
 
