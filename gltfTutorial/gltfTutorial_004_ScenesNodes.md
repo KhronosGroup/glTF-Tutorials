@@ -12,7 +12,7 @@ There may be multiple scenes stored in one glTF file, but in many cases, there w
       "nodes" : [ 0 ]
     }
   ],
-  
+
   "nodes" : [
     {
       "mesh" : 0
@@ -76,7 +76,7 @@ The matrix defined here is as shown in Image 4b.
 </p>
 
 
-The transform of a node can also be given using the `transform`, `rotation`, and `scale` properties of a node, which is sometimes abbreviated as *TRS*:  
+The transform of a node can also be given using the `translation`, `rotation`, and `scale` properties of a node, which is sometimes abbreviated as *TRS*:  
 
 ```javascript
 "node0": {
