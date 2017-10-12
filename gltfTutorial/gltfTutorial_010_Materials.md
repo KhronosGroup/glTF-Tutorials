@@ -20,10 +20,10 @@ However, one of the goals of glTF was to *not* constrain the rendering to one si
 
 This flexibility comes at a certain cost. Several elements in the glTF asset have to be combined properly by the renderer to exploit this flexibility. Here is a quick summary of the elements of a glTF asset that are used for defining the appearance of a rendered object:
 
-- A [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material) can be assigned to a `mesh.primitive`, so that the primitive is rendered with this material. A material can be considered an "instance" of a `technique`.
-- A [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique) is the core element describing the appearance of rendered objects in a glTF asset. It is an abstract definition of a rendering process and serves as a "template" for `material` objects.
-- A [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-program) is the actual *implementation* of a rendering process for a `technique`. It consists of multiple `shader` objects.
-- A [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-shader) is a basic building block for the implementation of a renderer in WebGL or OpenGL.
+- A [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-material) can be assigned to a `mesh.primitive`, so that the primitive is rendered with this material. A material can be considered an "instance" of a `technique`.
+- A [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique) is the core element describing the appearance of rendered objects in a glTF asset. It is an abstract definition of a rendering process and serves as a "template" for `material` objects.
+- A [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-program) is the actual *implementation* of a rendering process for a `technique`. It consists of multiple `shader` objects.
+- A [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-shader) is a basic building block for the implementation of a renderer in WebGL or OpenGL.
 
 The following sections will show how these elements are combined and interpreted to finally render a glTF asset:
 

@@ -2,7 +2,7 @@ Previous: [Simple Animation](gltfTutorial_006_SimpleAnimation.md) | [Table of Co
 
 # Animations
 
-As shown in the [Simple Animation](gltfTutorial_006_SimpleAnimation.md) example, an [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-animation) can be used to describe how the `translation`, `rotation`, or `scale` properties of nodes change over time.
+As shown in the [Simple Animation](gltfTutorial_006_SimpleAnimation.md) example, an [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-animation) can be used to describe how the `translation`, `rotation`, or `scale` properties of nodes change over time.
 
 The following is another example of an `animation`. This time, the animation contains two channels. One animates the translation, and the other animates the rotation of a node:
 

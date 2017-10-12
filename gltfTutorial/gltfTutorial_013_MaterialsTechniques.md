@@ -3,7 +3,7 @@ Previous: [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md) | [Table o
 
 # Materials and Techniques
 
-As shown in the [Simple Material](gltfTutorial_011_SimpleMaterial.md) example, the central element for defining the appearance of a rendered object in glTF is the [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique).  Such a technique serves as a template for a [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material). The `material` defines the values for different parameters of the technique that determine the final appearance of the rendered objects.
+As shown in the [Simple Material](gltfTutorial_011_SimpleMaterial.md) example, the central element for defining the appearance of a rendered object in glTF is the [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique).  Such a technique serves as a template for a [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-material). The `material` defines the values for different parameters of the technique that determine the final appearance of the rendered objects.
 
 This section will explain the connection between techniques, technique parameters, and the material, and will show how the values of technique parameters are determined.
 
@@ -12,7 +12,7 @@ This section will explain the connection between techniques, technique parameter
 
 A `technique` describes a rendering process. It summarizes a set of parameters that are required for controlling the renderer. These parameters directly correspond to the *attributes* and *uniforms* of the shaders that are used to implement the rendering process.
 
-The technique therefore contains `attributes` and `uniforms` dictionaries. The keys of these dictionaries are the variable names of the attributes and uniforms of the shaders. The values of these dictionaries refer to the [`parameters`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.parameters) dictionary of the technique. These `technique.parameters` define the types of the parameters and how the values of the parameters are obtained. So for each `attribute` and `uniform` of the shader program, there is a `technique.parameters` entry that defines the type that the variable in the shader program has, as shown in Image 13a.
+The technique therefore contains `attributes` and `uniforms` dictionaries. The keys of these dictionaries are the variable names of the attributes and uniforms of the shaders. The values of these dictionaries refer to the [`parameters`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique.parameters) dictionary of the technique. These `technique.parameters` define the types of the parameters and how the values of the parameters are obtained. So for each `attribute` and `uniform` of the shader program, there is a `technique.parameters` entry that defines the type that the variable in the shader program has, as shown in Image 13a.
 
 
 **TODO: This may have to be updated, see https://github.com/KhronosGroup/glTF/issues/789**
@@ -182,7 +182,7 @@ Therefore, the `technique.parameters` may have a `semantic` property that contai
 }
 ```
 
-There are many different possible semantics for `uniform` parameters. These are listed in a [table in the glTF specification](https://github.com/KhronosGroup/glTF/tree/master/specification#semantics). Additional `attribute` semantics are listed in the [glTF specification of meshes](https://github.com/KhronosGroup/glTF/tree/master/specification#meshes).
+There are many different possible semantics for `uniform` parameters. These are listed in a [table in the glTF specification](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#semantics). Additional `attribute` semantics are listed in the [glTF specification of meshes](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#meshes).
 
 #### Semantics for attributes
 
@@ -218,7 +218,7 @@ When a `mesh.primitive` is rendered with this technique, this uniform parameter 
 - The `u_modelViewMatrix` entry is found. This means that one of the shaders of the program of the technique has a `uniform` variable with exactly this name: `u_modelViewMatrix`.
 - In order to assign a value to this variable prior to rendering, the information about this parameter is looked up in the `technique.parameters` dictionary.
 - The entry for the `"modelViewMatrixParameter"` says that the `type` of this uniform is a 4&times;4 floating point matrix, and that the `semantic` is `"MODELVIEW"`.
-- The actual value for this uniform is computed. The `semantic` is `"MODELVIEW"`, and referring to the [uniform semantics section of the glTF specification](https://github.com/KhronosGroup/glTF/tree/master/specification#semantics), this means that the value is a 4&times;4 matrix that is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of the node that the mesh primitive is attached to and the view matrix of the currently active camera.
+- The actual value for this uniform is computed. The `semantic` is `"MODELVIEW"`, and referring to the [uniform semantics section of the glTF specification](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#semantics), this means that the value is a 4&times;4 matrix that is the product of the [global transform](gltfTutorial_004_ScenesNodes.md#global-transforms-of-nodes) of the node that the mesh primitive is attached to and the view matrix of the currently active camera.
 - The value for this uniform is passed to the renderer.
 
 
@@ -227,7 +227,7 @@ When a `mesh.primitive` is rendered with this technique, this uniform parameter 
 
 As shown above, the `technique.parameters` encode the information about the `attribute` and `uniform` variables that appear in the vertex shader and fragment shader. But for common graphics APIs, there are additional, "global" parameters that are not explicitly controlled via the shaders.
 
-For the case of WebGL or OpenGL, these parameters refer to the *state* that is maintained by the WebGL or OpenGL renderer, and the certain *functions* that describe rendering settings. The following is an excerpt from a `technique` that may be found in the JSON part of a glTF asset, which shows an example of these [`technique.states`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states) and the [`technique.states.functions`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states.functions) properties:
+For the case of WebGL or OpenGL, these parameters refer to the *state* that is maintained by the WebGL or OpenGL renderer, and the certain *functions* that describe rendering settings. The following is an excerpt from a `technique` that may be found in the JSON part of a glTF asset, which shows an example of these [`technique.states`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique.states) and the [`technique.states.functions`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique.states.functions) properties:
 
 ```javascript
 "techniques": {
@@ -255,7 +255,7 @@ For the case of WebGL or OpenGL, these parameters refer to the *state* that is m
 
 For WebGL- and OpenGL-based renderers, the elements of the `states.enable` array will be passed to `gl.enable` and `glEnable` calls, respectively. The properties of the `technique.states.functions` element correspond to GL calls and their parameters. For example, the `"depthRange" : [ 0.0, 1.0 ]` property indicates that when this technique is used for rendering, then the actual draw call should be preceded by a call to `gl.depthRange(0.0, 1.0)` (for WebGL) or `glDepthRange(0.0, 1.0)` (for OpenGL).
 
-For details about the available set of states and functions, refer to the [`technique.states`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states) and [`technique.states.functions`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique.states.functions) specification and to the WebGL- and OpenGL specification.
+For details about the available set of states and functions, refer to the [`technique.states`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique.states) and [`technique.states.functions`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique.states.functions) specification and to the WebGL- and OpenGL specification.
 
 For other graphics APIs, these properties have to be interpreted accordingly, to emulate the behavior that is achieved with the respective GL function calls.
 

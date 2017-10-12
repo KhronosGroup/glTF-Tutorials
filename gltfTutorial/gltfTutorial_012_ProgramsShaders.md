@@ -8,7 +8,7 @@ The rendering process in OpenGL or WebGL is described with so-called shader prog
 
 ## Shaders
 
-A shader program consists of at least two shaders, namely, the vertex shader and the fragment shader. In the context of glTF, the vertex shader and fragment shader are usually contained in dedicated files, which are referred to by the [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-shader) objects using a URI:
+A shader program consists of at least two shaders, namely, the vertex shader and the fragment shader. In the context of glTF, the vertex shader and fragment shader are usually contained in dedicated files, which are referred to by the [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-shader) objects using a URI:
 
 ```javascript
 "shaders": {
@@ -71,7 +71,7 @@ The attributes and the uniforms of the vertex shader and the fragment shader tog
 
 ## Programs
 
-The vertex shader and the fragment shader are combined into a single [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-program). In the glTF JSON, this program simply refers to the shaders using their IDs, and it summarizes all attributes that appear in the vertex shader:
+The vertex shader and the fragment shader are combined into a single [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-program). In the glTF JSON, this program simply refers to the shaders using their IDs, and it summarizes all attributes that appear in the vertex shader:
 
 ```javascript
 "exampleProgram": {

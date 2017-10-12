@@ -4,7 +4,7 @@ Previous: [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSample
 
 The previous sections showed how a basic scene structure with geometric objects is represented in a glTF asset, and how different materials can be applied to these objects. This did not yet include information about the view configuration that should be used for rendering the scene. This view configuration is usually described as a virtual *camera* that is contained in the scene, at a certain position, and pointing in a certain direction.
 
-The following is a simple, complete glTF asset. It is similar to the assets that have already been shown: it defines a simple `scene` containing `node` objects and a single geometric object that is given as a `mesh`, attached to one of the nodes. But this asset additionally contains two [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera) objects:
+The following is a simple, complete glTF asset. It is similar to the assets that have already been shown: it defines a simple `scene` containing `node` objects and a single geometric object that is given as a `mesh`, attached to one of the nodes. But this asset additionally contains two [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-camera) objects:
 
 
 ```javascript
@@ -117,7 +117,7 @@ The geometry in this asset is a simple unit square. It is rotated by -45 degrees
 
 ## Camera definitions
 
-The new top-level element of this glTF asset is the `cameras` dictionary, which maps IDs to [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-camera) objects:
+The new top-level element of this glTF asset is the `cameras` dictionary, which maps IDs to [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-camera) objects:
 
 ```javascript
 "cameras" : {

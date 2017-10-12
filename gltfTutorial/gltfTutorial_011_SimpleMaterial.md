@@ -189,7 +189,7 @@ This description is intended to give a first overview of the structure and inter
 
 ### The `shaders`
 
-The `shaders` dictionary contains [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-shader) objects. Each shader contains a `type` property, which is a constant indicating whether the shader is a vertex shader or a fragment shader, and a `uri` for the shader source code.
+The `shaders` dictionary contains [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-shader) objects. Each shader contains a `type` property, which is a constant indicating whether the shader is a vertex shader or a fragment shader, and a `uri` for the shader source code.
 
 In the simple example, there are two shader objects:
 
@@ -216,7 +216,7 @@ The source code of the shaders contains the definitions of variables that govern
 
 ### The `programs`
 
-There is a single [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-program) in the newly added `programs` dictionary. Such a program refers to two shaders, namely the `vertexShader` and the `fragmentShader`, using the IDs of these shader objects. Additionally, the program contains an array called `"attributes"` that contains a list of the names of all `attribute` variables that appear in the vertex shader. This will later be used to assign values to these attribute variables, after the program has been compiled.      
+There is a single [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-program) in the newly added `programs` dictionary. Such a program refers to two shaders, namely the `vertexShader` and the `fragmentShader`, using the IDs of these shader objects. Additionally, the program contains an array called `"attributes"` that contains a list of the names of all `attribute` variables that appear in the vertex shader. This will later be used to assign values to these attribute variables, after the program has been compiled.      
 
 ```javascript
 "programs": {
@@ -233,7 +233,7 @@ There is a single [`program`](https://github.com/KhronosGroup/glTF/tree/master/s
 
 ### The `techniques`
 
-The [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-technique) is the central element defining the appearance of an object in a glTF asset. In the example, there is a single technique, called `"simpleTechnique"`. The technique refers to a `program`, which is the actual implementation of the rendering process. The technique also summarizes the `attributes` and `uniforms` of the shaders that its program consists of. These are given as dictionaries that map the names of the variables, as they appear in the shader source code, to technique parameter names. For example, the given technique says that there are several `uniforms`. One of these uniforms has the name `"u_emission"` in the shader source code. Additional information about this uniform can be found by looking up the `"emissionParameter"` in the `technique.parameters` dictionary.
+The [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique) is the central element defining the appearance of an object in a glTF asset. In the example, there is a single technique, called `"simpleTechnique"`. The technique refers to a `program`, which is the actual implementation of the rendering process. The technique also summarizes the `attributes` and `uniforms` of the shaders that its program consists of. These are given as dictionaries that map the names of the variables, as they appear in the shader source code, to technique parameter names. For example, the given technique says that there are several `uniforms`. One of these uniforms has the name `"u_emission"` in the shader source code. Additional information about this uniform can be found by looking up the `"emissionParameter"` in the `technique.parameters` dictionary.
 
 ```javascript
 "techniques": {
@@ -285,7 +285,7 @@ Since the `u_emission` parameter in the given example defines the color of the l
 
 ### The `materials`
 
-Each [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification#reference-material) can be considered an instance of a `technique`. In the example, the `materials` dictionary contains a single `material`, with the ID `"simpleMaterial"`. This material contains a reference to the `technique`, namely to the `"simpleTechnique"`. Additionally, it contains a `values` property. This is a dictionary that maps the names of `technique.parameters` objects to the values that the respective parameter should have for this material:
+Each [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-material) can be considered an instance of a `technique`. In the example, the `materials` dictionary contains a single `material`, with the ID `"simpleMaterial"`. This material contains a reference to the `technique`, namely to the `"simpleTechnique"`. Additionally, it contains a `values` property. This is a dictionary that maps the names of `technique.parameters` objects to the values that the respective parameter should have for this material:
 
 
 ```javascript
