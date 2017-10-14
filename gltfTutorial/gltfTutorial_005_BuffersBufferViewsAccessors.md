@@ -126,11 +126,11 @@ Image 5c illustrates how the raw data of a `buffer` is structured using `bufferV
 
 ### Data interleaving
 
-Each accessor may also define a `byteStride` property. This property is required for data that is stored as an *Array-Of-Structures*. A single `bufferView` may, for example, contain the data for vertex positions and for vertex normals in an interleaved fashion. The `byteOffset` defines the start of the first relevant data element. The `byteStride` defines the number of bytes until the start of the next relevant data element, as shown in Image 5d.
+The data of the attributes that are stored in a single `bufferView` may be stored as an *Array-Of-Structures*. A single `bufferView` may, for example, contain the data for vertex positions and for vertex normals in an interleaved fashion. In this case, the `byteOffset` of an accessor defines the start of the first relevant data element for the respective attribute, and the `bufferView` defines an additional `byteStride` property. This is the number of bytes between the start of one element of its accessors, and the start of the next one. An example of how interleaved position- and a normal attributes are stored inside a `bufferView` is shown in Image 5d.
 
 <p align="center">
 <img src="images/aos.png" /><br>
-<a name="aos-png"></a>Image 5d: The byte offset and byte stride of an accessor.
+<a name="aos-png"></a>Image 5d: Interleaved acessors in one buffer view
 </p>
 
 

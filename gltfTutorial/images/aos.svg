@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="aos.svg"
-   inkscape:export-filename="soaVsAos.png"
-   inkscape:export-xdpi="155"
-   inkscape:export-ydpi="155">
+   inkscape:export-filename="aos.png"
+   inkscape:export-xdpi="90.09935"
+   inkscape:export-ydpi="90.09935">
   <defs
      id="defs4883">
     <marker
@@ -125,15 +125,15 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="0.78300034"
-     inkscape:cx="488.8787"
-     inkscape:cy="727.45395"
+     inkscape:cx="347.80714"
+     inkscape:cy="726.17681"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1147"
-     inkscape:window-x="-8"
-     inkscape:window-y="-8"
+     inkscape:window-height="1031"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
      inkscape:window-maximized="1">
     <inkscape:grid
        type="xygrid"
@@ -1455,21 +1455,16 @@
          sodipodi:role="line"
          x="-117.31039"
          y="438.40253"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#0000ff;fill-opacity:1"
-         id="tspan5488">byteStride    : 24</tspan><tspan
-         sodipodi:role="line"
-         x="-117.31039"
-         y="457.15253"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
          id="tspan7931">componentType : GL_FLOAT</tspan><tspan
          sodipodi:role="line"
          x="-117.31039"
-         y="475.90253"
+         y="457.15253"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
          id="tspan7941">type          : &quot;VEC3&quot;</tspan><tspan
          sodipodi:role="line"
          x="-117.31039"
-         y="494.65253"
+         y="475.90253"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
          id="tspan7939">count:        :  2</tspan></text>
     <text
@@ -1949,21 +1944,16 @@
          sodipodi:role="line"
          x="-120.29889"
          y="596.28247"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#0000ff;fill-opacity:1"
-         id="tspan5488-4">byteStride    : 24</tspan><tspan
-         sodipodi:role="line"
-         x="-120.29889"
-         y="615.03247"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
          id="tspan7931-6">componentType : GL_FLOAT</tspan><tspan
          sodipodi:role="line"
          x="-120.29889"
-         y="633.78247"
+         y="615.03247"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
          id="tspan7941-9">type          : &quot;VEC3&quot;</tspan><tspan
          sodipodi:role="line"
          x="-120.29889"
-         y="652.53247"
+         y="633.78247"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
          id="tspan7939-6">count:        :  2</tspan></text>
     <path
@@ -2035,5 +2025,46 @@
          y="470.08838"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#0000ff;fill-opacity:1;"
          id="tspan7939-6-88-0" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="-120.6429"
+       y="259.65158"
+       id="text5662-0-0-5-6-26-5-48-7-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5664-7-0-7-3-4-9-2-2-2"
+         x="-120.6429"
+         y="259.65158"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:sans-serif;-inkscape-font-specification:sans-serif">The <tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
+   id="tspan4502">bufferView</tspan> defines a </tspan><tspan
+         sodipodi:role="line"
+         x="-120.6429"
+         y="279.57318"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:sans-serif;-inkscape-font-specification:sans-serif"
+         id="tspan4494"><tspan
+   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#0000ff"
+   id="tspan4506">byteStride</tspan> of 24, which </tspan><tspan
+         sodipodi:role="line"
+         x="-120.6429"
+         y="299.49478"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:sans-serif;-inkscape-font-specification:sans-serif"
+         id="tspan4512">is the difference between </tspan><tspan
+         sodipodi:role="line"
+         x="-120.6429"
+         y="318.24478"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:sans-serif;-inkscape-font-specification:sans-serif"
+         id="tspan4514">the start of one accessor </tspan><tspan
+         sodipodi:role="line"
+         x="-120.6429"
+         y="336.99478"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:sans-serif;-inkscape-font-specification:sans-serif"
+         id="tspan4516">element, and the start of </tspan><tspan
+         sodipodi:role="line"
+         x="-120.6429"
+         y="355.74478"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;font-family:sans-serif;-inkscape-font-specification:sans-serif"
+         id="tspan4518">the next one.</tspan></text>
   </g>
 </svg>
