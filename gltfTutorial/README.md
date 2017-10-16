@@ -15,11 +15,9 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 - [Meshes](gltfTutorial_009_Meshes.md)
 - [Materials](gltfTutorial_010_Materials.md)
 - [Example: A Simple Material](gltfTutorial_011_SimpleMaterial.md)
-- [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md)
-- [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md)
-- [Example: An Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
-- [Example: A Simple Texture](gltfTutorial_015_SimpleTexture.md)
-- [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
+- [Textures, Images, and Samplers](gltfTutorial_012_TexturesImagesSamplers.md)
+- [Example: A Simple Texture](gltfTutorial_013_SimpleTexture.md)
+- [Example: An Advanced Material](gltfTutorial_014_SimpleTexture.md)
 - [Example: Simple Cameras](gltfTutorial_017_SimpleCameras.md)
 - [Cameras](gltfTutorial_019_Cameras.md)
 - [Example: Simple Skin](gltfTutorial_019_SimpleSkin.md)
@@ -31,3 +29,5 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 - Patrick Cozzi, Cesium, [@pjcozzi](https://twitter.com/pjcozzi)
 - Alexey Knyazev, [lexaknyazev](https://github.com/lexaknyazev)
 - Sarah Chow, [slchow](https://github.com/slchow)
+
+

@@ -9,28 +9,28 @@ The following is a simple, complete glTF asset. It is similar to the assets that
 
 ```javascript
 {
-  "scenes" : {
-    "scene0" : {
-      "nodes" : [ "meshNode", "perspectiveCameraNode", "orthographicCameraNode" ]
+  "scenes" : [
+    {
+      "nodes" : [ 0, 1, 2 ]
     }
-  },
-  "nodes" : {
-    "meshNode" : {
+  ],
+  "nodes" : [
+    {
       "rotation" : [ -0.383, 0.0, 0.0, 0.924 ],
-      "meshes" : [ "mesh0" ]
+      "mesh" : 0
     },
-    "perspectiveCameraNode" : {
+    {
       "translation" : [ 0.5, 0.5, 3.0 ],
-      "camera" : "exampleCameraPerspective"
+      "camera" : 0
     },
-    "orthographicCameraNode" : {
+    {
       "translation" : [ 0.5, 0.5, 3.0 ],
-      "camera" : "exampleCameraOrthographic"
+      "camera" : 1
     }
-  },
-  
-  "cameras" : {
-    "exampleCameraPerspective": {
+  ],
+
+  "cameras" : [
+    {
       "type": "perspective",
       "perspective": {
         "aspectRatio": 1.0,
@@ -39,7 +39,7 @@ The following is a simple, complete glTF asset. It is similar to the assets that
         "znear": 0.01
       }
     },
-    "exampleCameraOrthographic": {
+    {
       "type": "orthographic",
       "orthographic": {
         "xmag": 1.0,
@@ -48,42 +48,42 @@ The following is a simple, complete glTF asset. It is similar to the assets that
         "znear": 0.01
       }
     }
-  },
-  
-  "meshes" : {
-    "mesh0" : {
+  ],
+
+  "meshes" : [
+    {
       "primitives" : [ {
         "attributes" : {
-          "POSITION" : "positionsAccessor"
+          "POSITION" : 1
         },
-        "indices" : "indicesAccessor"
+        "indices" : 0
       } ]
     }
-  },
+  ],
 
-  "buffers" : {
-    "geometryBuffer" : {
+  "buffers" : [
+    {
       "uri" : "data:application/octet-stream;base64,AAABAAIAAQADAAIAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAA",
       "byteLength" : 60
     }
-  },
-  "bufferViews" : {
-    "indicesBufferView" : {
-      "buffer" : "geometryBuffer",
+  ],
+  "bufferViews" : [
+    {
+      "buffer" : 0,
       "byteOffset" : 0,
       "byteLength" : 12,
       "target" : 34963
     },
-    "attributesBufferView" : {
-      "buffer" : "geometryBuffer",
+    {
+      "buffer" : 0,
       "byteOffset" : 12,
       "byteLength" : 48,
       "target" : 34962
     }
-  },
-  "accessors" : {
-    "indicesAccessor" : {
-      "bufferView" : "indicesBufferView",
+  ],
+  "accessors" : [
+    {
+      "bufferView" : 0,
       "byteOffset" : 0,
       "componentType" : 5123,
       "count" : 6,
@@ -91,8 +91,8 @@ The following is a simple, complete glTF asset. It is similar to the assets that
       "max" : [ 3 ],
       "min" : [ 0 ]
     },
-    "positionsAccessor" : {
-      "bufferView" : "attributesBufferView",
+    {
+      "bufferView" : 1,
       "byteOffset" : 0,
       "componentType" : 5126,
       "count" : 4,
@@ -100,9 +100,10 @@ The following is a simple, complete glTF asset. It is similar to the assets that
       "max" : [ 1.0, 1.0, 0.0 ],
       "min" : [ 0.0, 0.0, 0.0 ]
     }
-  },
+  ],
+
   "asset" : {
-    "version" : "1.1"
+    "version" : "2.0"
   }
 }
 ```
@@ -117,11 +118,11 @@ The geometry in this asset is a simple unit square. It is rotated by -45 degrees
 
 ## Camera definitions
 
-The new top-level element of this glTF asset is the `cameras` dictionary, which maps IDs to [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-camera) objects:
+The new top-level element of this glTF asset is the `cameras` array, which contains the  [`camera`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-camera) objects:
 
 ```javascript
-"cameras" : {
-  "exampleCameraPerspective": {
+"cameras" : [
+  {
     "type": "perspective",
     "perspective": {
       "aspectRatio": 1.0,
@@ -130,7 +131,7 @@ The new top-level element of this glTF asset is the `cameras` dictionary, which 
       "znear": 0.01
     }
   },
-  "exampleCameraOrthographic": {
+  {
     "type": "orthographic",
     "orthographic": {
       "xmag": 1.0,
@@ -139,21 +140,21 @@ The new top-level element of this glTF asset is the `cameras` dictionary, which 
       "znear": 0.01
     }
   }
-},
+],
 ```
 
-When a camera object has been defined, it may be attached to a `node`. This is accomplished by assigning the ID of the camera to the `camera` property of a node. In the given example, two new nodes have been added to the scene graph, one for each camera:
+When a camera object has been defined, it may be attached to a `node`. This is accomplished by assigning the index of the camera to the `camera` property of a node. In the given example, two new nodes have been added to the scene graph, one for each camera:
 
 ```javascript
 "nodes" : {
   ...
-  "perspectiveCameraNode" : {
+  {
     "translation" : [ 0.5, 0.5, 3.0 ],
-    "camera" : "exampleCameraPerspective"
+    "camera" : 0
   },
-  "orthographicCameraNode" : {
+  {
     "translation" : [ 0.5, 0.5, 3.0 ],
-    "camera" : "exampleCameraOrthographic"
+    "camera" : 1
   }
 },
 ```

@@ -9,11 +9,11 @@ The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section s
 
 There are two kinds of cameras: *Perspective* cameras, where the viewing volume is a truncated pyramid (often referred to as "viewing frustum"), and *orthographic*  cameras, where the viewing volume is a rectangular box. The main difference is that rendering with a *perspective* camera causes a proper perspective distortion, whereas rendering with an *orthographic* camera causes a preservation of lengths and angles.
 
-The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section contains one camera of each type, a perspective camera with the ID `"exampleCameraPerspective"` and an orthographic camera with the ID `"exampleCameraOrthographic"`:
+The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section contains one camera of each type, a perspective camera with at index 0, and an orthographic camera at index 1:
 
 ```javascript
-"cameras" : {
-  "exampleCameraPerspective": {
+"cameras" : [
+  {
     "type": "perspective",
     "perspective": {
       "aspectRatio": 1.0,
@@ -22,7 +22,7 @@ The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section c
       "znear": 0.01
     }
   },
-  "exampleCameraOrthographic": {
+  {
     "type": "orthographic",
     "orthographic": {
       "xmag": 1.0,
@@ -31,7 +31,7 @@ The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section c
       "znear": 0.01
     }
   }
-},
+],
 ```
 
 
@@ -48,18 +48,18 @@ Explaining the details of cameras, viewing, and projections is beyond the scope 
 
 # Camera orientation
 
-A `camera` can be transformed to have a certain orientation and viewing direction in the scene. This is accomplished by attaching the camera to a `node`. Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-node) may contain the ID of a `camera` that is attached to it. In the simple camera example, there are two nodes for the cameras. The first node refers to the `"exampleCameraPerspective"`, and the second one refers to the `"exampleCameraOrthographic"`:
+A `camera` can be transformed to have a certain orientation and viewing direction in the scene. This is accomplished by attaching the camera to a `node`. Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-node) may contain the index of a `camera` that is attached to it. In the simple camera example, there are two nodes for the cameras. The first node refers to the perspective camera with index 0, and the second one refers to the orthographic camera with index 1:
 
 ```javascript
 "nodes" : {
   ...
-  "perspectiveCameraNode" : {
+  {
     "translation" : [ 0.5, 0.5, 3.0 ],
-    "camera" : "exampleCameraPerspective"
+    "camera" : 0
   },
-  "orthographicCameraNode" : {
+  {
     "translation" : [ 0.5, 0.5, 3.0 ],
-    "camera" : "exampleCameraOrthographic"
+    "camera" : 1
   }
 },
 ```
@@ -69,9 +69,11 @@ As shown in the [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) section, the
 When the global transform of the camera node is the identity matrix, then the eye point of the camera is at the origin, and the viewing direction is along the negative z-axis. In the given example, the nodes both have a `translation` about `(0.5, 0.5, 3.0)`, which causes the camera to be transformed accordingly: it is translated about 0.5 in the x- and y- direction, to look at the center of the unit square, and about 3.0 along the z-axis, to move it a bit away from the object.
 
 
-## Camera management
+## Camera instancing and management
 
-There may be multiple cameras defined in the JSON part of a glTF. However, there is no "default" camera. Instead, the client application has to keep track of the currently active camera. The client application may, for example, offer a dropdown-menu that allows one to select the active camera and thus to quickly switch between predefined view configurations. With a bit more implementation effort, the client application can also define its own camera and interaction patterns for the camera control (e.g., zooming with the mouse wheel). However, the logic for the navigation and interaction has to be implemented solely by the client application in this case. [Image 17a](gltfTutorial_017_SimpleCameras.md#cameras-png) shows the result of such an implementation, where the user may select either the active camera from the ones that are defined in the glTF asset, or an "external camera" that may be controlled with the mouse.
+There may be multiple cameras defined in the JSON part of a glTF. Each camera may be referred to by multiple nodes. Therefore, the cameras as they appear in the glTF asset are rather "templates" for actual camera *instances*: Whenever a node refers to one camera, a new instance of this camera is created.
+
+There is no "default" camera for a glTF asset. Instead, the client application has to keep track of the currently active camera. The client application may, for example, offer a dropdown-menu that allows one to select the active camera and thus to quickly switch between predefined view configurations. With a bit more implementation effort, the client application can also define its own camera and interaction patterns for the camera control (e.g., zooming with the mouse wheel). However, the logic for the navigation and interaction has to be implemented solely by the client application in this case. [Image 17a](gltfTutorial_017_SimpleCameras.md#cameras-png) shows the result of such an implementation, where the user may select either the active camera from the ones that are defined in the glTF asset, or an "external camera" that may be controlled with the mouse.
 
 
 

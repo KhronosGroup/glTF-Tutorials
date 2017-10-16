@@ -6,26 +6,36 @@ Previous: [Meshes](gltfTutorial_009_Meshes.md) | [Table of Contents](README.md) 
 
 The purpose of glTF is to define a transmission format for 3D assets. As shown in the previous sections, this includes information about the scene structure and the geometric objects that appear in the scene. But a glTF asset can also contain information about the *appearance* of the objects; that is, how these objects should be rendered on the screen.
 
-There are several well-known parameters that are commonly used to describe a material in rendering applications and graphics APIs:
+There are different possible representations for the properties of a material, and the *shading model* describes how these properties are processed. Simple shading models, like the [Phong](https://en.wikipedia.org/wiki/Phong_reflection_model) or [Blinn-Phong](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_shading_model) are directly supported by common graphics APIs like OpenGL or WebGL. These shading models are built upon a set of basic material properties. For example, the material properties involve information about the color of diffusely reflected light (often in form of a texture), the color of specularly reflected light, and a shininess parameter. Many file formats contain exactly these parameters. For example, [Wavefront OBJ](https://en.wikipedia.org/wiki/Wavefront_.obj_file) files are combined with `MTL` files that contain this texture- and color information. Renderers can read this information and render the objects accordingly. But in order to describe more realistic materials, more sophisticated shading- and material models are required.
 
-* The **diffuse** color: The color of the light that is diffusely reflected by the material. In the simplest form, this can be imagined as the "main" color that the material appears to have. It is often defined by a texture.
-* The **specular** color: The color of reflected highlights.
-* The **shininess** factor: A value that defines the shininess of the object, influencing the size of the specular highlights.
-* The **emissive** color: The color of the light that is emitted by the object
-* ...
+## Physically-Based Rendering (PBR)
 
-Many file formats contain this information in some form. For example, [Wavefront OBJ](https://en.wikipedia.org/wiki/Wavefront_.obj_file) files are combined with `MTL` files that contain exactly these parameters. Renderers can read this information and render the objects accordingly.
+To allow renderers to display objects with a realistic appearance under different lighting conditions, the shading model has to take the *physical* properties of the object surface into account. There are different representations of these physical material properties. One that is frequently used is the *metallic-roughness-model*. Here, the information about the object surface is encoded with three main parameters:
 
-However, one of the goals of glTF was to *not* constrain the rendering to one simple, fixed material model. Instead, it should support arbitrary materials models. This is an ambitious goal: there are unlimited degrees of freedom for renderers to implement different material models. To retain this flexibility, the glTF specification of materials can be considered a very generic description of rendering processes.
+- The *base color*, which is the "main" color of the object surface
+- The *metallic* value. This is a parameter that describes how much the reflective behavior of the material resembles that of a metal
+- The *roughness* value, indicating how rough the surface is, affecting the light scattering
 
-This flexibility comes at a certain cost. Several elements in the glTF asset have to be combined properly by the renderer to exploit this flexibility. Here is a quick summary of the elements of a glTF asset that are used for defining the appearance of a rendered object:
+The metallic-roughness model is the representation that is used in glTF. Other material representations, like the *specular-glossiness-model*, are supported via extensions.
 
-- A [`material`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-material) can be assigned to a `mesh.primitive`, so that the primitive is rendered with this material. A material can be considered an "instance" of a `technique`.
-- A [`technique`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-technique) is the core element describing the appearance of rendered objects in a glTF asset. It is an abstract definition of a rendering process and serves as a "template" for `material` objects.
-- A [`program`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-program) is the actual *implementation* of a rendering process for a `technique`. It consists of multiple `shader` objects.
-- A [`shader`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-shader) is a basic building block for the implementation of a renderer in WebGL or OpenGL.
+The effects of different metallic- and roughness values are illustrated in this image:
 
-The following sections will show how these elements are combined and interpreted to finally render a glTF asset:
+<p align="center">
+<img src="images/metallicRoughnessSpheres.png" /><br>
+<a name="metallicRoughnessSpheres-png"></a>Image 10a: Spheres with different metallic- and roughness values
+</p>
+
+The base color, metallic and roughness properties may be given as single values and are then applied to the whole object. In order to assign different material properties to different parts of the object surface, these properties may also be given in form of textures. This allows modeling a wide range of real-world materials with a realistic appearance.
+
+Depending on the shading model, additional effects can be applied to the object surface. These are usually given as a combination of a texture and a scaling factor:
+
+- An *emissive* texture describes the parts of the object surface that emit light with a certain color
+- The *occlusion* texture can be used to simulate the effect of parts of the objects self-shadowing each other
+- The *normal map* is a texture that is applied to modulate the surface normal in a way that allows simulating finer geometric details, without the cost of a higher mesh resolution.
+
+glTF supports all of these additional properties, and defines sensible default values for the cases that these properties are omitted.
+
+The following sections will show how these material properties are encoded in a glTF asset, including various examples of materials:
 
 - [A Simple Material](gltfTutorial_011_SimpleMaterial.md)
 - [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md)
@@ -33,8 +43,6 @@ The following sections will show how these elements are combined and interpreted
 - [An Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
 - [A Simple Texture](gltfTutorial_015_SimpleTexture.md)
 - [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
-
-We'll start with a simple material, giving an example of the elements that a material definition consists of, and how these elements are represented in the glTF JSON. Afterwards, these elements will be explained in more detail, showing how they serve as a basis for building advanced materials.
 
 
 Previous: [Meshes](gltfTutorial_009_Meshes.md) | [Table of Contents](README.md) | Next: [Simple Material](gltfTutorial_011_SimpleMaterial.md)
