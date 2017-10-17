@@ -1,12 +1,8 @@
 Previous: [Cameras](gltfTutorial_018_Cameras.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_020_Skins.md)
 
-**NOTE: Parts of the skinning may undergo minor changes for glTF 1.1. See https://github.com/KhronosGroup/glTF/issues/723 and https://github.com/KhronosGroup/glTF/issues/624**
-
-
 # A Simple Skin
 
-
-glTF supports *vertex skinning*, which allows the geometry (vertices) of a mesh to be deformed based on the pose of a skeleton. This is essential in order to give animated geometry, for example of virtual characters, a realistic appearance. The core for the definition of vertex skinning in a glTF asset is the [`skin`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-skin), but vertex skinning in general implies several interdependencies between the elements of a glTF asset that have been presented so far. 
+glTF supports *vertex skinning*, which allows the geometry (vertices) of a mesh to be deformed based on the pose of a skeleton. This is essential in order to give animated geometry, for example of virtual characters, a realistic appearance. The core for the definition of vertex skinning in a glTF asset is the [`skin`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-skin), but vertex skinning in general implies several interdependencies between the elements of a glTF asset that have been presented so far.
 
 The following is a glTF asset that shows basic vertex skinning for a simple geometry. The elements of this asset will be summarized quickly in this section, referring to the previous sections where appropriate, and pointing out the new elements that have been added for the vertex skinning functionality. The details and background information for vertex skinning will be given in the next section.
 
@@ -33,7 +29,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "rotation" : [ 0.0, 0.0, 0.0, 1.0 ]
     }
   },
-  
+
   "skins": {
     "simpleSkin": {
       "bindShapeMatrix": [
@@ -49,7 +45,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "inverseBindMatrices": "inverseBindMatricesAccessor"
     }
   },
-  
+
   "animations": {
     "animation0": {
       "samplers" : {
@@ -68,7 +64,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       } ]
     }
   },
-  
+
   "meshes" : {
     "mesh0" : {
       "primitives" : [ {
@@ -89,7 +85,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "technique": "simpleSkinTechnique"
     }
   },
-  
+
   "techniques": {
     "simpleSkinTechnique": {
       "attributes": {
@@ -137,7 +133,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       }
     }
   },
-  
+
   "programs": {
     "simpleSkinProgram": {
       "attributes": [
@@ -179,7 +175,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
       "byteLength" : 240
     }
   },
-  
+
   "bufferViews" : {
     "indicesBufferView" : {
       "buffer" : "geometryBuffer",
@@ -298,9 +294,9 @@ uniform mat4 u_jointMat[2];
 uniform mat4 u_modelViewMatrix;
 uniform mat4 u_projectionMatrix;
 
-void main(void) 
+void main(void)
 {
-    mat4 skinMat = 
+    mat4 skinMat =
         a_weight.x * u_jointMat[int(a_joint.x)] +
         a_weight.y * u_jointMat[int(a_joint.y)] +
         a_weight.z * u_jointMat[int(a_joint.z)] +
@@ -318,7 +314,7 @@ The fragment shader for this example is trivial and only assigns a constant colo
     precision highp float;
 #endif
 
-void main(void) 
+void main(void)
 {
     gl_FragColor = vec4(0.8, 0.5, 0.1, 1.0);
 }
@@ -343,7 +339,7 @@ The elements of the given example are briefly summarized here:
 - The concepts of `animations` has been explained in the [Animations](gltfTutorial_007_Animations.md) section. In the given example, the animation refers to the *skeleton* nodes so that the effect of the vertex skinning is actually visible during the animation.
 - The [Meshes](gltfTutorial_009_Meshes.md) section already explained the contents of the `meshes` and `mesh.primitive` objects. In this example, new mesh primitive attributes have been added, which are required for vertex skinning, namely the `"JOINTS"` and `"WEIGHTS"` attributes.
 - Details about the `materials`, `techniques`, `programs`, and `shaders` can be found in the [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md) and [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md) sections, respectively. In the given example, there is a single program that refers to the shaders shown above and a single technique that defines the new technique parameters required for vertex skinning.
-- There are several new `buffers`, `bufferViews`, and `accessors`. Their basic properties have been described in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BufferBufferViewsAccessors.md) section. In the given example, they contain the additional data required for vertex skinning. 
+- There are several new `buffers`, `bufferViews`, and `accessors`. Their basic properties have been described in the [Buffers, BufferViews, and Accessors](gltfTutorial_005_BufferBufferViewsAccessors.md) section. In the given example, they contain the additional data required for vertex skinning.
 
 Details about how these elements are interconnected to achieve the vertex skinning will be explained in the [Skins](gltfTutorial_020_Skins.md) section.
 
