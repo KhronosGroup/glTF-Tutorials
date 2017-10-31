@@ -48,7 +48,7 @@ This geometry data is contained in the mesh primitive of the mesh with the ID `"
 
 In the given example, there are two nodes that define the skeleton. They are referred to as "skeleton nodes", or "joint nodes", here because they can be imagined as the joints between the bones of the skeleton. Each joint node has a property `"jointName"`, which indicates that this node is part of a skeleton hierarchy, and this name is used by the `skin` to refer to this node.
 
-The first joint node, `"jointNode0"`, has a translation about 1.0 along the y-axis. The second joint node, `"jointNode0"`, has a `rotation` property that initially describes a rotation about 0 degrees (thus, no rotation at all). This rotation will later be changed by the animation to let the skeleton bend left and right and show the effect of the vertex skinning.
+The first joint node, `"jointNode0"`, has a translation about 1.0 along the y-axis. The second joint node, `"jointNode1"`, has a `rotation` property that initially describes a rotation about 0 degrees (thus, no rotation at all). This rotation will later be changed by the animation to let the skeleton bend left and right and show the effect of the vertex skinning.
 
 
 ```javascript
