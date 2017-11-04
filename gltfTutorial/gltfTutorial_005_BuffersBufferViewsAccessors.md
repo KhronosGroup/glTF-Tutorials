@@ -139,4 +139,141 @@ The data of the attributes that are stored in a single `bufferView` may be store
 An `accessor` also contains `min` and `max` properties that summarize the contents of their data. They are the component-wise minimum and maximum values of all data elements contained in the accessor. In the case of vertex positions, the `min` and `max` properties thus define the *bounding box* of an object. This can be useful for prioritizing downloads, or for visibility detection. In general, this information is also useful for storing and processing *quantized* data that is dequantized at runtime, by the renderer, but details of this quantization are beyond the scope of this tutorial.
 
 
+
+## Sparse accessors
+
+
+With version 2.0, the concept of *sparse accessors* was introduced in glTF. This is a special representation of data that allows a very compact storage of multiple data blocks that only have few different entries. For example, when there is geometry data that contains vertex positions, then this geometry data may be used for multiple objects. This may be achieved by referring to the same `accessor` from both objects. If the vertex positions for both objects are mostly the same, but differ for few vertices, then it is not necessary to store the whole geometry data twice. Instead, it is possible to store the data only once, and use a sparse accessor to only store the vertex positions that differ for the second object. 
+
+The following is a complete glTF asset, in embedded representation, that shows an example of sparse accessors:
+
+```javascript
+{
+  "scenes" : [ {
+    "nodes" : [ 0 ]
+  } ],
+  
+  "nodes" : [ {
+    "mesh" : 0
+  } ],
+  
+  "meshes" : [ {
+    "primitives" : [ {
+      "attributes" : {
+        "POSITION" : 1
+      },
+      "indices" : 0
+    } ]
+  } ],
+  
+  "buffers" : [ {
+    "uri" : "data:application/gltf-buffer;base64,AAAIAAcAAAABAAgAAQAJAAgAAQACAAkAAgAKAAkAAgADAAoAAwALAAoAAwAEAAsABAAMAAsABAAFAAwABQANAAwABQAGAA0AAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAQAAAAAAAAAAAAABAQAAAAAAAAAAAAACAQAAAAAAAAAAAAACgQAAAAAAAAAAAAADAQAAAAAAAAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAAAAAAQAAAgD8AAAAAAABAQAAAgD8AAAAAAACAQAAAgD8AAAAAAACgQAAAgD8AAAAAAADAQAAAgD8AAAAACAAKAAwAAAAAAIA/AAAAQAAAAAAAAEBAAABAQAAAAAAAAKBAAACAQAAAAAA=",
+    "byteLength" : 284
+  } ],
+  
+  "bufferViews" : [ {
+    "buffer" : 0,
+    "byteOffset" : 0,
+    "byteLength" : 72,
+    "target" : 34963
+  }, {
+    "buffer" : 0,
+    "byteOffset" : 72,
+    "byteLength" : 168
+  }, {
+    "buffer" : 0,
+    "byteOffset" : 240,
+    "byteLength" : 6
+  }, {
+    "buffer" : 0,
+    "byteOffset" : 248,
+    "byteLength" : 36
+  } ],
+  
+  "accessors" : [ {
+    "bufferView" : 0,
+    "byteOffset" : 0,
+    "componentType" : 5123,
+    "count" : 36,
+    "type" : "SCALAR",
+    "max" : [ 13 ],
+    "min" : [ 0 ]
+  }, {
+    "bufferView" : 1,
+    "byteOffset" : 0,
+    "componentType" : 5126,
+    "count" : 14,
+    "type" : "VEC3",
+    "max" : [ 6.0, 4.0, 0.0 ],
+    "min" : [ 0.0, 0.0, 0.0 ],
+    "sparse" : {
+      "count" : 3,
+      "indices" : {
+        "bufferView" : 2,
+        "byteOffset" : 0,
+        "componentType" : 5123
+      },
+      "values" : {
+        "bufferView" : 3,
+        "byteOffset" : 0
+      }
+    }
+  } ],
+  
+  "asset" : {
+    "version" : "2.0"
+  }
+}
+```
+
+The result of rendering this asset is shown in Image 5e:
+
+<p align="center">
+<img src="images/simpleSparseAccessor.png" /><br>
+<a name="simpleSparseAccessor-png"></a>Image 5e: The result of rendering the simple sparse accessor asset
+</p>
+
+The example contains two accessors. One for the indices of the mesh, and one for the vertex positions. The one that refers to the vertex positions defines an additional `accessor.sparse` property, which contains the information about the sparse data substitution that should be applied:
+
+
+```javascript
+  "accessors" : [ 
+  ...
+  {
+    "bufferView" : 1,
+    "byteOffset" : 0,
+    "componentType" : 5126,
+    "count" : 14,
+    "type" : "VEC3",
+    "max" : [ 6.0, 4.0, 0.0 ],
+    "min" : [ 0.0, 0.0, 0.0 ],
+    "sparse" : {
+      "count" : 3,
+      "indices" : {
+        "bufferView" : 2,
+        "byteOffset" : 0,
+        "componentType" : 5123
+      },
+      "values" : {
+        "bufferView" : 3,
+        "byteOffset" : 0
+      }
+    }
+  } ],
+```
+
+This `sparse` object itself defines the `count` of elements that will be affected by the substitution. The `sparse.indices` property refers to a `bufferView` that contains the indices of the elements which will be replaced. The `sparse.values` refers to a `bufferView` that contains the actual data. 
+
+In the example, the original geometry data is stored in the `bufferView` with index 1. It describes a rectangular array of vertices. The `sparse.indices` refer to the `bufferView` with index 2, which contains are the indices `[8, 10, 12]`. The `sparse.values` refers to the `bufferView` with index 3, which contains new vertex positions, namely `[(1,2,0), (3,3,0), (5,4,0)]`. The effect of applying the corresponding substitution is shown in Image 5f:
+
+
+<p align="center">
+<img src="images/simpleSparseAccessorDescription.png" /><br>
+<a name="simpleSparseAccessorDescription-png"></a>Image 5f: The substitution that is done with the sparse accessor
+</p>
+
+
+
+
+
 Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Simple Animation](gltfTutorial_006_SimpleAnimation.md)
