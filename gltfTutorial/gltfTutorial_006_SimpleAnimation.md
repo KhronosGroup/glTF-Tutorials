@@ -48,7 +48,7 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
       "channels" : [ {
         "sampler" : 0,
         "target" : {
-          "id" : 0,
+          "node" : 0,
           "path" : "rotation"
         }
       } ]
