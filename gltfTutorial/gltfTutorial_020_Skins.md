@@ -1,4 +1,4 @@
-Previous: [Simple Skin](gltfTutorial_019_SimpleSkin.md) | [Table of Contents](README.md)
+Previous: [Simple Skin](gltfTutorial_019_SimpleSkin.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_021_SimpleMorphTarget.md)
 
 
 # Skins
@@ -235,4 +235,4 @@ The result of applying this skin matrix to the vertices for the given example is
 
 
 
-Previous: [Simple Skin](gltfTutorial_019_SimpleSkin.md) | [Table of Contents](README.md)
+Previous: [Simple Skin](gltfTutorial_019_SimpleSkin.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_021_SimpleMorphTarget.md)
