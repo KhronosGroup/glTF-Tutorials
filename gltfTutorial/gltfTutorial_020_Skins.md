@@ -62,16 +62,6 @@ In the given example, there are two nodes that define the skeleton. They are ref
 
 The first joint node has a `translation` property, defining a translation about 1.0 along the y-axis. The second joint node has a `rotation` property that initially describes a rotation about 0 degrees (thus, no rotation at all). This rotation will later be changed by the animation to let the skeleton bend left and right and show the effect of the vertex skinning.
 
-
-The position of these nodes in relation to the mesh geometry is shown in Image 20b.
-
-<p align="center">
-<img src="images/skinSkeletonNodes.png" /><br>
-<a name="skinSkeletonNodes-png"></a>Image 20b: The joint nodes and their position in relation to the geometry.
-</p>
-
-
-
 ## The skin
 
 
@@ -94,11 +84,11 @@ The skin contains an array called `joints`, which lists the indices of the nodes
     0.0   0.0   1.0    0.0   
     0.0   0.0   0.0    1.0  
 
-This matrix translates the mesh about -1 along the y-axis, as shown Image 20c.
+This matrix translates the mesh about -1 along the y-axis, as shown Image 20b.
 
 <p align="center">
 <img src="images/skinInverseBindMatrix.png" /><br>
-<a name="skinInverseBindMatrix-png"></a>Image 20c: The transformation of the geometry with the inverse bind matrix of joint 1.
+<a name="skinInverseBindMatrix-png"></a>Image 20b: The transformation of the geometry with the inverse bind matrix of joint 1.
 </p>
 
 This transformation may look counterintuitive at first glance. But the goal of this transformation is to "undo" the transformation that is done by the initial global transform of the respective joint node so that the influences of the joint to the mesh vertices may be computed based on their actual global transform. 
@@ -144,14 +134,14 @@ So the pseudocode for computing the joint matrix of joint `j` may look as follow
       
 Note: Vertex skinning in other contexts often involves a matrix that is called "Bind Shape Matrix". This matrix is supposed to transform the geometry of the skinned mesh into the coordinate space of the joints. In glTF, this matrix is omitted, and it is assumed that this transform is either premultiplied with the mesh data, or postmultiplied to the inverse bind matrices. 
 
-Image 20d shows the transformations that are done to the geometry in the [Simple Skin](gltfTutorial_019_SimpleSkin.md) example, using the joint matrix of joint 1. The image shows the transformation for an intermediate state of the animation, namely, when the rotation of the joint node has already been modified by the animation, to describe a rotation about 45 degrees around the z-axis.
+Image 20c shows the transformations that are done to the geometry in the [Simple Skin](gltfTutorial_019_SimpleSkin.md) example, using the joint matrix of joint 1. The image shows the transformation for an intermediate state of the animation, namely, when the rotation of the joint node has already been modified by the animation, to describe a rotation about 45 degrees around the z-axis.
 
 <p align="center">
 <img src="images/skinJointMatrices.png" /><br>
-<a name="skinJointMatrices-png"></a>Image 20d: The transformation of the geometry done for joint 1.
+<a name="skinJointMatrices-png"></a>Image 20c: The transformation of the geometry done for joint 1.
 </p>
 
-The last panel of Image 20d shows how the geometry would look like if it were *only* transformed with the joint matrix of joint 1. This state of the geometry is never really visible: The *actual* geometry that is computed in the vertex shader will *combine* the geometries as they are created from the different joint matrices, based on the joints- and weights that are explained below.
+The last panel of Image 20c shows how the geometry would look like if it were *only* transformed with the joint matrix of joint 1. This state of the geometry is never really visible: The *actual* geometry that is computed in the vertex shader will *combine* the geometries as they are created from the different joint matrices, based on the joints- and weights that are explained below.
 
 
 ### The skinning joints and weights
@@ -215,18 +205,18 @@ void main(void)
     gl_Position = u_projectionMatrix * pos;
 }
 ```
-The skin matrix is then used to transform the original position of the vertex before it is transformed with the model-view-matrix. The result of this transformation can be imagined as a weighted transformation of the vertices with the respective joint matrices, as shown in Image 20e.
+The skin matrix is then used to transform the original position of the vertex before it is transformed with the model-view-matrix. The result of this transformation can be imagined as a weighted transformation of the vertices with the respective joint matrices, as shown in Image 20d.
 
 <p align="center">
 <img src="images/skinSkinMatrix.png" /><br>
-<a name="skinSkinMatrix-png"></a>Image 20e: Computation of the skin matrix.
+<a name="skinSkinMatrix-png"></a>Image 20d: Computation of the skin matrix.
 </p>
 
-The result of applying this skin matrix to the vertices for the given example is shown in Image 20f.
+The result of applying this skin matrix to the vertices for the given example is shown in Image 20e.
 
 <p align="center">
 <img src="images/simpleSkinOutline02.png" /><br>
-<a name="simpleSkinOutline02-png"></a>Image 20f: The geometry for the skinning example, with outline rendering, during the animation.
+<a name="simpleSkinOutline02-png"></a>Image 20e: The geometry for the skinning example, with outline rendering, during the animation.
 </p>
 
 

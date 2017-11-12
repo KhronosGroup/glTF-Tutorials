@@ -15,7 +15,7 @@ The [Simple Texture](gltfTutorial_013_SimpleTexture.md) example in the previous 
 The effects of these properties cannot properly be demonstrated with trivial textures. Therefore, they will be shown here using one of the official Khronos PBR sample models, namely, the [WaterBottle](https://github.com/KhronosGroup/glTF-Sample-Models/tree/master/2.0/WaterBottle) model. Image 14a shows an overview of the textures that are involved in this model, and the final rendered object:
 
 <p align="center">
-<img src="images/cameras.png" /><br>
+<img src="images/materials.png" /><br>
 <a name="cameras-png"></a>Image 14a: An example of a material where the surface properties are defined via textures
 </p>
 
