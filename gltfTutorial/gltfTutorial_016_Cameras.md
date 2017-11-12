@@ -1,4 +1,4 @@
-Previous: [Simple Cameras](gltfTutorial_017_SimpleCameras.md) | [Table of Contents](README.md) | Next: [Simple Skin](gltfTutorial_019_SimpleSkin.md)
+Previous: [Simple Cameras](gltfTutorial_015_SimpleCameras.md) | [Table of Contents](README.md) | Next: [Simple Morph Target](gltfTutorial_017_SimpleMorphTarget.md)
 
 # Cameras
 
@@ -77,4 +77,4 @@ There is no "default" camera for a glTF asset. Instead, the client application h
 
 
 
-Previous: [Simple Cameras](gltfTutorial_017_SimpleCameras.md) | [Table of Contents](README.md) | Next: [Simple Skin](gltfTutorial_019_SimpleSkin.md)
+Previous: [Simple Cameras](gltfTutorial_015_SimpleCameras.md) | [Table of Contents](README.md) | Next: [Simple Morph Target](gltfTutorial_017_SimpleMorphTarget.md)

@@ -1,4 +1,4 @@
-Previous: [Cameras](gltfTutorial_018_Cameras.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_020_Skins.md)
+Previous: [Morph Targets](gltfTutorial_018_MorphTargets.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_020_Skins.md)
 
 # A Simple Skin
 
@@ -180,4 +180,4 @@ The elements of the given example are briefly summarized here:
 Details about how these elements are interconnected to achieve the vertex skinning will be explained in the [Skins](gltfTutorial_020_Skins.md) section.
 
 
-Previous: [Cameras](gltfTutorial_018_Cameras.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_020_Skins.md)
+Previous: [Morph Targets](gltfTutorial_018_MorphTargets.md) | [Table of Contents](README.md) | Next: [Skins](gltfTutorial_020_Skins.md)

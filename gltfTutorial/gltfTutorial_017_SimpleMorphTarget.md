@@ -1,4 +1,4 @@
-Previous: [Skins](gltfTutorial_020_Skins.md) | [Table of Contents](README.md) | Next: [Morph Targets](gltfTutorial_022_MorphTargets.md)
+Previous: [Cameras](gltfTutorial_016_Cameras.md) | [Table of Contents](README.md) | Next: [Morph Targets](gltfTutorial_018_MorphTargets.md)
 
 # A Simple Morph Target
 
@@ -273,4 +273,4 @@ This means that the animation will modify the `weights` of the mesh that is refe
 
 
 
-Previous: [Skins](gltfTutorial_020_Skins.md) | [Table of Contents](README.md) | Next: [Morph Targets](gltfTutorial_022_MorphTargets.md)
+Previous: [Cameras](gltfTutorial_016_Cameras.md) | [Table of Contents](README.md) | Next: [Morph Targets](gltfTutorial_018_MorphTargets.md)

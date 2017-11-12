@@ -1,4 +1,4 @@
-Previous: [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) | [Table of Contents](README.md) | Next: [Cameras](gltfTutorial_018_Cameras.md)
+Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Cameras](gltfTutorial_016_Cameras.md)
 
 # Simple Cameras
 
@@ -164,4 +164,4 @@ The differences between perspective and orthographic cameras and their propertie
 
 
 
-Previous: [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) | [Table of Contents](README.md) | Next: [Cameras](gltfTutorial_018_Cameras.md)
+Previous: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md) | [Table of Contents](README.md) | Next: [Cameras](gltfTutorial_016_Cameras.md)

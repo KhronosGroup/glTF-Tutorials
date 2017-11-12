@@ -128,7 +128,7 @@ The actual geometry data of the mesh primitive is given by the `attributes` and 
   ],
 ```
 
-A more detailed description of meshes and mesh primitives can be found in the [meshes](gltfTutorial_008_Meshes.md) section.
+A more detailed description of meshes and mesh primitives can be found in the [meshes](gltfTutorial_009_Meshes.md) section.
 
 
 ## The `buffer`, `bufferView`, and `accessor` concepts

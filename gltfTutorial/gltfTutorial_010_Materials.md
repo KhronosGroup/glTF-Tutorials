@@ -38,11 +38,9 @@ glTF supports all of these additional properties, and defines sensible default v
 The following sections will show how these material properties are encoded in a glTF asset, including various examples of materials:
 
 - [A Simple Material](gltfTutorial_011_SimpleMaterial.md)
-- [Programs and Shaders](gltfTutorial_012_ProgramsShaders.md)
-- [Materials and Techniques](gltfTutorial_013_MaterialsTechniques.md)
-- [An Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
-- [A Simple Texture](gltfTutorial_015_SimpleTexture.md)
-- [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md)
+- [Textures, Images, and Samplers](gltfTutorial_012_TexturesImagesSamplers.md) that serve as a basis for defining material properties
+- [A Simple Texture](gltfTutorial_013_SimpleTexture.md) showing an example of how to use a texture for a material
+- [An Advanced Material](gltfTutorial_014_AdvancedMaterial.md) combining multiple textures to achieve a sophisticated surface appearance for the objects
 
 
 Previous: [Meshes](gltfTutorial_009_Meshes.md) | [Table of Contents](README.md) | Next: [Simple Material](gltfTutorial_011_SimpleMaterial.md)

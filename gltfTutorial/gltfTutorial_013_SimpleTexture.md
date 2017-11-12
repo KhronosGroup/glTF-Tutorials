@@ -1,4 +1,4 @@
-Previous: [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
+Previous: [Textures, Images, and Samplers](gltfTutorial_012_TexturesImagesSamplers.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
 
 # A Simple Texture
 
@@ -126,7 +126,7 @@ The material definition in this example differs from the [Simple Material](gltfT
 } ],
 ```
 
-The `baseColorTexture` is the index of the texture that will be applied to the object surface. The `metallicFactor` and `roughnessFactor` are still single values. A more complex material where these properties are also given via textures will be shown in a later section.
+The `baseColorTexture` is the index of the texture that will be applied to the object surface. The `metallicFactor` and `roughnessFactor` are still single values. A more complex material where these properties are also given via textures will be shown in the next section.
 
 In order to apply a texture to a mesh primitive, there must be information about the texture coordinates that should be used for each vertex. The texture coordinates are only another attribute for the vertices defined in the `mesh.primitive`. By default, a texture will use the texture coordinates that have the attribute name `TEXCOORD_0`. If there are multiple sets of texture coordinates, the one that should be used for one particular texture may be selected by adding a `texCoord` property to the texture reference:
 
@@ -139,4 +139,4 @@ In order to apply a texture to a mesh primitive, there must be information about
 In this case, the texture would use the texture coordinates that are contained in the attribute called `TEXCOORD_2`.
 
 
-Previous: [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
+Previous: [Textures, Images, and Samplers](gltfTutorial_012_TexturesImagesSamplers.md) | [Table of Contents](README.md) | Next: [Advanced Material](gltfTutorial_014_AdvancedMaterial.md)
