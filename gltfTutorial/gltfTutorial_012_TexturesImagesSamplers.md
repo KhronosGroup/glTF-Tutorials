@@ -2,7 +2,7 @@ Previous: [Simple Material](gltfTutorial_011_SimpleMaterial.md) | [Table of Cont
 
 # Textures, Images, and Samplers
 
-An important aspect for the realistic appearance of objects are textures. They allow to define the main color of the objects, and other characteristics that are used in the material definition in order to precisely describe what the rendered object should look like.
+Textures are an important aspect of giving objects a realistic appearance. They make it possible to define the main color of the objects, as well as other characteristics that are used in the material definition in order to precisely describe what the rendered object should look like.
 
 A glTF asset may define multiple [`texture`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-texture) objects, which can be used as the textures of geometric objects during rendering, and which can be used to encode different material properties. Depending on the graphics API, there may be many features and settings that influence the process of texture mapping. Many of these details are beyond the scope of this tutorial. There are dedicated tutorials that explain the exact meaning of all the texture mapping parameters and settings; for example, on [webglfundamentals.org](http://webglfundamentals.org/webgl/lessons/webgl-3d-textures.html),  [open.gl](https://open.gl/textures), and others. This section will only summarize how the information about textures is encoded in a glTF asset.
 

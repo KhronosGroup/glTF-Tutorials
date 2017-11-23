@@ -67,7 +67,7 @@ As shown in the image above, there are two types of objects that may contain suc
 
 ## Reading and managing external data
 
-Reading and processing a glTF asset starts with parsing the JSON structure. After the structure has been parsed, the [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-buffer) and [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-image) objects are available in the top-level `buffers` and `images` arrays, respectively. Each of these objects may refer blocks of binary data. For further processing, this data is read into memory. Usually, the data will be be stored in an array, so that they may be looked up using the same index that is used for referring to the `buffer` or `image` object that they belong to. 
+Reading and processing a glTF asset starts with parsing the JSON structure. After the structure has been parsed, the [`buffer`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-buffer) and [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-image) objects are available in the top-level `buffers` and `images` arrays, respectively. Each of these objects may refer to blocks of binary data. For further processing, this data is read into memory. Usually, the data will be be stored in an array so that they may be looked up using the same index that is used for referring to the `buffer` or `image` object that they belong to. 
 
 
 ## Binary data in `buffers`
@@ -96,7 +96,7 @@ An [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/
 }
 ```
 
-The reference is given as a URI that usually points to a PNG or JPG file. These formats significantly reduce the size of the files, so that they may efficiently be transferred over the web.In some cases, the `image` objects may not refer to an external file, but to data that is stored in a `buffer`. The details of this indirection will be explained in the [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) section. 
+The reference is given as a URI that usually points to a PNG or JPG file. These formats significantly reduce the size of the files so that they may efficiently be transferred over the web. In some cases, the `image` objects may not refer to an external file, but to data that is stored in a `buffer`. The details of this indirection will be explained in the [Textures, Images, and Samplers](gltfTutorial_016_TexturesImagesSamplers.md) section. 
 
 
 

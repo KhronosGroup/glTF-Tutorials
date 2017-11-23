@@ -126,11 +126,11 @@ Image 5c illustrates how the raw data of a `buffer` is structured using `bufferV
 
 ### Data interleaving
 
-The data of the attributes that are stored in a single `bufferView` may be stored as an *Array-Of-Structures*. A single `bufferView` may, for example, contain the data for vertex positions and for vertex normals in an interleaved fashion. In this case, the `byteOffset` of an accessor defines the start of the first relevant data element for the respective attribute, and the `bufferView` defines an additional `byteStride` property. This is the number of bytes between the start of one element of its accessors, and the start of the next one. An example of how interleaved position- and a normal attributes are stored inside a `bufferView` is shown in Image 5d.
+The data of the attributes that are stored in a single `bufferView` may be stored as an *Array-Of-Structures*. A single `bufferView` may, for example, contain the data for vertex positions and for vertex normals in an interleaved fashion. In this case, the `byteOffset` of an accessor defines the start of the first relevant data element for the respective attribute, and the `bufferView` defines an additional `byteStride` property. This is the number of bytes between the start of one element of its accessors, and the start of the next one. An example of how interleaved position and normal attributes are stored inside a `bufferView` is shown in Image 5d.
 
 <p align="center">
 <img src="images/aos.png" /><br>
-<a name="aos-png"></a>Image 5d: Interleaved acessors in one buffer view
+<a name="aos-png"></a>Image 5d: Interleaved acessors in one buffer view.
 </p>
 
 
@@ -143,7 +143,7 @@ An `accessor` also contains `min` and `max` properties that summarize the conten
 ## Sparse accessors
 
 
-With version 2.0, the concept of *sparse accessors* was introduced in glTF. This is a special representation of data that allows a very compact storage of multiple data blocks that only have few different entries. For example, when there is geometry data that contains vertex positions, then this geometry data may be used for multiple objects. This may be achieved by referring to the same `accessor` from both objects. If the vertex positions for both objects are mostly the same, but differ for few vertices, then it is not necessary to store the whole geometry data twice. Instead, it is possible to store the data only once, and use a sparse accessor to only store the vertex positions that differ for the second object. 
+With version 2.0, the concept of *sparse accessors* was introduced in glTF. This is a special representation of data that allows very compact storage of multiple data blocks that have only a few different entries. For example, when there is geometry data that contains vertex positions, this geometry data may be used for multiple objects. This may be achieved by referring to the same `accessor` from both objects. If the vertex positions for both objects are mostly the same and differ for only a few vertices, then it is not necessary to store the whole geometry data twice. Instead, it is possible to store the data only once, and use a sparse accessor to store only the vertex positions that differ for the second object. 
 
 The following is a complete glTF asset, in embedded representation, that shows an example of sparse accessors:
 
@@ -230,10 +230,10 @@ The result of rendering this asset is shown in Image 5e:
 
 <p align="center">
 <img src="images/simpleSparseAccessor.png" /><br>
-<a name="simpleSparseAccessor-png"></a>Image 5e: The result of rendering the simple sparse accessor asset
+<a name="simpleSparseAccessor-png"></a>Image 5e: The result of rendering the simple sparse accessor asset.
 </p>
 
-The example contains two accessors. One for the indices of the mesh, and one for the vertex positions. The one that refers to the vertex positions defines an additional `accessor.sparse` property, which contains the information about the sparse data substitution that should be applied:
+The example contains two accessors: one for the indices of the mesh, and one for the vertex positions. The one that refers to the vertex positions defines an additional `accessor.sparse` property, which contains the information about the sparse data substitution that should be applied:
 
 
 ```javascript
@@ -264,12 +264,12 @@ The example contains two accessors. One for the indices of the mesh, and one for
 
 This `sparse` object itself defines the `count` of elements that will be affected by the substitution. The `sparse.indices` property refers to a `bufferView` that contains the indices of the elements which will be replaced. The `sparse.values` refers to a `bufferView` that contains the actual data. 
 
-In the example, the original geometry data is stored in the `bufferView` with index 1. It describes a rectangular array of vertices. The `sparse.indices` refer to the `bufferView` with index 2, which contains are the indices `[8, 10, 12]`. The `sparse.values` refers to the `bufferView` with index 3, which contains new vertex positions, namely `[(1,2,0), (3,3,0), (5,4,0)]`. The effect of applying the corresponding substitution is shown in Image 5f:
+In the example, the original geometry data is stored in the `bufferView` with index 1. It describes a rectangular array of vertices. The `sparse.indices` refer to the `bufferView` with index 2, which contains the indices `[8, 10, 12]`. The `sparse.values` refers to the `bufferView` with index 3, which contains new vertex positions, namely, `[(1,2,0), (3,3,0), (5,4,0)]`. The effect of applying the corresponding substitution is shown in Image 5f.
 
 
 <p align="center">
 <img src="images/simpleSparseAccessorDescription.png" /><br>
-<a name="simpleSparseAccessorDescription-png"></a>Image 5f: The substitution that is done with the sparse accessor
+<a name="simpleSparseAccessorDescription-png"></a>Image 5f: The substitution that is done with the sparse accessor.
 </p>
 
 
