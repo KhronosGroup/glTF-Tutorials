@@ -29,7 +29,7 @@ Some basic knowledge about [JSON](http://json.org/), the JavaScript Object Notat
 **Acknowledgements:**
 
 - Patrick Cozzi, Cesium, [@pjcozzi](https://twitter.com/pjcozzi)
-- Alexey Knyazev, [lexaknyazev](https://github.com/lexaknyazev)
-- Sarah Chow, [slchow](https://github.com/slchow)
+- Alexey Knyazev, [@lexaknyazev](https://github.com/lexaknyazev)
+- Sarah Chow, [@slchow](https://github.com/slchow)
 
 
