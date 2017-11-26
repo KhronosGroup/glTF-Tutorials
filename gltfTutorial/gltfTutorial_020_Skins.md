@@ -77,7 +77,7 @@ The `skin` is the core element of the vertex skinning. In the example, there is 
 
 ```
 
-The skin contains an array called `joints`, which lists the indices of the nodes that define the skeleton hierarchy. Additionally, the skin contains a reference to an accessor, in the property `inverseBindMatrices`. This accessor provides one matrix for each joint. Each of these matrices transforms the geometry into the space of the respective joint. This means that each matrix is the *inverse* of the global transform of the repsective joint, in its initial configuration. In the given example, this inverse of the initial global transform is the same for both joint nodes:
+The skin contains an array called `joints`, which lists the indices of the nodes that define the skeleton hierarchy. Additionally, the skin contains a reference to an accessor in the property `inverseBindMatrices`. This accessor provides one matrix for each joint. Each of these matrices transforms the geometry into the space of the respective joint. This means that each matrix is the *inverse* of the global transform of the respective joint, in its initial configuration. In the given example, this inverse of the initial global transform is the same for both joint nodes:
 
     1.0   0.0   0.0    0.0   
     0.0   1.0   0.0   -1.0   
@@ -96,7 +96,7 @@ This transformation may look counterintuitive at first glance. But the goal of t
 
 ## Vertex skinning implementation
 
-Users of existing rendering libraries will hardly ever have to manually process the vertex skinning data that is contained in a glTF asset: The actual skinning computations usually take place in the vertex shader, which is a low-level implementation detail of the respective library. However, knowing how the vertex skinning data is supposed to be processed may help to create proper, valid models with vertex skinning. So this section will give a short summary of how the vertex skinning is applied, using some pseudocode and examples in GLSL.
+Users of existing rendering libraries will hardly ever have to manually process the vertex skinning data contained in a glTF asset: the actual skinning computations usually take place in the vertex shader, which is a low-level implementation detail of the respective library. However, knowing how the vertex skinning data is supposed to be processed may help to create proper, valid models with vertex skinning. So this section will give a short summary of how the vertex skinning is applied, using some pseudocode and examples in GLSL.
 
 ### The joint matrices
 

@@ -2,7 +2,7 @@ Previous: [Cameras](gltfTutorial_016_Cameras.md) | [Table of Contents](README.md
 
 # A Simple Morph Target
 
-Starting with version 2.0, glTF supports the definition of *morph targets* for meshes. A morph target stores displacements or differences for certain mesh attributes. At runtime, these differences may be added to the original mesh, with different weights, in order to animate parts of the mesh. This is often used in character animations, for example, to encode different facial expression of a virtual character.
+Starting with version 2.0, glTF supports the definition of *morph targets* for meshes. A morph target stores displacements or differences for certain mesh attributes. At runtime, these differences may be added to the original mesh, with different weights, in order to animate parts of the mesh. This is often used in character animations, for example, to encode different facial expressions of a virtual character.
 
 The following is a minimal example that shows a mesh with two morph targets. The new elements will be summarized here, and the broader concept of morph targets and how they are applied at runtime will be explained in the next section.
 
@@ -206,7 +206,7 @@ The asset contains an animation that interpolates between the different morph ta
 
 <p align="center">
 <img src="images/simpleMorph.png" /><br>
-<a name="simpleMorph-png"></a>Image 21a: A triangle with two morph targets
+<a name="simpleMorph-png"></a>Image 21a: A triangle with two morph targets.
 </p>
 
 
