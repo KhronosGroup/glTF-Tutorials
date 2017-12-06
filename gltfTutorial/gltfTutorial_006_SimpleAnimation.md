@@ -269,7 +269,7 @@ Combining all this information, the given animation object says the following:
 
 > During the animation, the animated values are obtained from the *rotations* accessor. They are interpolated linearly, based on the current simulation time and the key frame times that are provided by the *times* accessor. The interpolated values are then written into the `"rotation"` property of the node with index 0.
 
-A more detailed description and actual examples for the interpolation and the computations that are involved here can be found in the [Animations](gltfTutorial_006_Animations.md) section.
+A more detailed description and actual examples for the interpolation and the computations that are involved here can be found in the [Animations](gltfTutorial_007_Animations.md) section.
 
 
 
