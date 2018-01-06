@@ -1456,7 +1456,7 @@
          x="-117.31039"
          y="438.40253"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
-         id="tspan7931">componentType : GL_FLOAT</tspan><tspan
+         id="tspan7931">componentType : FLOAT</tspan><tspan
          sodipodi:role="line"
          x="-117.31039"
          y="457.15253"
@@ -1945,7 +1945,7 @@
          x="-120.29889"
          y="596.28247"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:15px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1"
-         id="tspan7931-6">componentType : GL_FLOAT</tspan><tspan
+         id="tspan7931-6">componentType : FLOAT</tspan><tspan
          sodipodi:role="line"
          x="-120.29889"
          y="615.03247"
