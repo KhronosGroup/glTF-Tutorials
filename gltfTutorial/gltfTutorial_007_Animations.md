@@ -25,14 +25,14 @@ The following is another example of an `animation`. This time, the animation con
         {
           "sampler" : 0,
           "target" : {
-            "id" : 0,
+            "node" : 0,
             "path" : "rotation"
           }
         },
         {
           "sampler" : 1,
           "target" : {
-            "id" : 0,
+            "node" : 0,
             "path" : "translation"
           }
         } 
