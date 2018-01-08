@@ -257,7 +257,7 @@ There is also one `channel` in the example. This channel refers to the only samp
       "channels" : [ {
         "sampler" : 0,
         "target" : {
-          "id" : 0,
+          "node" : 0,
           "path" : "rotation"
         }
       } ]
