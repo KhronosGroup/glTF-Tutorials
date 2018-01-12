@@ -977,7 +977,7 @@
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
    id="tspan12315">a_position</tspan> in the shader is an attribute.                This parameter has the type <tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
-   id="tspan12619">GL_FLOAT_VEC3</tspan> and semantic  <tspan
+   id="tspan12619">FLOAT_VEC3</tspan> and semantic  <tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
    id="tspan12359">&quot;POSITION&quot;</tspan></tspan></text>
     <rect
@@ -1003,7 +1003,7 @@
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
    id="tspan12315-0">u_lightDirection</tspan> is a uniform.                              This parameter has the type <tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
-   id="tspan12619-0">GL_FLOAT_VEC3</tspan> and a default <tspan
+   id="tspan12619-0">FLOAT_VEC3</tspan> and a default <tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
    id="tspan12702">value</tspan></tspan></text>
     <rect
@@ -1029,7 +1029,7 @@
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
    id="tspan12315-0-2">u_modelViewMatrix</tspan> is a uniform.                             This parameter has the type <tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
-   id="tspan12619-0-5">GL_FLOAT_MAT4</tspan> and semantic <tspan
+   id="tspan12619-0-5">FLOAT_MAT4</tspan> and semantic <tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
    id="tspan12702-3">&quot;MODELVIEW&quot;</tspan></tspan></text>
     <path
