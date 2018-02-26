@@ -269,7 +269,7 @@ The `mesh.primitive` contains an array of [morph `targets`](https://github.com/K
 
 ```
 
-This means that the animation will modify the `weights` of the mesh that is referred to by the `target.node`. The result of applying the animation to these weights, and the computation of the final, rendered mesh will be explained in more detail in the next section about [Morph Targets](gltfTutorial_022_MorphTargets.md).
+This means that the animation will modify the `weights` of the mesh that is referred to by the `target.node`. The result of applying the animation to these weights, and the computation of the final, rendered mesh will be explained in more detail in the next section about [Morph Targets](gltfTutorial_018_MorphTargets.md).
 
 
 
