@@ -35,7 +35,7 @@ The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section c
 ```
 
 
-The `type` of the camera is given as a string, which can be `"perspective"` or  `"orthographic"`. Depending on this type, the `camera` object contains a [`camera.perspective`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-camera.perspective) object or a [`camera.orthographic`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-camera.orthographic) object. These objects contain additional parameters that define the actual viewing volume.
+The `type` of the camera is given as a string, which can be `"perspective"` or  `"orthographic"`. Depending on this type, the `camera` object contains a [`camera.perspective`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-perspective) object or a [`camera.orthographic`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-orthographic) object. These objects contain additional parameters that define the actual viewing volume.
 
 The `camera.perspective` object contains an `aspectRatio` property that defines the aspect ratio of the viewport. Additionally, it contains a property called `yfov`, which stands for *Field Of View in Y-direction*. It defines the "opening angle" of the camera and is given in radians.
 
