@@ -21,7 +21,7 @@ The scene objects are stored in arrays in the JSON file. They can be accessed us
 These indices are also used to define the *relationships* between the objects. The example above defines multiple meshes, and a node may refer to one of these meshes, using the mesh index, to indicate that the mesh should be attached to this node:
 
 ```javascript
-"nodes:" 
+"nodes": 
 [
     { "mesh": 0, ... },
     { "mesh": 5, ... },
