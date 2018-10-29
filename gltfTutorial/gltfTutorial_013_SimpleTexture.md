@@ -36,7 +36,7 @@ As shown in the previous sections, the material definition in a glTF asset conta
   "textures" : [ {
     "sampler" : 0,
     "source" : 0
-  } ]
+  } ],
   "images" : [ {
     "uri" : "testTexture.png"
   } ],
@@ -91,7 +91,7 @@ As shown in the previous sections, the material definition in a glTF asset conta
 
   "asset" : {
     "version" : "2.0"
-  },
+  }
 }
 ```
 
