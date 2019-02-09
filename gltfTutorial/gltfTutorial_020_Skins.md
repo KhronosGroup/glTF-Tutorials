@@ -79,12 +79,12 @@ The `skin` is the core element of the vertex skinning. In the example, there is 
 
 The skin contains an array called `joints`, which lists the indices of the nodes that define the skeleton hierarchy. Additionally, the skin contains a reference to an accessor in the property `inverseBindMatrices`. This accessor provides one matrix for each joint. Each of these matrices transforms the geometry into the space of the respective joint. This means that each matrix is the *inverse* of the global transform of the respective joint, in its initial configuration. In the given example, this inverse of the initial global transform is the same for both joint nodes:
 
-    1.0   0.0   0.0    0.0   
+    1.0   0.0   0.0   -0.5   
     0.0   1.0   0.0   -1.0   
     0.0   0.0   1.0    0.0   
     0.0   0.0   0.0    1.0  
 
-This matrix translates the mesh about -1 along the y-axis, as shown Image 20b.
+This matrix translates the mesh about -1 along the y-axis and -0.5 along the x-axis, as shown Image 20b.
 
 <p align="center">
 <img src="images/skinInverseBindMatrix.png" /><br>
