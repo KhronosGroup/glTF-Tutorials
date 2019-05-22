@@ -46,7 +46,7 @@ Image 14e shows the part of the bottl cap for which a normal map is defined: the
 
 <p align="center">
 <img src="images/advancedMaterial_normal.png" /><br>
-<a name="advancedMaterial_normal-png"></a>Image 14r: The effect of a normal map.
+<a name="advancedMaterial_normal-png"></a>Image 14e: The effect of a normal map.
 </p>
 
 Together, these textures and maps allow modeling a wide range of real-world materials. Thanks to the common underlying PBR model - namely, the metallic-roughness model - the objects can be rendered consistently by different renderer implementations.
