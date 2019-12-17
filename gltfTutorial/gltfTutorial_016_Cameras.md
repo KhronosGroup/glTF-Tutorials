@@ -9,7 +9,7 @@ The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section s
 
 There are two kinds of cameras: *Perspective* cameras, where the viewing volume is a truncated pyramid (often referred to as "viewing frustum"), and *orthographic*  cameras, where the viewing volume is a rectangular box. The main difference is that rendering with a *perspective* camera causes a proper perspective distortion, whereas rendering with an *orthographic* camera causes a preservation of lengths and angles.
 
-The example in the [Simple Cameras](gltfTutorial_015_SimpleCameras.md) section contains one camera of each type, a perspective camera at index 0, and an orthographic camera at index 1:
+The example in the [Simple Cameras](gltfTutorial_015_SimpleCameras.md) section contains one camera of each type, a perspective camera at index 0 and an orthographic camera at index 1:
 
 ```javascript
 "cameras" : [
