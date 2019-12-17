@@ -108,11 +108,11 @@ The following is a simple, complete glTF asset. It is similar to the assets that
 }
 ```
 
-The geometry in this asset is a simple unit square. It is rotated by -45 degrees around the x-axis, to emphasize the effect of the different cameras. Image 17a shows three options for rendering this asset. The first examples use the cameras from the asset. The last example shows how the scene looks from an external, user-defined viewpoint.
+The geometry in this asset is a simple unit square. It is rotated by -45 degrees around the x-axis, to emphasize the effect of the different cameras. Image 15a shows three options for rendering this asset. The first examples use the cameras from the asset. The last example shows how the scene looks from an external, user-defined viewpoint.
 
 <p align="center">
 <img src="images/cameras.png" /><br>
-<a name="cameras-png"></a>Image 17a: The effect of rendering the scene with different cameras.
+<a name="cameras-png"></a>Image 15a: The effect of rendering the scene with different cameras.
 </p>
 
 
