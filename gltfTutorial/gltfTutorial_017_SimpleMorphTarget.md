@@ -202,11 +202,11 @@ The following is a minimal example that shows a mesh with two morph targets. The
 
 ```
 
-The asset contains an animation that interpolates between the different morph targets for a single triangle. A screenshot of this asset is shown in Image 21a.
+The asset contains an animation that interpolates between the different morph targets for a single triangle. A screenshot of this asset is shown in Image 17a.
 
 <p align="center">
 <img src="images/simpleMorph.png" /><br>
-<a name="simpleMorph-png"></a>Image 21a: A triangle with two morph targets.
+<a name="simpleMorph-png"></a>Image 17a: A triangle with two morph targets.
 </p>
 
 
