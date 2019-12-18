@@ -138,7 +138,7 @@ Calculate the `interpolationValue`:
     interpolationValue = (currentTime - previousTime) / (nextTime - previousTime)
 ```
 
-For scalar and vector types, use a linear interpolation (genreally called `lerp` in mathematics libraries). Here's a "pseudo code" implementation for reference
+For scalar and vector types, use a linear interpolation (generally called `lerp` in mathematics libraries). Here's a "pseudo code" implementation for reference
 
 ```
     Point lerp(previousPoint, nextPoint, interpolationValue)

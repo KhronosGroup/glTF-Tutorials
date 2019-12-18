@@ -9,7 +9,7 @@ The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section s
 
 There are two kinds of cameras: *Perspective* cameras, where the viewing volume is a truncated pyramid (often referred to as "viewing frustum"), and *orthographic*  cameras, where the viewing volume is a rectangular box. The main difference is that rendering with a *perspective* camera causes a proper perspective distortion, whereas rendering with an *orthographic* camera causes a preservation of lengths and angles.
 
-The example in the [Simple Cameras](gltfTutorial_015_SimpleCameras.md) section contains one camera of each type, a perspective camera with at index 0, and an orthographic camera at index 1:
+The example in the [Simple Cameras](gltfTutorial_015_SimpleCameras.md) section contains one camera of each type, a perspective camera at index 0 and an orthographic camera at index 1:
 
 ```javascript
 "cameras" : [
@@ -73,7 +73,7 @@ When the global transform of the camera node is the identity matrix, then the ey
 
 There may be multiple cameras defined in the JSON part of a glTF. Each camera may be referred to by multiple nodes. Therefore, the cameras as they appear in the glTF asset are really "templates" for actual camera *instances*: Whenever a node refers to one camera, a new instance of this camera is created.
 
-There is no "default" camera for a glTF asset. Instead, the client application has to keep track of the currently active camera. The client application may, for example, offer a dropdown-menu that allows one to select the active camera and thus to quickly switch between predefined view configurations. With a bit more implementation effort, the client application can also define its own camera and interaction patterns for the camera control (e.g., zooming with the mouse wheel). However, the logic for the navigation and interaction has to be implemented solely by the client application in this case. [Image 17a](gltfTutorial_017_SimpleCameras.md#cameras-png) shows the result of such an implementation, where the user may select either the active camera from the ones that are defined in the glTF asset, or an "external camera" that may be controlled with the mouse.
+There is no "default" camera for a glTF asset. Instead, the client application has to keep track of the currently active camera. The client application may, for example, offer a dropdown-menu that allows one to select the active camera and thus to quickly switch between predefined view configurations. With a bit more implementation effort, the client application can also define its own camera and interaction patterns for the camera control (e.g., zooming with the mouse wheel). However, the logic for the navigation and interaction has to be implemented solely by the client application in this case. [Image 15a](gltfTutorial_015_SimpleCameras.md#cameras-png) shows the result of such an implementation, where the user may select either the active camera from the ones that are defined in the glTF asset, or an "external camera" that may be controlled with the mouse.
 
 
 
