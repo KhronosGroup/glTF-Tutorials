@@ -205,7 +205,7 @@ To calculate the actual tangents of the keyframe, you need to multiply the direc
     nextTangent = deltaTime * nextInputTangent
 ```
  
-The mathematical function is described in the [Appenddix C](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0?ts=4#appendix-c-spline-interpolation) of the glTF 2.0 specification.
+The mathematical function is described in the [Appendix C](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0?ts=4#appendix-c-spline-interpolation) of the glTF 2.0 specification.
 
 Here's a corresponding pseudocode snippet : 
 
