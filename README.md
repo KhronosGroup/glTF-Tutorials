@@ -1,1 +1,1 @@
-See the [glTF Tutorial Table of Contents](gltfTutorial/README.md).
+See the [glTF Tutorial Table of Contents](docs/README.md).
