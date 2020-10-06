@@ -150,8 +150,8 @@ As mentioned above, the mesh primitive contains new attributes that are required
 
 The `"JOINTS_0"` attribute refers to an accessor that contains the indices of the joints that should have an influence on the vertex during the skinning process. For simplicity and efficiency, these indices are usually stored as 4D vectors, limiting the number of joints that may influence a vertex to 4. In the given example, the joints information is very simple:
 
-    Vertex 0:  0, 1, 0, 0,
-    Vertex 1:  0, 1, 0, 0,
+    Vertex 0:  0, 0, 0, 0,
+    Vertex 1:  0, 0, 0, 0,
     Vertex 2:  0, 1, 0, 0,
     Vertex 3:  0, 1, 0, 0,
     Vertex 4:  0, 1, 0, 0,
