@@ -159,7 +159,7 @@ When a camera object has been defined, it may be attached to a `node`. This is a
 },
 ```
 
-The differences between perspective and orthographic cameras and their properties, the effect of attaching the cameras to the nodes, and the management of multiple cameras will be explained in detail in the [Cameras](gltfTutorial_018_Cameras.md) section.
+The differences between perspective and orthographic cameras and their properties, the effect of attaching the cameras to the nodes, and the management of multiple cameras will be explained in detail in the [Cameras](gltfTutorial_016_Cameras.md) section.
 
 
 
