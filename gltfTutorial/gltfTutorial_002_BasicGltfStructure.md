@@ -26,7 +26,7 @@ These indices are also used to define the *relationships* between the objects. T
     { "mesh": 0, ... },
     { "mesh": 5, ... },
     ...
-}
+]
 ```
 
 The following image (adapted from the [glTF concepts section](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#concepts)) gives an overview of the top-level elements of the JSON part of a glTF asset:
