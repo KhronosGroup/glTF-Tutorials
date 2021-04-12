@@ -9,25 +9,25 @@ A glTF asset may define multiple [`texture`](https://github.com/KhronosGroup/glT
 There are three top-level arrays for the definition of textures in the glTF JSON. The `textures`, `samplers`, and `images` dictionaries contain  [`texture`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-texture),  [`sampler`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-sampler), and [`image`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-image) objects, respectively. The following is an excerpt from the [Simple Texture](gltfTutorial_013_SimpleTexture.md) example, which will be presented in the next section:
 
 ```javascript
-"textures": {
+"textures": [
   {
     "source": 0,
     "sampler": 0
   }
-},
-"images": {
+],
+"images": [
   {
     "uri": "testTexture.png"
   }
-},
-"samplers": {
+],
+"samplers": [
   {
      "magFilter": 9729,
      "minFilter": 9987,
      "wrapS": 33648,
      "wrapT": 33648
    }
-},
+],
 ```
 
 The `texture` itself uses indices to refer to one `sampler` and one `image`. The most important element here is the reference to the `image`. It contains a URI that links to the actual image file that will be used for the texture. Information about how to read this image data can be found in the section about [image data in `images`](gltfTutorial_002_BasicGltfStructure.md#image-data-in-images).
