@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: glTF-Tutorials
+Source: https://github.com/KhronosGroup/glTF-Tutorials
+
+Files: *
+Copyright: Copyright 2020 The Khronos Group Inc.
+License: CC-BY-4.0
