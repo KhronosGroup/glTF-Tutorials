@@ -173,9 +173,9 @@ In the case of rotations expressed as quaternions, you need to perform a spheric
 
 This example implementation is inspired from this [wikipedia article](https://en.wikipedia.org/wiki/Slerp)
 
-### Cubic Spline interplation
+### Cubic Spline interpolation
 
-Cubic spline intepolation needs more data than just the previous and next keyframe time and values, it also need for each keyframe a couple of tangent vectors that act to smooth out the curve around the keyframe points.
+Cubic spline interpolation needs more data than just the previous and next keyframe time and values, it also need for each keyframe a couple of tangent vectors that act to smooth out the curve around the keyframe points.
 
 These tangent are stored in the animation channel. For each keyframe described by the animation sampler, the animation channel contains 3 elements : 
 
