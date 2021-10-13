@@ -60,6 +60,7 @@ Several tools can be used to bake a thickness texture:
 
 * 3ds Max - [Render Surface Map: SubSurface Map](https://help.autodesk.com/view/3DSMAX/2022/ENU/?guid=GUID-08738349-9267-4D9C-986F-C6198E9AA900)
 * Blender - [Render Bake](https://www.blendernation.com/2018/09/12/baking-thickness-maps-in-blender-2-8/)
+* Gestaltor - [Bake Thickness Map](https://docs.gestaltor.io/#create-a-volume-effect-using-a-thickness-map)
 * Marmoset Toolbag - [Baker](https://marmoset.co/posts/toolbag-baking-tutorial/#maptypes)
 * Substance 3D Painter - [Thickness Baker](https://substance3d.adobe.com/documentation/spdoc/thickness-142213479.html)
 * etc.
