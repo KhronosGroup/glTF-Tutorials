@@ -40,7 +40,7 @@ If the glTF is all on one line it can be converted into a more readable format. 
 
 Use the glTF Preview (Alt+G) to see the model. 
 
-![screenshot of glTF Preview](images/image8.png "screenshot of glTF Preview")
+![screenshot of glTF Preview](images/image8.jpg "screenshot of glTF Preview")
 
 To update the view, save the .glTF (Ctrl+S). Similarly, if the textures need to be edited the glTF Preview will automatically update as soon as they are saved.
 

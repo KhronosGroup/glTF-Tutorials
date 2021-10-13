@@ -6,9 +6,17 @@ This tutorial explains how to edit glTF files using open source software to add 
 
 These methods can be repurposed for [other material extensions](https://github.com/KhronosGroup/glTF/tree/main/extensions#gltf-extension-registry) too.
 
-![screenshot of glass vase glTF with transmission and volume](images/image20.jpg "screenshot of glass vase glTF with transmission and volume")
 
-_(Above) glTF glass vase with transmission and volume_
+## Sample Model ##
+
+The glTF model used in this tutorial is available in the [/samples](https://github.com/KhronosGroup/glTF-Tutorials/blob/master/AddingMaterialExtensions/samples/) folder. 
+
+![screenshot of GlassHurricaneCandleHolder.gltf with transmission and volume](images/image20.jpg "screenshot of GlassHurricaneCandleHolder.gltf with transmission and volume")
+
+_(Above) GlassHurricaneCandleHolder.gltf with transmission and volume_
+
+
+## Table of Contents ##
 
 * [Why add Extensions?](AddingMaterialExtensions_001_WhyAddExtensions.md)
 * [Using Visual Studio Code](AddingMaterialExtensions_002_UsingVisualStudioCode.md)
@@ -16,7 +24,8 @@ _(Above) glTF glass vase with transmission and volume_
 * [Using a Raytracer](AddingMaterialExtensions_004_UsingARaytracer.md)
 * [Transmission Limitations](AddingMaterialExtensions_005_TransmissionLimitations.md)
 
-**Acknowledgements:**
+
+## Acknowledgements ##
 
 - Alexey Knyazev, [@lexaknyazev](https://github.com/lexaknyazev)
 - Emmett Lalish, [@elalish](https://github.com/elalish)
