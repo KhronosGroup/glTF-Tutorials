@@ -8,14 +8,14 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
 
 ```javascript
 {
+  "scene" : 0,
   "scenes" : [ {
-    "nodes" : [ 0 ]
+    "nodes" : [ 0, 1 ]
   } ],
   
   "nodes" : [ {
     "skin" : 0,
-    "mesh" : 0,
-    "children" : [ 1 ]
+    "mesh" : 0
   }, {
     "children" : [ 2 ],
     "translation" : [ 0.0, 1.0, 0.0 ]
@@ -55,13 +55,13 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
   } ],
   
   "buffers" : [ {
-    "uri" : "data:application/gltf-buffer;base64,AAABAAMAAAADAAIAAgADAAUAAgAFAAQABAAFAAcABAAHAAYABgAHAAkABgAJAAgAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAD8AAAAAAACAPwAAAD8AAAAAAAAAAAAAgD8AAAAAAACAPwAAgD8AAAAAAAAAAAAAwD8AAAAAAACAPwAAwD8AAAAAAAAAAAAAAEAAAAAAAACAPwAAAEAAAAAA",
+    "uri" : "data:application/gltf-buffer;base64,AAABAAMAAAADAAIAAgADAAUAAgAFAAQABAAFAAcABAAHAAYABgAHAAkABgAJAAgAAAAAvwAAAAAAAAAAAAAAPwAAAAAAAAAAAAAAvwAAAD8AAAAAAAAAPwAAAD8AAAAAAAAAvwAAgD8AAAAAAAAAPwAAgD8AAAAAAAAAvwAAwD8AAAAAAAAAPwAAwD8AAAAAAAAAvwAAAEAAAAAAAAAAPwAAAEAAAAAA",
     "byteLength" : 168
   }, {
-    "uri" : "data:application/gltf-buffer;base64,AAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAABAPwAAgD4AAAAAAAAAAAAAQD8AAIA+AAAAAAAAAAAAAAA/AAAAPwAAAAAAAAAAAAAAPwAAAD8AAAAAAAAAAAAAgD4AAEA/AAAAAAAAAAAAAIA+AABAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAA=",
+    "uri" : "data:application/gltf-buffer;base64,AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAABAPwAAgD4AAAAAAAAAAAAAQD8AAIA+AAAAAAAAAAAAAAA/AAAAPwAAAAAAAAAAAAAAPwAAAD8AAAAAAAAAAAAAgD4AAEA/AAAAAAAAAAAAAIA+AABAPwAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAA=",
     "byteLength" : 320
   }, {
-    "uri" : "data:application/gltf-buffer;base64,AACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAvwAAgL8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAL8AAIC/AAAAAAAAgD8=",
+    "uri" : "data:application/gltf-buffer;base64,AACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAAAAAgD8AAAAAAAAAAAAAgL8AAAAAAACAPwAAgD8AAAAAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAIC/AAAAAAAAgD8=",
     "byteLength" : 128
   }, {
     "uri" : "data:application/gltf-buffer;base64,AAAAAAAAAD8AAIA/AADAPwAAAEAAACBAAABAQAAAYEAAAIBAAACQQAAAoEAAALBAAAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAkxjEPkSLbD8AAAAAAAAAAPT9ND/0/TQ/AAAAAAAAAAD0/TQ/9P00PwAAAAAAAAAAkxjEPkSLbD8AAAAAAAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAkxjEvkSLbD8AAAAAAAAAAPT9NL/0/TQ/AAAAAAAAAAD0/TS/9P00PwAAAAAAAAAAkxjEvkSLbD8AAAAAAAAAAAAAAAAAAIA/",
@@ -70,7 +70,6 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
   
   "bufferViews" : [ {
     "buffer" : 0,
-    "byteOffset" : 0,
     "byteLength" : 48,
     "target" : 34963
   }, {
@@ -80,62 +79,46 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
     "target" : 34962
   }, {
     "buffer" : 1,
-    "byteOffset" : 0,
     "byteLength" : 320,
     "byteStride" : 16
   }, {
     "buffer" : 2,
-    "byteOffset" : 0,
     "byteLength" : 128
   }, {
     "buffer" : 3,
-    "byteOffset" : 0,
     "byteLength" : 240
   } ],
 
   "accessors" : [ {
     "bufferView" : 0,
-    "byteOffset" : 0,
     "componentType" : 5123,
     "count" : 24,
-    "type" : "SCALAR",
-    "max" : [ 9 ],
-    "min" : [ 0 ]
+    "type" : "SCALAR"
   }, {
     "bufferView" : 1,
-    "byteOffset" : 0,
     "componentType" : 5126,
     "count" : 10,
     "type" : "VEC3",
-    "max" : [ 1.0, 2.0, 0.0 ],
-    "min" : [ 0.0, 0.0, 0.0 ]
+    "max" : [ 0.5, 2.0, 0.0 ],
+    "min" : [ -0.5, 0.0, 0.0 ]
   }, {
     "bufferView" : 2,
-    "byteOffset" : 0,
     "componentType" : 5123,
     "count" : 10,
-    "type" : "VEC4",
-    "max" : [ 0, 1, 0, 0 ],
-    "min" : [ 0, 1, 0, 0 ]
+    "type" : "VEC4"
   }, {
     "bufferView" : 2,
     "byteOffset" : 160,
     "componentType" : 5126,
     "count" : 10,
-    "type" : "VEC4",
-    "max" : [ 1.0, 1.0, 0.0, 0.0 ],
-    "min" : [ 0.0, 0.0, 0.0, 0.0 ]
+    "type" : "VEC4"
   }, {
     "bufferView" : 3,
-    "byteOffset" : 0,
     "componentType" : 5126,
     "count" : 2,
-    "type" : "MAT4",
-    "max" : [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -0.5, -1.0, 0.0, 1.0 ],
-    "min" : [ 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, -0.5, -1.0, 0.0, 1.0 ]
+    "type" : "MAT4"
   }, {
     "bufferView" : 4,
-    "byteOffset" : 0,
     "componentType" : 5126,
     "count" : 12,
     "type" : "SCALAR",
@@ -150,7 +133,7 @@ The following is a glTF asset that shows basic vertex skinning for a simple geom
     "max" : [ 0.0, 0.0, 0.707, 1.0 ],
     "min" : [ 0.0, 0.0, -0.707, 0.707 ]
   } ],
-  
+ 
   "asset" : {
     "version" : "2.0"
   }

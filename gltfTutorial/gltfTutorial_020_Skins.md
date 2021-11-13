@@ -8,18 +8,18 @@ The process of vertex skinning is a bit complex. It brings together nearly all e
 
 ## The geometry data
 
-The geometry of the vertex skinning example is an indexed triangle mesh, consisting of 8 triangles and 10 vertices. They form a rectangle in the xy-plane, with the lower left point at the origin (0,0,0), and the upper right point at (1,2,0). So the positions of the vertices are
+The geometry of the vertex skinning example is an indexed triangle mesh, consisting of 8 triangles and 10 vertices. They form a rectangle in the xy-plane, with a width of 1.0 and a height of 2.0. The bottom center of the rectangle is at the origin (0,0,0). So the positions of the vertices are
 
-    0.0, 0.0, 0.0,
-    1.0, 0.0, 0.0,
-    0.0, 0.5, 0.0,
-    1.0, 0.5, 0.0,
-    0.0, 1.0, 0.0,
-    1.0, 1.0, 0.0,
-    0.0, 1.5, 0.0,
-    1.0, 1.5, 0.0,
-    0.0, 2.0, 0.0,
-    1.0, 2.0, 0.0
+    -0.5, 0.0, 0.0,
+     0.5, 0.0, 0.0,
+    -0.5, 0.5, 0.0,
+     0.5, 0.5, 0.0,
+    -0.5, 1.0, 0.0,
+     0.5, 1.0, 0.0,
+    -0.5, 1.5, 0.0,
+     0.5, 1.5, 0.0,
+    -0.5, 2.0, 0.0,
+     0.5, 2.0, 0.0
 
 and the indices of the triangles are
 
@@ -91,7 +91,7 @@ This matrix translates the mesh about -1 along the y-axis, as shown Image 20b.
 <a name="skinInverseBindMatrix-png"></a>Image 20b: The transformation of the geometry with the inverse bind matrix of joint 1.
 </p>
 
-This transformation may look counterintuitive at first glance. But the goal of this transformation is to "undo" the transformation that is done by the initial global transform of the respective joint node so that the influences of the joint to the mesh vertices may be computed based on their actual global transform. 
+This transformation may look counterintuitive at first glance. But the goal of this transformation is to bring the coordinates of the skinned vertices into the same space as each joint.
 
 
 ## Vertex skinning implementation
@@ -121,14 +121,12 @@ void main(void)
 
 The joint matrix for each joint has to perform the following transformations to the vertices:
 
-- The vertices have to be prepared to be transformed with the *current* global transform of the joint node. Therefore, they are transformed with the `inverseBindMatrix` of the joint node. This is the inverse of the global transform of the joint node *in its original state*, when no animations have been applied yet.
+- The vertices have to be transformed with the `inverseBindMatrix` of the joint node, to bring them into the same coordinate space as the joint.
 - The vertices have to be transformed with the *current* global transform of the joint node. Together with the transformation from the `inverseBindMatrix`, this will cause the vertices to be transformed only based on the current transform of the node, in the coordinate space of the current joint node.
-- The vertices have to be transformed with *inverse* of the global transform of the node that the mesh is attached to, because this transform is already done using the model-view-matrix, and thus has to be cancelled out from the skinning computation.
 
 So the pseudocode for computing the joint matrix of joint `j` may look as follows:
 
     jointMatrix(j) =
-      globalTransformOfNodeThatTheMeshIsAttachedTo^-1 *
       globalTransformOfJointNode(j) *
       inverseBindMatrixForJoint(j);
       
@@ -180,7 +178,7 @@ The `"WEIGHTS_0"` attribute refers to an accessor that provides information abou
     Vertex 8:  0.00,  1.00,  0.0, 0.0,
     Vertex 9:  0.00,  1.00,  0.0, 0.0,
 
-Again, the last two components of each entry are not relevant, because there are only two joints.
+Again, the last two components of each entry are not relevant, because there are only two joints. The first two vertices (at the bottom of the geometry) will not be influenced by joints. Their weights are set to `(1.0, 0.0, 0.0, 0.0)`, because the weights for each vertex have to sum up to 1.0.
 
 Combining the `"JOINTS_0"` and `"WEIGHTS_0"` attributes yields exact information about the influence that each joint has on each vertex. For example, the given data means that vertex 6 should be influenced to 25% by joint 0 and to 75% by joint 1.
 
