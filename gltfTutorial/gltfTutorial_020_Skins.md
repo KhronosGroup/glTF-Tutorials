@@ -50,17 +50,17 @@ In the given example, there are two nodes that define the skeleton. They are ref
   "nodes" : [ 
    ...
    {
-    "children" : [ 2 ],
-    "translation" : [ 0.0, 1.0, 0.0 ]
+    "children" : [ 2 ]
    }, 
    {
+    "translation" : [ 0.0, 1.0, 0.0 ],
     "rotation" : [ 0.0, 0.0, 0.0, 1.0 ]
    }
   ],
 
 ```
 
-The first joint node has a `translation` property, defining a translation about 1.0 along the y-axis. The second joint node has a `rotation` property that initially describes a rotation about 0 degrees (thus, no rotation at all). This rotation will later be changed by the animation to let the skeleton bend left and right and show the effect of the vertex skinning.
+The first joint node is located at the origin, and does not contain any transformations. The second node has a `translation` property, defining a translation about 1.0 along the y-axis, and a `rotation` property that initially describes a rotation about 0 degrees (thus, no rotation at all). This rotation will later be changed by the animation to let the skeleton bend left and right and show the effect of the vertex skinning.
 
 ## The skin
 
@@ -77,14 +77,18 @@ The `skin` is the core element of the vertex skinning. In the example, there is 
 
 ```
 
-The skin contains an array called `joints`, which lists the indices of the nodes that define the skeleton hierarchy. Additionally, the skin contains a reference to an accessor in the property `inverseBindMatrices`. This accessor provides one matrix for each joint. Each of these matrices transforms the geometry into the space of the respective joint. This means that each matrix is the *inverse* of the global transform of the respective joint, in its initial configuration. In the given example, this inverse of the initial global transform is the same for both joint nodes:
+The skin contains an array called `joints`, which lists the indices of the nodes that define the skeleton hierarchy. Additionally, the skin contains a reference to an accessor in the property `inverseBindMatrices`. This accessor provides one matrix for each joint. Each of these matrices transforms the geometry into the space of the respective joint. This means that each matrix is the *inverse* of the global transform of the respective joint, in its initial configuration. 
+
+In the given example, joint `0` does not have an explicit transform, meaning that its global transform is the identity matrix. Therefore, the inverse bind matrix of joint `0` is also the identity matrix. 
+
+Joint contains a translation about 1.0 along the y-axis. The inverse bind matrix of joint `1` is therefore
 
     1.0   0.0   0.0    0.0   
     0.0   1.0   0.0   -1.0   
     0.0   0.0   1.0    0.0   
     0.0   0.0   0.0    1.0  
 
-This matrix translates the mesh about -1 along the y-axis, as shown Image 20b.
+This matrix translates the mesh about -1.0 along the y-axis, as shown Image 20b.
 
 <p align="center">
 <img src="images/skinInverseBindMatrix.png" /><br>
@@ -159,11 +163,11 @@ The `"JOINTS_0"` attribute refers to an accessor that contains the indices of th
     Vertex 8:  0, 1, 0, 0,
     Vertex 9:  0, 1, 0, 0,
 
-This means that every vertex should be influenced by joint 0 and joint 1, except for the two vertices at the bottom. (The last 2 components of each vector are ignored here. If there were multiple joints, then one entry of this accessor could, for example, contain
+This means that every vertex should be influenced by joint 0 and joint 1, (except for the two vertices at the bottom, which are only influenced by joint 0). The last 2 components of each vector are ignored here. If there were multiple joints, then one entry of this accessor could, for example, contain
 
     3, 1, 8, 4,
 
-meaning that the corresponding vertex should be influenced by the joints 3, 1, 8, and 4.)
+meaning that the corresponding vertex should be influenced by the joints 3, 1, 8, and 4.
 
 The `"WEIGHTS_0"` attribute refers to an accessor that provides information about how strongly each joint should influence each vertex. In the given example, the weights are as follows:
 
@@ -178,7 +182,7 @@ The `"WEIGHTS_0"` attribute refers to an accessor that provides information abou
     Vertex 8:  0.00,  1.00,  0.0, 0.0,
     Vertex 9:  0.00,  1.00,  0.0, 0.0,
 
-Again, the last two components of each entry are not relevant, because there are only two joints. The first two vertices (at the bottom of the geometry) will not be influenced by joints. Their weights are set to `(1.0, 0.0, 0.0, 0.0)`, because the weights for each vertex have to sum up to 1.0.
+Again, the last two components of each entry are not relevant, because there are only two joints.
 
 Combining the `"JOINTS_0"` and `"WEIGHTS_0"` attributes yields exact information about the influence that each joint has on each vertex. For example, the given data means that vertex 6 should be influenced to 25% by joint 0 and to 75% by joint 1.
 
@@ -199,11 +203,12 @@ void main(void)
         a_weight.y * u_jointMat[int(a_joint.y)] +
         a_weight.z * u_jointMat[int(a_joint.z)] +
         a_weight.w * u_jointMat[int(a_joint.w)];
-    vec4 pos = u_modelViewMatrix * skinMat * vec4(a_position,1.0);
-    gl_Position = u_projectionMatrix * pos;
+    vec4 worldPosition = skinMat * vec4(a_position,1.0);
+    vec4 cameraPosition = u_viewMatrix * worldPosition;
+    gl_Position = u_projectionMatrix * cameraPosition;
 }
 ```
-The skin matrix is then used to transform the original position of the vertex before it is transformed with the model-view-matrix. The result of this transformation can be imagined as a weighted transformation of the vertices with the respective joint matrices, as shown in Image 20d.
+The skin matrix is then used to transform the original position of the vertex into the world space. The transform of the node that the skin is attached to is ignored. The result of this transformation can be imagined as a weighted transformation of the vertices with the respective joint matrices, as shown in Image 20d.
 
 <p align="center">
 <img src="images/skinSkinMatrix.png" /><br>
