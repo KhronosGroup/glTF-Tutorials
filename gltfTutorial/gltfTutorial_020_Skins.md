@@ -163,7 +163,7 @@ The `"JOINTS_0"` attribute refers to an accessor that contains the indices of th
     Vertex 8:  0, 1, 0, 0,
     Vertex 9:  0, 1, 0, 0,
 
-This means that every vertex should be influenced by joint 0 and joint 1, (except for the two vertices at the bottom, which are only influenced by joint 0). The last 2 components of each vector are ignored here. If there were multiple joints, then one entry of this accessor could, for example, contain
+This means that every vertex may be influenced by joint 0 and joint 1  (except for the two vertices at the bottom, which may only be influenced by joint 0). The last 2 components of each vector are ignored here. If there were multiple joints, then one entry of this accessor could, for example, contain
 
     3, 1, 8, 4,
 
