@@ -8,18 +8,18 @@ The process of vertex skinning is a bit complex. It brings together nearly all e
 
 ## The geometry data
 
-The geometry of the vertex skinning example is an indexed triangle mesh, consisting of 8 triangles and 10 vertices. They form a rectangle in the xy-plane, with the lower left point at the origin (0,0,0), and the upper right point at (1,2,0). So the positions of the vertices are
+The geometry of the vertex skinning example is an indexed triangle mesh, consisting of 8 triangles and 10 vertices. They form a rectangle in the xy-plane, with a width of 1.0 and a height of 2.0. The bottom center of the rectangle is at the origin (0,0,0). So the positions of the vertices are
 
-    0.0, 0.0, 0.0,
-    1.0, 0.0, 0.0,
-    0.0, 0.5, 0.0,
-    1.0, 0.5, 0.0,
-    0.0, 1.0, 0.0,
-    1.0, 1.0, 0.0,
-    0.0, 1.5, 0.0,
-    1.0, 1.5, 0.0,
-    0.0, 2.0, 0.0,
-    1.0, 2.0, 0.0
+    -0.5, 0.0, 0.0,
+     0.5, 0.0, 0.0,
+    -0.5, 0.5, 0.0,
+     0.5, 0.5, 0.0,
+    -0.5, 1.0, 0.0,
+     0.5, 1.0, 0.0,
+    -0.5, 1.5, 0.0,
+     0.5, 1.5, 0.0,
+    -0.5, 2.0, 0.0,
+     0.5, 2.0, 0.0
 
 and the indices of the triangles are
 
@@ -50,17 +50,17 @@ In the given example, there are two nodes that define the skeleton. They are ref
   "nodes" : [ 
    ...
    {
-    "children" : [ 2 ],
-    "translation" : [ 0.0, 1.0, 0.0 ]
+    "children" : [ 2 ]
    }, 
    {
+    "translation" : [ 0.0, 1.0, 0.0 ],
     "rotation" : [ 0.0, 0.0, 0.0, 1.0 ]
    }
   ],
 
 ```
 
-The first joint node has a `translation` property, defining a translation about 1.0 along the y-axis. The second joint node has a `rotation` property that initially describes a rotation about 0 degrees (thus, no rotation at all). This rotation will later be changed by the animation to let the skeleton bend left and right and show the effect of the vertex skinning.
+The first joint node is located at the origin, and does not contain any transformations. The second node has a `translation` property, defining a translation about 1.0 along the y-axis, and a `rotation` property that initially describes a rotation about 0 degrees (thus, no rotation at all). This rotation will later be changed by the animation to let the skeleton bend left and right and show the effect of the vertex skinning.
 
 ## The skin
 
@@ -77,21 +77,25 @@ The `skin` is the core element of the vertex skinning. In the example, there is 
 
 ```
 
-The skin contains an array called `joints`, which lists the indices of the nodes that define the skeleton hierarchy. Additionally, the skin contains a reference to an accessor in the property `inverseBindMatrices`. This accessor provides one matrix for each joint. Each of these matrices transforms the geometry into the space of the respective joint. This means that each matrix is the *inverse* of the global transform of the respective joint, in its initial configuration. In the given example, this inverse of the initial global transform is the same for both joint nodes:
+The skin contains an array called `joints`, which lists the indices of the nodes that define the skeleton hierarchy. Additionally, the skin contains a reference to an accessor in the property `inverseBindMatrices`. This accessor provides one matrix for each joint. Each of these matrices transforms the geometry into the space of the respective joint. This means that each matrix is the *inverse* of the global transform of the respective joint, in its initial configuration. 
+
+In the given example, joint `0` does not have an explicit transform, meaning that its global transform is the identity matrix. Therefore, the inverse bind matrix of joint `0` is also the identity matrix. 
+
+Joint contains a translation about 1.0 along the y-axis. The inverse bind matrix of joint `1` is therefore
 
     1.0   0.0   0.0    0.0   
     0.0   1.0   0.0   -1.0   
     0.0   0.0   1.0    0.0   
     0.0   0.0   0.0    1.0  
 
-This matrix translates the mesh about -1 along the y-axis, as shown Image 20b.
+This matrix translates the mesh about -1.0 along the y-axis, as shown Image 20b.
 
 <p align="center">
 <img src="images/skinInverseBindMatrix.png" /><br>
 <a name="skinInverseBindMatrix-png"></a>Image 20b: The transformation of the geometry with the inverse bind matrix of joint 1.
 </p>
 
-This transformation may look counterintuitive at first glance. But the goal of this transformation is to "undo" the transformation that is done by the initial global transform of the respective joint node so that the influences of the joint to the mesh vertices may be computed based on their actual global transform. 
+This transformation may look counterintuitive at first glance. But the goal of this transformation is to bring the coordinates of the skinned vertices into the same space as each joint.
 
 
 ## Vertex skinning implementation
@@ -121,14 +125,12 @@ void main(void)
 
 The joint matrix for each joint has to perform the following transformations to the vertices:
 
-- The vertices have to be prepared to be transformed with the *current* global transform of the joint node. Therefore, they are transformed with the `inverseBindMatrix` of the joint node. This is the inverse of the global transform of the joint node *in its original state*, when no animations have been applied yet.
+- The vertices have to be transformed with the `inverseBindMatrix` of the joint node, to bring them into the same coordinate space as the joint.
 - The vertices have to be transformed with the *current* global transform of the joint node. Together with the transformation from the `inverseBindMatrix`, this will cause the vertices to be transformed only based on the current transform of the node, in the coordinate space of the current joint node.
-- The vertices have to be transformed with *inverse* of the global transform of the node that the mesh is attached to, because this transform is already done using the model-view-matrix, and thus has to be cancelled out from the skinning computation.
 
 So the pseudocode for computing the joint matrix of joint `j` may look as follows:
 
     jointMatrix(j) =
-      globalTransformOfNodeThatTheMeshIsAttachedTo^-1 *
       globalTransformOfJointNode(j) *
       inverseBindMatrixForJoint(j);
       
@@ -161,11 +163,11 @@ The `"JOINTS_0"` attribute refers to an accessor that contains the indices of th
     Vertex 8:  0, 1, 0, 0,
     Vertex 9:  0, 1, 0, 0,
 
-This means that every vertex should be influenced by joint 0 and joint 1, except for the two vertices at the bottom. (The last 2 components of each vector are ignored here. If there were multiple joints, then one entry of this accessor could, for example, contain
+This means that every vertex may be influenced by joint 0 and joint 1, except the first two vertices are influenced only by joint 0, and the last two vertices are influenced only by joint 1. The last 2 components of each vector are ignored here. If there were multiple joints, then one entry of this accessor could, for example, contain
 
     3, 1, 8, 4,
 
-meaning that the corresponding vertex should be influenced by the joints 3, 1, 8, and 4.)
+meaning that the corresponding vertex should be influenced by the joints 3, 1, 8, and 4.
 
 The `"WEIGHTS_0"` attribute refers to an accessor that provides information about how strongly each joint should influence each vertex. In the given example, the weights are as follows:
 
@@ -201,11 +203,12 @@ void main(void)
         a_weight.y * u_jointMat[int(a_joint.y)] +
         a_weight.z * u_jointMat[int(a_joint.z)] +
         a_weight.w * u_jointMat[int(a_joint.w)];
-    vec4 pos = u_modelViewMatrix * skinMat * vec4(a_position,1.0);
-    gl_Position = u_projectionMatrix * pos;
+    vec4 worldPosition = skinMat * vec4(a_position,1.0);
+    vec4 cameraPosition = u_viewMatrix * worldPosition;
+    gl_Position = u_projectionMatrix * cameraPosition;
 }
 ```
-The skin matrix is then used to transform the original position of the vertex before it is transformed with the model-view-matrix. The result of this transformation can be imagined as a weighted transformation of the vertices with the respective joint matrices, as shown in Image 20d.
+The skin matrix is then used to transform the original position of the vertex into the world space. The transform of the node that the skin is attached to is ignored. The result of this transformation can be imagined as a weighted transformation of the vertices with the respective joint matrices, as shown in Image 20d.
 
 <p align="center">
 <img src="images/skinSkinMatrix.png" /><br>
