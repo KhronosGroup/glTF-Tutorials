@@ -2,7 +2,7 @@ Previous: [Simple Animation](gltfTutorial_006_SimpleAnimation.md) | [Table of Co
 
 # Animations
 
-As shown in the [Simple Animation](gltfTutorial_006_SimpleAnimation.md) example, an [`animation`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-animation) can be used to describe how the `translation`, `rotation`, or `scale` properties of nodes change over time.
+As shown in the [Simple Animation](gltfTutorial_006_SimpleAnimation.md) example, an [`animation`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-animation) can be used to describe how the `translation`, `rotation`, or `scale` properties of nodes change over time.
 
 The following is another example of an `animation`. This time, the animation contains two channels. One animates the translation, and the other animates the rotation of a node:
 
@@ -107,7 +107,7 @@ So when the current time is **1.2**, then the `translation` of the node is **(16
 
 ## Animation channels
 
-The animations contain an array of [`animation.channel`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#channel) objects. The channels establish the connection between the input, which is the value that is computed from the sampler, and the output, which is the animated node property. Therefore, each channel refers to one sampler, using the index of the sampler, and contains an [`animation.channel.target`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-target). The `target` refers to a node, using the index of the node, and contains a `path` that defines the property of the node that should be animated. The value from the sampler will be written into this property.
+The animations contain an array of [`animation.channel`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#channel) objects. The channels establish the connection between the input, which is the value that is computed from the sampler, and the output, which is the animated node property. Therefore, each channel refers to one sampler, using the index of the sampler, and contains an [`animation.channel.target`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-target). The `target` refers to a node, using the index of the node, and contains a `path` that defines the property of the node that should be animated. The value from the sampler will be written into this property.
 
 In the example above, there are two channels for the animation. Both refer to the same node. The path of the first channel refers to the `translation` of the node, and the path of the second channel refers to the `rotation` of the node. So all objects (meshes) that are attached to the node will be translated and rotated by the animation, as shown in Image 7b.
 

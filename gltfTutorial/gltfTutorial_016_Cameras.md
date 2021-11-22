@@ -35,7 +35,7 @@ The example in the [Simple Cameras](gltfTutorial_015_SimpleCameras.md) section c
 ```
 
 
-The `type` of the camera is given as a string, which can be `"perspective"` or  `"orthographic"`. Depending on this type, the `camera` object contains a [`camera.perspective`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-perspective) object or a [`camera.orthographic`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-orthographic) object. These objects contain additional parameters that define the actual viewing volume.
+The `type` of the camera is given as a string, which can be `"perspective"` or  `"orthographic"`. Depending on this type, the `camera` object contains a [`camera.perspective`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-perspective) object or a [`camera.orthographic`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-orthographic) object. These objects contain additional parameters that define the actual viewing volume.
 
 The `camera.perspective` object contains an `aspectRatio` property that defines the aspect ratio of the viewport. Additionally, it contains a property called `yfov`, which stands for *Field Of View in Y-direction*. It defines the "opening angle" of the camera and is given in radians.
 
@@ -48,7 +48,7 @@ Explaining the details of cameras, viewing, and projections is beyond the scope 
 
 # Camera orientation
 
-A `camera` can be transformed to have a certain orientation and viewing direction in the scene. This is accomplished by attaching the camera to a `node`. Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-node) may contain the index of a `camera` that is attached to it. In the simple camera example, there are two nodes for the cameras. The first node refers to the perspective camera with index 0, and the second one refers to the orthographic camera with index 1:
+A `camera` can be transformed to have a certain orientation and viewing direction in the scene. This is accomplished by attaching the camera to a `node`. Each [`node`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-node) may contain the index of a `camera` that is attached to it. In the simple camera example, there are two nodes for the cameras. The first node refers to the perspective camera with index 0, and the second one refers to the orthographic camera with index 1:
 
 ```javascript
 "nodes" : {
