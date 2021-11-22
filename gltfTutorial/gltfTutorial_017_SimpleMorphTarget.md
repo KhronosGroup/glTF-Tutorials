@@ -244,7 +244,7 @@ The new elements that have been added in order to define the morph targets are c
 
 ```
 
-The `mesh.primitive` contains an array of [morph `targets`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#morph-targets). Each morph target is a dictionary that maps attribute names to `accessor` objects. In the example, there are two morph targets, both mapping the `"POSITION"` attribute to accessors that contain the morphed vertex positions. The mesh also contains an array of `weights` that defines the contribution of each morph target to the final, rendered mesh. These weights are also the `channel.target` of the `animation` that is contained in the asset:
+The `mesh.primitive` contains an array of [morph `targets`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#_mesh_primitive_targets). Each morph target is a dictionary that maps attribute names to `accessor` objects. In the example, there are two morph targets, both mapping the `"POSITION"` attribute to accessors that contain the morphed vertex positions. The mesh also contains an array of `weights` that defines the contribution of each morph target to the final, rendered mesh. These weights are also the `channel.target` of the `animation` that is contained in the asset:
 
 ```javascript
   "animations":[
