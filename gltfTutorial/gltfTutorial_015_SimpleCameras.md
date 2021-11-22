@@ -9,6 +9,7 @@ The following is a simple, complete glTF asset. It is similar to the assets that
 
 ```javascript
 {
+  "scene": 0,
   "scenes" : [
     {
       "nodes" : [ 0, 1, 2 ]

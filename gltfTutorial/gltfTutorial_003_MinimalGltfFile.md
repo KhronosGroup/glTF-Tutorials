@@ -7,6 +7,7 @@ The following is a minimal but complete glTF asset, containing a single, indexed
 
 ```javascript
 {
+  "scene": 0,
   "scenes" : [
     {
       "nodes" : [ 0 ]
@@ -85,12 +86,13 @@ The following is a minimal but complete glTF asset, containing a single, indexed
 
 ## The `scene` and `nodes` structure
 
-The [`scene`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-scene) is the entry point for the description of the scene that is stored in the glTF. When parsing a glTF JSON file, the traversal of the scene structure will start here. Each scene contains an array called `nodes`, which contains the indices of [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-node) objects. These nodes are the root nodes of a scene graph hierarchy.
+The [`scenes`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-scene) array is the entry point for the description of the scenes that are stored in the glTF. When parsing a glTF JSON file, the traversal of the scene structure will start here. Each scene contains an array called `nodes`, which contains the indices of [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-node) objects. These nodes are the root nodes of a scene graph hierarchy.
 
-The example here consists of a single scene. It refers to the only node in this example, which is the node with the index 0. This node, in turn, refers to the only mesh, which has the index 0:
+The example here consists of a single scene. The `scene` property indicates that this scene is the default scene that should be displayed when the asset is loaded. The scene refers to the only node in this example, which is the node with the index 0. This node, in turn, refers to the only mesh, which has the index 0:
 
 
 ```javascript
+  "scene": 0,
   "scenes" : [
     {
       "nodes" : [ 0 ]

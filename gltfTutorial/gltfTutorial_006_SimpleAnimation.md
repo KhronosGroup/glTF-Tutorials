@@ -12,6 +12,7 @@ The following is the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) th
 
 ```javascript
 {
+  "scene": 0,
   "scenes" : [
     {
       "nodes" : [ 0 ]

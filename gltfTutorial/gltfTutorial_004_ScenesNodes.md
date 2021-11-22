@@ -4,9 +4,10 @@ Previous: [A Minimal glTF File](gltfTutorial_003_MinimalGltfFile.md) | [Table of
 
 ## Scenes
 
-There may be multiple scenes stored in one glTF file, but in many cases, there will be only a single scene, which then also is the default scene. Each scene contains an array of `nodes`, which are the indices of the root nodes of the scene graphs. Again, there may be multiple root nodes, forming different hierarchies, but in many cases, the scene will have a single root node. The most simple possible scene description has already been shown in the previous section, consisting of a single scene with a single node:
+There may be multiple scenes stored in one glTF file. The `scene` property indicated which of these scenes should be the default scene that is displayed when the asset is loaded. Each scene contains an array of `nodes`, which are the indices of the root nodes of the scene graphs. Again, there may be multiple root nodes, forming different hierarchies, but in many cases, the scene will have a single root node. The most simple possible scene description has already been shown in the previous section, consisting of a single scene with a single node:
 
 ```javascript
+  "scene": 0, 
   "scenes" : [
     {
       "nodes" : [ 0 ]

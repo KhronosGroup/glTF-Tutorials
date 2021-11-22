@@ -10,6 +10,7 @@ This is a minimal glTF asset with a simple material:
 
 ```javascript
 {
+  "scene": 0,
   "scenes" : [
     {
       "nodes" : [ 0 ]
