@@ -6,6 +6,7 @@ As shown in the previous sections, the material definition in a glTF asset conta
 
 ```javascript
 {
+  "scene": 0,
   "scenes" : [ {
     "nodes" : [ 0 ]
   } ],

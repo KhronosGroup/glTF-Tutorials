@@ -9,6 +9,7 @@ The following is a minimal example that shows a mesh with two morph targets. The
 
 ```javascript
 {
+  "scene": 0,
   "scenes":[
     {
       "nodes":[

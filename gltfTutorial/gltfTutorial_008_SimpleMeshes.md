@@ -8,6 +8,7 @@ The following is a glTF asset that contains a simple mesh with multiple attribut
 
 ```javascript
 {
+  "scene": 0,
   "scenes" : [
     {
       "nodes" : [ 0, 1]

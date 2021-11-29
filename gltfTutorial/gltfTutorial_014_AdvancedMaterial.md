@@ -19,7 +19,7 @@ The effects of these properties cannot properly be demonstrated with trivial tex
 <a name="cameras-png"></a>Image 14a: An example of a material where the surface properties are defined via textures.
 </p>
 
-Explaining the implementation of physically based rendering is beyond the scope of this tutorial. The official Khronos [WebGL PBR repository](https://github.com/KhronosGroup/glTF-WebGL-PBR) contains a reference implementation of a PBR renderer based on WebGL, and provides implementation hints and background information. The following images mainly aim at demonstrating the effects of the different material property textures, under different lighting conditions.
+Explaining the implementation of physically based rendering is beyond the scope of this tutorial. The official Khronos [glTF Sample Viewer](https://github.com/KhronosGroup/glTF-Sample-Viewer) contains a reference implementation of a PBR renderer based on WebGL, and provides implementation hints and background information. The following images mainly aim at demonstrating the effects of the different material property textures, under different lighting conditions.
 
 Image 14b shows the effect of the roughness texture: the main part of the bottle has a low roughness, causing it to appear shiny, compared to the cap, which has a rough surface structure.
 
