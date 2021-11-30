@@ -42,7 +42,7 @@ Image 14d shows the emissive part of the texture: regardless of the dark environ
 <a name="advancedMaterial_emissive-png"></a>Image 14d: The emissive part of the texture.
 </p>
 
-Image 14e shows the part of the bottl cap for which a normal map is defined: the text appears to be embossed into the cap. This makes it possible to model finer geometric details on the surface, even though the model itself only has a very coarse geometric resolution.
+Image 14e shows the part of the bottle cap for which a normal map is defined: the text appears to be embossed into the cap. This makes it possible to model finer geometric details on the surface, even though the model itself only has a very coarse geometric resolution.
 
 <p align="center">
 <img src="images/advancedMaterial_normal.png" /><br>

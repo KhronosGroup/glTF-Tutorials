@@ -130,7 +130,7 @@ The data of the attributes that are stored in a single `bufferView` may be store
 
 <p align="center">
 <img src="images/aos.png" /><br>
-<a name="aos-png"></a>Image 5d: Interleaved acessors in one buffer view.
+<a name="aos-png"></a>Image 5d: Interleaved accessors in one buffer view.
 </p>
 
 

@@ -240,7 +240,7 @@ In glTF 1.0, this property is still optional, but in subsequent glTF versions, t
   }
 ```
 
-The `asset` property may contain additional metadata that is described in the [`asset` specification](https://github.com/KhronosGroup/glTF/blob/master/specification/README.md#reference-asset).
+The `asset` property may contain additional metadata that is described in the [`asset` specification](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-asset).
 
 
 
