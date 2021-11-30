@@ -48,7 +48,7 @@ Different content creation tools may now provide 3D content in the glTF format. 
 <a name="contentPipelineWithGltf-png"></a>Image 1c: The 3D content pipeline with glTF.
 </p>
 
-An increasing number of content creation tools will be able to provide glTF directly. Alternatively, other file formats can be used to create glTF assets, using one of the open-source conversion utilities listed in the [Khronos glTF repository](https://github.com/KhronosGroup/glTF#converters). For example, nearly all authoring applications can export their scenes in the [COLLADA](https://www.khronos.org/collada/) format. So the [COLLADA2GLTF](https://github.com/KhronosGroup/COLLADA2GLTF) tool can be used to convert scenes and models from these authoring applications to glTF. `OBJ` files may be converted to glTF using [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf). For other file formats, custom converters can be used to create glTF assets, thus making the 3D content available for a broad range of runtime applications.
+An increasing number of content creation tools provide glTF import and export directly. For example, the Blender Manual documents [how to import and export PBR materials](https://docs.blender.org/manual/en/latest/addons/import_export/scene_gltf2.html) using glTF.  Alternatively, other file formats can be used to create glTF assets, using one of the open-source conversion utilities listed in the [glTF Project Explorer](https://github.khronos.org/glTF-Project-Explorer/). The output of converters and exporters can be validated using the [Khronos glTF Validator](https://github.khronos.org/glTF-Validator/).
 
 
 [Table of Contents](README.md) | Next: [Basic glTF Structure](gltfTutorial_002_BasicGltfStructure.md)
