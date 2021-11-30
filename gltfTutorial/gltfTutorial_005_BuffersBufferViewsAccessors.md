@@ -29,7 +29,7 @@ Parts of the data of a `buffer` may have to be passed to the renderer as vertex 
 
 ## BufferViews
 
-The first step of structuring the data from a `buffer` is with [`bufferView`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-bufferView) objects. A `bufferView` represents a "slice" of the data of one buffer. This slice is defined using an offset and a length, in bytes. The [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) defined two `bufferView` objects:
+The first step of structuring the data from a `buffer` is with [`bufferView`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-bufferview) objects. A `bufferView` represents a "slice" of the data of one buffer. This slice is defined using an offset and a length, in bytes. The [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) defined two `bufferView` objects:
 
 ```javascript
   "bufferViews" : [
