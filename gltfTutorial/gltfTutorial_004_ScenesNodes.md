@@ -24,7 +24,7 @@ There may be multiple scenes stored in one glTF file. The `scene` property indic
 
 ## Nodes forming the scene graph
 
-Each [`node`](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0/#reference-node) can contain an array called `children` that contains the indices of its child nodes. So each node is one element of a hierarchy of nodes, and together they define the structure of the scene as a scene graph.  
+Each [`node`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-node) can contain an array called `children` that contains the indices of its child nodes. So each node is one element of a hierarchy of nodes, and together they define the structure of the scene as a scene graph.  
 
 <p align="center">
 <img src="images/sceneGraph.png" /><br>
