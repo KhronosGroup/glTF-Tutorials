@@ -81,7 +81,7 @@ The skin contains an array called `joints`, which lists the indices of the nodes
 
 In the given example, joint `0` does not have an explicit transform, meaning that its global transform is the identity matrix. Therefore, the inverse bind matrix of joint `0` is also the identity matrix. 
 
-Joint contains a translation about 1.0 along the y-axis. The inverse bind matrix of joint `1` is therefore
+Joint `1` contains a translation about 1.0 along the y-axis. The inverse bind matrix of joint `1` is therefore
 
     1.0   0.0   0.0    0.0   
     0.0   1.0   0.0   -1.0   
