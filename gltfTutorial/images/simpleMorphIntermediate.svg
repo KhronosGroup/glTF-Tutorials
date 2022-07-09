@@ -2,23 +2,23 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="210mm"
    height="297mm"
    viewBox="0 0 744.09448819 1052.3622047"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
    sodipodi:docname="simpleMorphIntermediate.svg"
-   inkscape:export-filename="simpleMorphIntermediatel.png"
+   inkscape:export-filename="simpleMorphIntermediate.png"
    inkscape:export-xdpi="350.53"
-   inkscape:export-ydpi="350.53">
+   inkscape:export-ydpi="350.53"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs4">
     <marker
@@ -58,9 +58,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="36.784188"
-     inkscape:cy="111.37945"
+     inkscape:zoom="2.8"
+     inkscape:cx="96.607143"
+     inkscape:cy="1003.0357"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -69,10 +69,11 @@
      inkscape:snap-intersection-paths="true"
      inkscape:object-paths="true"
      inkscape:window-width="1920"
-     inkscape:window-height="1031"
-     inkscape:window-x="-4"
-     inkscape:window-y="-4"
-     inkscape:window-maximized="1">
+     inkscape:window-height="1137"
+     inkscape:window-x="-8"
+     inkscape:window-y="-2"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="0">
     <inkscape:grid
        type="xygrid"
        id="grid4136" />
@@ -85,7 +86,6 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -143,82 +143,77 @@
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-52.963985"
        y="1064.281"
-       id="text5003"
-       sodipodi:linespacing="125%"><tspan
+       id="text5003"><tspan
          sodipodi:role="line"
          id="tspan5005"
          x="-52.963985"
          y="1064.281"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">(0.0, 0.0, 0.0)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">(0.0, 0.0, 0.0)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="77.836037"
        y="1063.9811"
-       id="text5003-2"
-       sodipodi:linespacing="125%"><tspan
+       id="text5003-2"><tspan
          sodipodi:role="line"
          id="tspan5005-6"
          x="77.836037"
          y="1063.9811"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">(1.0, 0.0, 0.0)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'">(1.0, 0.0, 0.0)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="52.536011"
        y="831.42383"
-       id="text5003-4"
-       sodipodi:linespacing="125%"><tspan
+       id="text5003-4"><tspan
          sodipodi:role="line"
          id="tspan5005-8"
          x="52.536011"
          y="831.42383"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1">         ( 0.5,  0.5,  0.0)</tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.5px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#808080;fill-opacity:1">         ( 0.5,  0.5,  0.0)</tspan><tspan
          sodipodi:role="line"
          x="52.536011"
          y="840.79883"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
-         id="tspan5223">+ 1.0  * <tspan
-   style="font-size:7.5px;fill:#40b440;fill-opacity:1"
-   id="tspan5231">( 1.0,  1.0,  0.0)</tspan></tspan><tspan
-         sodipodi:role="line"
-         x="52.536011"
-         y="850.17383"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.5px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.5px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
          id="tspan5225">+ 0.25 * <tspan
    style="font-size:7.5px;fill:#c14040;fill-opacity:1"
    id="tspan5233">(-1.0,  1.0,  0.0)</tspan></tspan><tspan
          sodipodi:role="line"
          x="52.536011"
-         y="861.84546"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
+         y="850.17383"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:7.5px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
+         id="tspan8791">+ 1.0  * <tspan
+   style="font-size:7.5px;fill:#40b540;fill-opacity:1"
+   id="tspan8795">( 1.0,  1.0,  0.0)</tspan></tspan><tspan
+         sodipodi:role="line"
+         x="52.536011"
+         y="861.74103"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold'"
          id="tspan5227">=   ( 1.25, 1.75, 0.0)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff4040;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff4040;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="-61.065514"
        y="985.57031"
-       id="text5003-4-5"
-       sodipodi:linespacing="125%"><tspan
+       id="text5003-4-5"><tspan
          sodipodi:role="line"
          id="tspan5005-8-9"
          x="-61.065514"
          y="985.57031"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#ff4040;fill-opacity:1">(-1.0, 1.0, 0.0)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#ff4040;fill-opacity:1">(-1.0, 1.0, 0.0)</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:17.5px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#40aa40;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#40aa40;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
        x="80.934486"
        y="985.57031"
-       id="text5003-4-5-1"
-       sodipodi:linespacing="125%"><tspan
+       id="text5003-4-5-1"><tspan
          sodipodi:role="line"
          id="tspan5005-8-9-8"
          x="80.934486"
          y="985.57031"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#40aa40;fill-opacity:1;">( 1.0, 1.0, 0.0)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:10px;line-height:1.25;font-family:'Courier New';-inkscape-font-specification:'Courier New Bold';fill:#40aa40;fill-opacity:1">( 1.0, 1.0, 0.0)</tspan></text>
   </g>
 </svg>

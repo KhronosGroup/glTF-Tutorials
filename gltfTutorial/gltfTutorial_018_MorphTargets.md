@@ -60,7 +60,7 @@ The asset additionally contains an `animation` that affects the weights for the 
 |  4.0 | 0.0, 0.0  |
 
 
-Throughout the animation, the weights are interpolated linearly, and applied to the morph target displacements. At each point, the rendered state of the mesh primitive is updated accordingly. The following is an example of the state that is computed at 1.25 seconds.
+Throughout the animation, the weights are interpolated linearly, and applied to the morph target displacements. At each point, the rendered state of the mesh primitive is updated accordingly. The following is an example of the state that is computed at 1.25 seconds. The weights that are provided by the animation sampler for this animation time are (0.25, 1.0), and they are used for computing the linear combination of the morph target displacements.
 
 <p align="center">
 <img src="images/simpleMorphIntermediate.png" /><br>
