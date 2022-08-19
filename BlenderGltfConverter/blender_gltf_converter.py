@@ -37,6 +37,10 @@ def runner():
     # assignment to a variable is just a convenience, it's not mandatory
     model_path = args.model_path
 
+    # clear default scene
+    bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.delete()
+
     # custom logic may go here
     # you might want to e.g. support various file formats, this example works just with .obj files
 
