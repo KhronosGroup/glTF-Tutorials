@@ -9,7 +9,7 @@ These methods can be repurposed for [other material extensions](https://github.c
 
 ## Sample Model ##
 
-The glTF model used in this tutorial is available in the [/samples](https://github.com/KhronosGroup/glTF-Tutorials/blob/main/AddingMaterialExtensions/samples/) folder. 
+The glTF model used in this tutorial is available in the [samples](samples/) folder.
 
 ![screenshot of GlassHurricaneCandleHolder.gltf with transmission and volume](images/image20.jpg "screenshot of GlassHurricaneCandleHolder.gltf with transmission and volume")
 
