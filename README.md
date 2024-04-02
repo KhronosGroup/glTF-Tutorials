@@ -12,7 +12,7 @@ If there are any tutorials that you would like to see here, you can open a new i
 
 ## Contributing
 
-If you want to contribute your own tutorial, you can do this in diffrent ways:
+If you want to contribute your own tutorial, you can do this in different ways:
 
 You can open an issue to propose the new tutorial that you want to create. In this issue, you can discuss the intended topic, scope, and structure of the tutorial. This will allow you to gather early feedback, and maybe even find collaborators who would like to support you.
 
