@@ -1,6 +1,6 @@
 # Adding Material Extensions to glTF Models #
 
-By Eric Chadwick, Staff Technical Artist, Wayfair, [@echadwick-wayfair](https://github.com/echadwick-wayfair)
+By Eric Chadwick, Senior 3D Technical Artist, DGG, [@echadwick-artist](https://github.com/echadwick-artist)
 
 This tutorial explains how to edit glTF files using open source software to add material extensions [KHR_materials_transmission](https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_transmission/README.md) and [KHR_materials_volume](https://github.com/KhronosGroup/glTF/blob/main/extensions/2.0/Khronos/KHR_materials_volume/README.md) to create glass with reflection, refraction, and absorption. 
 
