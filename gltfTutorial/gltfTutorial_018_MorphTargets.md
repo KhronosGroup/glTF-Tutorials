@@ -33,7 +33,7 @@ The example in the previous section contains a mesh that consists of a single tr
 ```
 
 
-The actual base geometry of the mesh, namely the triangle geometry, is defined by the `mesh.primitive` attribute called `"POSITIONS"`. The morph targets of the `mesh.primitive` are dictionaries that map the attribute name `"POSITIONS"` to `accessor` objects that contain the *displacements* for each vertex. Image 18a shows the initial triangle geometry in black, and the displacement for the first morph target in red, and the displacement for the second morph target in green.
+The actual base geometry of the mesh, namely the triangle geometry, is defined by the `mesh.primitive` attribute called `"POSITION"`. The morph targets of the `mesh.primitive` are dictionaries that map the attribute name `"POSITION"` to `accessor` objects that contain the *displacements* for each vertex. Image 18a shows the initial triangle geometry in black, and the displacement for the first morph target in red, and the displacement for the second morph target in green.
 
 <p align="center">
 <img src="images/simpleMorphInitial.png" /><br>
