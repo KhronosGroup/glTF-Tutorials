@@ -96,18 +96,18 @@ As shown in the previous sections, the material definition in a glTF asset conta
 }
 ```
 
-The actual image that the texture consists of is stored as a PNG file called `"testTexture.png"` (see Image 15a).
+The actual image that the texture consists of is stored as a PNG file called `"testTexture.png"` (see Image 13a).
 
 <p align="center">
 <img src="images/testTexture.png" /><br>
-<a name="testTexture-png"></a>Image 15a: The image for the simple texture example.
+<a name="testTexture-png"></a>Image 13a: The image for the simple texture example.
 </p>
 
-Bringing this all together in a renderer will result in the scene rendered in Image 15b.
+Bringing this all together in a renderer will result in the scene rendered in Image 13b.
 
 <p align="center">
 <img src="images/simpleTexture.png" /><br>
-<a name="simpleTexture-png"></a>Image 15b: A simple texture on a unit square.
+<a name="simpleTexture-png"></a>Image 13b: A simple texture on a unit square.
 </p>
 
 
