@@ -45,7 +45,12 @@ def runner():
     # Custom logic may go here
     # You might want to e.g. support various file formats, this example works just with .obj files
 
-    bpy.ops.import_scene.obj(filepath=model_path)
+    #we get the version number and compare it to version 4 as since version 4 scene_obj is removed
+    if (4, 0, 0) > bpy.app.version:
+        bpy.ops.import_scene.obj(filepath=model_path)
+    else : 
+        bpy.ops.wm.obj_import(filepath=model_path)
+
     output_path = model_path.replace(".obj", "")
 
     # The list of all parameters for gltf export can be found here:
