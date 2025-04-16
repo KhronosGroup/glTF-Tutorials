@@ -1,13 +1,12 @@
-Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Simple Animation](gltfTutorial_006_SimpleAnimation.md)
+上一章: [场景和节点](gltfTutorial_004_ScenesNodes.md) | [目录](README.md) | 下一章: [简单动画](gltfTutorial_006_SimpleAnimation.md)
 
+# 缓冲区、缓冲区视图和访问器
 
-# Buffers, BufferViews, and Accessors
+`buffer`、`bufferView` 和 `accessor` 对象的示例已经在 [最小的 glTF 文件](gltfTutorial_003_MinimalGltfFile.md) 部分给出。本节将更详细地解释这些概念。
 
-An example of `buffer`, `bufferView`, and `accessor` objects was already given in the [Minimal glTF File](gltfTutorial_003_MinimalGltfFile.md) section. This section will explain these concepts in more detail.
+## 缓冲区
 
-## Buffers
-
-A [`buffer`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-buffer) represents a block of raw binary data, without an inherent structure or meaning. This data is referred to by a buffer using its `uri`. This URI may either point to an external file, or be a [data URI](gltfTutorial_002_BasicGltfStructure.md#binary-data-in-buffers) that encodes the binary data directly in the JSON file. The [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) contained an example of a `buffer`, with 44 bytes of data, encoded in a data URI:
+[`buffer`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-buffer) 表示一块原始二进制数据，没有固有的结构或含义。缓冲区使用其 `uri` 引用这些数据。这个 URI 可以指向外部文件，也可以是 [数据 URI](gltfTutorial_002_BasicGltfStructure.md#数据-uri-中的二进制数据)，它直接在 JSON 文件中编码二进制数据。[最小的 glTF 文件](gltfTutorial_003_MinimalGltfFile.md) 包含了一个 `buffer` 的示例，其中有 44 字节的数据，编码为数据 URI：
 
 ```javascript
   "buffers" : [
@@ -18,18 +17,16 @@ A [`buffer`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#refer
   ],
 ```
 
-
 <p align="center">
 <img src="images/buffer.png" /><br>
-<a name="buffer-png"></a>Image 5a: The buffer data, consisting of 44 bytes.
+<a name="buffer-png"></a>图 5a: 缓冲区数据，由 44 字节组成。
 </p>
 
-Parts of the data of a `buffer` may have to be passed to the renderer as vertex attributes, or as indices, or the data may contain skinning information or animation key frames. In order to be able to use this data, additional information about the structure and type of this data is required.
+`buffer` 数据的部分可能必须作为顶点属性或索引传递给渲染器，或者数据可能包含蒙皮信息或动画关键帧。为了能够使用这些数据，需要有关此数据结构和类型的额外信息。
 
+## 缓冲区视图
 
-## BufferViews
-
-The first step of structuring the data from a `buffer` is with [`bufferView`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-bufferview) objects. A `bufferView` represents a "slice" of the data of one buffer. This slice is defined using an offset and a length, in bytes. The [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) defined two `bufferView` objects:
+使用 [`bufferView`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-bufferview) 对象是结构化 `buffer` 数据的第一步。`bufferView` 表示一个缓冲区数据的"切片"。这个切片使用偏移量和长度（以字节为单位）来定义。[最小的 glTF 文件](gltfTutorial_003_MinimalGltfFile.md) 定义了两个 `bufferView` 对象：
 
 ```javascript
   "bufferViews" : [
@@ -48,31 +45,30 @@ The first step of structuring the data from a `buffer` is with [`bufferView`](ht
   ],
 ```
 
-The first `bufferView` refers to the first 6 bytes of the buffer data. The second one refers to 36 bytes of the buffer, with an offset of 8 bytes, as shown in this image:
+第一个 `bufferView` 引用缓冲区数据的前 6 个字节。第二个引用缓冲区的 36 个字节，偏移量为 8 字节，如下图所示：
 
 <p align="center">
 <img src="images/bufferBufferView.png" /><br>
-<a name="bufferBufferView-png"></a>Image 5b: The buffer views, referring to parts of the buffer.
+<a name="bufferBufferView-png"></a>图 5b: 缓冲区视图，引用缓冲区的部分。
 </p>
 
-The bytes that are shown in light gray are padding bytes that are required for properly aligning the accessors, as described below. 
+浅灰色显示的字节是填充字节，这些字节是为了正确对齐访问器所必需的，如下所述。
 
-Each `bufferView` additionally contains a `target` property. This property may later be used by the renderer to classify the type or nature of the data that the buffer view refers to. The `target` can be a constant indicating that the data is used for vertex attributes (`34962`, standing for `ARRAY_BUFFER`), or that the data is used for vertex indices (`34963`, standing for `ELEMENT_ARRAY_BUFFER`).
+每个 `bufferView` 还包含一个 `target` 属性。渲染器稍后可以使用此属性来分类缓冲区视图引用的数据的类型或性质。`target` 可以是一个常量，表示数据用于顶点属性（`34962`，代表 `ARRAY_BUFFER`），或者数据用于顶点索引（`34963`，代表 `ELEMENT_ARRAY_BUFFER`）。
 
-At this point, the `buffer` data has been divided into multiple parts, and each part is described by one `bufferView`. But in order to really use this data in a renderer, additional information about the type and layout of the data is required.
+在这一点上，`buffer` 数据已被分成多个部分，每个部分由一个 `bufferView` 描述。但是为了在渲染器中真正使用这些数据，还需要有关数据类型和布局的额外信息。
 
+## 访问器
 
-## Accessors
+[`accessor`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-accessor) 对象引用一个 `bufferView` 并包含定义此 `bufferView` 数据类型和布局的属性。
 
-An [`accessor`](https://www.khronos.org/registry/glTF/specs/2.0/glTF-2.0.html#reference-accessor) object refers to a `bufferView` and contains properties that define the type and layout of the data of this `bufferView`.
+### 数据类型
 
-### Data type
+访问器数据的类型编码在 `type` 和 `componentType` 属性中。`type` 属性的值是一个字符串，指定数据元素是标量、向量还是矩阵。例如，值可能是 `"SCALAR"` 表示标量值，`"VEC3"` 表示 3D 向量，或者 `"MAT4"` 表示 4&times;4 矩阵。
 
-The type of an accessor's data is encoded in the `type` and the `componentType` properties. The value of the `type` property is a string that specifies whether the data elements are scalars, vectors, or matrices. For example, the value may be `"SCALAR"` for scalar values, `"VEC3"` for 3D vectors, or `"MAT4"` for 4&times;4 matrices.
+`componentType` 指定这些数据元素的组件类型。这是一个 GL 常量，可能是例如 `5126`（`FLOAT`）或 `5123`（`UNSIGNED_SHORT`），分别表示元素具有 `float` 或 `unsigned short` 组件。
 
-The `componentType` specifies the type of the components of these data elements. This is a GL constant that may, for example, be `5126` (`FLOAT`) or `5123` (`UNSIGNED_SHORT`), to indicate that the elements have `float` or `unsigned short` components, respectively.
-
-Different combinations of these properties may be used to describe arbitrary data types. For example, the [minimal glTF file](gltfTutorial_003_MinimalGltfFile.md) contained two accessors:
+这些属性的不同组合可用于描述任意数据类型。例如，[最小的 glTF 文件](gltfTutorial_003_MinimalGltfFile.md) 包含两个访问器：
 
 ```javascript
   "accessors" : [
@@ -97,55 +93,48 @@ Different combinations of these properties may be used to describe arbitrary dat
   ],
 ```
 
-The first accessor refers to the `bufferView` with index 0, which defines the part of the `buffer` data that contains the indices. Its `type` is `"SCALAR"`, and its `componentType` is `5123` (`UNSIGNED_SHORT`). This means that the indices are stored as scalar `unsigned short` values.
+第一个访问器引用索引为 0 的 `bufferView`，它定义了包含索引的 `buffer` 数据部分。其 `type` 是 `"SCALAR"`，其 `componentType` 是 `5123`（`UNSIGNED_SHORT`）。这意味着索引存储为标量 `unsigned short` 值。
 
-The second accessor refers to the `bufferView` with index 1, which defines the part of the `buffer` data that contains the vertex attributes - particularly, the vertex positions. Its `type` is `"VEC3"`, and its `componentType` is  `5126` (`FLOAT`). So this accessor describes 3D vectors with floating point components.
+第二个访问器引用索引为 1 的 `bufferView`，它定义了包含顶点属性的 `buffer` 数据部分 - 特别是顶点位置。其 `type` 是 `"VEC3"`，其 `componentType` 是 `5126`（`FLOAT`）。所以这个访问器描述了具有浮点组件的 3D 向量。
 
+### 数据布局
 
-### Data layout
+访问器的其他属性进一步指定数据的布局。访问器的 `count` 属性表示它由多少个数据元素组成。在上面的例子中，两个访问器的计数都是 `3`，分别代表三角形的三个索引和三个顶点。每个访问器还有一个 `byteOffset` 属性。对于上面的例子，两个访问器的偏移量都是 `0`，因为每个 `bufferView` 只有一个 `accessor`。但是当多个访问器引用同一个 `bufferView` 时，`byteOffset` 描述了访问器的数据相对于它引用的 `bufferView` 从哪里开始。
 
-Additional properties of an `accessor` further specify the layout of the data. The `count` property of an accessor indicates how many data elements it consists of. In the example above, the count has been `3` for both accessors, standing for the three indices and the three vertices of the triangle, respectively. Each accessor also has a `byteOffset` property. For the example above, it has been `0` for both accessors, because there was only one `accessor` for each `bufferView`. But when multiple accessors refer to the same `bufferView`, then the `byteOffset` describes where the data of the accessor starts, relative to the `bufferView` that it refers to.
+### 数据对齐
 
+`accessor` 引用的数据可能被发送到图形卡进行渲染，或者在主机端作为动画或蒙皮数据使用。因此，`accessor` 的数据必须根据数据的*类型*进行对齐。例如，当 `accessor` 的 `componentType` 是 `5126`（`FLOAT`）时，数据必须在 4 字节边界上对齐，因为单个 `float` 值由四个字节组成。访问器的这种对齐要求涉及其 `bufferView` 和底层的 `buffer`。特别是，对齐要求如下：
 
-### Data alignment
+- `accessor` 的 `byteOffset` 必须能被其 `componentType` 的大小整除。
+- 访问器的 `byteOffset` 和它引用的 `bufferView` 的 `byteOffset` 之和必须能被其 `componentType` 的大小整除。
 
-The data that is referred to by an `accessor` may be sent to the graphics card for rendering, or be used at the host side as animation or skinning data. Therefore, the data of an `accessor` has to be aligned based on the *type* of the data. For example, when the `componentType` of an `accessor` is `5126` (`FLOAT`), then the data must be aligned at 4-byte boundaries, because a single `float` value consists of four bytes. This alignment requirement of an `accessor` refers to its `bufferView` and the underlying `buffer`. Particularly, the alignment requirements are as follows:
+在上面的例子中，索引为 1 的 `bufferView`（引用顶点属性）的 `byteOffset` 被选为 `8`，以便将顶点位置访问器的数据对齐到 4 字节边界。因此，`buffer` 的第 `6` 和 `7` 字节是*填充*字节，不包含相关数据。
 
-- The `byteOffset` of an `accessor` must be divisible by the size of its `componentType`. 
-- The sum of the `byteOffset` of an accessor and the `byteOffset` of the `bufferView` that it refers to must be divisible by the size of its `componentType`.
-
-In the example above, the `byteOffset` of the `bufferView` with index 1 (which refers to the vertex attributes) was chosen to be `8`, in order to align the data of the accessor for the vertex positions to 4-byte boundaries. The bytes `6` and `7` of the `buffer` are thus *padding* bytes that do not carry relevant data. 
-
-Image 5c illustrates how the raw data of a `buffer` is structured using `bufferView` objects and is augmented with data type information using `accessor` objects.
+图 5c 说明了如何使用 `bufferView` 对象结构化 `buffer` 的原始数据，并使用 `accessor` 对象增加数据类型信息。
 
 <p align="center">
 <img src="images/bufferBufferViewAccessor.png" /><br>
-<a name="bufferBufferViewAccessor-png"></a>Image 5c: The accessors defining how to interpret the data of the buffer views.
+<a name="bufferBufferViewAccessor-png"></a>图 5c: 访问器定义如何解释缓冲区视图的数据。
 </p>
 
+### 数据交错
 
-### Data interleaving
-
-The data of the attributes that are stored in a single `bufferView` may be stored as an *Array-Of-Structures*. A single `bufferView` may, for example, contain the data for vertex positions and for vertex normals in an interleaved fashion. In this case, the `byteOffset` of an accessor defines the start of the first relevant data element for the respective attribute, and the `bufferView` defines an additional `byteStride` property. This is the number of bytes between the start of one element of its accessors, and the start of the next one. An example of how interleaved position and normal attributes are stored inside a `bufferView` is shown in Image 5d.
+存储在单个 `bufferView` 中的属性数据可以作为*结构数组*存储。例如，单个 `bufferView` 可能以交错方式包含顶点位置和顶点法线的数据。在这种情况下，访问器的 `byteOffset` 定义相应属性的第一个相关数据元素的开始，而 `bufferView` 定义了额外的 `byteStride` 属性。这是其访问器的一个元素的开始与下一个元素的开始之间的字节数。图 5d 显示了交错的位置和法线属性如何存储在 `bufferView` 中的示例。
 
 <p align="center">
 <img src="images/aos.png" /><br>
-<a name="aos-png"></a>Image 5d: Interleaved accessors in one buffer view.
+<a name="aos-png"></a>图 5d: 一个缓冲区视图中的交错访问器。
 </p>
 
+### 数据内容
 
-### Data contents
+`accessor` 还包含 `min` 和 `max` 属性，这些属性汇总了它们数据的内容。它们是访问器中包含的所有数据元素的分量最小值和最大值。在顶点位置的情况下，`min` 和 `max` 属性因此定义了对象的*边界框*。这对于优先下载或可见性检测可能很有用。一般来说，这些信息对于存储和处理*量化*数据也很有用，这些数据在运行时由渲染器进行反量化，但是这种量化的细节超出了本教程的范围。
 
-An `accessor` also contains `min` and `max` properties that summarize the contents of their data. They are the component-wise minimum and maximum values of all data elements contained in the accessor. In the case of vertex positions, the `min` and `max` properties thus define the *bounding box* of an object. This can be useful for prioritizing downloads, or for visibility detection. In general, this information is also useful for storing and processing *quantized* data that is dequantized at runtime, by the renderer, but details of this quantization are beyond the scope of this tutorial.
+## 稀疏访问器（Sparse accessors）
 
+在 glTF 2.0 版本中，引入了*稀疏访问器*的概念。这是一种特殊的数据表示，允许非常紧凑地存储仅有少数不同条目的多个数据块。例如，当存在包含顶点位置的几何数据时，这些几何数据可能用于多个对象。这可以通过从两个对象引用同一个 `accessor` 来实现。如果两个对象的顶点位置大部分相同，仅对少数顶点有所不同，那么就不必将整个几何数据存储两次。相反，可以只存储一次数据，并使用稀疏访问器仅存储第二个对象有所不同的顶点位置。
 
-
-## Sparse accessors
-
-
-With version 2.0, the concept of *sparse accessors* was introduced in glTF. This is a special representation of data that allows very compact storage of multiple data blocks that have only a few different entries. For example, when there is geometry data that contains vertex positions, this geometry data may be used for multiple objects. This may be achieved by referring to the same `accessor` from both objects. If the vertex positions for both objects are mostly the same and differ for only a few vertices, then it is not necessary to store the whole geometry data twice. Instead, it is possible to store the data only once, and use a sparse accessor to store only the vertex positions that differ for the second object. 
-
-The following is a complete glTF asset, in embedded representation, that shows an example of sparse accessors:
+以下是一个完整的 glTF 资产，以嵌入式表示形式展示了稀疏访问器的示例：
 
 ```javascript
 {
@@ -226,15 +215,14 @@ The following is a complete glTF asset, in embedded representation, that shows a
 }
 ```
 
-The result of rendering this asset is shown in Image 5e:
+渲染此资产的结果如图 5e 所示：
 
 <p align="center">
 <img src="images/simpleSparseAccessor.png" /><br>
-<a name="simpleSparseAccessor-png"></a>Image 5e: The result of rendering the simple sparse accessor asset.
+<a name="simpleSparseAccessor-png"></a>图 5e: 渲染简单稀疏访问器资产的结果。
 </p>
 
-The example contains two accessors: one for the indices of the mesh, and one for the vertex positions. The one that refers to the vertex positions defines an additional `accessor.sparse` property, which contains the information about the sparse data substitution that should be applied:
-
+示例包含两个访问器：一个用于网格的索引，一个用于顶点位置。引用顶点位置的访问器定义了一个额外的 `accessor.sparse` 属性，其中包含有关应该应用的稀疏数据替换的信息：
 
 ```javascript
   "accessors" : [ 
@@ -262,18 +250,13 @@ The example contains two accessors: one for the indices of the mesh, and one for
   } ],
 ```
 
-This `sparse` object itself defines the `count` of elements that will be affected by the substitution. The `sparse.indices` property refers to a `bufferView` that contains the indices of the elements which will be replaced. The `sparse.values` refers to a `bufferView` that contains the actual data. 
+这个 `sparse` 对象本身定义了将受替换影响的元素的 `count`。`sparse.indices` 属性引用一个 `bufferView`，其中包含将被替换的元素的索引。`sparse.values` 引用一个 `bufferView`，其中包含实际数据。
 
-In the example, the original geometry data is stored in the `bufferView` with index 1. It describes a rectangular array of vertices. The `sparse.indices` refer to the `bufferView` with index 2, which contains the indices `[8, 10, 12]`. The `sparse.values` refers to the `bufferView` with index 3, which contains new vertex positions, namely, `[(1,2,0), (3,3,0), (5,4,0)]`. The effect of applying the corresponding substitution is shown in Image 5f.
-
+在示例中，原始几何数据存储在索引为 1 的 `bufferView` 中。它描述了一个矩形顶点数组。`sparse.indices` 引用索引为 2 的 `bufferView`，其中包含索引 `[8, 10, 12]`。`sparse.values` 引用索引为 3 的 `bufferView`，其中包含新的顶点位置，即 `[(1,2,0), (3,3,0), (5,4,0)]`。应用相应替换的效果如图 5f 所示。
 
 <p align="center">
 <img src="images/simpleSparseAccessorDescription.png" /><br>
-<a name="simpleSparseAccessorDescription-png"></a>Image 5f: The substitution that is done with the sparse accessor.
+<a name="simpleSparseAccessorDescription-png"></a>图 5f: 使用稀疏访问器进行的替换。
 </p>
 
-
-
-
-
-Previous: [Scenes and Nodes](gltfTutorial_004_ScenesNodes.md) | [Table of Contents](README.md) | Next: [Simple Animation](gltfTutorial_006_SimpleAnimation.md)
+上一章: [场景和节点](gltfTutorial_004_ScenesNodes.md) | [目录](README.md) | 下一章: [简单动画](gltfTutorial_006_SimpleAnimation.md)
