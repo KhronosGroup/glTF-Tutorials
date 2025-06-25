@@ -2,7 +2,7 @@ Previous: [Simple Cameras](gltfTutorial_015_SimpleCameras.md) | [Table of Conten
 
 # Cameras
 
-The example in the [Simple Cameras](gltfTutorial_017_SimpleCameras.md) section showed how to define perspective and orthographic cameras, and how they can be integrated into a scene by attaching them to nodes. This section will explain the differences between both types of cameras, and the handling of cameras in general.  
+The example in the [Simple Cameras](gltfTutorial_015_SimpleCameras.md) section showed how to define perspective and orthographic cameras, and how they can be integrated into a scene by attaching them to nodes. This section will explain the differences between both types of cameras, and the handling of cameras in general.  
 
 
 ## Perspective and orthographic cameras
