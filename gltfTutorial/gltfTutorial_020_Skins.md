@@ -100,7 +100,7 @@ This transformation may look counterintuitive at first glance. But the goal of t
 
 ## Vertex skinning implementation
 
-Users of existing rendering libraries will hardly ever have to manually process the vertex skinning data contained in a glTF asset: the actual skinning computations usually take place in the vertex shader, which is a low-level implementation detail of the respective library. However, knowing how the vertex skinning data is supposed to be processed may help to create proper, valid models with vertex skinning. So this section will give a short summary of how the vertex skinning is applied, using some pseudocode and examples in GLSL.
+This section will give a short summary of how the vertex skinning is applied, using some pseudocode and examples in GLSL. Skinning computations usually take place in a vertex shader.
 
 ### The joint matrices
 
@@ -229,3 +229,4 @@ The result of applying this skin matrix to the vertices for the given example is
 
 
 Previous: [Simple Skin](gltfTutorial_019_SimpleSkin.md) | [Table of Contents](README.md)
+
